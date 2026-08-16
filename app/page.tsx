@@ -2,55 +2,30 @@ import Link from "next/link";
 import SmartContactForm from "@/components/SmartContactForm";
 import TrackedCTA from "@/components/TrackedCTA";
 import HeroDemo from "@/components/HeroDemo";
-import HeroFieldLoader from "@/components/HeroFieldLoader";
 import GovernanceLedgerPreview from "@/components/GovernanceLedgerPreview";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider";
+import HomeHeroCinematic from "@/components/HomeHeroCinematic";
+import ScrollReveal from "@/components/ScrollReveal";
 import { CAL_LINK } from "@/lib/site-config";
 
 export default function HomePage() {
  return (
+ <SmoothScrollProvider>
  <main className="min-h-screen text-slate-200" style={{ background: "var(--bg-dark)" }}>
 
- {/* Hero */}
- <section className="pt-36 pb-20 px-6 max-w-5xl mx-auto text-center relative z-0 overflow-hidden">
- <HeroFieldLoader />
- <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight mb-6 tracking-tight text-balance">
- AI agents for the{" "}
- <span style={{ color: "var(--accent)" }}>ERP</span>{" "}
- you already have.
- </h1>
- <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-3 leading-relaxed">
- Governed agents for finance, procurement and operations on Oracle EBS and SAP — running inside your identity, approvals and audit trail, every action visible before it executes. No migration required.
- </p>
- <p className="text-sm text-slate-400 max-w-xl mx-auto mb-10">
- Five-day discovery sprint, $5,000 flat — credited toward your project if you move forward.
- </p>
- <div className="flex flex-col items-center sm:flex-row gap-4 justify-center">
- <TrackedCTA
- href={CAL_LINK}
- target="_blank"
- rel="noopener noreferrer"
- event="cta_book_call"
- data={{ location: "hero" }}
- className="px-8 py-3.5 rounded-xl text-white font-semibold transition-all hover:opacity-90"
- style={{ background: "var(--accent-dark)" }}
- >
- Book a 20-minute fit call
- </TrackedCTA>
- <TrackedCTA
- href="/demos/ap-exception-workflow"
- event="cta_view_demo"
- data={{ location: "hero" }}
- className="px-8 py-3.5 rounded-xl font-semibold transition-all hover:border-slate-500 hover:text-white"
- style={{ border: "1px solid var(--border)", color: "var(--text-muted)" }}
- >
- See an AP agent run
- </TrackedCTA>
- </div>
+ {/* Hero — pinned, shader flow rotates and the real-ledger stat strip
+ counts up on scrub. See components/HomeHeroCinematic.tsx. */}
+ <HomeHeroCinematic />
+
+ {/* HeroDemo lives just below the pinned hero (not inside it) so the
+ pinned block stays compact on short/mobile viewports — a tall pin
+ target gets visually clipped by the viewport while pinned. */}
+ <ScrollReveal className="px-6 pb-20 max-w-5xl mx-auto text-center">
  <HeroDemo />
- </section>
+ </ScrollReveal>
 
  {/* Stats Bar */}
- <section className="px-6 pb-8 max-w-5xl mx-auto">
+ <ScrollReveal className="px-6 pb-8 max-w-5xl mx-auto">
  <div className="grid grid-cols-2 md:grid-cols-4 gap-px rounded-2xl overflow-hidden" style={{ background: "var(--border)" }}>
  {[
  { value: "5 days", label: "Discovery sprint + prototype" },
@@ -64,13 +39,13 @@ export default function HomePage() {
  </div>
  ))}
  </div>
- </section>
+ </ScrollReveal>
 
  {/* Frameworks strip — still intentionally secondary to the systems-led hero
  (per the 2026-08-04 positioning decision), just legible now: was
  rendered smaller and dimmer than any other element on the page,
  which read as an oversight rather than a deliberate design choice. */}
- <section className="px-6 pb-16 max-w-5xl mx-auto">
+ <ScrollReveal className="px-6 pb-16 max-w-5xl mx-auto">
  <div className="flex flex-wrap items-center justify-center gap-2 text-sm">
  <span style={{ color: "var(--text-muted-2)" }}>Governed to:</span>
  {["NIST AI RMF", "ISO 42001", "EU AI Act"].map((std) => (
@@ -83,10 +58,10 @@ export default function HomePage() {
  </span>
  ))}
  </div>
- </section>
+ </ScrollReveal>
 
  {/* Problem / Solution */}
- <section className="px-6 pb-16 max-w-5xl mx-auto">
+ <ScrollReveal className="px-6 pb-16 max-w-5xl mx-auto">
  <div
  className="p-8 rounded-2xl flex flex-col md:flex-row gap-8 items-start"
  style={{ background: "linear-gradient(135deg, #00D4FF08, #0066CC08)", border: "1px solid #00D4FF20" }}
@@ -105,10 +80,10 @@ export default function HomePage() {
  </p>
  </div>
  </div>
- </section>
+ </ScrollReveal>
 
  {/* Try It Live */}
- <section className="py-4 px-6 max-w-5xl mx-auto">
+ <ScrollReveal className="py-4 px-6 max-w-5xl mx-auto">
  <div className="text-center mb-8">
  <p
  className="text-lg italic max-w-xl mx-auto mb-2 leading-relaxed"
@@ -198,10 +173,10 @@ export default function HomePage() {
  </Link>
  ))}
  </div>
- </section>
+ </ScrollReveal>
 
  {/* Governance Ledger Callout */}
- <section className="pt-2 pb-4 px-6 max-w-5xl mx-auto">
+ <ScrollReveal className="pt-2 pb-4 px-6 max-w-5xl mx-auto">
  <div
  className="rounded-2xl p-6 md:p-8"
  style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}
@@ -223,10 +198,10 @@ export default function HomePage() {
  <GovernanceLedgerPreview />
  </div>
  </div>
- </section>
+ </ScrollReveal>
 
  {/* Integrations */}
- <section className="py-16 px-6 max-w-5xl mx-auto">
+ <ScrollReveal className="py-16 px-6 max-w-5xl mx-auto">
  <p className="text-center text-xs text-slate-400 uppercase tracking-widest mb-8">I integrate with your existing enterprise stack</p>
  <div className="flex flex-wrap justify-center items-center gap-3">
  {["SAP", "Salesforce", "ServiceNow", "Oracle", "Workday", "SharePoint", "Slack", "Microsoft 365"].map((name) => (
@@ -239,12 +214,12 @@ export default function HomePage() {
  </div>
  ))}
  </div>
- </section>
+ </ScrollReveal>
 
  <div style={{ borderColor: "var(--border)", margin: "0 auto", maxWidth: "80%", borderTop: "1px solid" }} />
 
  {/* Services */}
- <section id="services" className="py-20 px-6 max-w-5xl mx-auto scroll-mt-24">
+ <ScrollReveal id="services" className="py-20 px-6 max-w-5xl mx-auto scroll-mt-24">
  <div className="text-center mb-12">
  <h2 className="text-3xl font-bold text-white mb-3">Where to start</h2>
  <p className="text-slate-400 text-sm max-w-lg mx-auto">
@@ -359,10 +334,10 @@ export default function HomePage() {
  </a>
  .
  </p>
- </section>
+ </ScrollReveal>
 
  {/* Why Tioga */}
- <section className="px-6 pb-20 max-w-5xl mx-auto">
+ <ScrollReveal className="px-6 pb-20 max-w-5xl mx-auto">
  <div className="rounded-2xl p-8 md:p-10" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
  <div className="text-center mb-10">
  <h2 className="text-3xl font-bold text-white mb-3">What working with Tioga AI looks like</h2>
@@ -392,12 +367,12 @@ export default function HomePage() {
  ))}
  </div>
  </div>
- </section>
+ </ScrollReveal>
 
  <div style={{ borderColor: "var(--border)", margin: "0 auto", maxWidth: "80%", borderTop: "1px solid" }} />
 
  {/* Process */}
- <section id="process" className="py-20 px-6 max-w-4xl mx-auto scroll-mt-24">
+ <ScrollReveal id="process" className="py-20 px-6 max-w-4xl mx-auto scroll-mt-24">
  <div className="text-center mb-12">
  <h2 className="text-3xl font-bold text-white mb-3">My Process</h2>
  <p className="text-slate-400 text-sm">From first conversation to production deployment — with no ambiguity about what happens next.</p>
@@ -438,10 +413,10 @@ export default function HomePage() {
  </div>
  ))}
  </div>
- </section>
+ </ScrollReveal>
 
  {/* MCP Callout */}
- <section className="px-6 pb-20 max-w-5xl mx-auto">
+ <ScrollReveal className="px-6 pb-20 max-w-5xl mx-auto">
  <Link
  href="/mcp"
  className="block rounded-2xl p-8 transition-all hover:border-slate-500 group"
@@ -468,12 +443,12 @@ export default function HomePage() {
  </div>
  </div>
  </Link>
- </section>
+ </ScrollReveal>
 
  <div style={{ borderColor: "var(--border)", margin: "0 auto", maxWidth: "80%", borderTop: "1px solid" }} />
 
  {/* Contact */}
- <section id="contact" className="py-20 px-6 max-w-2xl mx-auto text-center scroll-mt-24">
+ <ScrollReveal id="contact" className="py-20 px-6 max-w-2xl mx-auto text-center scroll-mt-24">
  <h2 className="text-3xl font-bold text-white mb-3">Ready to Build?</h2>
  <p className="text-slate-400 mb-2 text-sm max-w-md mx-auto">
  Tell me about your project. My AI instantly classifies your inquiry so it reaches me with the right context. Response within one business day — or email{" "}
@@ -500,7 +475,8 @@ export default function HomePage() {
  AI-powered routing — live demo of our email triage service
  </div>
  <SmartContactForm />
- </section>
+ </ScrollReveal>
  </main>
+ </SmoothScrollProvider>
  );
 }

@@ -4,6 +4,7 @@ import { useEffect, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { readCssToken } from "@/lib/site-config";
+import { heroScrollState } from "@/lib/scrollState";
 
 // A slow, near-black, custom fragment shader field behind the homepage
 // hero copy -- Phase 3 of the boundary-push research (see
@@ -42,6 +43,7 @@ const FRAGMENT_SHADER = /* glsl */ `
   precision highp float;
   varying vec2 vUv;
   uniform float uTime;
+  uniform float uFlowAngle;
   uniform vec2 uResolution;
   uniform vec3 uColor;
   uniform vec3 uColorDark;
@@ -88,7 +90,12 @@ const FRAGMENT_SHADER = /* glsl */ `
 
   void main() {
     vec2 p = (vUv - 0.5) * vec2(uResolution.x / max(uResolution.y, 1.0), 1.0) * 1.4;
-    vec2 flow = vec2(uTime * 0.02, uTime * 0.012);
+    // Direction now comes from uFlowAngle (scroll-driven -- see
+    // heroScrollState below) instead of a fixed vec2; magnitude preserved
+    // from the original vec2(0.02, 0.012) so uFlowAngle = 0 reproduces the
+    // exact pre-Phase-4 drift.
+    vec2 flowDir = vec2(cos(uFlowAngle), sin(uFlowAngle));
+    vec2 flow = flowDir * uTime * 0.02332;
     float n = fbm(p * 1.1 + flow);
 
     // Soft banded glow directly from the drifting noise field -- more
@@ -113,6 +120,7 @@ function Field() {
     return new THREE.ShaderMaterial({
       uniforms: {
         uTime: { value: 0 },
+        uFlowAngle: { value: Math.atan2(0.012, 0.02) },
         uResolution: { value: new THREE.Vector2(1, 1) },
         uColor: { value: new THREE.Color(readCssToken("--accent")) },
         uColorDark: { value: new THREE.Color(readCssToken("--accent-dark")) },
@@ -135,6 +143,13 @@ function Field() {
   useFrame(({ clock }) => {
     if (document.hidden) return;
     material.uniforms.uTime.value = clock.elapsedTime;
+    // Ref-pattern read (Phase 4 spec): `heroScrollState.flowAngle` is a
+    // plain mutable property written by the pinned-hero's ScrollTrigger
+    // `onUpdate` callback (`components/HomeHeroCinematic.tsx`). Reading a
+    // property here is a cheap per-frame op with no React involvement in
+    // either direction -- the render loop never triggers a re-render, and
+    // scrolling never touches this component's own state.
+    material.uniforms.uFlowAngle.value = heroScrollState.flowAngle;
   });
 
   return (
