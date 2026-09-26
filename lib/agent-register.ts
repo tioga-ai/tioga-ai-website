@@ -5,19 +5,23 @@
 // driftable copy).
 //
 // This is a real excerpt from Tioga's own automation estate: the 29
-// scheduled launchd jobs (com.sukir.*/com.tioga.*/com.jarvis.*) already
+// scheduled launchd jobs already
 // listed in app/demos/automation-oversight/page.tsx's SCHEDULED_AUTOMATIONS
 // array, plus each job's real read/write surface, real authorization tier,
 // and real blast radius — sourced from
-// ~/SecondBrain/TiogaAI/docs/home-directory-subsystems.md (the estate's own
+// the estate's internal subsystem inventory (its own
 // model/cost/blast-radius registry, last updated 2026-09-13) and cross-
 // checked against automation-oversight's own RECENT dispositions array.
 // Not synthetic, not a composite scenario — every field traces to that
 // doc's own wording, cited inline in each row's `note`. This authoring pass
 // is itself Deliverable 1 of the Agentic AI Governance Framework offer run
 // on Tioga's own estate — see
-// ~/SecondBrain/TiogaAI/research/2026-09-13-interactive-3d-offer-pilot-governance-framework.md
-// §1.3 and §8 for why this dataset (not a composite scenario) was chosen.
+// the internal 2026-09-13 offer-pilot research note (§1.3, §8) for why this
+// dataset (not a composite scenario) was chosen.
+//
+// Trimmed 2026-09-26 for a public page: no privilege mechanisms, credentials,
+// dollar budgets, brokerage references or personal names. Tier, blast radius
+// and the approval pattern are unchanged; only reconnaissance-grade detail went.
 //
 // Three real authorization tiers, matching the proposal's own language
 // (sales/proposals/09-agentic-ai-governance-framework.md §4 item 1):
@@ -81,19 +85,19 @@ export const SYSTEMS: SystemRow[] = [
   { id: "VAULT_RESEARCH", name: "Vault research/", description: "research/inbox/, research/knowledge/, research/market-developments/ — Tioga AI business content." },
   { id: "VAULT_GIT", name: "Vault git history", description: "The vault's own git log — the recovery mechanism for every other unsupervised vault write in this register." },
   { id: "MEMORY_STORE", name: "Claude memory store", description: "Claude's local memory store — read-only in this register; no scheduled job writes here." },
-  { id: "GATEWAY_STATE", name: "JARVIS gateway + budget state", description: "The MCP routing daemon and its shared $30/30-day budget state, read by every AI-calling pipeline in the estate." },
-  { id: "SMTP_EMAIL", name: "Outbound email", description: "Outbound alert/report emails via a shared service credential." },
+  { id: "GATEWAY_STATE", name: "JARVIS gateway + budget state", description: "The model-routing daemon and its shared budget state, read by every AI-calling pipeline in the estate." },
+  { id: "SMTP_EMAIL", name: "Outbound email", description: "Outbound alert and report emails." },
   { id: "SYSTEM_POWER", name: "System power settings", description: "pmset/Power Nap/standby state on the laptop." },
   { id: "LAUNCHD_QUEUE", name: "launchd / tj dispatch queue", description: "Job scheduling state and the cross-machine tj job-dispatch queue." },
-  { id: "MARKET_DATA", name: "Market-data account (read-only)", description: "Market/quote data only — no trade-execution tool is granted to any job in this register." },
+  { id: "MARKET_DATA", name: "Market-data feed (read-only)", description: "Quote and volatility data only — no trade-execution tool is granted to any job in this register." },
   { id: "OWN_OUTPUT", name: "Pipeline-local output dirs", description: "Non-vault-synced out/ directories (e.g. YouTubeAIDigest/out/) — contained by construction." },
   { id: "AUDIT_REPORTS", name: "Audit reports", description: "Weekly/monthly audit report files, written only by the audit jobs that generate them." },
 ];
 
-const APPROVER = "Sukir (founder review)";
+const APPROVER = "Founder review";
 
 // --- Agents ---------------------------------------------------------------
-// One row per real com.sukir.*/com.tioga.*/com.jarvis.* scheduled job,
+// One row per real scheduled job,
 // index-aligned in spirit with SCHEDULED_AUTOMATIONS in
 // app/demos/automation-oversight/page.tsx (kept as two arrays, not one
 // import, because that page's array is a plain string list for a stat
@@ -108,7 +112,7 @@ export const AGENTS: AgentRow[] = [
     purpose: "Keeps the laptop awake so the 5:45–10:00 AM digest chain can't be interrupted by sleep.",
     reads: ["SYSTEM_POWER"],
     writes: [
-      { system: "SYSTEM_POWER", tier: "agent-owned", note: "Temporarily disables Power Nap/standby via a scoped NOPASSWD sudoers entry, restored on exit — no human review before applying, self-restoring." },
+      { system: "SYSTEM_POWER", tier: "agent-owned", note: "Temporarily disables Power Nap/standby through a narrowly scoped system permission, restored on exit — no human review before applying, self-restoring." },
     ],
     blastRadius: "Infrastructure-level only; no content or vault-write risk.",
   },
@@ -164,7 +168,7 @@ export const AGENTS: AgentRow[] = [
     purpose: "Watches launchd's own Status column for every scheduled job.",
     reads: ["LAUNCHD_QUEUE"],
     writes: [
-      { system: "SMTP_EMAIL", tier: "human-owned", note: "Emails Sukir only on a nonzero exit status; read-only otherwise, no data write." },
+      { system: "SMTP_EMAIL", tier: "human-owned", note: "Emails the founder only on a nonzero exit status; read-only otherwise, no data write." },
     ],
     blastRadius: "Read-only; alert-only.",
   },
@@ -238,10 +242,10 @@ export const AGENTS: AgentRow[] = [
     id: "market-brief",
     name: "Market Brief",
     schedule: "5:45 AM daily",
-    purpose: "Pre-market brief drafted from WSJ/Barron's/MarketWatch RSS; explicitly not wired to any brokerage.",
+    purpose: "Pre-market brief drafted from financial-news RSS and checked against live read-only quotes; no trade-execution tools.",
     reads: ["MARKET_DATA"],
     writes: [
-      { system: "OWN_OUTPUT", tier: "agent-owned", note: "Writes its own brief unsupervised. Research digest only — worst case is a bad trading idea reaching Sukir's own read, not an autonomous action." },
+      { system: "OWN_OUTPUT", tier: "agent-owned", note: "Writes its own brief unsupervised. Research digest only — worst case is a bad trading idea reaching the founder's own read, not an autonomous action." },
     ],
     blastRadius: "Contained to its own output; no trade-execution surface.",
   },

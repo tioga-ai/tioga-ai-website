@@ -7,7 +7,7 @@ import { CAL_LINK } from "../../../lib/site-config";
 import { STATS, TOTAL_AGENTS, SYSTEMS, UNSUPERVISED_WRITE_COUNT } from "../../../lib/agent-register";
 
 // Pilot page for the $30-75K "Agentic AI Governance Framework" offer
-// (working-list.md). Published 2026-09-18 on Sukir's instruction: indexable,
+// (working-list.md). Published 2026-09-18 on the founder's instruction: indexable,
 // included in the generated sitemap, and linked from
 // /solutions/ai-governance. Not listed on /demos' own featured cards yet.
 export const metadata: Metadata = {
