@@ -33,7 +33,7 @@ export default function ShowcaseCanvasLoader() {
   const [isPlaying, setIsPlaying] = useState(false);
   // Phase 8: default-off, explicit opt-in, persisted -- see
   // useReplayChime.ts's header for why this stays defensive even though
-  // Sukir overrode the plan's own "hold until seen by prospects" note.
+  // The founder overrode the plan's own "hold until seen by prospects" note.
   const [audioEnabled, setAudioEnabled] = useReplayChimeEnabled();
   const playTick = useReplayChime(audioEnabled);
 

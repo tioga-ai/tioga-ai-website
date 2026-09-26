@@ -1,7 +1,7 @@
 // Marble (World Labs) World-Generation Audit — grounded in a REAL trial run,
 // not a simulated/composite scenario like the other demos in this folder.
 // Full methodology + raw outputs: ~/MarbleTrial/ (marble_trial.py, measure.html,
-// runs/20260821T222610Z/). See ~/.claude/projects/-Users-sukirk/memory/
+// runs/20260821T222610Z/). See the local Claude memory store/
 // marble-trial-completed-2026-08-21.md for the source record.
 
 export type AuditCheckItem = {

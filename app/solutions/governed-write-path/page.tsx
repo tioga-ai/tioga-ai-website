@@ -68,7 +68,7 @@ const content: SolutionContent = {
     },
   ],
   /* Sourced from: sales/dated-run-record-snowflake-2026-07-31-DRAFT.md
-     (confirmed as written by Sukir 2026-09-20). Redacted from the dated
+     (confirmed as written by the founder 2026-09-20). Redacted from the dated
      verification notes of the 2026-07-31 run, not from a preserved raw
      transcript -- the "does not have" list below says so on the page. */
   runRecord: {

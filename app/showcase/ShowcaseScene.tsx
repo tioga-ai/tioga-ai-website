@@ -21,7 +21,7 @@ import { CORRIDOR_X, tileY, tileZ, poolY } from "./corridorLayout";
 //
 // Two prior rounds (a vertical three-plane stack, then the same stack with
 // added flight-path lines and comet trails) both shipped clean and
-// verified, and both got the same verdict from Sukirk after actually
+// verified, and both got the same verdict from the founder after actually
 // looking: no wow factor, not quickly understood. Fable 5's round-3
 // critique (reading real screenshots, not code) concluded the *concept*
 // was the ceiling, not the execution: vertical stacking carries no
@@ -118,7 +118,7 @@ function Gate({ tokens, gateActivity }: { tokens: Tokens; gateActivity: React.Mu
   // more organic response curve on top of a real event.
   const displayedActivity = useRef(0);
 
-  // 2026-08-15 round 4: Sukirk — "still not moving much... not
+  // 2026-08-15 round 4: the founder — "still not moving much... not
   // eye-pleasing." Adds continuous, honest ambient motion (chrome, not a
   // claim about specific data — same distinction that keeps this
   // different from the banned continuous-particle-loop): a slowly

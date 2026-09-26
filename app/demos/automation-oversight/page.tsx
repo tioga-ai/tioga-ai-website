@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 // the Reach Map scene's data module (app/demos/agent-reach-map/) — instead
 // of a second, driftable copy of the same facts. That file's AGENTS array
 // is the canonical 29-job list (sourced from `launchctl list`, laptop
-// com.sukir.* plus the mini's com.tioga.*/com.jarvis.* entries) and
+// the laptop's own launchd labels plus the mini's entries) and
 // DISPOSITIONS is the same 7 real, dated findings this page has always
 // shown. See docs/design/3d-design-standard.md §6.4 ("data has exactly one
 // source of truth") — re-verify AGENTS against `launchctl list` at the next

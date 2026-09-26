@@ -5,7 +5,7 @@
 // multi-turn back-and-forth over days instead of a single live session.
 // Every guardrail in the chat widget's prompt is inherited here verbatim;
 // nothing is relaxed for email. The founder is not named on the site
-// (see /Users/sukirk/Downloads/tioga-ai-website's founder-anonymize work,
+// (see this repo's founder-anonymize work,
 // in flight as a separate PR) — this prompt never names them either, and
 // this file's own instruction line reinforces that even if lib/prompts.ts
 // is edited independently later.

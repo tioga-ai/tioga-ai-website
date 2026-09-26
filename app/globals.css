@@ -101,7 +101,7 @@
   --bg-solutions-field: #05070C;
 
   /* "The Boundary" (Standing Watch 3D scene, /demos/standing-watch) —
-     Sukirk's explicit, session-recorded override of this site's default 3D
+     The founder's explicit, session-recorded override of this site's default 3D
      visual-restraint calibration (docs/design/3d-design-standard.md §1.1),
      decided 2026-09-14 via iterated concept-render review. These are the
      scene's own bold accent colors, distinct from the muted sitewide
@@ -136,7 +136,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Dense controls/tables: design.md's 2026-09-19 "known tension" (serif body
    text competing with sans headings in scannable UI), resolved 2026-09-21
-   (Sukir's call) as sans, not the site-wide serif -- narrow, element-level
+   (the founder's call) as sans, not the site-wide serif -- narrow, element-level
    scope on purpose (raw table + form-input elements only) so prose
    paragraphs and headings are untouched everywhere else. */
 table, th, td, input, select, textarea {

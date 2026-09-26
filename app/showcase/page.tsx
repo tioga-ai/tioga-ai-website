@@ -19,7 +19,7 @@ import {
 // ~/SecondBrain/TiogaAI/projects/3d-website-showcase-plan-2026-08-11.md.
 // noindex until Phase 2 sign-off (plan §1, §5): this page is linked from
 // /demos/governance-ledger and /engineering starting in this phase, so
-// crawlers could otherwise find an unapproved page before Sukir has seen
+// crawlers could otherwise find an unapproved page before the founder has seen
 // it. title is a short string, not the full "— Tioga AI" suffix: /showcase
 // is a direct child of the root layout (no intermediate
 // app/showcase/layout.tsx), so root layout.tsx's title.template applies

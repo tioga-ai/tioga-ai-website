@@ -5,7 +5,7 @@ import PresenterSwitch from "./presenter-switch";
 // Password-gated by middleware.ts, noindex, excluded from the sitemap, not
 // listed on /demos.
 //
-// Live mode embeds the ledger UI from Sukir's laptop (docker compose, port
+// Live mode embeds the ledger UI from the founder's laptop (docker compose, port
 // 4003). It only works at home: Snowflake account EO89282 allows only the
 // home IP (see runbooks/run-governed-agent-demo.md in the vault). Anywhere
 // else, Recording mode plays a real run captured 2026-09-23.
