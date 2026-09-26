@@ -707,8 +707,8 @@ const DEMOS = [
 // cards left visitors unsure where to start, and the old badge slot
 // (Flagship/Real Data/Interactive/Free·5min) mixed four incompatible signal
 // types -- priority, data-type, interaction-type, and cost -- into one pill.
-// Fix, per Sukir's decision on the critique:
-//   1. A "Start Here" section (4 cards Sukir picked) now carries the
+// Fix, per the founder's decision on the critique:
+//   1. A "Start Here" section (4 cards the founder picked) now carries the
 //      priority signal via placement/heading, not a "Flagship" pill.
 //   2. The badge is now exactly one signal -- the demo's real evidence type,
 //      reusing the same four-way EvidenceTier classification already shown
@@ -986,7 +986,7 @@ const HEADCOUNT_FORECAST_DRAFT_PROVENANCE: FeaturedDemo = {
   ),
 };
 
-// Sukir's pick, in his stated order -- the four demos that show the most
+// The founder's pick, in the stated order -- the four demos that show the most
 // range in one pass: one live model call, two dated internal-evidence
 // tools, and one governed write-path decision.
 const START_HERE_DEMOS: FeaturedDemo[] = [

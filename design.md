@@ -1,8 +1,8 @@
 # Visual system reference — reverse-engineered from what's actually shipped
 
 *Repo moved 2026-09-21 to `github.com/tioga-ai/tioga-ai-website` (was
-`sukirk-tioga/tioga-ai-website`) — Tioga AI business repos now live under
-a dedicated GitHub org, separate from Sukir's personal automation repos,
+the founder's former personal GitHub namespace) — Tioga AI business repos now live under
+a dedicated GitHub org, separate from the founder's personal automation repos,
 ahead of adding real engineering hires. Old URLs redirect.*
 
 Do Soon/Backlog item 5 from the practitioner backlog

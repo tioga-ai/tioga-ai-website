@@ -30,7 +30,7 @@ import type { FindingRow } from "../../../lib/standing-watch-findings";
 //
 // Palette: a deliberate, session-recorded override of this site's default
 // 3D visual-restraint calibration (docs/design/3d-design-standard.md §1.1)
-// — Sukirk's explicit call, 2026-09-14, via iterated concept-render review.
+// — the founder's explicit call, 2026-09-14, via iterated concept-render review.
 // Colors still come exclusively from CSS custom properties (readToken
 // pattern via useTokens) — zero hex literals in this file — they're just
 // the new --boundary-* tokens (app/globals.css) instead of the muted

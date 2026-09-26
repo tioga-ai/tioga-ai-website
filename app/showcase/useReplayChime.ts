@@ -14,7 +14,7 @@ import { LEDGER, type LedgerRow } from "../../lib/governance-ledger";
 //
 // The plan's own explicit hold recommendation ("I'd hold this until Phases
 // 1-6 have shipped and been seen by real prospects") is the specific
-// caveat Sukir overrode for this session's work, alongside the general
+// caveat the founder overrode for this session's work, alongside the general
 // Phase-5 prospect gate -- built defensively regardless: default OFF,
 // explicit opt-in toggle, state persisted (localStorage), never autoplays.
 
