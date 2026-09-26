@@ -145,7 +145,7 @@ test("agent-owned walk crosses without a button prompt", async ({ page }) => {
 
 test("human-supervised walk shows the real approver and requires an interactive choice", async ({ page }) => {
   // check-automations' second write is human-supervised, approver
-  // "Sukir (founder review)" — real data, not invented copy.
+  // "Founder review" — real data, not invented copy (name removed 2026-09-26, founder-anonymity decision).
   await page.goto("/demos/agent-checkpoint-walk");
   await expect(page.getByTestId("agent-checkpoint-walk-canvas")).toBeVisible({ timeout: 15_000 });
 
