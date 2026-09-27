@@ -17,10 +17,10 @@ import {
 } from "./registerLayout";
 import type { SystemId, Tier } from "../../../lib/agent-register";
 
-// The Reach Map — Tioga's own 29 scheduled agents (left column, one
-// instanced sphere each) authorized against the 12 real systems of record
-// they can read or write (right column), edges colored by real
-// authorization tier. Two-column bipartite layout (registerLayout.ts),
+// The Reach Map — Tioga's own 29 scheduled agents (left column, one mesh
+// each) authorized against the 12 real systems of record they can read or
+// write (right column), nodes and edges both colored by real authorization
+// tier. Two-column bipartite layout (registerLayout.ts),
 // NOT the three-column tiles->gate->pools corridor /showcase uses — see
 // that file's own header for why a different shape was chosen here.
 //
@@ -137,9 +137,7 @@ const TOKEN_NAMES = {
   // this scene's additive-glow/emissive hero-object language (3D standard
   // §5.1) needs a real dark backdrop to read at all, same reasoning.
   bgDarker: "--bg-solutions-field",
-  textMuted: "--text-muted",
   accent: "--accent",
-  accentDark: "--accent-dark",
   // 2026-09-14 blind critique: "every node and line is dark red on
   // near-black... the three authorization tiers are visually
   // indistinguishable." --scene-warning-light (not the plain --scene-warning
@@ -150,7 +148,30 @@ const TOKEN_NAMES = {
   // non-hue (width) differentiation.
   warningLight: "--scene-warning-light",
   coolTier: "--blue",
+  // Neutral color for nodes with no tier at all -- an agent with no write
+  // edges (advisory-only reads) or a system no agent in the register ever
+  // writes to (e.g. MARKET_DATA). --scene-text-muted-3 (not --text-muted,
+  // which is too dark to read against this near-black canvas -- see
+  // app/globals.css's own note on why the scene keeps the old pale --scene-*
+  // values).
+  neutral: "--scene-text-muted-3",
 } as const;
+
+// Shared agent-owned/human-supervised/human-owned -> token lookup, reused
+// by AgentNodes and SystemNodes below (EdgeTubes keeps its own inline copy
+// since edge.tier is never null there, unlike a node's derived tier).
+function tierToken(tier: Tier | null): keyof SceneTokens {
+  switch (tier) {
+    case "agent-owned":
+      return "accent";
+    case "human-supervised":
+      return "warningLight";
+    case "human-owned":
+      return "coolTier";
+    default:
+      return "neutral";
+  }
+}
 
 export type SceneTokens = { [K in keyof typeof TOKEN_NAMES]: string };
 
@@ -162,20 +183,27 @@ const TIER_STYLE: Record<Tier, { radius: number; restOpacity: number; restIntens
   "human-owned": { radius: 0.011, restOpacity: 0.24, restIntensity: 0.16 },
 };
 
-// One instanced sphere per agent (left column). Pointer events on an
-// instancedMesh use `e.instanceId` — this was flagged as a real hypothesis
-// to verify, not assumed, and the first version genuinely did not work: a
-// raw click/pointermove sweep across the whole node column produced zero
-// R3F pointer events, even though rendering, plain (non-instanced) mesh
-// picking (the system nodes below), and raw DOM pointer events on the
-// canvas all worked fine. Root cause, confirmed by instrumenting the
-// handlers directly: three r159+'s `InstancedMesh` needs its aggregate
-// `boundingSphere` computed explicitly — `computeBoundingSphere()` below,
-// right after `setMatrixAt`/`instanceMatrix.needsUpdate` — or raycasting
-// silently misses every instance while still rendering correctly. Fixed
-// and re-verified (see this task's verification notes: a direct canvas
-// click at a computed node position now correctly selects it).
-function NodeInstances({
+// One mesh per agent (left column), colored by that agent's own most
+// permissive write tier (registerLayout.ts's agentTier()) -- same three
+// tokens as EdgeTubes' tierColor and the legend in CanvasLoader.tsx, or
+// --scene-text-muted-3 (neutral) for the few agents with no writes at all.
+//
+// 2026-09-26 follow-up to the blind critique ("every agent node is still
+// the same dark red whatever the tier"): this used to be a single
+// instancedMesh with ONE shared material for all 29 nodes, varying only
+// each instance's `instanceColor` (which three.js only ever applies to a
+// MeshStandardMaterial's diffuse `color` uniform, never its `emissive`).
+// Against this scene's near-black background lit by a strongly
+// accent-colored key light, emissive is what actually reads -- the shared
+// material's fixed `emissive={tokens.accent}` swamped whatever hue
+// instanceColor carried, so every node looked like a dim red glow
+// regardless of tier. Individual meshes (one material each, same
+// established pattern as SystemNodes below) let each node's own
+// color/emissive be its real tier hue, with only emissiveIntensity varying
+// per frame for the existing hover/select/breathe animation -- hue never
+// changes, so a dimmed node keeps reading as its own tier's color instead
+// of fading toward black.
+function AgentNodes({
   nodes,
   tokens,
   selectedAgentId,
@@ -190,63 +218,60 @@ function NodeInstances({
   onSelect: (id: string | null) => void;
   onHover: (id: string | null) => void;
 }) {
-  const meshRef = useRef<THREE.InstancedMesh>(null);
-  const dummy = useMemo(() => new THREE.Object3D(), []);
-  const baseColor = useMemo(() => new THREE.Color(tokens.textMuted), [tokens.textMuted]);
-  const accentColor = useMemo(() => new THREE.Color(tokens.accent), [tokens.accent]);
-
-  useEffect(() => {
-    const mesh = meshRef.current;
-    if (!mesh) return;
-    nodes.forEach((n, i) => {
-      dummy.position.set(...n.position);
-      dummy.scale.setScalar(0.16);
-      dummy.updateMatrix();
-      mesh.setMatrixAt(i, dummy.matrix);
-    });
-    mesh.instanceMatrix.needsUpdate = true;
-    mesh.computeBoundingSphere();
-  }, [nodes, dummy]);
+  const materials = useRef<Record<string, THREE.MeshStandardMaterial | null>>({});
 
   useFrame(({ clock }) => {
-    const mesh = meshRef.current;
-    if (!mesh) return;
     const anySelected = !!selectedAgentId;
     const breathe = 0.06 * Math.sin(clock.elapsedTime * 0.6);
-    nodes.forEach((n, i) => {
+    nodes.forEach((n) => {
+      const mat = materials.current[n.agent.id];
+      if (!mat) return;
       const isSelected = n.agent.id === selectedAgentId;
       const isHovered = n.agent.id === hoveredAgentId;
       let t = 0.32 + breathe;
-      if (anySelected) t = isSelected ? 1 : 0.16;
+      // Dim floor raised from an earlier 0.16 to 0.22 -- verified live that
+      // 0.16 read as near-black for the cooler (amber/teal) tiers even
+      // though the hue itself was technically correct; the tiers must
+      // still read at a glance in the dimmed default-selection state, not
+      // just in the legend.
+      if (anySelected) t = isSelected ? 1 : 0.22;
       else if (isHovered) t = 0.85;
-      const color = baseColor.clone().lerp(accentColor, THREE.MathUtils.clamp(t, 0, 1));
-      mesh.setColorAt(i, color);
+      mat.emissiveIntensity = Math.max(t, 0.08);
     });
-    if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
   });
 
   return (
-    <instancedMesh
-      ref={meshRef}
-      args={[undefined, undefined, nodes.length]}
-      onPointerMove={(e: ThreeEvent<PointerEvent>) => {
-        e.stopPropagation();
-        if (e.instanceId === undefined) return;
-        const n = nodes[e.instanceId];
-        if (n) onHover(n.agent.id);
-      }}
-      onPointerOut={() => onHover(null)}
-      onClick={(e: ThreeEvent<MouseEvent>) => {
-        e.stopPropagation();
-        if (e.instanceId === undefined) return;
-        const n = nodes[e.instanceId];
-        if (!n) return;
-        onSelect(n.agent.id === selectedAgentId ? null : n.agent.id);
-      }}
-    >
-      <sphereGeometry args={[1, 16, 16]} />
-      <meshStandardMaterial emissive={tokens.accent} emissiveIntensity={0.5} roughness={0.4} />
-    </instancedMesh>
+    <>
+      {nodes.map((n) => {
+        const colorToken = tokens[tierToken(n.tier)];
+        return (
+          <mesh
+            key={n.agent.id}
+            position={n.position}
+            onPointerOver={(e: ThreeEvent<PointerEvent>) => {
+              e.stopPropagation();
+              onHover(n.agent.id);
+            }}
+            onPointerOut={() => onHover(null)}
+            onClick={(e: ThreeEvent<MouseEvent>) => {
+              e.stopPropagation();
+              onSelect(n.agent.id === selectedAgentId ? null : n.agent.id);
+            }}
+          >
+            <sphereGeometry args={[0.16, 16, 16]} />
+            <meshStandardMaterial
+              ref={(m) => {
+                materials.current[n.agent.id] = m;
+              }}
+              color={colorToken}
+              emissive={colorToken}
+              emissiveIntensity={0.32}
+              roughness={0.4}
+            />
+          </mesh>
+        );
+      })}
+    </>
   );
 }
 
@@ -310,14 +335,22 @@ function EdgeTubes({
         intensity = isUnsupervised ? 0.95 : 0.05;
       } else if (activeAgent) {
         const isActive = edge.agentId === activeAgent;
-        opacity = isActive ? 0.95 : 0.12;
-        intensity = isActive ? 1.1 : 0.12;
+        // Dim floor raised from an earlier 0.12 to 0.26/0.28 -- 2026-09-26
+        // follow-up: verified live that 0.12 read as flat dark red/black
+        // for every tier once a default agent is pre-selected (which is
+        // now always true on first load, see reachMapContext.tsx), because
+        // at that opacity/intensity the amber and teal edges were too dim
+        // to register as anything but "dark." All three tiers must still
+        // read at a glance in this dimmed default state, not just when a
+        // dimmed edge happens to get hovered.
+        opacity = isActive ? 0.95 : 0.28;
+        intensity = isActive ? 1.1 : 0.26;
       } else {
         opacity = rest.restOpacity;
         intensity = rest.restIntensity;
       }
-      mat.opacity = Math.max(opacity + shimmer, 0.02);
-      mat.emissiveIntensity = Math.max(intensity + shimmer, 0.03);
+      mat.opacity = Math.max(opacity + shimmer, 0.05);
+      mat.emissiveIntensity = Math.max(intensity + shimmer, 0.06);
     });
   });
 
@@ -384,59 +417,70 @@ function SystemNodes({
 
   return (
     <>
-      {nodes.map((n) => (
-        <group key={n.system.id} position={n.position}>
-          <mesh
-            onPointerOver={(e: ThreeEvent<PointerEvent>) => {
-              e.stopPropagation();
-              onHover(n.system.id);
-            }}
-            onPointerOut={() => onHover(null)}
-            onClick={(e: ThreeEvent<MouseEvent>) => {
-              e.stopPropagation();
-              onSelect(n.system.id === selectedSystemId ? null : n.system.id);
-            }}
-          >
-            <sphereGeometry args={[n.radius, 24, 24]} />
-            <meshStandardMaterial
-              ref={(m) => {
-                materials.current[n.system.id] = m;
+      {nodes.map((n) => {
+        // Colored by the system's own most permissive incoming write tier
+        // (registerLayout.ts's systemTier()) -- same tokens as AgentNodes
+        // and the legend, neutral grey for the read-only systems no agent
+        // in the register ever writes to. The hero system (PIPELINE_CODE)
+        // resolves to agent-owned here (check-automations' bounded
+        // auto-implement write), so it keeps its original bright accent
+        // look unchanged; the halo/scan-ring chrome below stays
+        // accent-colored to match.
+        const colorToken = tokens[tierToken(n.tier)];
+        return (
+          <group key={n.system.id} position={n.position}>
+            <mesh
+              onPointerOver={(e: ThreeEvent<PointerEvent>) => {
+                e.stopPropagation();
+                onHover(n.system.id);
               }}
-              color={n.isHero ? tokens.accent : tokens.accentDark}
-              emissive={n.isHero ? tokens.accent : tokens.accentDark}
-              emissiveIntensity={0.3}
-              roughness={0.35}
-            />
-          </mesh>
-          {n.isHero && (
-            <>
-              <mesh position={[0, 0, -0.05]}>
-                <circleGeometry args={[n.radius * 2.4, 32]} />
-                <meshBasicMaterial
-                  ref={haloMatRef}
-                  color={tokens.accent}
-                  transparent
-                  opacity={0.16}
-                  blending={THREE.AdditiveBlending}
-                  depthWrite={false}
-                />
-              </mesh>
-              <mesh ref={scanRingRef} position={[0, 0, -0.02]}>
-                <ringGeometry args={[n.radius * 1.3, n.radius * 1.45, 6, 1, 0, Math.PI * 1.3]} />
-                <meshBasicMaterial
-                  ref={scanMatRef}
-                  color={tokens.accent}
-                  transparent
-                  opacity={0.4}
-                  side={THREE.DoubleSide}
-                  blending={THREE.AdditiveBlending}
-                  depthWrite={false}
-                />
-              </mesh>
-            </>
-          )}
-        </group>
-      ))}
+              onPointerOut={() => onHover(null)}
+              onClick={(e: ThreeEvent<MouseEvent>) => {
+                e.stopPropagation();
+                onSelect(n.system.id === selectedSystemId ? null : n.system.id);
+              }}
+            >
+              <sphereGeometry args={[n.radius, 24, 24]} />
+              <meshStandardMaterial
+                ref={(m) => {
+                  materials.current[n.system.id] = m;
+                }}
+                color={colorToken}
+                emissive={colorToken}
+                emissiveIntensity={0.3}
+                roughness={0.35}
+              />
+            </mesh>
+            {n.isHero && (
+              <>
+                <mesh position={[0, 0, -0.05]}>
+                  <circleGeometry args={[n.radius * 2.4, 32]} />
+                  <meshBasicMaterial
+                    ref={haloMatRef}
+                    color={tokens.accent}
+                    transparent
+                    opacity={0.16}
+                    blending={THREE.AdditiveBlending}
+                    depthWrite={false}
+                  />
+                </mesh>
+                <mesh ref={scanRingRef} position={[0, 0, -0.02]}>
+                  <ringGeometry args={[n.radius * 1.3, n.radius * 1.45, 6, 1, 0, Math.PI * 1.3]} />
+                  <meshBasicMaterial
+                    ref={scanMatRef}
+                    color={tokens.accent}
+                    transparent
+                    opacity={0.4}
+                    side={THREE.DoubleSide}
+                    blending={THREE.AdditiveBlending}
+                    depthWrite={false}
+                  />
+                </mesh>
+              </>
+            )}
+          </group>
+        );
+      })}
     </>
   );
 }
@@ -495,7 +539,7 @@ export default function AgentReachMapScene({ onContextLost }: { onContextLost: (
         hoveredAgentId={hoveredAgentId}
         unsupervisedOnly={unsupervisedOnly}
       />
-      <NodeInstances
+      <AgentNodes
         nodes={agentNodes}
         tokens={tokens}
         selectedAgentId={selectedAgentId}
