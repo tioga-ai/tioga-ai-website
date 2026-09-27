@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
-import type { SystemId } from "../../../lib/agent-register";
+import { AGENTS, type SystemId } from "../../../lib/agent-register";
 
 // Selection state shared between the DOM control layer (Interaction.tsx —
 // the primary control per docs/design/3d-design-standard.md §5.4) and the
@@ -29,8 +29,19 @@ export interface ReachMapContextValue extends ReachMapSelection {
   toggleUnsupervisedOnly: () => void;
 }
 
+// 2026-09-26 legibility fix (blind critique: "nothing tells a
+// non-interacting visitor what a node/edge is"): pre-select the first
+// agent carrying an unsupervised (agent-owned) write so the scene's
+// existing selection-dimming behavior (EdgeTubes/NodeInstances in
+// Scene.tsx, unchanged) highlights one real relationship at full strength
+// with the rest dimmed on first paint, instead of an undifferentiated rest
+// state. Computed from the live AGENTS register, not hardcoded, so this
+// can't drift if the register's row order ever changes.
+const DEFAULT_AGENT_ID: string | null =
+  AGENTS.find((a) => a.writes.some((w) => w.tier === "agent-owned"))?.id ?? null;
+
 const DEFAULT_SELECTION: ReachMapSelection = {
-  selectedAgentId: null,
+  selectedAgentId: DEFAULT_AGENT_ID,
   hoveredAgentId: null,
   selectedSystemId: null,
   hoveredSystemId: null,

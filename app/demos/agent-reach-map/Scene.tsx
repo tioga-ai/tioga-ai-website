@@ -137,11 +137,19 @@ const TOKEN_NAMES = {
   // this scene's additive-glow/emissive hero-object language (3D standard
   // §5.1) needs a real dark backdrop to read at all, same reasoning.
   bgDarker: "--bg-solutions-field",
-  border: "--border",
   textMuted: "--text-muted",
   accent: "--accent",
   accentDark: "--accent-dark",
-  warning: "--scene-warning",
+  // 2026-09-14 blind critique: "every node and line is dark red on
+  // near-black... the three authorization tiers are visually
+  // indistinguishable." --scene-warning-light (not the plain --scene-warning
+  // amber-brown used elsewhere) and --blue (cool teal, not --border's pale
+  // neutral) are picked specifically so the three tier hues separate
+  // clearly against the dark canvas, not just in theory -- see the
+  // TIER_STYLE radius/opacity table below for the accompanying
+  // non-hue (width) differentiation.
+  warningLight: "--scene-warning-light",
+  coolTier: "--blue",
 } as const;
 
 export type SceneTokens = { [K in keyof typeof TOKEN_NAMES]: string };
@@ -280,8 +288,8 @@ function EdgeTubes({
   const tierColor = useMemo(
     () => ({
       "agent-owned": new THREE.Color(tokens.accent),
-      "human-supervised": new THREE.Color(tokens.warning),
-      "human-owned": new THREE.Color(tokens.border),
+      "human-supervised": new THREE.Color(tokens.warningLight),
+      "human-owned": new THREE.Color(tokens.coolTier),
     }),
     [tokens]
   );
