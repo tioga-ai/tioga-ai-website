@@ -22,7 +22,7 @@ import {
   REPLAY_APPROVED_PAUSE_SECONDS,
   REPLAY_TOTAL_SECONDS,
 } from "./checkpointLayout";
-import { DISPOSITIONS } from "../../../lib/agent-register";
+import { DISPOSITIONS, type Tier } from "../../../lib/agent-register";
 
 // The Checkpoint Walk — Concept B ("what happens when this crosses the
 // gate?"), reusing app/showcase's Gate checkpoint metaphor (halo + scan
@@ -54,9 +54,27 @@ const TOKEN_NAMES = {
   accent: "--accent",
   accentDark: "--accent-dark",
   warning: "--scene-warning",
+  // 2026-09-26 follow-up to the blind critique ("the gate mesh and halo are
+  // dark red whatever the write's tier"): same two tokens agent-reach-map's
+  // Scene.tsx/CanvasLoader.tsx legend already use for human-supervised
+  // (amber) and human-owned (cool teal), reused here so the Gate's own
+  // tint matches the on-canvas status pill's dot color exactly.
+  warningLight: "--scene-warning-light",
+  coolTier: "--blue",
 } as const;
 
 export type SceneTokens = { [K in keyof typeof TOKEN_NAMES]: string };
+
+// Same tier -> token mapping as agent-reach-map/Scene.tsx's tierToken() --
+// duplicated, not imported, matching this file's own established
+// precedent (its header comment on the Gate: "duplicating a few lines
+// over risking a regression on the shipped /showcase route") for keeping
+// the two scenes independent.
+const GATE_TIER_TOKEN: Record<Tier, keyof SceneTokens> = {
+  "agent-owned": "accent",
+  "human-supervised": "warningLight",
+  "human-owned": "coolTier",
+};
 
 // --- The Gate --------------------------------------------------------
 //
@@ -68,7 +86,20 @@ export type SceneTokens = { [K in keyof typeof TOKEN_NAMES]: string };
 // no walk is in progress. `activity` (0..1) is driven by real pulse-
 // crossing events from WalkPulse/ReplayPulses, same envelope-follower idea
 // as ShowcaseScene.tsx's `gateActivity`/`displayedActivity`.
-function Gate({ tokens, activity }: { tokens: SceneTokens; activity: React.MutableRefObject<number> }) {
+function Gate({
+  activity,
+  tierColor,
+}: {
+  activity: React.MutableRefObject<number>;
+  // 2026-09-26 follow-up to the blind critique: resolved token VALUE (a
+  // real CSS color string, already looked up via tokens[...]), not a Tier,
+  // so this component stays agnostic of the tier->token mapping -- its
+  // caller (AgentCheckpointWalkScene below) owns that decision. Every part
+  // of the Gate (frame, ring, halo, and the glass pane for visual
+  // coherence with the rest) now derives its color from this single prop,
+  // so it no longer needs the generic `tokens` object at all.
+  tierColor: string;
+}) {
   const frameMaterials = useRef<(THREE.MeshStandardMaterial | null)[]>([]);
   const haloMatRef = useRef<THREE.MeshBasicMaterial>(null);
   const scanRingRef = useRef<THREE.Mesh>(null);
@@ -109,7 +140,7 @@ function Gate({ tokens, activity }: { tokens: SceneTokens; activity: React.Mutab
         <circleGeometry args={[1.5, 40]} />
         <meshBasicMaterial
           ref={haloMatRef}
-          color={tokens.accent}
+          color={tierColor}
           transparent
           opacity={0.16}
           blending={THREE.AdditiveBlending}
@@ -131,7 +162,7 @@ function Gate({ tokens, activity }: { tokens: SceneTokens; activity: React.Mutab
       <mesh ref={glassPaneRef} position={[0, 0, -0.02]}>
         <circleGeometry args={[0.62, 48]} />
         <MeshTransmissionMaterial
-          color={tokens.accent}
+          color={tierColor}
           roughness={0}
           transmission={1}
           thickness={2}
@@ -150,7 +181,7 @@ function Gate({ tokens, activity }: { tokens: SceneTokens; activity: React.Mutab
         <ringGeometry args={[0.68, 0.74, 6, 1, 0, Math.PI * 1.3]} />
         <meshBasicMaterial
           ref={scanMatRef}
-          color={tokens.accent}
+          color={tierColor}
           transparent
           opacity={0.4}
           side={THREE.DoubleSide}
@@ -170,8 +201,8 @@ function Gate({ tokens, activity }: { tokens: SceneTokens; activity: React.Mutab
             ref={(m) => {
               frameMaterials.current[i] = m;
             }}
-            color={tokens.accentDark}
-            emissive={tokens.accent}
+            color={tierColor}
+            emissive={tierColor}
             emissiveIntensity={0.55}
             roughness={0.3}
           />
@@ -455,8 +486,13 @@ export default function AgentCheckpointWalkScene({ onContextLost }: { onContextL
   const lanes = agent ? agentWrites(agent) : [];
   const activeWrite = selectedWriteIndex !== null ? agent?.writes[selectedWriteIndex] : undefined;
   const activeIsHumanOwned = activeWrite?.tier === "human-owned";
+  // Falls back to accent (the scene's original always-on look) on the rare
+  // frame where nothing is selected yet -- the context defaults to
+  // check-automations/write 0, so this branch is effectively never hit in
+  // practice.
+  const gateTierColor = tokens ? tokens[activeWrite ? GATE_TIER_TOKEN[activeWrite.tier] : "accent"] : undefined;
 
-  if (!tokens) return null;
+  if (!tokens || !gateTierColor) return null;
 
   return (
     <Canvas
@@ -479,7 +515,7 @@ export default function AgentCheckpointWalkScene({ onContextLost }: { onContextL
       <pointLight position={[6, -1, -7]} intensity={0.4} color="white" decay={1.6} />
       <pointLight position={[0, 1.5, 6]} intensity={0.4} decay={1.8} />
 
-      <Gate tokens={tokens} activity={gateActivity} />
+      <Gate activity={gateActivity} tierColor={gateTierColor} />
 
       {/* Interactive lane(s) — every write edge of the currently-selected
           agent renders as a static tile/system pair, dimmed on the one

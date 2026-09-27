@@ -58,10 +58,42 @@ export function systemColumnPosition(
   return [LAYOUT_X.systems, y, 0];
 }
 
+// 2026-09-26 follow-up to the blind critique: node geometry (not just
+// edges/legend) needs its own tier color too, so a node's "most permissive"
+// write tier is the one property that decides it. Priority order matches
+// the proposal's own language (lib/agent-register.ts's header comment):
+// agent-owned (no approval gate at all) outranks human-supervised (a gate
+// exists) outranks human-owned (advisory only, not a real write) -- the
+// same "what's the worst case here" question a buyer is actually asking.
+// A single agent/system can carry writes at more than one tier (e.g.
+// check-automations -> PIPELINE_CODE is both agent-owned and
+// human-supervised); this always resolves to the more permissive one, same
+// direction Scene.tsx's EdgeTubes already renders that specific case in
+// (the agent-owned tube brighter than the human-supervised one).
+const TIER_RANK: Record<Tier, number> = { "agent-owned": 3, "human-supervised": 2, "human-owned": 1 };
+
+export function mostPermissiveTier(tiers: Tier[]): Tier | null {
+  if (tiers.length === 0) return null;
+  return tiers.reduce((best, t) => (TIER_RANK[t] > TIER_RANK[best] ? t : best));
+}
+
+export function agentTier(agent: AgentRow): Tier | null {
+  return mostPermissiveTier(agent.writes.map((w) => w.tier));
+}
+
+export function systemTier(systemId: SystemId): Tier | null {
+  const tiers = AGENTS.flatMap((a) => a.writes.filter((w) => w.system === systemId).map((w) => w.tier));
+  return mostPermissiveTier(tiers);
+}
+
 export interface AgentNode {
   agent: AgentRow;
   index: number;
   position: [number, number, number];
+  // null for the few agents with no write edges at all (advisory-only
+  // reads, e.g. mission-control) -- rendered as a neutral color, not
+  // assigned a tier hue it doesn't have.
+  tier: Tier | null;
 }
 
 export function buildAgentNodes(): AgentNode[] {
@@ -69,6 +101,7 @@ export function buildAgentNodes(): AgentNode[] {
     agent,
     index,
     position: agentColumnPosition(index, AGENTS.length),
+    tier: agentTier(agent),
   }));
 }
 
@@ -80,6 +113,9 @@ export interface SystemNode {
   isConvergence: boolean;
   touchCount: number;
   radius: number;
+  // null for the read-only systems no agent in the register ever writes to
+  // (e.g. MARKET_DATA, MEMORY_STORE).
+  tier: Tier | null;
 }
 
 export function buildSystemNodes(): SystemNode[] {
@@ -101,6 +137,7 @@ export function buildSystemNodes(): SystemNode[] {
       isConvergence: CONVERGENCE_SYSTEMS.includes(system.id),
       touchCount,
       radius,
+      tier: systemTier(system.id),
     };
   });
 }
