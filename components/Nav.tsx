@@ -59,13 +59,17 @@ export default function Nav() {
           borderBottom: "1px solid var(--border)",
         }}
       >
-        {/* Logo */}
+        {/* Logo. A pre-sized 160px asset, unoptimized: routing the 445 KB
+            source through /_next/image hung intermittently in CI's WebKit
+            run, and the unfinished request blocked every later page's load
+            event (5 flaky E2E runs, 2026-09-23..26). Footer does the same. */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <Image
-            src="/logo-icon.png"
+            src="/logo-icon-160.png"
             alt="tioga.ai logo"
             width={52}
             height={52}
+            unoptimized
             className="w-12 h-12 object-contain"
           />
           <span className="font-semibold text-xl tracking-tight" style={{ color: "var(--text)" }}>tioga<span style={{ color: "var(--accent-on-tint)" }}>.ai</span></span>

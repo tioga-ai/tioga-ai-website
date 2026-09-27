@@ -7,10 +7,11 @@ export default function Footer() {
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-[var(--text-muted)]">
         <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
           <Image
-            src="/logo-icon.png"
+            src="/logo-icon-160.png"
             alt="tioga.ai"
             width={24}
             height={24}
+            unoptimized
             className="w-6 h-6 object-contain object-bottom"
           />
           <span>Tioga AI</span>
