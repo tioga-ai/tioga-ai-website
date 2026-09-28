@@ -9,6 +9,9 @@ import {
   METRIC_SCALE_RESULT,
   AUDIT_QUESTION,
   METHODOLOGY_NOTE,
+  COSMOS_COLUMNS,
+  COSMOS_COMPARISON,
+  COSMOS_SCAN,
   type AuditCheckItem,
 } from "./lib/scenario";
 
@@ -19,7 +22,7 @@ import {
 // pacing only; every number shown is a real, already-measured result, not
 // something generated live in the browser.
 
-type PanelKey = "tos" | "provenance" | "scale";
+type PanelKey = "tos" | "provenance" | "scale" | "cosmos";
 
 function ChecklistRow({ item }: { item: AuditCheckItem }) {
   return (
@@ -51,6 +54,8 @@ export default function MarbleWorldAuditPage() {
     setRevealed(new Set<PanelKey>(["tos", "provenance"]));
     await new Promise((r) => setTimeout(r, 550));
     setRevealed(new Set<PanelKey>(["tos", "provenance", "scale"]));
+    await new Promise((r) => setTimeout(r, 550));
+    setRevealed(new Set<PanelKey>(["tos", "provenance", "scale", "cosmos"]));
     setBusy(false);
   }
 
@@ -59,7 +64,7 @@ export default function MarbleWorldAuditPage() {
     setBusy(false);
   }
 
-  const allRevealed = revealed.size === 3;
+  const allRevealed = revealed.size === 4;
   const verifiedCount = TOS_CHECKLIST.filter((i) => i.verified).length;
 
   return (
@@ -170,7 +175,7 @@ export default function MarbleWorldAuditPage() {
       </div>
 
       {/* Panel 3 — Metric scale accuracy */}
-      <div className="rounded-2xl p-5 mb-6" style={{ background: "var(--bg-card)", border: "1px solid var(--warning-light)" }}>
+      <div className="rounded-2xl p-5 mb-4" style={{ background: "var(--bg-card)", border: "1px solid var(--warning-light)" }}>
         <div className="flex items-center gap-2.5 mb-1">
           <span
             className="text-[11px] font-mono px-2 py-0.5 rounded-full"
@@ -214,13 +219,92 @@ export default function MarbleWorldAuditPage() {
         )}
       </div>
 
+      {/* Panel 4 — Same audit, second vendor */}
+      <div className="rounded-2xl p-5 mb-6" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
+        <div className="flex items-center gap-2.5 mb-1">
+          <span
+            className="flex-none whitespace-nowrap text-[11px] font-mono px-2 py-0.5 rounded-full"
+            style={{ color: "var(--success)", background: "#4B7A4520", border: "1px solid #4B7A4540" }}
+          >
+            Panel 4
+          </span>
+          <h2 className="font-semibold" style={{ color: "var(--text)" }}>Same audit, second vendor: NVIDIA Cosmos</h2>
+        </div>
+        <p className="text-xs text-[var(--text-muted)] mb-3">
+          Cosmos makes physics-aware video for robotics, not explorable 3D worlds, so this isn&rsquo;t a like-for-like
+          product comparison. It tests whether the audit method carries over to an unrelated, open-weights vendor.
+        </p>
+        {!revealed.has("cosmos") ? (
+          <p className="text-xs text-slate-500 italic">Run the audit to reveal.</p>
+        ) : (
+          <div className="flex flex-col gap-3">
+            <div className="grid grid-cols-3 gap-px rounded-lg overflow-hidden" style={{ background: "var(--border)" }}>
+              <div className="px-4 py-3 text-center" style={{ background: "var(--bg-dark)" }}>
+                <div className="text-xl font-bold" style={{ color: "var(--accent)" }}>{COSMOS_SCAN.filesScanned}</div>
+                <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wide">Cosmos files scanned</div>
+              </div>
+              <div className="px-4 py-3 text-center" style={{ background: "var(--bg-dark)" }}>
+                <div className="text-xl font-bold" style={{ color: "var(--accent)" }}>{COSMOS_SCAN.c2paBoxes}</div>
+                <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wide">C2PA manifest boxes</div>
+              </div>
+              <div className="px-4 py-3 text-center" style={{ background: "var(--bg-dark)" }}>
+                <div className="text-xl font-bold" style={{ color: "var(--success)" }}>{COSMOS_SCAN.realMarkersFound}</div>
+                <div className="text-[10px] text-[var(--text-muted)] uppercase tracking-wide">Real markers found</div>
+              </div>
+            </div>
+            <p className="md:hidden text-[10px] text-[var(--text-muted)]">Swipe the table sideways to compare all three.</p>
+            <div
+              role="region"
+              aria-label="Table: Marble versus NVIDIA Cosmos terms and provenance"
+              tabIndex={0}
+              className="overflow-x-auto rounded-lg"
+              style={{ border: "1px solid var(--border)" }}
+            >
+              <table className="w-full text-xs" style={{ borderCollapse: "collapse", minWidth: "640px" }}>
+                <thead>
+                  <tr style={{ background: "var(--bg-dark)" }}>
+                    <th className="text-left p-3 font-semibold uppercase tracking-wide text-[var(--text-muted)]">Check</th>
+                    {COSMOS_COLUMNS.map((c) => (
+                      <th key={c.key} className="text-left p-3 font-semibold align-bottom" style={{ color: "var(--text)" }}>
+                        {c.label}
+                        <span className="block font-normal text-[var(--text-muted)] normal-case mt-0.5">{c.source}</span>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {COSMOS_COMPARISON.map((r) => (
+                    <tr key={r.dimension} style={{ borderTop: "1px solid var(--border)" }}>
+                      <td className="p-3 font-medium align-top" style={{ color: "var(--text)" }}>{r.dimension}</td>
+                      <td className="p-3 text-[var(--text-muted)] leading-relaxed align-top">{r.marble}</td>
+                      <td className="p-3 text-[var(--text-muted)] leading-relaxed align-top">{r.cosmosHosted}</td>
+                      <td className="p-3 text-[var(--text-muted)] leading-relaxed align-top">{r.cosmosOpen}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="rounded-lg p-3 text-xs flex flex-col gap-1.5" style={{ background: "var(--bg-dark)", border: "1px solid var(--border)" }}>
+              <p className="text-[var(--text-muted)]">
+                <span className="text-[var(--text)] font-medium">Control: </span>
+                {COSMOS_SCAN.positiveControl}
+              </p>
+              <p className="text-[var(--text-muted)]">
+                <span className="text-[var(--text)] font-medium">Limits: </span>
+                {COSMOS_SCAN.caveat}
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+
       {/* Scorecard */}
       {allRevealed && (
         <div className="rounded-2xl p-5 mb-6 text-center" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
           <p className="text-2xl font-bold mb-1" style={{ color: "var(--accent)" }}>
             {verifiedCount} / {TOS_CHECKLIST.length} claims held up unmodified
           </p>
-          <p className="text-xs text-[var(--text-muted)]">Commercial rights: real, with limits. Provenance: clean. Dimensional accuracy: real, and off by 19%.</p>
+          <p className="text-xs text-[var(--text-muted)]">Commercial rights: real, with limits. Provenance: clean. Dimensional accuracy: real, and off by 19%. Second vendor: same result. Neither marks its outputs, so marking is left to you.</p>
         </div>
       )}
 

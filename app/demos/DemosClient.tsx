@@ -936,7 +936,7 @@ const COMPOSED_EVIDENCE: FeaturedDemo = {
 const MARBLE_WORLD_AUDIT: FeaturedDemo = {
   href: "/demos/marble-world-audit",
   title: "Marble World-Generation Audit",
-  desc: "A vendor claims their AI-generated 3D world is commercially usable and dimensionally accurate. I ran the actual trial — real generations, a byte-level provenance scan, a real physical measurement — and found a real 19% scale error.",
+  desc: "A vendor claims their AI-generated 3D world is commercially usable and dimensionally accurate. I ran the actual trial — real generations, a byte-level provenance scan, a real physical measurement — and found a real 19% scale error. Then I ran the same audit on NVIDIA Cosmos.",
   cta: "Try it live →",
   evidenceTier: "internal-operational-excerpt",
   icon: (

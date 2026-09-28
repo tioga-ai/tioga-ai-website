@@ -28,6 +28,12 @@ interface Entry {
 // shipped unit of work into one entry. Dates are the day the unit landed.
 const ENTRIES: Entry[] = [
   {
+    date: "2026-09-28",
+    kind: "Feature",
+    title: "Marble World-Generation Audit: same audit, second vendor (NVIDIA Cosmos)",
+    body: "Added a fourth panel that runs the same provenance method on three Cosmos outputs NVIDIA publishes in its own GitHub repos (0 C2PA boxes, 0 markers; a synthetic C2PA positive control was flagged correctly, so the zeros are real). It also compares Marble with hosted and self-hosted Cosmos on output ownership, vendor use of your content, production use, obligations and output marking, quoting each vendor's primary terms. Neither vendor marks its outputs. A fresh hosted-API Cosmos generation hasn't been run yet and is shown as not yet tested.",
+  },
+  {
     date: "2026-09-25",
     kind: "Fix",
     title: "\"Who's really running your AI?\" corrected for Microsoft's new Copilot",
