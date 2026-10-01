@@ -7,9 +7,16 @@ export const metadata: Metadata = {
     "Tioga AI is built by its founder — decades in enterprise systems and governance, now building AI agents on the same terrain, with compliance built in from day one.",
   alternates: { canonical: "/about" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "About — Tioga AI",
     description:
       "Decades in enterprise systems and governance, now building AI agents on the same terrain.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About — Tioga AI",
+    description: "Decades in enterprise systems and governance, now building AI agents on the same terrain.",
+    images: ["/opengraph-image"],
   },
 };
 

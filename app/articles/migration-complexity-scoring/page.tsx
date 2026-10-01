@@ -7,10 +7,17 @@ export const metadata: Metadata = {
     "A concrete, reproducible way to score whether it's safe to run governed AI agents against an Oracle Fusion Cloud ERP environment, from use case, integration method, and which governance controls already exist.",
   alternates: { canonical: "/articles/migration-complexity-scoring" },
   openGraph: {
+    images: ["/opengraph-image"],
     type: "article",
     publishedTime: "2026-08-03",
     title: "What Actually Drives AI-Agent Readiness — Tioga AI",
     description: "A real scoring model for Oracle Fusion Cloud ERP AI-agent readiness.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "What Actually Drives AI-Agent Readiness — Tioga AI",
+    description: "A real scoring model for Oracle Fusion Cloud ERP AI-agent readiness.",
+    images: ["/opengraph-image"],
   },
 };
 

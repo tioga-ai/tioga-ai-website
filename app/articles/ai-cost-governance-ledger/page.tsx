@@ -8,10 +8,17 @@ export const metadata: Metadata = {
     `A live AI routing gateway logs, costs, and caps every model call automatically — real numbers, not a projected savings estimate, even as real usage growth shifts the free/paid mix window to window.`,
   alternates: { canonical: "/articles/ai-cost-governance-ledger" },
   openGraph: {
+    images: ["/opengraph-image"],
     type: "article",
     publishedTime: "2026-08-03",
     title: "What a Real AI Cost-Governance Ledger Looks Like — Tioga AI",
     description: "Real numbers from a live AI routing gateway, not a projection.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "What a Real AI Cost-Governance Ledger Looks Like — Tioga AI",
+    description: "Real numbers from a live AI routing gateway, not a projection.",
+    images: ["/opengraph-image"],
   },
 };
 

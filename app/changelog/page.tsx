@@ -10,8 +10,15 @@ export const metadata: Metadata = {
     "What's actually shipped on tioga.ai, in order — a running build log in place of case studies I haven't had time to write yet.",
   alternates: { canonical: "/changelog" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "Build Log — Tioga AI",
     description: "What's actually shipped on tioga.ai, in order, since launch.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Build Log — Tioga AI",
+    description: "What's actually shipped on tioga.ai, in order, since launch.",
+    images: ["/opengraph-image"],
   },
 };
 

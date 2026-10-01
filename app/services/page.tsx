@@ -7,9 +7,16 @@ export const metadata: Metadata = {
     "Three practices, sixteen priced engagements — systems-led AI automation, agent layers for your existing systems, and AI governance, for businesses on QuickBooks, NetSuite, Salesforce, Oracle Fusion Cloud ERP, Oracle EBS, SAP, or something else.",
   alternates: { canonical: "/services" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "Services — Tioga AI",
     description:
       "Three practices, sixteen priced engagements — systems-led AI automation, agent layers for your existing systems, and AI governance, whatever system of record you run.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Services — Tioga AI",
+    description: "Three practices, sixteen priced engagements — systems-led AI automation, agent layers for your existing systems, and AI governance, whatever system of record you run.",
+    images: ["/opengraph-image"],
   },
 };
 

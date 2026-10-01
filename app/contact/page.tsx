@@ -9,9 +9,16 @@ export const metadata: Metadata = {
     "Book a 20-minute intro call or send a project inquiry — classified instantly by the same AI routing behind every Tioga AI engagement.",
   alternates: { canonical: "/contact" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "Contact — Tioga AI",
     description:
       "Book a 20-minute intro call or send a project inquiry — classified instantly by the same AI routing behind every Tioga AI engagement.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact — Tioga AI",
+    description: "Book a 20-minute intro call or send a project inquiry — classified instantly by the same AI routing behind every Tioga AI engagement.",
+    images: ["/opengraph-image"],
   },
 };
 

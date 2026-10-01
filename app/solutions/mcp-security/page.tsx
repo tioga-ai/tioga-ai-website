@@ -7,8 +7,15 @@ export const metadata: Metadata = {
     "MCP standardizes how an agent talks to a tool. It doesn't give you scoped permissions, audit logging, or policy enforcement by default — this does.",
   alternates: { canonical: "/solutions/mcp-security" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "MCP Security — Tioga AI",
     description: "Scoped permissions, call-level audit logging, and policy enforcement for MCP-based agent integrations.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MCP Security — Tioga AI",
+    description: "Scoped permissions, call-level audit logging, and policy enforcement for MCP-based agent integrations.",
+    images: ["/opengraph-image"],
   },
 };
 

@@ -6,9 +6,16 @@ export const metadata: Metadata = {
     "A free five-minute self-check on one AI-agent write into an ERP or CRM: credential, application-logic path, attribution, approval, verification, rollback and evidence. Runs in your browser; nothing you select is sent anywhere.",
   alternates: { canonical: "/demos/agent-write-path-exposure-check" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "Agent Write-Path Exposure Check — Tioga AI",
     description:
       "Twelve control points on one agent-to-ERP/CRM write, scored for exposure — with unknowns kept separate from gaps. Free, in your browser.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Agent Write-Path Exposure Check — Tioga AI",
+    description: "Twelve control points on one agent-to-ERP/CRM write, scored for exposure — with unknowns kept separate from gaps. Free, in your browser.",
+    images: ["/opengraph-image"],
   },
 };
 

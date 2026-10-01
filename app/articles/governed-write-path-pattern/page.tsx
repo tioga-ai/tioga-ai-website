@@ -7,10 +7,17 @@ export const metadata: Metadata = {
     "Read, decide, approve, execute, audit, rollback — the seven-stage pattern that lets an AI agent write to a production ERP without a direct database write.",
   alternates: { canonical: "/articles/governed-write-path-pattern" },
   openGraph: {
+    images: ["/opengraph-image"],
     type: "article",
     publishedTime: "2026-08-03",
     title: "How a Governed AI Write-Path Actually Works — Tioga AI",
     description: "The seven-stage pattern for letting an AI agent write to your ERP safely.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "How a Governed AI Write-Path Actually Works — Tioga AI",
+    description: "The seven-stage pattern for letting an AI agent write to your ERP safely.",
+    images: ["/opengraph-image"],
   },
 };
 

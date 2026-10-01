@@ -9,9 +9,16 @@ export const metadata: Metadata = {
     "The real propose-and-approve discipline behind Tioga's own automation estate — what a daily review surfaced, what a human approved, and what happens when the estate catches its own mistakes.",
   alternates: { canonical: "/demos/automation-oversight" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "Automation Oversight — Tioga AI",
     description:
       "Real operational data, refreshed periodically — not a live-refreshing feed. Every finding is proposed; nothing is applied without a human review.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Automation Oversight — Tioga AI",
+    description: "Real operational data, refreshed periodically — not a live-refreshing feed. Every finding is proposed; nothing is applied without a human review.",
+    images: ["/opengraph-image"],
   },
 };
 

@@ -17,12 +17,19 @@ export const metadata: Metadata = {
   // inherited the homepage's og:title and og:url (verified live), so a shared
   // link previewed as the homepage. Mirrors this page's own title/description.
   openGraph: {
+    images: ["/opengraph-image"],
     title: "Standing Watch — Independent AI Agent Verification",
     description:
       "SAP, Workday, Databricks, and ServiceNow each ship their own AI agent governance pane, anchored to their own estate. Standing Watch is the independent layer that verifies agent behavior and composes one evidence record across them.",
     url: "/lp/standing-watch",
     siteName: "Tioga AI",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Standing Watch — Independent AI Agent Verification",
+    description: "SAP, Workday, Databricks, and ServiceNow each ship their own AI agent governance pane, anchored to their own estate. Standing Watch is the independent layer that verifies agent behavior and composes one evidence record across them.",
+    images: ["/opengraph-image"],
   },
   robots: { index: false, follow: true },
 };

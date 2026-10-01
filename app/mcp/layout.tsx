@@ -9,9 +9,16 @@ export const metadata: Metadata = {
     "See how Claude connects to enterprise systems like SAP, Salesforce, and ServiceNow via the Model Context Protocol — live, interactive demo.",
   alternates: { canonical: "/mcp" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "MCP Integrations — Tioga AI",
     description:
       "How Claude connects to SAP, Salesforce, and ServiceNow via the Model Context Protocol.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MCP Integrations — Tioga AI",
+    description: "How Claude connects to SAP, Salesforce, and ServiceNow via the Model Context Protocol.",
+    images: ["/opengraph-image"],
   },
 };
 

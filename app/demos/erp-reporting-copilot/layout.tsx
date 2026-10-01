@@ -6,9 +6,16 @@ export const metadata: Metadata = {
     "Ask a natural-language question against a composite semiconductor capital-equipment manufacturer's SAP quote and order data — watch the query get decomposed into SAP-style tables and gaps standard reporting doesn't cover, then get a real answer table. A read-side reporting demo, not a governed write-path one.",
   alternates: { canonical: "/demos/erp-reporting-copilot" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "ERP Reporting Copilot Demo — Tioga AI",
     description:
       "Historical quotation lookup, expiring-quote tracking, pricing-change history — the read-side reporting gaps standard SAP leaves to a custom query, answered live.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ERP Reporting Copilot Demo — Tioga AI",
+    description: "Historical quotation lookup, expiring-quote tracking, pricing-change history — the read-side reporting gaps standard SAP leaves to a custom query, answered live.",
+    images: ["/opengraph-image"],
   },
 };
 

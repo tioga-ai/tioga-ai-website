@@ -7,10 +7,17 @@ export const metadata: Metadata = {
     "Model Context Protocol makes the interface standard, but it doesn't grant scope enforcement, rate limiting, or an audit trail for free — those still have to be built in.",
   alternates: { canonical: "/articles/mcp-scoped-permissions" },
   openGraph: {
+    images: ["/opengraph-image"],
     type: "article",
     publishedTime: "2026-08-03",
     title: "MCP Integration Still Needs Approval Gates — Tioga AI",
     description: "What MCP standardizes, and what it doesn't — with real code.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MCP Integration Still Needs Approval Gates — Tioga AI",
+    description: "What MCP standardizes, and what it doesn't — with real code.",
+    images: ["/opengraph-image"],
   },
 };
 

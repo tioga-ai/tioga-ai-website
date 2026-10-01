@@ -8,8 +8,15 @@ export const metadata: Metadata = {
     "Technical writing on governed AI write-paths, AI governance frameworks, MCP security, Oracle Fusion Cloud ERP AI-agent readiness, and AI cost governance — grounded in Tioga AI's own live demos and infrastructure.",
   alternates: { canonical: "/articles" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "Articles — Tioga AI",
     description: "Technical articles grounded in real, running systems — not generic AI takes.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Articles — Tioga AI",
+    description: "Technical articles grounded in real, running systems — not generic AI takes.",
+    images: ["/opengraph-image"],
   },
 };
 

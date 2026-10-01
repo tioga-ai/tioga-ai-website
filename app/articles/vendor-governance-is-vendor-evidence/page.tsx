@@ -8,11 +8,18 @@ export const metadata: Metadata = {
     "ERP vendors are expected to ship their own agent-governance modules. Useful — but the record such a module produces is the platform's account of its own behavior. Here is what to ask, with SAP's and Oracle's own documentation as the examples.",
   alternates: { canonical: "/articles/vendor-governance-is-vendor-evidence" },
   openGraph: {
+    images: ["/opengraph-image"],
     type: "article",
     publishedTime: "2026-09-19",
     title: "A Vendor's Governance Module Is the Vendor's Evidence About Itself — Tioga AI",
     description:
       "What an ERP vendor's own governance module can and can't evidence about agent writes, and five questions to ask before relying on it.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "A Vendor's Governance Module Is the Vendor's Evidence About Itself — Tioga AI",
+    description: "What an ERP vendor's own governance module can and can't evidence about agent writes, and five questions to ask before relying on it.",
+    images: ["/opengraph-image"],
   },
 };
 

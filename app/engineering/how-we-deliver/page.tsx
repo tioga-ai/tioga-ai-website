@@ -8,9 +8,16 @@ export const metadata: Metadata = {
     "The 7-phase delivery lifecycle behind every Tioga AI engagement — propose-and-approve discipline, evidence over assertion, and a named artifact and a client-owned decision at every gate, from the 5-day Discovery Sprint through handover.",
   alternates: { canonical: "/engineering/how-we-deliver" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "How Tioga AI Delivers — Tioga AI",
     description:
       "A client-safe excerpt of Tioga's internal delivery methodology — the same standard Tioga's own AI-operations estate runs under internally.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "How Tioga AI Delivers — Tioga AI",
+    description: "A client-safe excerpt of Tioga's internal delivery methodology — the same standard Tioga's own AI-operations estate runs under internally.",
+    images: ["/opengraph-image"],
   },
 };
 

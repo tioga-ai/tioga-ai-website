@@ -6,8 +6,15 @@ export const metadata: Metadata = {
   description: "Terms governing use of the tioga.ai website and its live AI demos.",
   alternates: { canonical: "/terms" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "Terms of Service — Tioga AI",
     description: "Terms governing use of the tioga.ai website and its live AI demos.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms of Service — Tioga AI",
+    description: "Terms governing use of the tioga.ai website and its live AI demos.",
+    images: ["/opengraph-image"],
   },
 };
 

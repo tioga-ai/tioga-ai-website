@@ -31,9 +31,16 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
   alternates: { canonical: "/showcase" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "The Gateway Corridor — Tioga AI",
     description:
       "The same real governance-ledger excerpt, rendered as a corridor every call passes through one checkpoint to reach. Not a live feed — a dated, verifiable excerpt.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Gateway Corridor — Tioga AI",
+    description: "The same real governance-ledger excerpt, rendered as a corridor every call passes through one checkpoint to reach. Not a live feed — a dated, verifiable excerpt.",
+    images: ["/opengraph-image"],
   },
 };
 

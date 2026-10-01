@@ -7,9 +7,16 @@ export const metadata: Metadata = {
     "What an agent write into an ERP or CRM should leave behind at each stage — read, propose, approve, commit, roll back, change the agent — and which NIST AI RMF subcategories and EU AI Act articles that evidence supports. A conceptual map, not a certification.",
   alternates: { canonical: "/trust/evidence-map" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "Agent Action Evidence Map — Tioga AI",
     description:
       "One table: for each stage of an agent write, the evidence to keep and the NIST AI RMF / EU AI Act references it supports.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Agent Action Evidence Map — Tioga AI",
+    description: "One table: for each stage of an agent write, the evidence to keep and the NIST AI RMF / EU AI Act references it supports.",
+    images: ["/opengraph-image"],
   },
 };
 

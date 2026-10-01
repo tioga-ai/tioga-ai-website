@@ -7,10 +7,17 @@ export const metadata: Metadata = {
     "The real 12-day cross-machine auth gap that motivated my security-watch automation, and why propose-and-approve — never auto-apply — is the rule for this class of governance automation.",
   alternates: { canonical: "/articles/standing-watch" },
   openGraph: {
+    images: ["/opengraph-image"],
     type: "article",
     publishedTime: "2026-08-10",
     title: "Why Router-Watch and Security-Watch Only Propose — Tioga AI",
     description: "Propose-and-approve governance for two of my own security-finding automations, forged on a real incident, run on my own two-machine estate.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Why Router-Watch and Security-Watch Only Propose — Tioga AI",
+    description: "Propose-and-approve governance for two of my own security-finding automations, forged on a real incident, run on my own two-machine estate.",
+    images: ["/opengraph-image"],
   },
 };
 
