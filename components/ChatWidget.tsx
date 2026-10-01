@@ -23,6 +23,10 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState<Message[]>([WELCOME_MESSAGE]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  // On phones the launcher sat over the hero demo card at the fold, so there
+  // it stays hidden until the visitor has scrolled past the first screen (or
+  // the chat is already open). sm+ screens always show it.
+  const [pastFold, setPastFold] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -33,6 +37,13 @@ export default function ChatWidget() {
       inputRef.current.focus({ preventScroll: true });
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    const onScroll = () => setPastFold(window.scrollY > window.innerHeight * 0.8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const close = () => {
     setIsOpen(false);
@@ -150,7 +161,9 @@ export default function ChatWidget() {
             return !o;
           })
         }
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-11 h-11 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110"
+        className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-11 h-11 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110 ${
+          pastFold || isOpen ? "" : "max-sm:hidden"
+        }`}
         style={{ background: "linear-gradient(135deg, var(--accent), var(--accent-dark))" }}
         aria-label={isOpen ? "Close chat" : "Open chat"}
         aria-expanded={isOpen}

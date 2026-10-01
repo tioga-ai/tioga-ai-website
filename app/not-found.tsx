@@ -1,3 +1,13 @@
+import type { Metadata } from "next";
+
+// Without this the 404 inherited the homepage's title, description and
+// canonical, so it looked like a duplicate of "/" to crawlers and in tabs.
+export const metadata: Metadata = {
+  title: "Page not found",
+  description: "That page doesn't exist on tioga.ai.",
+  alternates: { canonical: null },
+};
+
 export default function NotFound() {
   return (
     <main id="main-content" className="min-h-screen flex items-center justify-center text-[var(--text)] px-6" style={{ background: "var(--bg-dark)" }}>
