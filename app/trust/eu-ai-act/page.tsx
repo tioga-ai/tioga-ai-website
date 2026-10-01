@@ -25,15 +25,15 @@ const TIERS = [
     amount: "€35M or 7%",
     label: "of global annual turnover, whichever is higher",
     scope: "Prohibited AI practices",
-    detail: "Article 5 violations — the highest tier. These provisions have been in force since February 2025.",
+    detail: "Article 5 violations — the highest tier. The prohibitions have applied since February 2025; the Act's penalty provisions (Chapter XII) have applied since August 2025.",
     status: "In force",
     statusColor: "var(--error)",
   },
   {
     amount: "€15M or 3%",
     label: "of global annual turnover, whichever is higher",
-    scope: "High-risk system & GPAI provider obligations",
-    detail: "Non-compliance with the requirements for high-risk AI systems or general-purpose AI model obligations.",
+    scope: "High-risk system and other operator obligations",
+    detail: "Non-compliance with obligations such as those for high-risk AI systems (Article 99). Fines for providers of general-purpose AI models are set separately in Article 101, at the same ceiling (€15M or 3%), and apply from August 2026.",
     status: "Phasing in",
     statusColor: "var(--warning)",
   },
@@ -106,11 +106,11 @@ export default function EUAIActPage() {
           <div className="space-y-4">
             <div className="flex gap-4">
               <span className="text-xs font-mono text-[var(--text-muted)] w-24 shrink-0 pt-0.5">Feb 2025</span>
-              <p className="text-sm text-[var(--text-muted)]">Prohibited-practice provisions and AI literacy obligations took effect — the €35M/7% tier is already enforceable.</p>
+              <p className="text-sm text-[var(--text-muted)]">Prohibited-practice provisions and AI literacy obligations took effect. (Fines for them became enforceable with the penalty provisions in Aug 2025.)</p>
             </div>
             <div className="flex gap-4">
               <span className="text-xs font-mono text-[var(--text-muted)] w-24 shrink-0 pt-0.5">Aug 2025</span>
-              <p className="text-sm text-[var(--text-muted)]">General-purpose AI model provider obligations and governance-authority designations took effect.</p>
+              <p className="text-sm text-[var(--text-muted)]">General-purpose AI model provider obligations, governance-authority designations, and the Act&apos;s penalty provisions took effect (GPAI provider fines under Article 101 follow in Aug 2026).</p>
             </div>
             <div className="flex gap-4">
               <span className="text-xs font-mono w-24 shrink-0 pt-0.5" style={{ color: "var(--text)" }}>Now</span>
@@ -118,7 +118,7 @@ export default function EUAIActPage() {
             </div>
             <div className="flex gap-4">
               <span className="text-xs font-mono text-[var(--text-muted)] w-24 shrink-0 pt-0.5">Dec 2027</span>
-              <p className="text-sm text-[var(--text-muted)]">High-risk system obligations (Annex III — the category most enterprise AI agents in finance, HR, and CRM fall into) phase in. Originally Aug 2026; deferred to 2 December 2027 by Regulation (EU) 2026/1744 (the &quot;Digital Omnibus on AI&quot;), in force since 27 July 2026.</p>
+              <p className="text-sm text-[var(--text-muted)]">High-risk system obligations phase in for AI used in the specific areas Annex III lists (for example recruitment and employment decisions, or creditworthiness assessment of individuals). Whether a given finance, HR, or CRM agent is high-risk depends on its intended use and the Article 6 classification rules, not on the department it serves. Originally Aug 2026; deferred to 2 December 2027 by Regulation (EU) 2026/1744 (the &quot;Digital Omnibus on AI&quot;), in force since 27 July 2026.</p>
             </div>
             <div className="flex gap-4">
               <span className="text-xs font-mono text-[var(--text-muted)] w-24 shrink-0 pt-0.5">Aug 2028</span>
@@ -167,8 +167,9 @@ export default function EUAIActPage() {
         {/* Offer tie-in */}
         <div className="text-center">
           <p className="text-sm text-[var(--text-muted)] mb-4">
-            Tioga AI&apos;s EU AI Act Conformity Program covers Article 50 /
-            state-law readiness and full conformity documentation.
+            Tioga AI&apos;s EU AI Act Conformity Program covers Article 50
+            readiness and full conformity documentation. US state-law work is
+            a separate engagement, the Multi-State AI Compliance Program.
           </p>
           <Link
             href="/services"

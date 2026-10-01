@@ -11,7 +11,7 @@ import { STATS, TOTAL_AGENTS, SYSTEMS, UNSUPERVISED_WRITE_COUNT } from "../../..
 // included in the generated sitemap, and linked from
 // /solutions/ai-governance. Not listed on /demos' own featured cards yet.
 export const metadata: Metadata = {
-  title: "The Reach Map",
+  title: "The Reach Map — Tioga AI",
   description:
     "An interactive 3D scene rendering Tioga's own 29 scheduled automation jobs against the 12 real systems they're authorized to touch, colored by real authorization tier.",
   alternates: { canonical: "/demos/agent-reach-map" },

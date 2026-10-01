@@ -64,17 +64,17 @@ export default function EmailTriageWriteup() {
           </div>
 
           <div>
-            <h2 className="text-xl font-bold mb-3" style={{ color: "var(--text)" }}>One call, five decisions</h2>
+            <h2 className="text-xl font-bold mb-3" style={{ color: "var(--text)" }}>One call, seven fields</h2>
             <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-4">
               Rather than chain separate classify → route → draft calls, the
-              route asks for one JSON object with all five fields at once:
+              route asks for one JSON object with all seven fields at once:
               category, urgency, sentiment, routing destination, a one-line
               summary, a suggested reply, and extracted key entities. Fewer
               round trips, and the fields stay consistent with each other
               since one call reasons about all of them together.
             </p>
             <div className="p-5 rounded-xl" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
-              <p className="text-xs text-[var(--text-muted)] mb-3 uppercase tracking-wide">Every field is a closed enum, not free text</p>
+              <p className="text-xs text-[var(--text-muted)] mb-3 uppercase tracking-wide">The four classification fields are closed enums, not free text; summary, suggested reply, and key entities are free text</p>
               <div className="grid sm:grid-cols-2 gap-2 text-xs font-mono text-[var(--text-muted)]">
                 <p><span style={{ color: "var(--accent)" }}>category</span>: Sales | Support | Complaint | Partnership | Spam | Internal | Invoice | Legal</p>
                 <p><span style={{ color: "var(--accent)" }}>urgency</span>: low | medium | high | critical</p>

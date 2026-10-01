@@ -23,12 +23,12 @@ export const metadata: Metadata = {
   openGraph: {
     images: ["/opengraph-image"],
     title: "Live AI Demos — Tioga AI",
-    description: "Real AI workflows, no signup, no mockups — a mix of live model calls, browser simulations, and dated operational excerpts, the same models and evidence built into every Tioga AI engagement.",
+    description: "Real AI workflows, no signup — a mix of live model calls, browser simulations, and dated operational excerpts, each labeled for what it actually is, built on the same models and evidence as every Tioga AI engagement.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Live AI Demos — Tioga AI",
-    description: "Real AI workflows, no signup, no mockups — a mix of live model calls, browser simulations, and dated operational excerpts, the same models and evidence built into every Tioga AI engagement.",
+    description: "Real AI workflows, no signup — a mix of live model calls, browser simulations, and dated operational excerpts, each labeled for what it actually is, built on the same models and evidence as every Tioga AI engagement.",
     images: ["/opengraph-image"],
   },
 };
@@ -74,7 +74,7 @@ export default function DemosPage() {
       <div className="sr-only" aria-hidden="true">
         <p>Live AI Demos — Tioga AI</p>
         <p>
-          Real AI workflows running against Tioga AI&apos;s own agent infrastructure, no signup and no mockups. A few examples (see the full, current catalog below):
+          Real AI workflows running against Tioga AI&apos;s own agent infrastructure, no signup. Each demo is labeled live model call, browser simulation, or dated operational excerpt. A few examples (see the full, current catalog below):
         </p>
         <ul>
           {DEMOS.map((demo) => (

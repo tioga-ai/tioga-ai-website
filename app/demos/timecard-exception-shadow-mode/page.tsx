@@ -140,7 +140,7 @@ export default function TimecardExceptionShadowModePage() {
   return (
     <DemoShell
       title="Timecard Exception Agent — Shadow Mode"
-      badge="Live Interactive Demo — Shadow-Mode Review"
+      badge="Interactive Browser Simulation — Shadow-Mode Review"
       evidenceTier="browser-simulation"
       description="An agent reviews a synthetic two-week pay period's timecard exceptions — missed punches, late punches, unapproved overtime, a missed meal break, a daily-overtime day, a PTO request — and proposes a correction or approval for each. It never auto-executes: every proposal names the payroll-cycle control that authorizes it, the FLSA/state wage-and-hour rule it checked, and the role required to sign off. Toggle any proposal below to see how the agreement rate moves. 100% synthetic data: an invented six-person roster and pay period, not connected to any real UKG tenant."
     >

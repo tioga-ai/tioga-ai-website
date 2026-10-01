@@ -362,7 +362,7 @@ export default function QuickbooksBillApprovalPage() {
   return (
     <DemoShell
       title="Governed QuickBooks Bill Approval"
-      badge="Live Interactive Demo — Governed Bill Approval"
+      badge="Interactive Browser Simulation — Governed Bill Approval"
       evidenceTier="browser-simulation"
       evidenceDetail="Synthetic bills and vendors, local state — no live QuickBooks connection. Same tier as the Oracle EBS AP-exception demo."
       description="Every bill here is checked against vendor status and duplicate-bill history — the honest SMB equivalent of a three-way match, since QuickBooks shops don't run formal PO systems. Watch an agent propose a bill for approval, a deterministic policy decide whether it executes alone, escalates to a human, or gets blocked outright — and every decision lands in an audit-grade ledger. No chatbot in the decision loop; the policy is under 60 lines and reads like a checklist."

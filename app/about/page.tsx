@@ -125,7 +125,7 @@ export default function AboutPage() {
 
         {/* Pillars */}
         <div className="mb-14">
-          <h2 className="text-xl font-bold mb-2" style={{ color: "var(--text)" }}>Dual fluency, not one or the other</h2>
+          <h2 className="text-xl font-bold mb-2" style={{ color: "var(--text)" }}>Three kinds of fluency, held by one person</h2>
           <p className="text-[var(--text-muted)] text-sm mb-6 max-w-2xl">
             Most consultancies bring one of these three. Tioga AI is built on
             the premise that enterprise AI only works in production when all

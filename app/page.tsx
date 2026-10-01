@@ -141,7 +141,7 @@ export default function HomePage() {
  Live in my environment — demo data
  </div>
  <h2 className="text-3xl font-bold mb-3" style={{ color: "var(--text)" }}>Try It Right Now</h2>
- <p className="text-[var(--text-muted)] max-w-lg mx-auto text-sm">No signup, no mockups — try model-powered tools and inspect real operational evidence. Each card below states its own operating mode.</p>
+ <p className="text-[var(--text-muted)] max-w-lg mx-auto text-sm">No signup — try model-powered tools and inspect real operational evidence. Each card below states its own operating mode.</p>
  </div>
  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
  {[

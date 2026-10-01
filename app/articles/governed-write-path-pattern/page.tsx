@@ -4,7 +4,7 @@ import ArticlePage, { type ArticleContent } from "@/components/ArticlePage";
 export const metadata: Metadata = {
   title: "How a Governed AI Write-Path Actually Works",
   description:
-    "Read, decide, approve, execute, audit, rollback — the seven-stage pattern that lets an AI agent write to a production ERP without a direct database write.",
+    "Read, decide, approve, execute, audit, reject, rollback — the seven-stage pattern that lets an AI agent write to a production ERP without a direct database write.",
   alternates: { canonical: "/articles/governed-write-path-pattern" },
   openGraph: {
     images: ["/opengraph-image"],
@@ -93,7 +93,7 @@ const content: ArticleContent = {
         <p>
           Each policy check in the demo carries an explicit control tag —
           scope enforcement maps to GOVERN-1.5, spend-tier escalation to
-          MANAGE-1.3, ERP validation to MEASURE-2.7, and the audit ledger
+          MANAGE-1.3, ERP validation to MEASURE-2.4, and the audit ledger
           itself to MANAGE-4.1. That&apos;s not decoration: it&apos;s what turns
           a ledger row into evidence a control owner can actually cite, not
           just a log line an engineer can point to.

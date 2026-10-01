@@ -27,7 +27,7 @@ const content: ArticleContent = {
   date: "2026-08-03",
   title: "NIST AI RMF, ISO 42001, EU AI Act: one mapping, not three checklists",
   dek: "Governance teams often treat these as three separate compliance projects. In practice, the same underlying evidence — a decision log with control tags — supports the mapped evidence requirements of all three, subject to applicability and review, if it's built that way from the start.",
-  evidenceLabel: "Evidence: the actual control-tag structure from my live Governance Ledger and AP Exception Workflow demos.",
+  evidenceLabel: "Evidence: the actual control-tag structure from my Governance Ledger excerpt and AP Exception Workflow simulation.",
   sections: [
     {
       heading: "Same evidence, three vocabularies",
@@ -45,7 +45,7 @@ const content: ArticleContent = {
           <p>
             My own live demos tag every policy decision against the NIST
             function it maps to — GOVERN-1.5 for documented scope
-            enforcement, MEASURE-2.7 for system behavior monitored against
+            enforcement, MEASURE-2.4 for system behavior monitored against
             expectations, MANAGE-1.3 for risk escalation, MANAGE-4.1 for
             post-deployment monitoring. That tag is attached once, at the
             point the check runs — not retrofitted later by a compliance team
@@ -86,11 +86,11 @@ const content: ArticleContent = {
   ],
   relatedService: {
     href: "/solutions/ai-governance",
-    label: "AI Governance engagement",
+    label: "AI governance",
   },
   related: [
     { href: "/trust/framework-mapping", label: "See the full framework mapping" },
-    { href: "/demos/governance-ledger", label: "See the live Governance Ledger" },
+    { href: "/demos/governance-ledger", label: "See the Governance Ledger excerpt" },
   ],
 };
 

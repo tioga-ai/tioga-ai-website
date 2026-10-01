@@ -58,7 +58,7 @@ const content: SolutionContent = {
     {
       label: "A real gap in Oracle's own sanctioned EBS agent path",
       detail:
-        "Oracle's own E-Business Suite Adapter documentation states HTTP Basic Auth is the only supported authentication for REST services — a single shared service account for every call, not per-user or per-agent identity. Fusion doesn't share this constraint (it's REST-native), but a Fusion deployment still has to actually configure agent-scoped roles to close the gap. See the full finding below.",
+        "Oracle's own E-Business Suite Adapter documentation states HTTP Basic Auth is the only supported authentication for REST services — a single shared service account for every call, not per-user or per-agent identity. Fusion doesn't share this constraint (it's REST-native), but a Fusion deployment still has to actually configure agent-scoped roles to close the gap. See the full finding in the linked article below.",
     },
   ],
   offers: [

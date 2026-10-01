@@ -239,7 +239,7 @@ ${rowsHtml}
   </div>
 
   <div class="foot">
-    Tioga AI — governed AI automation for enterprise systems. Generated client-side from your own demo session; nothing about this session was sent to a server. See the live ledger pattern this report extends at
+    Tioga AI — governed AI automation for enterprise systems. Generated client-side from your own demo session; nothing about this session was sent to a server. See the ledger pattern this report extends at
     tioga.ai/demos/ap-exception-workflow.
   </div>
 </div>

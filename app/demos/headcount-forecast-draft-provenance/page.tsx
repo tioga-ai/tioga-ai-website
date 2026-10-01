@@ -189,7 +189,7 @@ export default function HeadcountForecastDraftProvenancePage() {
   return (
     <DemoShell
       title="Headcount Forecast Draft — Per-Cell Provenance"
-      badge="Live Interactive Demo — Draft-Only FP&A Workflow"
+      badge="Interactive Browser Simulation — Draft-Only FP&A Workflow"
       evidenceTier="browser-simulation"
       description="An agent drafts five headcount/comp/burden changes into a draft version of next quarter's plan — never the locked, approved version. Every changed line is tagged with the source data that justifies it, the stated assumption behind the number, and whether it feeds a management-review-control-sensitive forecast. Toggle any line's Approve/Reject to see the draft-vs-approved diff move. 100% synthetic data: an invented five-department org, not connected to any real Workday Adaptive Planning tenant."
     >

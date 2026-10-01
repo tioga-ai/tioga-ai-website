@@ -41,7 +41,7 @@ export default function PrivacyPage() {
           Privacy Policy
         </div>
         <h1 className="text-4xl font-bold mb-4" style={{ color: "var(--text)" }}>Privacy Policy</h1>
-        <p className="text-sm text-[var(--text-muted)] mb-14">Last updated: 2026-09-07</p>
+        <p className="text-sm text-[var(--text-muted)] mb-14">Last updated: 2026-10-01</p>
 
         <Section title="The short version">
           <p>
@@ -90,15 +90,16 @@ export default function PrivacyPage() {
           <p>
             <strong style={{ color: "var(--text)" }}>Live demos.</strong> Text or files
             you paste or upload into the invoice processing, email triage,
-            document classification, or migration assessment demos are sent
+            document classification, or Fusion AI-readiness assessment demos are sent
             to Claude to generate the result shown on screen, and are not
-            stored anywhere afterward — not in a database, not in a log, not
-            emailed to us. Once the response is returned to your browser, we
-            have no further copy of what you submitted.
+            stored by Tioga AI afterward — not in a database, not in a log, not
+            emailed to us. Once the response is returned to your browser, Tioga
+            AI keeps no copy of what you submitted. Anthropic handles the text
+            under its own retention terms (see Third Parties below).
           </p>
           <p>
             <strong style={{ color: "var(--text)" }}>
-              &ldquo;Send me a copy&rdquo; on the migration assessment.
+              &ldquo;Send me a copy&rdquo; on the Fusion AI-readiness assessment.
             </strong>{" "}
             If you optionally enter an email address on that demo, it is used
             once, in memory, to send that one assessment to you by email — it
@@ -143,7 +144,7 @@ export default function PrivacyPage() {
           <ul className="list-disc pl-5 space-y-1.5">
             <li>We do not use anything you submit to train any AI model.</li>
             <li>We do not sell or share your data with advertisers or data brokers.</li>
-            <li>We do not run ad-tracking or third-party analytics scripts on this site.</li>
+            <li>We do not run advertising or cross-site tracking scripts on this site. The only analytics are Vercel Web Analytics and Vercel Speed Insights (page views and page-load performance), provided by our host, Vercel — see Third Parties below.</li>
             <li>We do not retain demo submissions after the response is generated.</li>
           </ul>
         </Section>
@@ -167,12 +168,23 @@ export default function PrivacyPage() {
             <li>
               <strong style={{ color: "var(--text)" }}>Google (Gmail SMTP)</strong> —
               delivers the contact-form notification email to Tioga AI&apos;s
-              inbox, and delivers your copy of the migration assessment
-              directly to you if you request one.
+              inbox, delivers your copy of the Fusion AI-readiness assessment
+              directly to you if you request one, and delivers build-log
+              sign-up notifications to Tioga AI&apos;s founder.
             </li>
             <li>
               <strong style={{ color: "var(--text)" }}>Vercel</strong> — hosts this
-              site and its serverless functions.
+              site and its serverless functions, and provides the Web
+              Analytics and Speed Insights measurements described above, per{" "}
+              <a
+                href="https://vercel.com/legal/privacy-policy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-[var(--text)] transition-colors"
+              >
+                Vercel&apos;s own privacy policy
+              </a>
+              .
             </li>
             <li>
               <strong style={{ color: "var(--text)" }}>Cal.com</strong> — processes

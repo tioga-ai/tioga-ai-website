@@ -358,10 +358,10 @@ export default function ApExceptionWorkflowPage() {
   return (
     <DemoShell
       title="Governed AP Exception Workflow"
-      badge="Live Interactive Demo — Governed Write-Path"
+      badge="Interactive Browser Simulation — Governed Write-Path"
       evidenceTier="browser-simulation"
       evidenceDetail="Synthetic invoices and vendors, local state — no live Oracle Fusion Cloud ERP connection. A real Fusion Cloud sandbox connection is a planned follow-up (Phase B), not yet built — this demo runs entirely in your browser today, the same as it always has."
-      description="Every invoice here is modeled on Oracle Fusion Cloud ERP's Payables flow — it fails three-way match against a purchase order the way a real Fusion Payables invoice would land on a matching hold. Watch an agent propose a fix, a deterministic policy decide whether it executes alone, escalates to a human, or gets blocked outright — and every decision, including reversals, land in an audit-grade ledger. No chatbot in the decision loop; the policy is under 60 lines and reads like a checklist."
+      description="Every invoice here is modeled on Oracle Fusion Cloud ERP's Payables flow — it fails three-way match against a purchase order the way a real Fusion Payables invoice would land on a matching hold. Watch an agent propose a fix, a deterministic policy decide whether it executes alone, escalates to a human, or gets blocked outright — and every decision, including reversals, lands in an audit-grade ledger. No chatbot in the decision loop; the policy is under 60 lines and reads like a checklist."
     >
       {/* Budget gauge */}
       <div className="grid grid-cols-3 gap-3 mb-6">

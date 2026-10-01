@@ -42,7 +42,7 @@ const FRAMEWORKS = [
   {
     name: "EU AI Act",
     tag: "EU regulation",
-    body: "Risk-tiering, conformity documentation, and technical files for organizations with EU exposure — including the Article 50 transparency obligations phasing in through 2026.",
+    body: "Risk-tiering, conformity documentation, and technical files for organizations with EU exposure — including the Article 50 transparency obligations, which are already in effect.",
     offer: "EU AI Act Conformity Program",
     price: "$75–200K",
     href: "/trust/eu-ai-act",
@@ -52,13 +52,13 @@ const FRAMEWORKS = [
 
 const SUBPROCESSORS = [
   { name: "Anthropic", purpose: "Processes text submitted to demos, the chat widget, and contact-form classification, per Anthropic's own privacy policy." },
-  { name: "Google (Gmail SMTP)", purpose: "Delivers contact-form notifications and optional demo-result emails — nothing beyond that." },
-  { name: "Vercel", purpose: "Hosts this site and its serverless functions." },
+  { name: "Google (Gmail SMTP)", purpose: "Delivers contact-form notifications, build-log sign-up notifications, and optional demo-result emails — nothing beyond that." },
+  { name: "Vercel", purpose: "Hosts this site and its serverless functions, and provides its web analytics and page-performance measurement (Vercel Web Analytics and Speed Insights)." },
   { name: "Cal.com", purpose: "Processes the name, email, and scheduling details you provide when you book an intro call, per its own privacy policy." },
 ];
 
 const SECURITY_PRACTICES = [
-  "Strict Content-Security-Policy on every response — no inline script execution beyond Next.js's own hydration payload, no framing by other sites (frame-ancestors 'none'), no eval in production.",
+  "Content-Security-Policy on every response — scripts and connections limited to this site plus Vercel's analytics endpoints, no framing by other sites (frame-ancestors 'none'), no plugin/object embeds, no eval. Inline scripts are currently allowed (needed for Next.js hydration today). A stricter nonce-based policy that removes that allowance is not in place.",
   "X-Frame-Options: DENY, X-Content-Type-Options: nosniff, and a locked-down Permissions-Policy blocking camera/microphone/geolocation access sitewide.",
   "Per-IP rate limiting on every demo and API endpoint, so no single visitor can exhaust the shared model budget or hammer an endpoint.",
   "No demo or chat submission is retained after the response is generated — see the Privacy Policy for the full breakdown, endpoint by endpoint.",
@@ -80,7 +80,7 @@ const FUNCTIONS = [
   },
   {
     name: "MANAGE",
-    body: "Spend and risk are checked and reserved before an action executes — the system is architecturally incapable of the failure mode, not just monitored for it.",
+    body: "Spend and risk are checked and reserved before an action executes. If the check or reservation fails, the call is blocked instead of being flagged after the fact.",
   },
 ];
 
@@ -170,7 +170,7 @@ export default function TrustPage() {
             className="inline-flex px-6 py-3 rounded-xl text-white font-semibold transition-all hover:opacity-90"
             style={{ background: "linear-gradient(135deg, var(--accent), var(--accent-dark))" }}
           >
-            See the live ledger →
+            See the ledger excerpt →
           </Link>
         </div>
 
@@ -187,8 +187,10 @@ export default function TrustPage() {
               <li>
                 My own infrastructure&apos;s security controls — role-based
                 access, audit logging, architecture aligned to SOC 2 Trust
-                Services Criteria — are real and demonstrated live in the{" "}
-                <Link href="/demos/governance-ledger" className="underline hover:text-[var(--text)] transition-colors">Governance Ledger demo</Link>.
+                Services Criteria — are real, and illustrated by the dated
+                excerpt in the{" "}
+                <Link href="/demos/governance-ledger" className="underline hover:text-[var(--text)] transition-colors">Governance Ledger demo</Link>{" "}
+                (an excerpt, not a live feed).
                 No independent SOC 2 report exists yet.
               </li>
               <li>
@@ -198,8 +200,11 @@ export default function TrustPage() {
               </li>
               <li>
                 NIST AI RMF is a voluntary framework with no certification to
-                hold; ISO 42001 and EU AI Act obligations attach to the
-                systems I help build, not to Tioga AI as a vendor.
+                hold. ISO 42001 certifies an organization&apos;s AI management
+                system, and EU AI Act obligations attach to legal actors by
+                role (provider, deployer, and others) — so Tioga AI&apos;s own
+                obligations depend on its role in each deployment, and I
+                don&apos;t assume a vendor is exempt.
               </li>
             </ul>
           </div>
@@ -239,8 +244,11 @@ export default function TrustPage() {
             </div>
           </div>
           <p className="text-[var(--text-muted)] text-sm leading-relaxed max-w-2xl">
-            Nothing on this site publishes AI-generated content to anyone else
-            or takes an action on your behalf without a human in the loop.
+            Apart from the automated classification of your contact message
+            (a human reviews it before anyone follows up) and demo-result
+            emails you explicitly request, nothing on this site publishes
+            AI-generated content to anyone else or takes an action on your
+            behalf without a human in the loop.
             Both surfaces run on Anthropic&apos;s Claude — see the
             sub-processor table below for what happens to your data. Prefer a
             human at any point? Email{" "}

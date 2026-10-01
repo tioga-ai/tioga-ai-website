@@ -144,3 +144,182 @@ test("homepage has unique per-page OG/Twitter metadata", async ({ page }) => {
     "summary_large_image"
   );
 });
+
+// ---------------------------------------------------------------------------
+// Site-integrity checks added after the 2026-10-01 all-pages QA (two models
+// read every page's text against measured headers/scripts). Each one pins a
+// class of defect that review found, so the copy cannot drift from reality
+// again without a test failing:
+//   - claims about security/privacy that contradict what the site really does
+//   - pages sharing a generic title/description or leaking the homepage's
+//     Twitter copy
+//   - "live" badges on pages that are browser simulations or dated excerpts
+//   - offer counts quoted in copy that no longer match /services
+// All plain HTTP fetches (no AI calls, no cost).
+// ---------------------------------------------------------------------------
+
+type Req = import("@playwright/test").APIRequestContext;
+
+const ENTITIES: Record<string, string> = {
+  "&amp;": "&", "&quot;": '"', "&apos;": "'", "&lt;": "<", "&gt;": ">", "&rarr;": "→", "&nbsp;": " ",
+};
+
+function decode(s: string): string {
+  return s
+    .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(parseInt(d, 10)))
+    .replace(/&[a-z]+;/gi, (e) => ENTITIES[e.toLowerCase()] ?? e);
+}
+
+async function html(request: Req, path: string): Promise<string> {
+  const res = await request.get(path);
+  expect(res.status(), `GET ${path}`).toBe(200);
+  return res.text();
+}
+
+async function bodyText(request: Req, path: string): Promise<string> {
+  const raw = await html(request, path);
+  return decode(
+    raw
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+  ).replace(/\s+/g, " ");
+}
+
+async function sitemapPaths(request: Req): Promise<string[]> {
+  const body = await (await request.get("/sitemap.xml")).text();
+  return Array.from(body.matchAll(/<loc>([^<]+)<\/loc>/g)).map((m) => new URL(m[1]).pathname);
+}
+
+function meta(raw: string, attr: "name" | "property", key: string): string {
+  const m = raw.match(new RegExp(`<meta ${attr}="${key}" content="([^"]*)"`));
+  return m ? decode(m[1]) : "";
+}
+
+test("every page has a unique title, a unique description, and its own social metadata", async ({ request }) => {
+  test.setTimeout(120_000);
+  const paths = (await sitemapPaths(request)).filter((p) => !p.endsWith(".html"));
+  expect(paths.length).toBeGreaterThan(40);
+  const seenTitle = new Map<string, string>();
+  const seenDesc = new Map<string, string>();
+  const problems: string[] = [];
+  for (const path of paths) {
+    const raw = await html(request, path);
+    const title = decode(raw.match(/<title>([^<]*)<\/title>/)?.[1] ?? "");
+    const desc = meta(raw, "name", "description");
+    const ogTitle = meta(raw, "property", "og:title");
+    const twTitle = meta(raw, "name", "twitter:title");
+    if (!title) problems.push(`${path}: no <title>`);
+    else if (path !== "/" && !title.endsWith("— Tioga AI")) problems.push(`${path}: title lacks the "— Tioga AI" suffix: ${title}`);
+    if (seenTitle.has(title)) problems.push(`${path}: title duplicates ${seenTitle.get(title)}: ${title}`);
+    seenTitle.set(title, path);
+    if (!desc) problems.push(`${path}: no meta description`);
+    else if (seenDesc.has(desc)) problems.push(`${path}: description duplicates ${seenDesc.get(desc)}`);
+    seenDesc.set(desc, path);
+    if (!meta(raw, "property", "og:image")) problems.push(`${path}: no og:image`);
+    if (!meta(raw, "name", "twitter:image")) problems.push(`${path}: no twitter:image`);
+    if (twTitle !== ogTitle) problems.push(`${path}: twitter:title "${twTitle}" differs from og:title "${ogTitle}"`);
+  }
+  expect(problems, problems.join("\n")).toEqual([]);
+});
+
+test("unknown URLs return a 404 with their own title and no canonical link", async ({ page }) => {
+  const res = await page.goto("/this-page-does-not-exist");
+  expect(res?.status()).toBe(404);
+  await expect(page).toHaveTitle("Page not found — Tioga AI");
+  await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
+});
+
+test("privacy page discloses the analytics scripts the site actually loads", async ({ page, request }) => {
+  const loaded = new Set<string>();
+  page.on("request", (r) => {
+    if (r.url().includes("/_vercel/insights/")) loaded.add("Vercel Web Analytics");
+    if (r.url().includes("/_vercel/speed-insights/")) loaded.add("Speed Insights");
+  });
+  await page.goto("/");
+  await page.waitForTimeout(1500);
+  const privacy = await bodyText(request, "/privacy");
+  expect(privacy).not.toMatch(/do not run[^.]*third-party analytics/i);
+  for (const product of Array.from(loaded)) {
+    expect(privacy, `/privacy must disclose ${product}, which the site loads`).toContain(product);
+  }
+  const trust = await bodyText(request, "/trust");
+  if (loaded.size > 0) {
+    expect(trust, "/trust sub-processor list must mention Vercel analytics").toMatch(/Vercel[^.]*analytics/i);
+  }
+});
+
+test("trust page security claims match the real response headers", async ({ request }) => {
+  const res = await request.get("/");
+  const h = res.headers();
+  const csp = h["content-security-policy"] ?? "";
+  expect(csp).toContain("frame-ancestors 'none'");
+  expect(csp).not.toContain("'unsafe-eval'");
+  expect(h["x-frame-options"]).toBe("DENY");
+  expect(h["x-content-type-options"]).toBe("nosniff");
+  const trust = await bodyText(request, "/trust");
+  if (/script-src[^;]*'unsafe-inline'/.test(csp)) {
+    // The policy allows inline scripts, so the page may not claim otherwise.
+    expect(trust).not.toMatch(/no inline script execution/i);
+    expect(trust).toMatch(/Inline scripts are currently allowed/i);
+  }
+});
+
+test("quoted offer counts match the engagements listed on /services", async ({ request }) => {
+  // bodyText strips <script>, so the Next.js payload that repeats the page
+  // content is not double-counted.
+  const services = await bodyText(request, "/services");
+  const listed =
+    (services.match(/Start a conversation about this engagement/g) ?? []).length +
+    (services.match(/See the full Standing Watch ladder/g) ?? []).length;
+  expect(listed, "engagements listed on /services").toBe(16);
+  expect(services).toMatch(/sixteen/i);
+  expect(await bodyText(request, "/trust")).toMatch(/Ten of Tioga AI's sixteen engagements/);
+});
+
+test("browser-simulation demos are never badged as live", async ({ request }) => {
+  test.setTimeout(120_000);
+  const demos = (await sitemapPaths(request)).filter((p) => p.startsWith("/demos/"));
+  expect(demos.length).toBeGreaterThan(10);
+  const problems: string[] = [];
+  for (const path of demos) {
+    const text = await bodyText(request, path);
+    if (/browser simulation/i.test(text) && /live interactive demo/i.test(text)) {
+      problems.push(`${path} is a browser simulation but is badged "Live Interactive Demo"`);
+    }
+  }
+  expect(problems, problems.join("\n")).toEqual([]);
+});
+
+test("the governance ledger is described as a dated excerpt, never as live", async ({ request }) => {
+  test.setTimeout(120_000);
+  const paths = (await sitemapPaths(request)).filter((p) => p !== "/changelog" && !p.endsWith(".html"));
+  const problems: string[] = [];
+  for (const path of paths) {
+    const text = await bodyText(request, path);
+    if (/\blive (governance )?ledger\b/i.test(text)) problems.push(`${path} calls the ledger "live"`);
+  }
+  expect(problems, problems.join("\n")).toEqual([]);
+});
+
+test("NIST MEASURE 2.7 (security and resilience) is not used to describe behavior monitoring", async ({ request }) => {
+  // Production behavior monitoring is MEASURE 2.4 in the NIST AI RMF; 2.7 is
+  // AI system security and resilience. The wrong tag was on several pages.
+  test.setTimeout(120_000);
+  const paths = (await sitemapPaths(request)).filter((p) => !p.endsWith(".html"));
+  const problems: string[] = [];
+  for (const path of paths) {
+    const text = await bodyText(request, path);
+    if (/MEASURE[- ]2\.7[^.]{0,60}(behavio|monitor|reconcil)/i.test(text)) {
+      problems.push(`${path} tags behavior monitoring as MEASURE 2.7`);
+    }
+  }
+  expect(problems, problems.join("\n")).toEqual([]);
+});
+
+test("legal pages name demos that exist", async ({ request }) => {
+  for (const path of ["/privacy", "/terms"]) {
+    expect(await bodyText(request, path), path).not.toMatch(/migration assessment/i);
+  }
+});

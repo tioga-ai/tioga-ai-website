@@ -42,12 +42,12 @@ export const AUTHORIZED_CHANGE_RECORDS: Set<string> = new Set();
 export const CONTROL_TAGS = {
   scope: "NIST AI RMF GOVERN-1.5 — documented authorities & scope",
   spendCap: "NIST AI RMF MANAGE-1.3 — risk response & escalation",
-  duplicateCheck: "NIST AI RMF MEASURE-2.7 — system behavior monitored against expectations",
-  vendorStatus: "NIST AI RMF MEASURE-2.7 — system behavior monitored against expectations",
+  duplicateCheck: "NIST AI RMF MEASURE-2.4 — system behavior monitored against expectations",
+  vendorStatus: "NIST AI RMF MEASURE-2.4 — system behavior monitored against expectations",
   humanApproval: "NIST AI RMF MANAGE-1.3 — risk response & escalation",
   audit: "NIST AI RMF MANAGE-4.1 — post-deployment monitoring & incident response",
   changeControl: "NIST AI RMF MANAGE-1.3 — segregation of duties & change authorization for agent-effected master-data changes",
-  reconciliation: "NIST AI RMF MEASURE-2.7 — claimed-vs-actual reconciliation, run unconditionally on a schedule",
+  reconciliation: "NIST AI RMF MEASURE-2.4 — claimed-vs-actual reconciliation, run unconditionally on a schedule",
 } as const;
 
 export type PolicyResult = "pass" | "fail" | "escalate" | "pending";

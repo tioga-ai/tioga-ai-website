@@ -100,7 +100,7 @@ export default function ArticlePage({ content }: { content: ArticleContent }) {
         >
           <h2 className="text-xl font-semibold mb-2" style={{ color: "var(--text)" }}>See it built, not just described</h2>
           <p className="text-sm text-[var(--text-muted)] mb-6 max-w-md mx-auto">
-            {content.relatedService.label} is the engagement this pattern comes from.
+            This pattern is applied in Tioga&apos;s {content.relatedService.label} work.
           </p>
           <TrackedCTA
             href={content.relatedService.href}

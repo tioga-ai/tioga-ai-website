@@ -348,7 +348,7 @@ export default function HowWeDeliverPage() {
                   tool-grant discipline as delivery. Its own delegation
                   structure is documented, even for a five-day artifact —
                   it&apos;s the first time the client sees that discipline
-                  applied, on day three of the relationship.
+                  applied, on day three of the Sprint.
                 </GateBox>
                 <p className="text-sm text-[var(--text-muted)] leading-relaxed mt-4 mb-0">
                   <strong style={{ color: "var(--text)" }}>What&apos;s produced:</strong> a Discovery Report
