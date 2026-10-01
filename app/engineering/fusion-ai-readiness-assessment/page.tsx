@@ -9,8 +9,15 @@ export const metadata: Metadata = {
     "Why the Oracle Fusion Cloud AI-readiness assessment runs on a reasoning model behind a strict input allowlist, with conditional governance logic and clamped output.",
   alternates: { canonical: "/engineering/fusion-ai-readiness-assessment" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "How I Built the Fusion Cloud AI-Readiness Assessment Demo — Tioga AI",
     description: "A reasoning model behind a strict allowlist, conditional governance logic, and clamped output.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "How I Built the Fusion Cloud AI-Readiness Assessment Demo — Tioga AI",
+    description: "A reasoning model behind a strict allowlist, conditional governance logic, and clamped output.",
+    images: ["/opengraph-image"],
   },
 };
 

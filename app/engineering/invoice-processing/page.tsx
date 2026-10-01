@@ -9,8 +9,15 @@ export const metadata: Metadata = {
     "The extraction pipeline behind the invoice processing demo: format-agnostic file parsing, a structured-JSON prompt, and why a small, fast model was the right call.",
   alternates: { canonical: "/engineering/invoice-processing" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "How I Built the Invoice Processing Demo — Tioga AI",
     description: "Format-agnostic parsing, a structured-JSON prompt, and why a small model was the right call.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "How I Built the Invoice Processing Demo — Tioga AI",
+    description: "Format-agnostic parsing, a structured-JSON prompt, and why a small model was the right call.",
+    images: ["/opengraph-image"],
   },
 };
 

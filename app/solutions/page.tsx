@@ -8,8 +8,15 @@ export const metadata: Metadata = {
     "Find the right workflow for your business — governed AI agents for finance and purchasing, service operations, reporting, systems integration, and AI oversight, organized by problem, not by vendor.",
   alternates: { canonical: "/solutions" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "Solutions — Tioga AI",
     description: "Find the right workflow for your business, organized by problem, not by vendor.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Solutions — Tioga AI",
+    description: "Find the right workflow for your business, organized by problem, not by vendor.",
+    images: ["/opengraph-image"],
   },
 };
 

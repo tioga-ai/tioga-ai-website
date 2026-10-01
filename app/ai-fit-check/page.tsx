@@ -9,9 +9,16 @@ export const metadata: Metadata = {
     "One day. $1,500 flat. Fully remote, no system or sandbox access required. A go/no-go on proceeding to a Discovery Sprint, before either side commits a full week.",
   alternates: { canonical: "/ai-fit-check" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "The AI Fit Check — Tioga AI",
     description:
       "One day. $1,500 flat. The cheap way to find out whether you're ready for a Discovery Sprint before committing a full week.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The AI Fit Check — Tioga AI",
+    description: "One day. $1,500 flat. The cheap way to find out whether you're ready for a Discovery Sprint before committing a full week.",
+    images: ["/opengraph-image"],
   },
 };
 

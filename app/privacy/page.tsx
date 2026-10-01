@@ -7,9 +7,16 @@ export const metadata: Metadata = {
     "How Tioga AI handles the data you submit through the contact form and the live demos on this site.",
   alternates: { canonical: "/privacy" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "Privacy Policy — Tioga AI",
     description:
       "How Tioga AI handles the data you submit through the contact form and the live demos on this site.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy — Tioga AI",
+    description: "How Tioga AI handles the data you submit through the contact form and the live demos on this site.",
+    images: ["/opengraph-image"],
   },
 };
 

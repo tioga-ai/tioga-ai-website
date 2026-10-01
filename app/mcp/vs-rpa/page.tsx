@@ -7,9 +7,16 @@ export const metadata: Metadata = {
     "MCP and RPA solve different problems — one automates repetitive UI actions, the other gives a reasoning model structured access to your systems. When each is the right tool.",
   alternates: { canonical: "/mcp/vs-rpa" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "MCP vs. RPA — Tioga AI",
     description:
       "One automates repetitive UI actions. The other gives a reasoning model structured access to your systems. When each is the right tool.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MCP vs. RPA — Tioga AI",
+    description: "One automates repetitive UI actions. The other gives a reasoning model structured access to your systems. When each is the right tool.",
+    images: ["/opengraph-image"],
   },
 };
 

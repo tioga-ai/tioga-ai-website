@@ -7,10 +7,17 @@ export const metadata: Metadata = {
     "In the last 12 months, seven of the nine enterprise systems I track each independently signed their own LLM-vendor deals. Here's who anchored to which lab, and what nobody's console shows you.",
   alternates: { canonical: "/articles/who-runs-your-ai" },
   openGraph: {
+    images: ["/opengraph-image"],
     type: "article",
     publishedTime: "2026-08-26",
     title: "Who's Really Running Your AI? — Tioga AI",
     description: "The LLM deals your platform vendors signed for you, system by system.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Who's Really Running Your AI? — Tioga AI",
+    description: "The LLM deals your platform vendors signed for you, system by system.",
+    images: ["/opengraph-image"],
   },
 };
 

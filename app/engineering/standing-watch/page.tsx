@@ -9,9 +9,16 @@ export const metadata: Metadata = {
     "The real 12-day cross-machine auth gap that motivated security-watch, why every automation in this system only proposes and never applies, how POOL_WEIGHT prices non-fungible AI budgets on one basis, and what I deliberately left for a human to do by hand.",
   alternates: { canonical: "/engineering/standing-watch" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "How I Built Standing Watch — Tioga AI",
     description:
       "Propose-and-approve governance, run on my own two-machine, five-backend estate — not a claimed enterprise deployment.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "How I Built Standing Watch — Tioga AI",
+    description: "Propose-and-approve governance, run on my own two-machine, five-backend estate — not a claimed enterprise deployment.",
+    images: ["/opengraph-image"],
   },
 };
 

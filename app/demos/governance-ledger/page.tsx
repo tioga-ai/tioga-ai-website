@@ -9,9 +9,16 @@ export const metadata: Metadata = {
     "A real excerpt from Tioga AI's own AI routing gateway ledger — every model call logged, costed, budget-capped, and mapped to the NIST AI RMF.",
   alternates: { canonical: "/demos/governance-ledger" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "Governance Ledger Demo — Tioga AI",
     description:
       "Real operational data, refreshed periodically — not a live-refreshing feed. Every AI call logged, costed, and mapped to the NIST AI RMF.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Governance Ledger Demo — Tioga AI",
+    description: "Real operational data, refreshed periodically — not a live-refreshing feed. Every AI call logged, costed, and mapped to the NIST AI RMF.",
+    images: ["/opengraph-image"],
   },
 };
 

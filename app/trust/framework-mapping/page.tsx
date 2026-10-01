@@ -6,8 +6,15 @@ export const metadata: Metadata = {
     "How NIST AI RMF's four functions, ISO 42001's management-system controls, and the EU AI Act's legal obligations line up — a conceptual map, not a certification or legal-compliance claim.",
   alternates: { canonical: "/trust/framework-mapping" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "NIST AI RMF ↔ ISO 42001 ↔ EU AI Act Mapping — Tioga AI",
     description: "How a voluntary framework, a certifiable standard, and a binding regulation line up in practice.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NIST AI RMF ↔ ISO 42001 ↔ EU AI Act Mapping — Tioga AI",
+    description: "How a voluntary framework, a certifiable standard, and a binding regulation line up in practice.",
+    images: ["/opengraph-image"],
   },
 };
 

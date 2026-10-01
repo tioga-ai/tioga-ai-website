@@ -6,9 +6,16 @@ export const metadata: Metadata = {
     "Classify a completed field-service call as contract-covered or billable T&M — watch a deterministic policy auto-execute, escalate, or block an interpretation risk, not a dollar threshold, with an independent ERP-layer check that catches what policy alone can't.",
   alternates: { canonical: "/demos/field-service-classification" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "Governed Field Service Billable Classification Demo — Tioga AI",
     description:
       "A live, governed write-path demo grounded in a real SAP Plant Maintenance/Customer Service pattern: is a completed service call contract-covered or billable — and when is that an agent's call to make alone?",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Governed Field Service Billable Classification Demo — Tioga AI",
+    description: "A live, governed write-path demo grounded in a real SAP Plant Maintenance/Customer Service pattern: is a completed service call contract-covered or billable — and when is that an agent's call to make alone?",
+    images: ["/opengraph-image"],
   },
 };
 

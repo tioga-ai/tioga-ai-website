@@ -8,11 +8,18 @@ export const metadata: Metadata = {
     "Oracle's own E-Business Suite Adapter documentation states HTTP Basic Auth is the only supported authentication for REST services — a static, shared service account, not per-user or per-agent identity.",
   alternates: { canonical: "/articles/oracle-ebs-agent-attribution-gap" },
   openGraph: {
+    images: ["/opengraph-image"],
     type: "article",
     publishedTime: "2026-09-07",
     title: "Oracle's Own Sanctioned Path Into EBS Can't Attribute a Write — Tioga AI",
     description:
       "A structural attribution gap in Oracle's own shipped integration path into E-Business Suite, verified against Oracle's own documentation.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Oracle's Own Sanctioned Path Into EBS Can't Attribute a Write — Tioga AI",
+    description: "A structural attribution gap in Oracle's own shipped integration path into E-Business Suite, verified against Oracle's own documentation.",
+    images: ["/opengraph-image"],
   },
 };
 

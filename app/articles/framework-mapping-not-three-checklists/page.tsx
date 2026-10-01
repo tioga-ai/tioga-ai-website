@@ -7,10 +7,17 @@ export const metadata: Metadata = {
     "How the same underlying control — an audit-grade decision log — can supply mapped evidence for NIST AI RMF, ISO 42001, and EU AI Act requirements at once, subject to applicability and review, instead of three separate compliance projects.",
   alternates: { canonical: "/articles/framework-mapping-not-three-checklists" },
   openGraph: {
+    images: ["/opengraph-image"],
     type: "article",
     publishedTime: "2026-08-03",
     title: "One Control Mapping, Not Three Checklists — Tioga AI",
     description: "Why NIST AI RMF, ISO 42001, and the EU AI Act converge on the same evidence.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "One Control Mapping, Not Three Checklists — Tioga AI",
+    description: "Why NIST AI RMF, ISO 42001, and the EU AI Act converge on the same evidence.",
+    images: ["/opengraph-image"],
   },
 };
 

@@ -1,5 +1,10 @@
 # Tioga AI website — next steps
 
+> **Historical note (2026-10-01):** this file dates from 2026-07-27. Its
+> "dark navy/cyan design" description is stale — the live site has been a
+> light cream/oxblood "audit ledger" theme since the 2026-09-01 redesign.
+> See `app/globals.css` `:root` for the live tokens.
+
 Working notes for the next session. Last updated 2026-07-27.
 
 ## 0. Done this session (2026-07-27, fresh session)

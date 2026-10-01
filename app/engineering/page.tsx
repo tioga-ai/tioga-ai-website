@@ -7,8 +7,15 @@ export const metadata: Metadata = {
     "Engineering writeups behind Tioga AI's live demos — model choices, validation, rate limiting, and the decisions that separate a working prototype from something safe to run in production.",
   alternates: { canonical: "/engineering" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "How I Built It — Tioga AI",
     description: "Engineering writeups behind the live demos — no black box.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "How I Built It — Tioga AI",
+    description: "Engineering writeups behind the live demos — no black box.",
+    images: ["/opengraph-image"],
   },
 };
 

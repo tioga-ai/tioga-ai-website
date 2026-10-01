@@ -4,7 +4,9 @@
 
 Every color in this site must reference a CSS custom property from
 `app/globals.css`'s `:root` block (`var(--accent)`, `var(--bg-card)`,
-`var(--error)`, etc.) — never a raw hex literal (`#00D4FF`, `#EF4444`, ...).
+`var(--error)`, etc.) — never a raw hex literal (`#C83406`, `#B43A28`, ...). The live theme is
+light — cream `--bg-dark` with an oxblood/red accent — not the older dark
+navy/cyan (`#00D4FF`) palette.
 
 To see the current token set, don't trust a list here — it will drift.
 Run `grep -A 30 "^:root" app/globals.css` (or open the file directly) to
@@ -14,7 +16,7 @@ If a new color is genuinely needed, add it as a new named token in
 `globals.css`'s `:root` block first, then reference it via `var()` — don't
 inline a new hex value into a component.
 
-**Exception**: 8-digit hex with an alpha suffix (e.g. `#00D4FF15` for a
+**Exception**: 8-digit hex with an alpha suffix (e.g. `#C8340615` for a
 15%-opacity tint) is fine as a raw literal — `var()` can't be
 alpha-suffixed inline, and this is the established pattern already used
 throughout the codebase for translucent backgrounds/borders.

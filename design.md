@@ -35,6 +35,15 @@ compile but produce a component using a *different, unmaintained* copy of
 the palette that silently drifts from the real one in `globals.css`. Use
 `style={{ ... : "var(--token)" }}` like everything else does.
 
+## Theme at a glance
+
+Light "audit ledger" theme: cream page background (`--bg-dark`, despite the
+name), off-white cards (`--bg-card`), near-black text (`--text`), and an
+oxblood/red accent (`--accent`, `--accent-dark` for filled buttons). The
+older dark navy/cyan look (and `tailwind.config.ts`'s `brand.*` colors,
+which still hold those values) is gone — see the gotcha below. Token names
+like `--bg-dark` are legacy; trust the values in `globals.css`, not the names.
+
 ## Typography
 
 - **Display font (headings):** Libre Franklin (`next/font/google`, CSS var

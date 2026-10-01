@@ -7,9 +7,16 @@ export const metadata: Metadata = {
     "How Tioga AI builds NIST AI RMF, ISO 42001, and EU AI Act governance into AI agents from the start — not as documentation added after a pilot succeeds.",
   alternates: { canonical: "/trust" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "Trust & Governance — Tioga AI",
     description:
       "Governance built into the architecture, not bolted on — mapped to NIST AI RMF, ISO 42001, and the EU AI Act.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Trust & Governance — Tioga AI",
+    description: "Governance built into the architecture, not bolted on — mapped to NIST AI RMF, ISO 42001, and the EU AI Act.",
+    images: ["/opengraph-image"],
   },
 };
 

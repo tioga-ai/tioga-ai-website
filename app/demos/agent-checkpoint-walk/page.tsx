@@ -16,9 +16,16 @@ export const metadata: Metadata = {
     "Pick any one of Tioga's own 29 scheduled agents, trigger a real write edge, and watch what actually happens when it crosses (or doesn't cross) the approval gate.",
   alternates: { canonical: "/demos/agent-checkpoint-walk" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "The Checkpoint Walk — Tioga AI",
     description:
       "What happens when this agent's write crosses the gate? Tioga's own real authorization tiers, walked one edge at a time — not a composite scenario.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Checkpoint Walk — Tioga AI",
+    description: "What happens when this agent's write crosses the gate? Tioga's own real authorization tiers, walked one edge at a time — not a composite scenario.",
+    images: ["/opengraph-image"],
   },
 };
 

@@ -9,9 +9,16 @@ export const metadata: Metadata = {
     "Five business days. $5,000 flat. One prioritized use case, a current-state system and control map, a fixed-fee pilot plan, and a working prototype — or an honest no-go finding.",
   alternates: { canonical: "/discovery-sprint" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "The Discovery Sprint — Tioga AI",
     description:
       "Five business days. $5,000 flat. Includes a working prototype — proof, not a pitch.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Discovery Sprint — Tioga AI",
+    description: "Five business days. $5,000 flat. Includes a working prototype — proof, not a pitch.",
+    images: ["/opengraph-image"],
   },
 };
 

@@ -194,8 +194,8 @@ export default function HomeHeroPinned() {
             href="/ai-fit-check"
             event="cta_ai_fit_check"
             data={{ location: "hero" }}
-            className="px-8 py-3.5 rounded-xl font-semibold transition-all hover:border-slate-500 hover:text-[var(--text)]"
-            style={{ border: "1px solid var(--border)", color: "var(--text-muted)" }}
+            className="px-8 py-3.5 rounded-xl font-semibold transition-all hover:opacity-90"
+            style={{ border: "2px solid var(--text)", color: "var(--text)", background: "var(--bg-card)" }}
           >
             Start with the AI Fit Check — $1,500
           </TrackedCTA>

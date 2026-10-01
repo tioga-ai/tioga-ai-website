@@ -11,9 +11,16 @@ export const metadata: Metadata = {
     "Real, dated excerpts from Tioga AI's own operating governance automations — router-watch and security-watch — showing propose-only findings, a human-reviewed fix, and a same-day remediation sequence.",
   alternates: { canonical: "/demos/standing-watch" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "Standing Watch Demo — Tioga AI",
     description:
       "Real operational data, redacted — not a live-refreshing feed. Propose-and-approve governance, including what the system correctly refuses to do itself.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Standing Watch Demo — Tioga AI",
+    description: "Real operational data, redacted — not a live-refreshing feed. Propose-and-approve governance, including what the system correctly refuses to do itself.",
+    images: ["/opengraph-image"],
   },
 };
 

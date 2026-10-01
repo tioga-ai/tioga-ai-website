@@ -8,8 +8,15 @@ export const metadata: Metadata = {
     "What EU AI Act non-compliance actually costs — the penalty structure, what's already in force, and what phases in through 2028.",
   alternates: { canonical: "/trust/eu-ai-act" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "EU AI Act Exposure — Tioga AI",
     description: "The penalty structure, what's already in force, and what phases in through 2028.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "EU AI Act Exposure — Tioga AI",
+    description: "The penalty structure, what's already in force, and what phases in through 2028.",
+    images: ["/opengraph-image"],
   },
 };
 

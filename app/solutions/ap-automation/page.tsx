@@ -7,8 +7,15 @@ export const metadata: Metadata = {
     "AI-powered accounts payable automation — invoice extraction, exception flagging, and approval routing with a full audit trail.",
   alternates: { canonical: "/solutions/ap-automation" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "Governed AP Automation — Tioga AI",
     description: "Invoice to approval, with an audit trail a finance-controls reviewer will actually approve.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Governed AP Automation — Tioga AI",
+    description: "Invoice to approval, with an audit trail a finance-controls reviewer will actually approve.",
+    images: ["/opengraph-image"],
   },
 };
 

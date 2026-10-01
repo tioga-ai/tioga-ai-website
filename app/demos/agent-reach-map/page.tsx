@@ -16,9 +16,16 @@ export const metadata: Metadata = {
     "An interactive 3D scene rendering Tioga's own 29 scheduled automation jobs against the 12 real systems they're authorized to touch, colored by real authorization tier.",
   alternates: { canonical: "/demos/agent-reach-map" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "The Reach Map — Tioga AI",
     description:
       "What is this agent authorized to do? Tioga's own 29-job automation estate, rendered as a pickable estate — not a live feed, a dated, verifiable excerpt.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Reach Map — Tioga AI",
+    description: "What is this agent authorized to do? Tioga's own 29-job automation estate, rendered as a pickable estate — not a live feed, a dated, verifiable excerpt.",
+    images: ["/opengraph-image"],
   },
 };
 

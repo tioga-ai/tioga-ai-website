@@ -7,9 +7,16 @@ export const metadata: Metadata = {
     "What actually changes when you connect an AI system to SAP, Salesforce, or Workday through MCP instead of a point-to-point custom integration — and where custom integration is still the right call.",
   alternates: { canonical: "/mcp/vs-custom-integration" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "MCP vs. Custom Integration — Tioga AI",
     description:
       "What changes when you connect an AI system through MCP instead of a point-to-point custom integration.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MCP vs. Custom Integration — Tioga AI",
+    description: "What changes when you connect an AI system through MCP instead of a point-to-point custom integration.",
+    images: ["/opengraph-image"],
   },
 };
 

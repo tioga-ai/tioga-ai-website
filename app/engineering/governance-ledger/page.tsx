@@ -10,8 +10,15 @@ export const metadata: Metadata = {
     "Why the Governance Ledger demo is a dated snapshot instead of a live feed, how the NIST AI RMF mapping falls out of the routing gateway's own design, and what runs with no model call at all.",
   alternates: { canonical: "/engineering/governance-ledger" },
   openGraph: {
+    images: ["/opengraph-image"],
     title: "How I Built the Governance Ledger Demo — Tioga AI",
     description: "A real ledger excerpt, a framework the infra was built against — not retrofitted to — and zero prompt-injection surface.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "How I Built the Governance Ledger Demo — Tioga AI",
+    description: "A real ledger excerpt, a framework the infra was built against — not retrofitted to — and zero prompt-injection surface.",
+    images: ["/opengraph-image"],
   },
 };
 
