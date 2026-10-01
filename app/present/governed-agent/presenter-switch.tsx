@@ -105,7 +105,7 @@ export default function PresenterSwitch() {
             rel="noreferrer"
             className="inline-block mt-2 text-sm underline text-[var(--text-muted)]"
           >
-            Open live ledger in its own tab
+            Open ledger excerpt in its own tab
           </a>
         </div>
       ) : (

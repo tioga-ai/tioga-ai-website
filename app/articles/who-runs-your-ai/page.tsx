@@ -106,8 +106,8 @@ const content: ArticleContent = {
             What it doesn&apos;t answer is which
             model lab sits under which vendor contract, on what data terms,
             or what your combined exposure looks like if one of those labs
-            changes its terms — a different question, and one Microsoft has
-            its own stake in either lab&apos;s answer to.
+            changes its terms — a different question, and one where Microsoft has
+            its own stake in each lab&apos;s answer.
           </p>
           <p>
             None of this means any of these AI-vendor choices are wrong. It

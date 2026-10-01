@@ -41,7 +41,7 @@ const content: SolutionContent = {
         "The Governed AP Exception Workflow demo runs the full loop — propose, policy decision, approval or block, simulated write, audit, and rollback — the same pattern this engagement builds around your write path.",
     },
     {
-      label: "A real write into a live system of record, not a mock",
+      label: "A real write into a real Snowflake sandbox, not a mock",
       detail: (
         <>
           {"On 2026-07-31 this pattern executed against a real, paid Snowflake sandbox tenant — not a free trial, not a mock: 3 real writes to an open PO's committed amount persisted and were confirmed by re-reading state afterward, plus 2 correctly rejected writes (a vendor on hold, a closed PO), with the full gateway-to-Snowflake round trip logged with real policy-check and audit-trail data. Ask and I'll walk you through it directly."}{" "}

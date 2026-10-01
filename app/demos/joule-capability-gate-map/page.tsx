@@ -77,7 +77,7 @@ export default function JouleCapabilityGateMapPage() {
           <div className="text-xs text-[var(--text-muted)] uppercase tracking-wide mb-1">
             Write-capable capabilities, documented
           </div>
-          <div className="text-xs text-slate-500">Across all 8 S/4HANA areas below</div>
+          <div className="text-xs text-slate-500">Across all 9 areas below (8 S/4HANA areas plus Concur)</div>
         </div>
       </div>
 
@@ -97,7 +97,7 @@ export default function JouleCapabilityGateMapPage() {
       <div className="p-6 rounded-2xl mb-8" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
         <h2 className="font-semibold mb-1" style={{ color: "var(--text)" }}>What actually writes, by area</h2>
         <p className="text-sm text-[var(--text-muted)] mb-5">
-          Pick an S/4HANA area to see the real, documented write-capable capability list —
+          Pick an area to see the real, documented write-capable capability list —
           verbatim from SAP&apos;s own Transactional Capabilities pages.
         </p>
 
@@ -198,7 +198,7 @@ export default function JouleCapabilityGateMapPage() {
 
       <p className="text-xs text-[var(--text-muted)] text-center mt-4 max-w-lg mx-auto">
         The capability list above is a real inventory extracted from SAP&apos;s own
-        documentation. The gate detail is verified this deeply for one capability —
+        documentation. The gate detail is verified this deeply for two capabilities —
         mapping the rest against your real configuration is exactly the work a
         discovery call scopes. Nothing here is saved or sent anywhere; this runs
         entirely in your browser.

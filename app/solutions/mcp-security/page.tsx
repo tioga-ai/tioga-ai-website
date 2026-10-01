@@ -81,9 +81,9 @@ const content: SolutionContent = {
         "Every MCP integration Tioga builds allow-lists exactly which tools an agent can call — an agent that can read invoices doesn't automatically get write access to your GL.",
     },
     {
-      label: "Every MCP integration on this site is real",
+      label: "The MCP demo shows the actual pattern, on mock data",
       detail:
-        "See the MCP page for the actual pattern — before/after comparisons and live tool-calling, not a diagram.",
+        "See the MCP page for the actual pattern — before/after comparisons and tool-calling against mock SAP, Workday, and Salesforce data (labeled as mock), not a diagram.",
     },
     {
       label: "Built by an operator, not just a security vendor",

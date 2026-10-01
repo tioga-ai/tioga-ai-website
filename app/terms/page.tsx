@@ -39,7 +39,7 @@ export default function TermsPage() {
           Terms of Service
         </div>
         <h1 className="text-4xl font-bold mb-4" style={{ color: "var(--text)" }}>Terms of Service</h1>
-        <p className="text-sm text-[var(--text-muted)] mb-14">Last updated: 2026-09-21</p>
+        <p className="text-sm text-[var(--text-muted)] mb-14">Last updated: 2026-10-01</p>
 
         <Section title="Agreement">
           <p>
@@ -76,7 +76,7 @@ export default function TermsPage() {
         <Section title="The demos are illustrative, not advice">
           <p>
             The invoice processing, email triage, document classification,
-            and migration assessment demos exist to show how Tioga AI builds
+            and Fusion AI-readiness assessment demos exist to show how Tioga AI builds
             AI features against real systems. Their outputs are generated
             live by an AI model on the file or text you provide. The
             governance ledger demo instead shows a dated excerpt from Tioga
@@ -84,8 +84,8 @@ export default function TermsPage() {
             on your input. Both kinds are provided for evaluation purposes
             only — they are not financial, legal, tax, accounting, or
             compliance advice, and should not be relied on as such for any
-            real business decision. Don&apos;t submit information you rely on
-            being accurate without independent verification.
+            real business decision. Independently verify demo output
+            before relying on it for any business decision.
           </p>
         </Section>
 

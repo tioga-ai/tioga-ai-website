@@ -35,7 +35,7 @@ const content: ArticleContent = {
       body: (
         <p>
           My own routing gateway has logged {TOTAL_CALLS} model calls in a
-          two-day excerpt (Sep 8–9, 2026), an excerpt subtotal of ${TOTAL_SPEND.toFixed(6)}
+          two-day excerpt (Sep 8–9, 2026), an excerpt subtotal of ${TOTAL_SPEND.toFixed(6)}{" "}
           — not the 30-day window figure — against a $30-per-30-day cap: still a rounding error. The interesting number isn&apos;t the
           total, though; it&apos;s what happens to the free/paid split as
           real usage grows. {PAID_COUNT} of those {TOTAL_CALLS} calls
@@ -88,7 +88,7 @@ const content: ArticleContent = {
     label: "AI Cost & Model Governance Assessment",
   },
   related: [
-    { href: "/demos/governance-ledger", label: "See the live ledger" },
+    { href: "/demos/governance-ledger", label: "See the ledger excerpt" },
     { href: "/articles/framework-mapping-not-three-checklists", label: "How this maps to NIST AI RMF" },
   ],
 };

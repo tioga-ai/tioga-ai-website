@@ -111,7 +111,7 @@ const PRACTICES: Practice[] = [
       },
       {
         name: "AI Cost & Model Governance Assessment",
-        desc: "Model-tiering policy, token/cache optimization, budget guardrails, and model-governance rules — built on the same routing infrastructure behind Tioga's own live Governance Ledger demo.",
+        desc: "Model-tiering policy, token/cache optimization, budget guardrails, and model-governance rules — built on the same routing infrastructure behind Tioga's own Governance Ledger demo.",
         price: "$10–20K",
         duration: "2–3 weeks",
         buyer: "Organizations that need model-tiering policy, token/cache optimization, and budget guardrails on their AI spend.",

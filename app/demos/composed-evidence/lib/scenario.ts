@@ -35,7 +35,7 @@
 export const CONTROL_TAGS = {
   humanAttribution: "NIST AI RMF GOVERN-1.2 — accountability & assigned authorities for AI-enabled actions",
   policyTrace: "NIST AI RMF GOVERN-1.5 — documented authorities & scope",
-  erpValidation: "NIST AI RMF MEASURE-2.7 — system behavior monitored against expectations",
+  erpValidation: "NIST AI RMF MEASURE-2.4 — system behavior monitored against expectations",
   composedRecord: "NIST AI RMF MANAGE-4.1 — post-deployment monitoring & incident response",
 } as const;
 

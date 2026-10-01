@@ -171,9 +171,10 @@ export default function DiscoverySprintPage() {
             <ul className="list-disc pl-4 space-y-3 text-sm text-[var(--text-muted)] leading-relaxed mb-4">
               <li>
                 <strong style={{ color: "var(--text)" }}>Go</strong> —
-                proceed on the offer the report recommends. The $5,000 (net
-                of any AI Fit Check credit already applied, if you started
-                there) credits in full against the full engagement price.
+                proceed on the offer the report recommends. The full $5,000 credits
+                against the full engagement price. If you started with the AI
+                Fit Check, its $1,500 counts toward that $5,000 (you pay
+                $3,500 for the Sprint), so the credit is still $5,000 in total.
               </li>
               <li>
                 <strong style={{ color: "var(--text)" }}>Redirect</strong> —

@@ -38,7 +38,7 @@ const content: SolutionContent = {
     {
       label: "Governance built in, not bolted on",
       detail:
-        "NIST AI RMF, ISO 42001, and EU AI Act alignment are part of the architecture from day one — see the live Governance Ledger demo for the real pattern this is built on.",
+        "NIST AI RMF, ISO 42001, and EU AI Act alignment are part of the architecture from day one — see the Governance Ledger demo (a dated excerpt) for the real pattern this is built on.",
     },
     {
       label: "No rip-and-replace",

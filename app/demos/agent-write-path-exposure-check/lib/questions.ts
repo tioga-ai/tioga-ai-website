@@ -73,7 +73,7 @@ export const QUESTIONS: Question[] = [
   {
     id: "denial",
     weight: "supporting",
-    ask: "Is the behaviour defined when an approval is denied or times out — no silent retry, no auto-approve?",
+    ask: "Is the behavior defined when an approval is denied or times out — no silent retry, no auto-approve?",
     whyItMatters:
       "An approval gate that fails open on timeout or retries after denial is not a gate; the undefined case is where these controls usually break.",
     firstStep: "Specify denial and timeout outcomes explicitly (stop, escalate, or expire) and test each one.",

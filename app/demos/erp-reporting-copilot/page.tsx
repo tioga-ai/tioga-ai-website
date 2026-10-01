@@ -99,9 +99,9 @@ export default function ErpReportingCopilotPage() {
   return (
     <DemoShell
       title="ERP Reporting Copilot"
-      badge="Live Interactive Demo — Read-Side Reporting"
+      badge="Interactive Browser Simulation — Read-Side Reporting"
       evidenceTier="browser-simulation"
-      description="Historical quotation lookup, quote-to-order conversion tracking, expiring-quotation notifications, pricing-change history — real fit-gap findings named things standard SAP reporting doesn't fully cover on its own, needing a custom query or enhancement. Ask a business question in plain English against a composite semiconductor capital-equipment manufacturer's quote and order data — watch the query get decomposed into SAP-style tables, including where standard reporting falls short, then get a real answer. Illustrative composite scenario, not a real client engagement."
+      description="Historical quotation lookup, quote-to-order conversion tracking, expiring-quotation notifications, pricing-change history — real fit-gap findings that name things standard SAP reporting doesn't fully cover on its own, needing a custom query or enhancement. Ask a business question in plain English against a composite semiconductor capital-equipment manufacturer's quote and order data — watch the query get decomposed into SAP-style tables, including where standard reporting falls short, then get a real answer. Illustrative composite scenario, not a real client engagement."
     >
       {/* Governance note — lightweight, distinguishing read-side from the
           other two demos' write-path policy tier, per the source finding's
@@ -112,7 +112,7 @@ export default function ErpReportingCopilotPage() {
       >
         <span className="font-semibold" style={{ color: "var(--accent)" }}>A governance note, even though this is read-only: </span>
         this demo never proposes or commits a transaction, so it doesn&apos;t need the auto-execute / escalate / block ladder the
-        other two demos on this site do. That doesn&apos;t mean read access needs no governance thinking at all — who should be
+        site&apos;s governed write-path demos use. That doesn&apos;t mean read access needs no governance thinking at all — who should be
         able to ask questions against customer pricing and quote data is its own authorization surface, and something like an
         expiring-quote notifier is a standing automated process, not a one-off lookup, and deserves its own lighter-weight
         scoping. This demo illustrates the query/reasoning capability, not that policy layer.

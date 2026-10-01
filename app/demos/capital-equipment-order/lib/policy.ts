@@ -21,7 +21,7 @@ export const MATERIAL_DELTA_TOLERANCE = 0.08; // 8%
 export const CONTROL_TAGS = {
   scope: "NIST AI RMF GOVERN-1.5 — documented authorities & scope",
   stateTransition: "NIST AI RMF MANAGE-1.3 — risk response & escalation",
-  erpValidation: "NIST AI RMF MEASURE-2.7 — system behavior monitored against expectations",
+  erpValidation: "NIST AI RMF MEASURE-2.4 — system behavior monitored against expectations",
   humanApproval: "NIST AI RMF MANAGE-1.3 — risk response & escalation",
   audit: "NIST AI RMF MANAGE-4.1 — post-deployment monitoring & incident response",
 } as const;

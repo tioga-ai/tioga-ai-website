@@ -182,8 +182,8 @@ and restart the gateway.`}
               all, and the assertion is checked against the registry&apos;s
               live flags rather than assumed to still hold from when the
               code was written. The client-facing version of the same idea
-              is discipline 3 in Standing Watch (Gate): the highest-blast-
-              radius action category — payment release, master-data change,
+              is discipline 3 in Standing Watch (Gate): the highest-blast-radius
+              action category — payment release, master-data change,
               access grant — isn&apos;t &quot;requires approval,&quot; it&apos;s
               structurally invisible to the automation layer until a human
               invokes it on purpose. A guardrail that only ever

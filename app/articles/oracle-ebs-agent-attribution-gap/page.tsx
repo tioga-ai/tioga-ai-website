@@ -197,7 +197,7 @@ const content: ArticleContent = {
   ],
   relatedService: {
     href: "/solutions/oracle",
-    label: "AI Agents for Oracle EBS",
+    label: "AI agents for Oracle Fusion Cloud ERP & EBS",
   },
   related: [
     { href: "/solutions/governed-write-path", label: "The governed write-path pattern" },

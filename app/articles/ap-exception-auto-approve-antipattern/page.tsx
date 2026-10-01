@@ -90,7 +90,7 @@ const content: ArticleContent = {
   ],
   relatedService: {
     href: "/solutions/ap-automation",
-    label: "AP Automation engagement",
+    label: "AP automation",
   },
   related: [
     { href: "/demos/ap-exception-workflow", label: "Try the live demo" },

@@ -82,7 +82,7 @@ export default function ContextWindowDataMinimizationPage() {
   return (
     <DemoShell
       title="Context-Window Data Minimization"
-      badge="Live Interactive Demo — Field-Level Allowlist"
+      badge="Interactive Browser Simulation — Field-Level Allowlist"
       evidenceTier="browser-simulation"
       description="A control class with no ERP write-path equivalent: what data actually enters an agent's context window. Ask the same real HR question two ways — once with no allowlist, once with a field-level allowlist enforced at the boundary — and see exactly which fields entered each agent's prompt, side by side. 100% synthetic data: a small invented Plant 3 roster and a month of invented shift records, not connected to any real UKG tenant."
     >

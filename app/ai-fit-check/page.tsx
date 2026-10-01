@@ -58,7 +58,7 @@ const DELIVERABLES = [
   },
   {
     title: "A readiness read on the three things that actually block a Discovery Sprint from running well",
-    desc: "Is there a real executive sponsor who can approve sandbox access in the Sprint's own five-day window; does at least one system in scope have a real sandbox/test instance to provision (not just production); and is there a realistic decision-maker available for the daily check-ins the Sprint needs.",
+    desc: "Is there a real executive sponsor who can approve sandbox access in time for it to be provisioned before the Sprint's day one; does at least one system in scope have a real sandbox/test instance to provision (not just production); and is there a realistic decision-maker available for the daily check-ins the Sprint needs.",
   },
   {
     title: "If the answer is go: a scoped recommendation for what the Discovery Sprint should actually target",
@@ -139,8 +139,8 @@ export default function AiFitCheckPage() {
               provisioning, no data export — if you can&apos;t
               produce a sponsor and a working-level contact for even one
               day without IT involvement, that itself is a real finding
-              about whether they&apos;re ready for a five-day Sprint that
-              needs far more from them.
+              about whether you&apos;re ready for a five-day Sprint that
+              needs far more from you.
             </p>
           </div>
 

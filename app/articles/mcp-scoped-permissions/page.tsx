@@ -82,7 +82,7 @@ const content: ArticleContent = {
   ],
   relatedService: {
     href: "/solutions/mcp-security",
-    label: "MCP Security engagement",
+    label: "MCP security",
   },
   related: [
     { href: "/mcp", label: "Try the live MCP demo" },

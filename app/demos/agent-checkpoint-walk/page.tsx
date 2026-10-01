@@ -11,7 +11,7 @@ import { DISPOSITIONS, TOTAL_AGENTS } from "../../../lib/agent-register";
 // included in the generated sitemap, and linked from
 // /solutions/ai-governance. Not listed on /demos' own featured cards yet.
 export const metadata: Metadata = {
-  title: "The Checkpoint Walk",
+  title: "The Checkpoint Walk — Tioga AI",
   description:
     "Pick any one of Tioga's own 29 scheduled agents, trigger a real write edge, and watch what actually happens when it crosses (or doesn't cross) the approval gate.",
   alternates: { canonical: "/demos/agent-checkpoint-walk" },

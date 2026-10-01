@@ -38,7 +38,7 @@ const content: SolutionContent = {
     {
       label: "Built on the same infrastructure Tioga runs itself",
       detail:
-        "The live Governance Ledger demo uses real routing data from Tioga's own AI operations, mapped to NIST AI RMF — not a hypothetical example.",
+        "The Governance Ledger demo uses real routing data from Tioga's own AI operations, mapped to NIST AI RMF — not a hypothetical example.",
     },
     {
       label: "Framework-mapped, not framework-namedropped",
@@ -62,7 +62,7 @@ const content: SolutionContent = {
       name: "AI Cost & Model Governance Assessment",
       price: "$10–20K",
       duration: "2–3 weeks",
-      desc: "Model-tiering policy, token/cache optimization, budget guardrails, and model-governance rules — built on the same routing infrastructure behind Tioga's own live Governance Ledger demo.",
+      desc: "Model-tiering policy, token/cache optimization, budget guardrails, and model-governance rules — built on the same routing infrastructure behind Tioga's own Governance Ledger demo.",
     },
     {
       name: "Agentic AI Governance Framework",
