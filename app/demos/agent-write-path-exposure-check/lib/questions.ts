@@ -229,7 +229,7 @@ export function scoreExposure(answers: Record<string, Answer | undefined>): Expo
     route = {
       ...ROUTES["standing-watch"],
       reason:
-        "You reported the write-path controls in place. The next question is whether they hold: independent, fixed-cadence verification and one evidence record across the systems involved.",
+        "You reported no missing write-path controls. The next question is whether they hold: independent, fixed-cadence verification and one evidence record across the systems involved.",
     };
   }
 

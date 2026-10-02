@@ -38,7 +38,7 @@ const BAND_COPY: Record<string, { label: string; color: string; line: string }> 
   low: {
     label: "Low reported exposure",
     color: "var(--success)",
-    line: "You reported every control in place. That is a self-report, not a verification.",
+    line: "You reported no missing write-path controls. That is a self-report, not a verification.",
   },
   unclear: {
     label: "Exposure unclear",
