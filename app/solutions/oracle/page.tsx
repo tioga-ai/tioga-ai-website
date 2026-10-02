@@ -43,7 +43,7 @@ const content: SolutionContent = {
     {
       label: "Live AI-readiness demo",
       detail:
-        "Try the Oracle Fusion Cloud AI-Readiness Assessment demo below — a real automated readiness scan running against sample data, not a mockup screenshot.",
+        "Try the Oracle Fusion Cloud AI-Readiness Assessment demo below — a model-generated sample readiness assessment built from questionnaire answers, not a scan of a real system and not a mockup screenshot.",
     },
     {
       label: "Governed write-path, not just reads",
