@@ -4,6 +4,7 @@ import HomeHeroPinned from "@/components/HomeHeroPinned";
 import ScrollReveal from "@/components/ScrollReveal";
 import GovernanceLedgerPreview from "@/components/GovernanceLedgerPreview";
 import OfferChooser from "@/components/OfferChooser";
+import FinanceStartHere from "@/components/FinanceStartHere";
 import { EvidenceTierTag } from "@/app/demos/_lib/evidence-tier";
 
 export default function HomePage() {
@@ -22,6 +23,11 @@ export default function HomePage() {
  components/OfferChooser.tsx for why this exists. */}
  <ScrollReveal>
  <OfferChooser />
+ </ScrollReveal>
+
+ {/* Finance-leader front door (decision D8a, 2026-10-02): two first steps, four paths. */}
+ <ScrollReveal>
+ <FinanceStartHere />
  </ScrollReveal>
 
  {/* Frameworks strip — still intentionally secondary to the systems-led hero
