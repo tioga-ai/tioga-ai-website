@@ -108,8 +108,7 @@ export default function PrivacyPage() {
           </p>
           <p>
             <strong style={{ color: "var(--text)" }}>Chat widget.</strong> Messages you
-            send to the chat assistant are sent to Claude to generate a reply
-            and are not stored after your browser session ends.
+            send to the chat assistant are sent to Claude to generate a reply. Tioga AI does not store them: the conversation lives only in your open browser tab and is gone when you close or reload it. Anthropic handles the text under its own retention terms (see Third Parties below).
           </p>
           <p>
             <strong style={{ color: "var(--text)" }}>Build log email updates.</strong> If

@@ -142,7 +142,7 @@ export const PROPOSALS: Proposal[] = [
     exceptionLabel: "Unapproved overtime (9.75h, no pre-approval on file)",
     proposedAction: "Approve and pay the full 9.75 hours as worked, including 1.75h overtime; separately flag the missing pre-approval for manager follow-up.",
     authorizationBasis: "PC-4: Unauthorized Overtime Review (Payroll Cycle Control)",
-    statutoryCheck: "29 U.S.C. § 207(a) (FLSA overtime) — overtime for hours actually worked over 40/week must be paid regardless of whether it was pre-authorized; lack of authorization is a policy matter, not a basis to withhold pay.",
+    statutoryCheck: "Cal. Lab. Code § 510 — California requires 1.5x pay for hours over 8 in a single day (here 1.75h of a 9.75h day); 29 U.S.C. § 207(a) (FLSA) separately covers hours over 40/week. Either way, overtime actually worked must be paid regardless of whether it was pre-authorized; lack of authorization is a policy matter, not a basis to withhold pay.",
     reviewingRole: "payroll_manager",
     reviewingRoleDetail: "Requires Payroll Manager sign-off — pay-and-flag decisions on unauthorized OT are never auto-approvable.",
     defaultDecision: "accepted",

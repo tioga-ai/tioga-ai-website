@@ -217,7 +217,7 @@ export function scoreExposure(answers: Record<string, Answer | undefined>): Expo
     route = {
       ...ROUTES["fit-check"],
       reason:
-        "Too many of these controls are unconfirmed to say where the write path stands. A one-day, written proceed / revise / stop call is the cheapest way to find out before committing more.",
+        "Too many of these controls are unconfirmed to say where the write path stands. A one-day, written go / no-go call is the cheapest way to find out before committing more.",
     };
   } else if (exposed >= 1) {
     route = {

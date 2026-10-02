@@ -76,9 +76,9 @@ export const FLAGGED: FindingRow[] = [
   {
     severity: "HIGH",
     host: "[internal-host-1]",
-    finding: "FileVault is OFF",
+    finding: "FileVault was OFF at review time",
     status: "human",
-    note: "Needs Recovery Mode / physical console access — the automation has no path to enable this itself",
+    note: "Needs Recovery Mode / physical console access — can't be done in a remote session, so it was left for an in-person fix",
   },
 ];
 

@@ -95,7 +95,7 @@ test("findings list selects a real row and shows its real detail", async ({ page
   await page.getByTestId("boundary-finding-item-8").click();
   const detail = page.getByTestId("boundary-finding-detail");
   await expect(detail).toBeVisible();
-  await expect(detail).toContainText("FileVault is OFF");
+  await expect(detail).toContainText("FileVault was OFF at review time");
   await expect(detail).toContainText("Needs Recovery Mode");
   // The one status:"human" row gets the wall-specific explanatory copy.
   await expect(page.getByText(/stops at the wall instead of landing/)).toBeVisible();

@@ -135,8 +135,7 @@ const INTEGRATION_METHODS = ["No integration yet — planning phase",
           <div className="p-6 rounded-2xl" style={{ background: "linear-gradient(135deg, #C8340608, #A5000008)", border: "1px solid #C8340630" }}>
             <h2 className="text-lg font-bold mb-3" style={{ color: "var(--text)" }}>Why Sonnet, and why 5 requests per 10 minutes</h2>
             <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-              This is the one demo on the site running Claude Sonnet 5 with
-              extended thinking explicitly disabled — the reasoning load
+              This is the only demo on the site that runs Claude Sonnet 5, with extended thinking explicitly disabled — the reasoning load
               (weighing use case against transaction volume against which
               governance controls already exist to produce a specific,
               defensible recommendation) is real, but this use case

@@ -49,8 +49,9 @@ test("DOM legend and provenance strip show the real, corrected figures", async (
   // free-pool, 0 of those settle at exactly $0 (the one free-pool call in
   // this window still carries a small Gemini cost), spend is $0.356603 of
   // the $30.00 cap.
-  await expect(page.locator("text=/1 of 16 calls are free-pool/")).toBeVisible();
-  await expect(page.locator("text=/0 of those \\(0%\\) settle at exactly \\$0/")).toBeVisible();
+  // 2026-10-01: the legend now says why none settle at $0 instead of printing a bare "0 of those (0%)".
+  await expect(page.locator("text=/1 of 16 calls is free-pool and still carried a small cost/")).toBeVisible();
+  await expect(page.locator("text=/so 0 of 16 settle at exactly \\$0/")).toBeVisible();
   await expect(page.locator("text=/\\$0\\.356603/").first()).toBeVisible();
   await expect(page.locator("text=/\\$30\\.00/").first()).toBeVisible();
 });
