@@ -163,6 +163,14 @@ const content: SolutionContent = {
       a: "Yes — see the live Governed AP Exception Workflow demo for the interactive version. This pattern has also run against a real Snowflake sandbox tenant, not just the mock (3 real writes persisted, 2 correctly rejected, full policy-check and audit-trail data on 2026-07-31) — ask and I'll walk you through the real run directly.",
     },
     {
+      q: "What happens when an agent retries a write, or a workflow replays one?",
+      a: "Retries and replays are where a governed write most often goes wrong without anyone noticing: the same proposed change can reach the system of record twice, and two copies of one approval can look like two decisions. The diagnostic asks, for the one write path in scope, whether a retried or replayed step can post a second time, and whether the evidence record shows one write or two. The build acceptance tests include a replay that posts once and a retry that creates no duplicate. Evidence label: engagement design, framework-neutral. These tests are part of the scoped work; the browser demo and the 2026-07-31 Snowflake run record above did not exercise them, and nothing here is a client result.",
+    },
+    {
+      q: "What if a write fails halfway?",
+      a: "A partial failure is treated as its own case, not as a failed retry. The scoped work defines in advance what is undone, what is left in place, and who is told, and the build acceptance tests include a partial-failure rollback. Evidence label: engagement design, not demonstrated on this page. The dated run record above shows two writes rejected cleanly and three persisted; it does not show a mid-write failure.",
+    },
+    {
       q: "Does the diagnostic cover payroll/HRIS or FP&A write paths too, or only the ERP?",
       a: "Yes, where a candidate write path originates in or lands in payroll/workforce management or FP&A planning rather than the ERP alone — grounded in hands-on configuration, implementation, and operating experience with UKG Pro and Workday Adaptive Planning (formerly Adaptive Insights, spanning both its pre- and post-Workday-acquisition generations), not a general \"AI in HR\" or \"AI in FP&A\" framework applied from the outside. Two examples: a timecard exception agent proposing punch corrections carries the same attribution-loss risk this diagnostic already looks for on the ERP side — now against real wage-and-hour exposure (FLSA/state overtime rules) rather than only a posting-period control; a headcount-forecast drafting agent has to write into a draft, never a locked/approved, version, with each number tagged to its source data and stated assumption. Any demo shown ahead of a live engagement runs on synthetic data — UKG doesn't issue developer sandboxes outside its formal partner program, and Adaptive Planning sandboxes come bundled with a customer license — stated plainly, not implied away.",
     },
