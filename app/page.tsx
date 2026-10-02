@@ -237,9 +237,9 @@ export default function HomePage() {
  {/* Integrations */}
  <ScrollReveal>
  <section className="py-16 px-6 max-w-5xl mx-auto">
- <p className="text-center text-xs text-[var(--text-muted)] uppercase tracking-widest mb-8">I integrate with your existing enterprise stack</p>
+ <p className="text-center text-xs text-[var(--text-muted)] uppercase tracking-widest mb-8">Systems my demos and connector examples are built around</p>
  <div className="flex flex-wrap justify-center items-center gap-3">
- {["SAP", "Salesforce", "ServiceNow", "Oracle", "Workday", "SharePoint", "Slack", "Microsoft 365"].map((name) => (
+ {["SAP", "Salesforce", "Oracle", "Workday"].map((name) => (
  <div
  key={name}
  className="px-5 py-2.5 rounded-xl text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"
@@ -249,6 +249,7 @@ export default function HomePage() {
  </div>
  ))}
  </div>
+ <p className="text-center text-xs text-[var(--text-muted)] mt-4">Built against demo and test instances, not live client systems.</p>
  </section>
  </ScrollReveal>
 

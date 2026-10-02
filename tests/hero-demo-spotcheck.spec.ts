@@ -23,11 +23,11 @@ test.describe("2026-08-08 hero demo widget (design review item #10)", () => {
     await page.goto("/");
     const widget = page.getByTestId("hero-demo");
     await expect(widget.getByText("sample run")).toBeVisible();
-    await expect(widget.getByText("invoice_meridian_logistics.pdf")).toBeVisible();
+    await expect(widget.getByText("invoice_INV-2214_meridian_steel.pdf")).toBeVisible();
 
     // Let the animation run through input -> processing -> full output reveal.
     await expect(widget.getByText("Vendor", { exact: true })).toBeVisible({ timeout: 5000 });
-    await expect(widget.getByText("Meridian Logistics")).toBeVisible();
+    await expect(widget.getByText("Meridian Steel Supply")).toBeVisible();
     await expect(widget.getByText(/Structured in/)).toBeVisible({ timeout: 5000 });
 
     await expect(
@@ -43,7 +43,7 @@ test.describe("2026-08-08 hero demo widget (design review item #10)", () => {
     await page.goto("/");
     const widget = page.getByTestId("hero-demo");
     await expect(widget.getByText("Vendor", { exact: true })).toBeVisible();
-    await expect(widget.getByText("Meridian Logistics")).toBeVisible();
+    await expect(widget.getByText("Meridian Steel Supply")).toBeVisible();
     await expect(widget.getByText(/Structured in 2\.1s/)).toBeVisible();
     await context.close();
   });
