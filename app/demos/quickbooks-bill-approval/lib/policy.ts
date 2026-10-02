@@ -40,7 +40,7 @@ export const MASTER_DATA_ACTION_TYPES = new Set(["vendor_payment_detail_change"]
 export const AUTHORIZED_CHANGE_RECORDS: Set<string> = new Set();
 
 export const CONTROL_TAGS = {
-  scope: "NIST AI RMF GOVERN-1.5 — documented authorities & scope",
+  scope: "NIST AI RMF GOVERN-1.4 — documented authorities & scope",
   spendCap: "NIST AI RMF MANAGE-1.3 — risk response & escalation",
   duplicateCheck: "NIST AI RMF MEASURE-2.4 — system behavior monitored against expectations",
   vendorStatus: "NIST AI RMF MEASURE-2.4 — system behavior monitored against expectations",

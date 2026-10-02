@@ -7,7 +7,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 export const metadata: Metadata = {
   title: "Build Log",
   description:
-    "What's actually shipped on tioga.ai, in order — a running build log in place of case studies I haven't had time to write yet.",
+    "What's actually shipped on tioga.ai, in order — a running build log in place of client case studies, which don't exist yet (pre-launch).",
   alternates: { canonical: "/changelog" },
   openGraph: {
     images: ["/opengraph-image"],
@@ -44,7 +44,7 @@ const ENTRIES: Entry[] = [
     date: "2026-09-25",
     kind: "Fix",
     title: "\"Who's really running your AI?\" corrected for Microsoft's new Copilot",
-    body: "Two corrections to the Microsoft parts of the article. The table row said Claude was \"the default AI processor across most Microsoft 365 commercial tenants\", which overstated it. It now states what Microsoft itself published in September 2026: Copilot's Auto mode weighs accuracy, speed and cost on each request across models from Anthropic, OpenAI and others, and xAI joined as an opt-in subprocessor on September 12. The Agent 365 paragraph described it as an inventory across several vendors' systems; it now describes it as a registry for agents inside the Microsoft estate, which is what we could verify.",
+    body: "Two corrections to the Microsoft parts of the article. The table row said Claude was \"the default AI processor across most Microsoft 365 commercial tenants\", which overstated it. It now states what Microsoft itself published in September 2026: Copilot's Auto mode weighs accuracy, speed and cost on each request across models from Anthropic, OpenAI and others, and xAI joined as an opt-in subprocessor on September 12. The Agent 365 paragraph described it as an inventory across several vendors' systems; it now describes it as a registry for agents inside the Microsoft estate, which is what I could verify.",
   },
   {
     date: "2026-09-22",
@@ -116,7 +116,7 @@ const ENTRIES: Entry[] = [
     date: "2026-09-10",
     kind: "Feature",
     title: "Oracle ERP story rebalanced from EBS-led to Oracle Fusion Cloud ERP-led",
-    body: "Founder research (see the linked Oracle EBS agent-attribution-gap article) confirmed EBS has no REST-native surface — agent access goes through Oracle Integration Cloud's E-Business Suite Adapter, HTTP Basic Auth only — while Oracle Fusion Cloud ERP is REST-native with a real AI Agent Studio, making a real (non-simulated-in-spirit) Fusion demo genuinely more buildable than a real EBS one. Reskinned the AP-exception-workflow demo's copy and policy comments from Oracle EBS to Oracle Fusion Cloud ERP's Payables flow (same policy engine, same browser-simulation evidence tier — a live Fusion sandbox connection is a planned Phase B follow-up). Retired the Oracle EBS -> S/4HANA migration-assessment demo, its engineering write-up, and the dedicated /solutions/ebs-to-s4hana page (each now redirects to a live equivalent) and replaced them with a new Oracle Fusion Cloud AI-Readiness Assessment demo at /demos/fusion-ai-readiness-assessment — same real-Claude-call, model-demonstration evidence tier, new domain: how ready a Fusion Cloud ERP environment is to safely run governed AI agents (role/security scope, REST API discipline, audit-trail readiness, human-approval gates), not whether to migrate off EBS. General site copy (/, /about, /services, /solutions/oracle and related pages) rebalanced to lead with Fusion Cloud ERP alongside EBS rather than EBS alone; historical changelog entries below and the founder's own biographical EBS/SAP operating history were left untouched as a record of what actually happened, not live positioning.",
+    body: "Founder research (see the linked Oracle EBS agent-attribution-gap article) confirmed EBS has no REST-native surface — agent access goes through Oracle Integration Cloud's E-Business Suite Adapter, HTTP Basic Auth only — while Oracle Fusion Cloud ERP is REST-native with a real AI Agent Studio, making a real, tenant-connected Fusion demo genuinely more buildable than a real EBS one. Reskinned the AP-exception-workflow demo's copy and policy comments from Oracle EBS to Oracle Fusion Cloud ERP's Payables flow (same policy engine, same browser-simulation evidence tier — a live Fusion sandbox connection is a planned Phase B follow-up). Retired the Oracle EBS -> S/4HANA migration-assessment demo, its engineering write-up, and the dedicated /solutions/ebs-to-s4hana page (each now redirects to a live equivalent) and replaced them with a new Oracle Fusion Cloud AI-Readiness Assessment demo at /demos/fusion-ai-readiness-assessment — same real-Claude-call, model-demonstration evidence tier, new domain: how ready a Fusion Cloud ERP environment is to safely run governed AI agents (role/security scope, REST API discipline, audit-trail readiness, human-approval gates), not whether to migrate off EBS. General site copy (/, /about, /services, /solutions/oracle and related pages) rebalanced to lead with Fusion Cloud ERP alongside EBS rather than EBS alone; historical changelog entries below and the founder's own biographical EBS/SAP operating history were left untouched as a record of what actually happened, not live positioning.",
   },
   {
     date: "2026-09-09",

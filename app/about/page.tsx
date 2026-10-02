@@ -128,8 +128,7 @@ export default function AboutPage() {
           <h2 className="text-xl font-bold mb-2" style={{ color: "var(--text)" }}>Three kinds of fluency, held by one person</h2>
           <p className="text-[var(--text-muted)] text-sm mb-6 max-w-2xl">
             Most consultancies bring one of these three. Tioga AI is built on
-            the premise that enterprise AI only works in production when all
-            three are held by the same team.
+            the premise that enterprise AI only works in production when all three are held by the same person.
           </p>
           <div className="grid sm:grid-cols-3 gap-4">
             {PILLARS.map((p) => (
@@ -175,7 +174,7 @@ export default function AboutPage() {
               style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}
             >
               <p className="text-sm font-semibold mb-1" style={{ color: "var(--text)" }}>Fusion AI-Readiness Assessment →</p>
-              <p className="text-xs text-[var(--text-muted)]">A live Oracle Fusion Cloud ERP AI-readiness scan, running against real assessment logic.</p>
+              <p className="text-xs text-[var(--text-muted)]">A sample Oracle Fusion Cloud ERP AI-readiness assessment: a live Claude call over the scenario you select, with no tenant connection.</p>
             </a>
             <a
               href="/demos/governance-ledger"

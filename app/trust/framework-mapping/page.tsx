@@ -33,7 +33,7 @@ const MAPPING = [
   },
   {
     function: "MEASURE",
-    nist: "Track performance, cost, and quality of AI systems on an ongoing basis.",
+    nist: "Analyze, assess, benchmark, and monitor AI risk and related impacts on an ongoing basis.",
     iso: "ISO 42001 requires organizations to define and monitor AI-system lifecycle controls across design, development, verification, deployment, and operation — including a specific documented control for AI system lifecycle management (Annex A.6.2.4, per public secondary sources on the standard).",
     euAiAct: "High-risk systems require technical documentation and conformity assessment evidence maintained across the system's lifecycle — measurement that has to be producible on demand for a regulator, not just for an internal audit.",
   },
@@ -63,8 +63,7 @@ export default function FrameworkMappingPage() {
         <p className="text-lg text-[var(--text-muted)] leading-relaxed max-w-2xl mb-6">
           NIST AI RMF is a voluntary US risk-management framework organized
           around four functions. ISO 42001 is an international, certifiable
-          AI management system standard built on the same functions,
-          expressed as auditable controls. The EU AI Act is neither
+          AI management system standard whose clauses and controls map onto the same functions, expressed as auditable controls. The EU AI Act is neither
           voluntary nor a framework — it&apos;s binding law for organizations
           with EU exposure, and its obligations for high-risk systems land on
           the same four functions from the other direction: as legal

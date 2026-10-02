@@ -13,7 +13,7 @@ import { DISPOSITIONS, TOTAL_AGENTS } from "../../../lib/agent-register";
 export const metadata: Metadata = {
   title: "The Checkpoint Walk — Tioga AI",
   description:
-    "Pick any one of Tioga's own 29 scheduled agents, trigger a real write edge, and watch what actually happens when it crosses (or doesn't cross) the approval gate.",
+    "Pick any one of Tioga's own 29 scheduled agents, choose one of its real write edges, and watch what happens at the approval gate — an animation of recorded register data, nothing executes.",
   alternates: { canonical: "/demos/agent-checkpoint-walk" },
   openGraph: {
     images: ["/opengraph-image"],
@@ -164,8 +164,7 @@ export default function AgentCheckpointWalkPage() {
             Want your own estate mapped like this?
           </h2>
           <p className="text-sm text-[var(--text-muted)] mb-6 max-w-md mx-auto">
-            A discovery call gets you a scoped assessment from the person who builds these governed write-paths —
-            not a form, a conversation.
+            A 20-minute intro call puts you in touch with the person who builds these governed write-paths — not a form, a conversation.
           </p>
           <TrackedCTA
             href={CAL_LINK}
@@ -175,7 +174,7 @@ export default function AgentCheckpointWalkPage() {
             className="inline-flex px-8 py-3.5 rounded-xl text-white font-semibold transition-all hover:opacity-90"
             style={{ background: "linear-gradient(135deg, var(--accent), var(--accent-dark))" }}
           >
-            Book a discovery call
+            Book a 20-minute intro call
           </TrackedCTA>
         </div>
       </section>

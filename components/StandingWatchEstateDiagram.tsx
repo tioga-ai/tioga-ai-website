@@ -49,8 +49,7 @@ export default function StandingWatchEstateDiagram() {
         Four vendors, four self-claimed &ldquo;layers of record&rdquo;
       </h2>
       <p className="text-sm text-[var(--text-muted)] mb-6 max-w-2xl">
-        Each pane below is the vendor&apos;s own verified language about its own product —
-        not Tioga&apos;s characterization. Standing Watch&apos;s six disciplines sit above and
+        Each pane below quotes the vendor&apos;s own material or on-record statements, as reported — not Tioga&apos;s characterization. Standing Watch&apos;s six disciplines sit above and
         across all four, as the cross-cutting layer none of them ship.
       </p>
 

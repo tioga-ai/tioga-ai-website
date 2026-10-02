@@ -534,7 +534,7 @@ export default function MCPPage() {
  and Claude can query SAP, Salesforce and more in plain English.
  </p>
  <div className="flex flex-wrap gap-3 justify-center text-sm text-[var(--text-muted)]">
- {["Open standard by Anthropic", "Works with any MCP-capable client", "Auth & controls built in per system", "Built on Anthropic's MCP spec"].map((f) => (
+ {["Open standard, originated by Anthropic (now under the Linux Foundation)", "Works with any MCP-capable client", "Auth & controls built in per system"].map((f) => (
  <span key={f} className="flex items-center gap-1.5">
  <span style={{ color: "var(--accent)" }}>✓</span> {f}
  </span>
@@ -546,8 +546,7 @@ export default function MCPPage() {
  <div className="mb-16 fade-in fade-in-1">
  <h2 className="text-xl font-bold mb-2" style={{ color: "var(--text)" }}>How MCP Works</h2>
  <p className="text-[var(--text-muted)] text-sm mb-5">
- Each enterprise system gets its own MCP tool server. Claude calls tools,
- MCP handles auth and routing, your systems return data — and once a
+ Each enterprise system gets its own MCP tool server. Claude calls tools, the MCP server routes them through the auth and controls built for each system, your systems return data — and once a
  tool server exists, every use case and every MCP-aware client can reuse it.
  </p>
  <ArchDiagram />
@@ -559,7 +558,7 @@ export default function MCPPage() {
  <div>
  <h2 className="text-xl font-bold mb-1" style={{ color: "var(--text)" }}>Live Demo</h2>
  <p className="text-[var(--text-muted)] text-sm">
- Claude is connected to mock SAP and Salesforce instances.
+ Claude is connected to mock SAP, Workday, and Salesforce instances.
  Ask it anything — watch it call the right system automatically.
  </p>
  </div>
@@ -631,8 +630,7 @@ export default function MCPPage() {
  >
  <h2 className="text-2xl font-bold mb-3" style={{ color: "var(--text)" }}>Ready to connect your enterprise?</h2>
  <p className="text-[var(--text-muted)] mb-6 max-w-lg mx-auto">
- I&apos;ll scope your integration in a 5-day discovery sprint and have your first
- MCP connector live within 2 weeks.
+ I&apos;ll scope your integration in a 5-day discovery sprint and aim to have a first MCP connector running against your sandbox within about two weeks of access.
  </p>
  <Link
  href="/contact"

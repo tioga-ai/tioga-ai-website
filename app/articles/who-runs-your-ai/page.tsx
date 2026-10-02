@@ -25,6 +25,7 @@ const content: ArticleContent = {
   slug: "who-runs-your-ai",
   query: "which LLM powers my ERP CRM enterprise AI agents",
   date: "2026-08-26",
+  updated: "September 2026",
   title: "Who's really running your AI?",
   dek: "In the last 12 months, seven of the nine enterprise systems I track each independently signed their own deal with an AI lab. Most companies running two or three of these platforms have never added up what that means.",
   evidenceLabel: "Evidence: primary vendor announcements and documentation, dated per row — not analyst summaries.",

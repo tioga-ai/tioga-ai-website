@@ -23,7 +23,7 @@ export const AUTHORIZED_ACTION_TYPES = new Set(["classify_no_charge", "classify_
 export const BOUNDARY_WINDOW_DAYS = 7;
 
 export const CONTROL_TAGS = {
-  scope: "NIST AI RMF GOVERN-1.5 — documented authorities & scope",
+  scope: "NIST AI RMF GOVERN-1.4 — documented authorities & scope",
   interpretation: "NIST AI RMF MANAGE-1.3 — risk response & escalation",
   erpValidation: "NIST AI RMF MEASURE-2.4 — system behavior monitored against expectations",
   humanApproval: "NIST AI RMF MANAGE-1.3 — risk response & escalation",

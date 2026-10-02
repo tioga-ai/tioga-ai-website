@@ -141,7 +141,7 @@ export default function BoundaryInteraction({
             </h3>
             <p className="text-xs text-[var(--text-muted)] leading-relaxed">
               Click or arrow-key through the list to see one of the 9 real findings from this
-              incident, or press Replay to watch all nine cross the gate at once.
+              incident, or press Replay to watch all nine cross the gate in sequence.
             </p>
           </div>
         )}

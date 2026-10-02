@@ -38,8 +38,7 @@ export default function GovernanceLedgerWriteup() {
           How I built the Governance Ledger demo
         </h1>
         <p className="text-lg text-[var(--text-muted)] leading-relaxed mb-12">
-          Most demos on this site take an input and run it through
-          a model live. This one doesn&apos;t take an input at all — it&apos;s a
+          Some demos on this site take an input and run it through a model live. This one doesn&apos;t take an input at all — it&apos;s a
           real, dated excerpt from the routing ledger that Tioga&apos;s own AI
           infrastructure (JARVIS) writes to on every call it makes, anywhere,
           for any purpose. The interesting engineering here isn&apos;t a
@@ -87,7 +86,7 @@ export default function GovernanceLedgerWriteup() {
               reserve-then-charge budget check for MANAGE. The page just
               renders what the ledger schema already tracked. That ordering
               matters for the offers this demo backs (governed ERP write-path,
-              insurance-underwriting evidence, cost/model governance
+              Standing Watch evidence packs, cost/model governance
               assessments) — the pitch is that governance evidence is a
               byproduct of how the infrastructure is built, not a report
               generated to satisfy an auditor after the fact.
@@ -120,9 +119,9 @@ export default function GovernanceLedgerWriteup() {
 
           {/* Design decisions callout */}
           <div className="p-6 rounded-2xl" style={{ background: "linear-gradient(135deg, #C8340608, #A5000008)", border: "1px solid #C8340630" }}>
-            <h2 className="text-lg font-bold mb-3" style={{ color: "var(--text)" }}>Why this is the one demo with no prompt-injection surface</h2>
+            <h2 className="text-lg font-bold mb-3" style={{ color: "var(--text)" }}>Why this demo has no prompt-injection surface</h2>
             <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-              Every other demo on this site accepts either a constrained form
+              The model-backed demos on this site accept either a constrained form
               or a file upload, and the corresponding writeup spends real
               space on how untrusted input is validated before it reaches a
               model. This page has no input field and calls no model at

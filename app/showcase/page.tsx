@@ -236,8 +236,7 @@ A GPU particle field on the left renders the same 16 real rows already live at{"
             Want this pattern built into your systems?
           </h2>
           <p className="text-sm text-[var(--text-muted)] mb-6 max-w-md mx-auto">
-            A discovery call gets you a scoped assessment from the person who builds these
-            governed write-paths — not a form, a conversation.
+            A 20-minute intro call puts you in touch with the person who builds these governed write-paths — not a form, a conversation.
           </p>
           <TrackedCTA
             href={CAL_LINK}
@@ -247,7 +246,7 @@ A GPU particle field on the left renders the same 16 real rows already live at{"
             className="inline-flex px-8 py-3.5 rounded-xl text-white font-semibold transition-all hover:opacity-90"
             style={{ background: "linear-gradient(135deg, var(--accent), var(--accent-dark))" }}
           >
-            Book a discovery call
+            Book a 20-minute intro call
           </TrackedCTA>
         </div>
       </section>

@@ -17,6 +17,8 @@ export interface ArticleContent {
   title: string;
   dek: string;
   date: string;
+  /** Free-text "Month YYYY", shown after the publish date when a piece cites later data. */
+  updated?: string;
   evidenceLabel: string;
   sections: Section[];
   relatedService: RelatedLink;
@@ -76,6 +78,7 @@ export default function ArticlePage({ content }: { content: ArticleContent }) {
               timeZone: "UTC",
             })}
           </time>
+          {content.updated ? <> · Updated {content.updated}</> : null}
         </p>
 
         <div

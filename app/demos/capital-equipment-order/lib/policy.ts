@@ -19,7 +19,7 @@ export const AUTHORIZED_ACTION_TYPES = new Set(["book_tbd_order", "finalize_mate
 export const MATERIAL_DELTA_TOLERANCE = 0.08; // 8%
 
 export const CONTROL_TAGS = {
-  scope: "NIST AI RMF GOVERN-1.5 — documented authorities & scope",
+  scope: "NIST AI RMF GOVERN-1.4 — documented authorities & scope",
   stateTransition: "NIST AI RMF MANAGE-1.3 — risk response & escalation",
   erpValidation: "NIST AI RMF MEASURE-2.4 — system behavior monitored against expectations",
   humanApproval: "NIST AI RMF MANAGE-1.3 — risk response & escalation",

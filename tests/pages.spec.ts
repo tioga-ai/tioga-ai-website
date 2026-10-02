@@ -323,3 +323,52 @@ test("legal pages name demos that exist", async ({ request }) => {
     expect(await bodyText(request, path), path).not.toMatch(/migration assessment/i);
   }
 });
+
+// Wording fixed in the 2026-10-01 follow-up QA pass. Each assertion pins one
+// statement that was checked against the code or a primary source, so it
+// cannot drift back.
+test("follow-up QA wording fixes stay in place", async ({ request }) => {
+  test.setTimeout(120_000);
+
+  // The free call is the "20-minute intro call"; "Discovery" is the paid Sprint.
+  for (const path of ["/showcase", "/demos/agent-reach-map", "/demos/agent-checkpoint-walk", "/demos/field-service-classification"]) {
+    const text = await bodyText(request, path);
+    expect(text, path).not.toMatch(/discovery call gets you a scoped assessment/i);
+    expect(text, path).not.toMatch(/book a discovery call/i);
+  }
+
+  // The MCP demo runs on mock data and covers SAP, Workday and Salesforce; its
+  // rate limit is 20 requests per 24 hours, held in memory (lib/rate-limit.ts).
+  const mcpHtml = await html(request, "/mcp");
+  expect(meta(mcpHtml, "name", "description")).not.toMatch(/ServiceNow/);
+  expect(meta(mcpHtml, "name", "description")).toMatch(/mock data/i);
+  const mcp = await bodyText(request, "/mcp");
+  expect(mcp).toMatch(/mock SAP, Workday, and Salesforce/);
+  expect(mcp).not.toMatch(/MCP handles auth and routing/);
+  const scoped = await bodyText(request, "/articles/mcp-scoped-permissions");
+  expect(scoped).toMatch(/20 requests per 24 hours/);
+  expect(scoped).not.toMatch(/hard per-IP/i);
+
+  // NIST AI RMF: GOVERN 1.5 is ongoing monitoring/review, not scope enforcement.
+  const mapping = await bodyText(request, "/articles/framework-mapping-not-three-checklists");
+  expect(mapping).not.toMatch(/GOVERN[- ]1\.5[^.]{0,60}(scope|authorit)/i);
+
+  // Internal roadmap jargon stays out of public demo copy (the changelog is history).
+  for (const path of ["/demos/fusion-ai-readiness-assessment", "/demos/ap-exception-workflow", "/engineering/fusion-ai-readiness-assessment"]) {
+    expect(await bodyText(request, path), path).not.toMatch(/Phase B/);
+  }
+
+  // Articles that cite data newer than their publish date say so.
+  for (const path of ["/articles/ai-cost-governance-ledger", "/articles/who-runs-your-ai"]) {
+    expect(await bodyText(request, path), path).toMatch(/Updated September 2026/);
+  }
+
+  // About: the heading must match the three items under it, and the practice is one person.
+  const about = await bodyText(request, "/about");
+  expect(about).not.toMatch(/Dual fluency/);
+  expect(about).not.toMatch(/held by the same team/);
+
+  // The MCP-vs-custom CTA links where its text says it does.
+  const vs = await html(request, "/mcp/vs-custom-integration");
+  expect(vs).not.toMatch(/href="\/engineering\/fusion-ai-readiness-assessment"[^>]*>\s*MCP demo/);
+});
