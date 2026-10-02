@@ -51,7 +51,7 @@ export default function GovernanceLedgerPage() {
       description="Every model call my own AI infrastructure makes is logged, costed, budget-capped, and attributed — automatically, as a byproduct of how it routes work. This is a real excerpt from that ledger."
     >
       <p className="text-xs mb-6 -mt-4" style={{ color: "var(--text-muted-3)" }}>
-        Last updated: Sep 9, 2026 — real operational data, refreshed periodically, not a live-refreshing feed.
+        Last updated: Sep 9, 2026 — real operational data, refreshed periodically, not a live-refreshing feed. This excerpt covers the metered gateway pool only; usage on a flat-rate personal subscription is deliberately left out.
       </p>
 
       {/* Stat strip */}
@@ -180,8 +180,7 @@ export default function GovernanceLedgerPage() {
       <div className="mt-6 p-5 rounded-2xl" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
         <p className="text-sm text-[var(--text-muted)] leading-relaxed">
           This is the pattern I build into client systems: every AI action logged, budgeted,
-          and attributable — applied to a governed write-path into your ERP, or packaged as
-          evidence for an insurance renewal, instead of a general-purpose AI gateway.
+          and attributable — applied to a governed write-path into your ERP, instead of a general-purpose AI gateway.
         </p>
         <p className="text-xs text-slate-500 mt-3">
           This is spend-level detail. For how findings across the whole automation estate get

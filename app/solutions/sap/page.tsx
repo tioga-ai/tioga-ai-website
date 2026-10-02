@@ -82,7 +82,7 @@ const content: SolutionContent = {
     },
     {
       q: "How is this different from generic RPA on SAP?",
-      a: "RPA scripts click through the UI and break when it changes. Tioga's agents integrate through SAP's application/API layer with policy enforcement and an audit trail — built to survive UI changes and pass a control review.",
+      a: "RPA scripts click through the UI and break when it changes. Tioga's approach is to integrate through SAP's application/API layer with policy enforcement and an audit trail, designed to survive UI changes and to give a control review something to read. Tioga's public SAP artifacts today are a mock connector and simulations, not a production integration.",
     },
     {
       q: "What does \"governed\" actually mean here?",
