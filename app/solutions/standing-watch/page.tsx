@@ -34,7 +34,7 @@ const content: SolutionContent = {
     {
       label: "Built and run on Tioga's own multi-vendor infrastructure",
       detail:
-        "The six disciplines below are generalized from automations Tioga actually operates in production — the JARVIS router, router-watch, and security-watch — across a genuinely heterogeneous stack (a free local model, multiple OpenRouter-hosted vendors, direct-billed Gemini, and a subscription Claude that's never auto-routed). This is a single-operator, personal-infrastructure-scale implementation, not an enterprise deployment — volunteered here, not extracted in a pitch.",
+        "The six disciplines below are generalized from automations Tioga actually operates in production — the JARVIS router, router-watch, and security-watch — across a genuinely heterogeneous stack (a free local model, multiple OpenRouter-hosted vendors, Google-billed Gemini (free tier first, paid past the limit), and a subscription Claude that's never auto-routed). This is a single-operator, personal-infrastructure-scale implementation, not an enterprise deployment — volunteered here, not extracted in a pitch.",
     },
     {
       label: "Propose-and-approve by default",

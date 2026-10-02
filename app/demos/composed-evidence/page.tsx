@@ -310,8 +310,7 @@ export default function ComposedEvidencePage() {
 
       <p className="text-xs text-slate-500">
         Grounded in a real, vendor-acknowledged gap: SAP&apos;s own June 2026 reference architecture for third-party
-        agent access states that enterprise identity and audit requirements for that access are &ldquo;not yet fully
-        addressed,&rdquo; and assigns the mitigations to the customer. This demo dramatizes that gap with a single
+        agent access states that the MCP protocol specification is still maturing, with security, identity and governance requirements for enterprise deployments &ldquo;not yet fully addressed,&rdquo; and assigns the controls for custom or third-party MCP servers to the customer. This demo dramatizes that gap with a single
         composite scenario: a universal AI assistant (Claude/ChatGPT-class) that logs conversation and intent, and an
         ERP vendor&apos;s own execution agent that logs the transaction under a shared integration account — neither
         composes the other&apos;s half into one attributable record on its own. Everything on this page runs in your

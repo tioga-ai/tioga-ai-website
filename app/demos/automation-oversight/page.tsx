@@ -65,10 +65,12 @@ export default function AutomationOversightPage() {
         <div className="px-6 py-5 text-center" style={{ background: "var(--bg-card)" }}>
           <div className="text-2xl font-bold mb-1" style={{ color: "var(--accent)" }}>11</div>
           <div className="text-xs text-[var(--text-muted)] uppercase tracking-wide">Findings, last review</div>
+          <div className="text-[10px] mt-0.5" style={{ color: "var(--text-muted-3)" }}>as of Aug 30, 2026</div>
         </div>
         <div className="px-6 py-5 text-center" style={{ background: "var(--bg-card)" }}>
           <div className="text-2xl font-bold mb-1" style={{ color: "var(--accent)" }}>10</div>
           <div className="text-xs text-[var(--text-muted)] uppercase tracking-wide">Required human review before applying</div>
+          <div className="text-[10px] mt-0.5" style={{ color: "var(--text-muted-3)" }}>as of Aug 30, 2026</div>
         </div>
         <div className="px-6 py-5 text-center" style={{ background: "var(--bg-card)" }}>
           <div className="text-2xl font-bold mb-1" style={{ color: "var(--accent)" }}>1</div>

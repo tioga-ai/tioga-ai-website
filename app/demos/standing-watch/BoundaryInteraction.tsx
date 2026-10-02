@@ -126,8 +126,7 @@ export default function BoundaryInteraction({
               <div className="mt-3 p-3 rounded-xl" style={{ background: "var(--bg-dark)", border: "1px solid var(--border)" }}>
                 <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }} data-testid="boundary-wall-copy">
                   This is the one ribbon in the scene that stops at the wall instead of landing —
-                  not a failure. Enabling disk encryption needs Recovery Mode / physical console
-                  access, which nothing the automation runs with can reach. The system flags what
+                  not a failure. That step needs Recovery Mode / physical console access, which a remote session can&apos;t provide. The system flags what
                   it can&apos;t safely act on and says so, instead of reaching for access it
                   shouldn&apos;t have.
                 </p>

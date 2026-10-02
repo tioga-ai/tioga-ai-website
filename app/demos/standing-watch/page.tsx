@@ -189,8 +189,7 @@ export default function StandingWatchDemoPage() {
             → 8 of 10 flagged items fixed and verified live. 2 correctly left for a human.
           </p>
           <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-            FileVault wasn&apos;t skipped by accident — enabling disk encryption needs Recovery Mode
-            / physical console access, which nothing the automation runs with can reach. The same
+            That item wasn&apos;t skipped by accident — it needs Recovery Mode / physical console access, which a remote session can&apos;t provide. The same
             day, a separate item — tightening the home router&apos;s own firewall rules to match the
             host-level hardening above — was flagged and correctly left alone for the same reason:
             it needs the router&apos;s own admin UI, not anything scriptable from either machine. The
@@ -208,7 +207,7 @@ export default function StandingWatchDemoPage() {
         <p className="text-xs text-[var(--text-muted)] mb-4 leading-relaxed">
           The same 9 findings above, in 3D: every finding enters left and passes through one glass
           gate — the router-watch report&apos;s own &ldquo;this report is a PROPOSAL&rdquo; footer,
-          drawn honestly. Eight cross through and land, fixed. One — FileVault — travels straight
+          drawn honestly. Eight cross through and land, fixed. One — a physical-access step — travels straight
           to a physical wall just past the gate and stops there, permanently: not a failure, the
           system correctly recognizing the one thing it can&apos;t safely do itself.
         </p>

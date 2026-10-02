@@ -239,8 +239,7 @@ export default function HowWeDeliverPage() {
                   An inbound contact resolves within five business days into
                   one of three outcomes: a Discovery Sprint order, a polite
                   disqualification, or a logged candidate need that no
-                  current offer covers. A single 30-45 minute triage call
-                  establishes what the pain actually is (automation, an
+                  current offer covers. A 20-minute intro call, followed by a 30-45 minute triage call when there is a fit, establishes what the pain actually is (automation, an
                   agent that needs to reach a system of record, or answering
                   for AI already in production), what made it urgent now,
                   who signs and who has to be satisfied the result is

@@ -231,7 +231,7 @@ export default function TimecardExceptionShadowModePage() {
                     <td className="px-3 py-2 font-mono text-xs text-[var(--text-muted)] whitespace-nowrap">{row.date}</td>
                     <td className="px-3 py-2 font-mono text-xs text-[var(--text-muted)] whitespace-nowrap">{row.clockIn ?? "—"}</td>
                     <td className="px-3 py-2 font-mono text-xs text-[var(--text-muted)] whitespace-nowrap">{row.clockOut ?? "—"}</td>
-                    <td className="px-3 py-2 font-mono text-xs text-[var(--text-muted)] whitespace-nowrap">{row.hoursWorked}h</td>
+                    <td className="px-3 py-2 font-mono text-xs text-[var(--text-muted)] whitespace-nowrap">{row.clockIn && !row.clockOut ? "unknown" : `${row.hoursWorked}h`}</td>
                     <td className="px-3 py-2 text-xs text-[var(--text-muted)]">{proposal?.exceptionLabel}</td>
                   </tr>
                 );

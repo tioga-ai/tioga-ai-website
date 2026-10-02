@@ -76,7 +76,7 @@ export const FLAGGED: FindingRow[] = [
   {
     severity: "HIGH",
     host: "[internal-host-1]",
-    finding: "FileVault was OFF at review time",
+    finding: "Physical-access hardening step on one internal host",
     status: "human",
     note: "Needs Recovery Mode / physical console access — can't be done in a remote session, so it was left for an in-person fix",
   },
@@ -105,5 +105,5 @@ export const SEVERITY_TOKEN: Record<FindingRow["severity"], string> = {
 export const CROSSES_GATE = FLAGGED.filter((r) => r.status === "fixed");
 export const STOPPED_AT_WALL = FLAGGED.find((r) => r.status === "human");
 if (!STOPPED_AT_WALL) {
-  throw new Error("standing-watch-findings: expected exactly one 'human' status row (FileVault) — data changed?");
+  throw new Error("standing-watch-findings: expected exactly one 'human' status row — data changed?");
 }

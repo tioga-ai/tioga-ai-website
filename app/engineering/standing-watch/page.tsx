@@ -124,9 +124,7 @@ and restart the gateway.`}
               POOL_WEIGHT: pricing budgets that aren&apos;t the same currency
             </h2>
             <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-4">
-              My router spans a free local model, a Google-billed tier, an
-              OpenRouter credit pool, and a flat-fee Claude subscription —
-              four backends, three genuinely different kinds of money.
+              My router spans a free local model, a Google-billed tier, an OpenRouter credit pool, a flat-fee Claude subscription, and a flat-fee OpenAI Plus (Codex) subscription — five backends, three genuinely different kinds of money.
               Comparing them on raw dollars is meaningless: a $0 local call
               and a $0.03 OpenRouter call aren&apos;t equally &quot;free,&quot;
               and a Claude Max call that&apos;s already paid for by a flat
@@ -209,9 +207,7 @@ and restart the gateway.`}
               hardening fix that an automation silently applied to itself
               would still be a change, but it would stop being evidence.
               The Aug 10 run makes the boundary concrete rather than
-              theoretical: FileVault was left flagged, not fixed, because
-              enabling disk encryption needs Recovery Mode / physical
-              console access — beyond what a remote session can do, so the run says so instead of reaching for access it
+              theoretical: One finding was left flagged, not fixed, because it needs Recovery Mode / physical console access — beyond what a remote session can do, so the run says so instead of reaching for access it
               shouldn&apos;t have or silently skipping the finding. A
               separate item that same day — tightening the home
               router&apos;s own firewall rules — was flagged and correctly
@@ -244,7 +240,7 @@ and restart the gateway.`}
               sampleSize: "Router-watch: 399 models screened, 0 cleared Stage 1. Security-watch: 65 findings across severities, 10 flagged for same-day action (9 in the report, plus one router-firewall item flagged the same day, outside either machine's reach).",
               metrics: [
                 { label: "Security findings fixed & verified", value: "8 of 10 flagged (80%), same session" },
-                { label: "Findings correctly left for a human", value: "2 of 10 (FileVault; home-router firewall — both outside automation's reach)" },
+                { label: "Findings correctly left for a human", value: "2 of 10 (a physical-access step on one internal host; home-router firewall — both outside automation's reach)" },
                 { label: "Router-watch model catalog scanned", value: "399 models, 0 auto-applied swaps" },
                 { label: "Automations with write access to live config", value: "0 — every change is human-applied" },
               ],

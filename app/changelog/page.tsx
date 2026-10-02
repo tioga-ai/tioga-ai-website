@@ -104,7 +104,7 @@ const ENTRIES: Entry[] = [
     date: "2026-09-14",
     kind: "Feature",
     title: "\"The Boundary\": a 3D scene for Standing Watch built from its real findings",
-    body: "A new interactive scene on /demos/standing-watch uses Standing Watch's own nine real findings: severity-colored tiles pass through one gate, eight land fixed, and the one finding still open (a FileVault setting on a secondary machine) stops at the wall and stays visible. It shows the unfixed item rather than a clean run.",
+    body: "A new interactive scene on /demos/standing-watch uses Standing Watch's own nine real findings: severity-colored tiles pass through one gate, eight land fixed, and the one finding still open (a physical-access hardening step on one internal host) stops at the wall and stays visible. It shows the unfixed item rather than a clean run.",
   },
   {
     date: "2026-09-11",
@@ -122,7 +122,7 @@ const ENTRIES: Entry[] = [
     date: "2026-09-09",
     kind: "Content",
     title: "Governance Ledger window refreshed — Jul 2026 excerpt replaced with a current Sep 8-9 window",
-    body: "The original ledger excerpt (captured Jul 17-25) had gone stale — a business-readiness audit finding flagged it needed either a longer window or a relabel. Refreshed it with a genuinely current window instead: 16 real calls from Sep 8-9, pulled from the same JARVIS gateway ledger, excluding the gateway's separate claude_max billing pool (personal Claude subscription spend stays private, unlike the shared $30/30-day OpenRouter pool this page documents). The underlying numbers moved a lot since July — real call volume has grown past what the free-tier backends alone can absorb, so this window is 15/16 paid versus the original's 15/17 free. Total spend is still a rounding error against the $30 cap. Reframed the copy on /demos/governance-ledger, /showcase, and /engineering/governance-ledger to tell that real story honestly rather than keep asserting the old free-tier-heavy framing against new data. STATS on the demo page now compute from the ledger data instead of being hand-typed, closing off the same class of drift this page's own G-11 fix (71%-vs-88% metric) already closed elsewhere.",
+    body: "The original ledger excerpt (captured Jul 17-25) had gone stale — a business-readiness audit finding flagged it needed either a longer window or a relabel. Refreshed it with a genuinely current window instead: 16 real calls from Sep 8-9, pulled from the same JARVIS gateway ledger, excluding the gateway's separate claude_max billing pool (personal Claude subscription spend stays private, unlike the shared $30/30-day OpenRouter pool this page documents). The underlying numbers moved a lot since July — real call volume has grown past what the free-tier backends alone can absorb, so this window is 15/16 paid versus the original's 15/17 free-pool (12/17 settled at exactly $0). Total spend is still a rounding error against the $30 cap. Reframed the copy on /demos/governance-ledger, /showcase, and /engineering/governance-ledger to tell that real story honestly rather than keep asserting the old free-tier-heavy framing against new data. STATS on the demo page now compute from the ledger data instead of being hand-typed, closing off the same class of drift this page's own G-11 fix (71%-vs-88% metric) already closed elsewhere.",
   },
   {
     date: "2026-09-02",

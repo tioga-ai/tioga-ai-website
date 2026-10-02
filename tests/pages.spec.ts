@@ -413,3 +413,46 @@ test("final QA wording and consistency fixes stay in place", async ({ request })
   const watch = await bodyText(request, "/demos/standing-watch");
   expect(watch).not.toMatch(/the automation has no path to enable this itself/);
 });
+
+// Owner decisions closed on 2026-10-01 (DBA, first call, Gemini billing, FileVault row,
+// MCP security card) plus facts verified at their source. Pinned so they stay true.
+test("decision-batch fixes and source-verified facts stay in place", async ({ request }) => {
+  test.setTimeout(120_000);
+
+  // The public Standing Watch pages do not disclose a specific security control of an internal host.
+  for (const path of ["/demos/standing-watch", "/engineering/standing-watch", "/articles/standing-watch", "/changelog"]) {
+    expect(await bodyText(request, path), path).not.toMatch(/FileVault/i);
+  }
+
+  // First call: a 20-minute intro, then a longer triage only when there is a fit.
+  const deliver = await bodyText(request, "/engineering/how-we-deliver");
+  expect(deliver).toMatch(/20-minute intro call, followed by a 30-45 minute triage call/);
+  expect(deliver).not.toMatch(/A single 30-45 minute triage call/);
+
+  // Gemini is Google-billed with a free tier first, everywhere.
+  for (const path of ["/solutions/standing-watch", "/lp/standing-watch"]) {
+    expect(await bodyText(request, path), path).not.toMatch(/direct-billed Gemini/);
+  }
+
+  // The MCP security page points at the offer /services actually describes for governing agents.
+  const mcpSec = await bodyText(request, "/solutions/mcp-security");
+  expect(mcpSec).toMatch(/Agentic AI Governance Framework/);
+  expect(mcpSec).not.toMatch(/right starting point to scope an MCP security review/);
+
+  // SAP's "not yet fully addressed" is about the MCP protocol specification (checked against
+  // SAP's reference architecture page), not about "that access".
+  const composed = await bodyText(request, "/demos/composed-evidence");
+  expect(composed).toMatch(/MCP protocol specification is still maturing/);
+  expect(composed).not.toMatch(/identity and audit requirements for that access are/);
+
+  // The router counts five backends (local, Claude Max, OpenAI Plus/Codex, Google, OpenRouter).
+  expect(await bodyText(request, "/engineering/standing-watch")).toMatch(/five backends, three genuinely different kinds of money/);
+
+  // Timecard demo: an explicit "no punch" must render as missing, not as the default 16:00
+  // (the code used `??`, which treats null as unset).
+  const timecard = await bodyText(request, "/demos/timecard-exception-shadow-mode");
+  expect(timecard).toMatch(/Tom Reyes \(\s*E-102\s*\)\s+TX\s+2026-08-19\s+08:00\s+—\s+unknown\s+Missed punch/);
+
+  // Mixed as-of dates are labeled instead of left implicit.
+  expect(await bodyText(request, "/demos/automation-oversight")).toMatch(/as of Aug 30, 2026/);
+});
