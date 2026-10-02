@@ -45,8 +45,7 @@ export default function TermsPage() {
           <p>
             These terms govern your use of tioga.ai, including the live demos,
             chat assistant, and contact form (the &ldquo;Site&rdquo;), operated
-            by Tiogasoft, L.L.C., a California limited liability company doing
-            business as Tioga AI (&ldquo;Tioga AI,&rdquo; &ldquo;we,&rdquo; or
+            by Tiogasoft, L.L.C., a California limited liability company that operates the Tioga AI brand (&ldquo;Tioga AI,&rdquo; &ldquo;we,&rdquo; or
             &ldquo;us&rdquo;). By using the Site, you agree to them. If you
             don&apos;t agree, don&apos;t use the Site.
           </p>

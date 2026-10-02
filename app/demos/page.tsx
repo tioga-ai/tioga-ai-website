@@ -74,7 +74,7 @@ export default function DemosPage() {
       <div className="sr-only" aria-hidden="true">
         <p>Live AI Demos — Tioga AI</p>
         <p>
-          Real AI workflows running against Tioga AI&apos;s own agent infrastructure, no signup. Each demo is labeled live model call, browser simulation, or dated operational excerpt. A few examples (see the full, current catalog below):
+          Real AI workflows running against Tioga AI&apos;s own agent infrastructure, no signup. Each demo is labeled live model call, browser simulation, or dated operational excerpt. A few examples (see the current catalog below):
         </p>
         <ul>
           {DEMOS.map((demo) => (

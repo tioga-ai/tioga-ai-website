@@ -128,6 +128,7 @@ export default function AgentAutonomyMapperPage() {
       title="Agent Autonomy Tier Mapper"
       badge="Self-Assessment — Rules-Based, Not a Model Call"
       evidenceTier="browser-simulation"
+      evidenceDetail="A rules-based self-assessment that runs in your browser — no model call, no records, and no connection to any system."
       description="Describe an AI-agent use case — or pick a preset — and see where it lands on Gartner's four-tier autonomy framework, and the corresponding Tioga Safe/Ask-first/Never governance tier."
     >
       {/* Step 1: pick a use case */}

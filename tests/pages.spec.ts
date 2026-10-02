@@ -372,3 +372,44 @@ test("follow-up QA wording fixes stay in place", async ({ request }) => {
   const vs = await html(request, "/mcp/vs-custom-integration");
   expect(vs).not.toMatch(/href="\/engineering\/fusion-ai-readiness-assessment"[^>]*>\s*MCP demo/);
 });
+
+// Final QA batch (2026-10-01): items whose right answer is fixed by code or by a
+// consistency rule, pinned so they cannot drift back.
+test("final QA wording and consistency fixes stay in place", async ({ request }) => {
+  test.setTimeout(120_000);
+
+  // Legal: do not assert a fictitious-business-name filing the site cannot back up.
+  const terms = await bodyText(request, "/terms");
+  expect(terms).not.toMatch(/doing business as/i);
+  expect(terms).toMatch(/operates the Tioga AI brand/);
+
+  // Privacy: the chat route stores nothing and the widget keeps no history outside the tab.
+  const privacy = await bodyText(request, "/privacy");
+  expect(privacy).toMatch(/lives only in your open browser tab/);
+  expect(privacy).not.toMatch(/not stored after your browser session ends/);
+
+  // Ledger: the one free-pool call carried a small cost, so none settle at exactly $0 —
+  // every page that quotes that must say why instead of printing a bare "0 of 16 (0%)".
+  for (const path of ["/showcase", "/engineering/governance-ledger", "/articles/ai-cost-governance-ledger"]) {
+    const text = await bodyText(request, path);
+    expect(text, path).toMatch(/carried (a small cost|\$\s*0\.\d+)/);
+    expect(text, path).not.toMatch(/\(\s*0\s*%\s*\)/);
+  }
+
+  // One vocabulary for the Fit Check outcome, positioning that matches the three practices,
+  // and a catalog sentence that does not claim to be complete.
+  expect(await bodyText(request, "/")).not.toMatch(/proceed \/ revise \/ stop/);
+  expect(await bodyText(request, "/solutions/ai-governance")).not.toMatch(/actual center of Tioga/);
+  expect(await bodyText(request, "/demos")).not.toMatch(/full, current catalog/);
+
+  // The spend meter on the simulated governed-write demos is labeled as simulated.
+  for (const path of ["/demos/ap-exception-workflow", "/demos/quickbooks-bill-approval", "/demos/capital-equipment-order", "/demos/field-service-classification"]) {
+    const text = await bodyText(request, path);
+    expect(text, path).toMatch(/Simulated model spend/);
+    expect(text, path).toMatch(/illustrative cap/);
+  }
+
+  // Standing Watch: the deferred item is about a remote session, not the automation's reach.
+  const watch = await bodyText(request, "/demos/standing-watch");
+  expect(watch).not.toMatch(/the automation has no path to enable this itself/);
+});

@@ -306,9 +306,9 @@ export default function FieldServiceClassificationPage() {
       {/* Stats */}
       <div className="grid grid-cols-3 gap-3 mb-6">
         <div className="p-4 rounded-xl" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
-          <p className="text-[11px] text-[var(--text-muted)] uppercase tracking-wide mb-1.5">Model spend</p>
+          <p className="text-[11px] text-[var(--text-muted)] uppercase tracking-wide mb-1.5">Simulated model spend</p>
           <p className="text-xl font-bold font-mono" style={{ color: "var(--text)" }}>{fmtUsd(Number(spentUsd.toFixed(4)))}</p>
-          <p className="text-xs text-[var(--text-muted)] mt-1">of ${budgetCap} cap</p>
+          <p className="text-xs text-[var(--text-muted)] mt-1">of ${budgetCap} illustrative cap</p>
         </div>
         <div className="p-4 rounded-xl" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
           <p className="text-[11px] text-[var(--text-muted)] uppercase tracking-wide mb-1.5">Ledger entries</p>

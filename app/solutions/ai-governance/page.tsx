@@ -33,7 +33,7 @@ const content: SolutionContent = {
     {
       label: "The deepest bench of the three practices",
       detail:
-        "Ten distinct governance engagements exist because this is the actual center of Tioga's business — not a checkbox practice bolted onto an automation shop.",
+        "Ten distinct governance engagements: the deepest bench of the three practices — not a checkbox practice bolted onto an automation shop.",
     },
     {
       label: "Built on the same infrastructure Tioga runs itself",

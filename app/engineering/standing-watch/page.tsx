@@ -211,8 +211,7 @@ and restart the gateway.`}
               The Aug 10 run makes the boundary concrete rather than
               theoretical: FileVault was left flagged, not fixed, because
               enabling disk encryption needs Recovery Mode / physical
-              console access — nothing the automation runs with can reach
-              that, so it says so instead of reaching for access it
+              console access — beyond what a remote session can do, so the run says so instead of reaching for access it
               shouldn&apos;t have or silently skipping the finding. A
               separate item that same day — tightening the home
               router&apos;s own firewall rules — was flagged and correctly

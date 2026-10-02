@@ -16,7 +16,7 @@ const CHOICES = [
     name: "The AI Fit Check",
     price: "$1,500",
     duration: "One day · fully remote",
-    desc: "Start with a 20-minute intro conversation — not a paid reservation. When a decision needs qualifying, the Fit Check returns a written proceed / revise / stop call, the constraints, and a proposed next scope.",
+    desc: "Start with a 20-minute intro conversation — not a paid reservation. When a decision needs qualifying, the Fit Check returns a written go / no-go call, the constraints, and a proposed next scope.",
     href: "/ai-fit-check",
     ctaLabel: "Start with the AI Fit Check",
     event: "cta_ai_fit_check",

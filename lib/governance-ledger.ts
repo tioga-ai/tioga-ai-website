@@ -80,6 +80,8 @@ export const FREE_ZERO_COST_COUNT = LEDGER.filter(
   (r) => r.pool === "free" && parseCost(r.cost) === 0
 ).length; // 0 in this window — the one free-pool call still carried a small Gemini cost
 export const FREE_ZERO_COST_PCT = Math.round((FREE_ZERO_COST_COUNT / TOTAL_CALLS) * 100); // 0
+// What the free-pool row(s) actually cost -- lets copy explain why none settle at exactly $0.
+export const FREE_POOL_SPEND = LEDGER.filter((r) => r.pool === "free").reduce((sum, r) => sum + parseCost(r.cost), 0);
 
 export const TOTAL_SPEND = LEDGER.reduce((sum, r) => sum + parseCost(r.cost), 0);
 export const BUDGET_CAP = 30.0;

@@ -3,10 +3,10 @@ import {
   FREE_COUNT,
   PAID_COUNT,
   FREE_ZERO_COST_COUNT,
-  FREE_ZERO_COST_PCT,
   TOTAL_SPEND,
   BUDGET_CAP,
   BACKEND_ROUTES,
+  FREE_POOL_SPEND,
 } from "../../lib/governance-ledger";
 
 // All labels live in the DOM, not in the canvas (plan §3 non-goal: no
@@ -43,8 +43,7 @@ export default function ShowcaseLegend() {
         <p className="text-xs text-[var(--text-muted)] leading-relaxed">
           Every ribbon passes through the same checkpoint — the budget reservation against the
           real ${BUDGET_CAP.toFixed(2)} / 30-day cap. Spend sits at ${TOTAL_SPEND.toFixed(6)}.{" "}
-          {FREE_COUNT} of {TOTAL_CALLS} calls are free-pool; {FREE_ZERO_COST_COUNT} of those (
-          {FREE_ZERO_COST_PCT}%) settle at exactly $0. {PAID_COUNT} paid calls don&apos;t. Real
+          {FREE_COUNT} of {TOTAL_CALLS} calls {FREE_COUNT === 1 ? "is" : "are"} free-pool and still carried a small cost (${FREE_POOL_SPEND.toFixed(6)}), so {FREE_ZERO_COST_COUNT} of {TOTAL_CALLS} settle at exactly $0; the {PAID_COUNT} paid calls don&apos;t either. Real
           glass (refraction, not a flat glow) — the ribbons visibly bend passing through it.
         </p>
       </div>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ArticlePage, { type ArticleContent } from "@/components/ArticlePage";
-import { TOTAL_CALLS, PAID_COUNT, FREE_COUNT, FREE_ZERO_COST_COUNT, FREE_ZERO_COST_PCT, TOTAL_SPEND } from "@/lib/governance-ledger";
+import { TOTAL_CALLS, PAID_COUNT, FREE_COUNT, FREE_ZERO_COST_COUNT, FREE_POOL_SPEND, TOTAL_SPEND } from "@/lib/governance-ledger";
 
 export const metadata: Metadata = {
   title: "What a Real AI Cost-Governance Ledger Looks Like",
@@ -48,8 +48,7 @@ const content: ArticleContent = {
           first, by policy, not by luck. What changed is that real call
           volume has grown past what those backends alone can cover, so more
           calls now resolve to paid credit before the $30 cap is ever at
-          risk. {FREE_ZERO_COST_COUNT} of {TOTAL_CALLS} calls in this excerpt
-          settled at exactly $0 ({FREE_ZERO_COST_PCT}%) — worth naming
+          risk. {FREE_ZERO_COST_COUNT} of {TOTAL_CALLS} calls in this excerpt settled at exactly $0 — even the one free-tier call carried ${FREE_POOL_SPEND.toFixed(6)} — worth naming
           honestly rather than only ever citing whichever window&apos;s
           numbers look best.
         </p>

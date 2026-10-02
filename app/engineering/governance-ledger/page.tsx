@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import BenchmarkCard from "@/components/BenchmarkCard";
-import { TOTAL_CALLS, PAID_COUNT, FREE_ZERO_COST_COUNT, FREE_ZERO_COST_PCT } from "@/lib/governance-ledger";
+import { TOTAL_CALLS, PAID_COUNT, FREE_ZERO_COST_COUNT, FREE_POOL_SPEND } from "@/lib/governance-ledger";
 import { EvidenceTierTag } from "@/app/demos/_lib/evidence-tier";
 
 export const metadata: Metadata = {
@@ -105,8 +105,7 @@ export default function GovernanceLedgerWriteup() {
               window route to paid OpenRouter backends
               (<code className="text-xs px-1 py-0.5 rounded" style={{ background: "var(--bg-card)" }}>glm-5.2</code>,{" "}
               <code className="text-xs px-1 py-0.5 rounded" style={{ background: "var(--bg-card)" }}>gpt-terra</code>) —
-              only {FREE_ZERO_COST_COUNT} of {TOTAL_CALLS} ({FREE_ZERO_COST_PCT}%) still settle at exactly $0 in this
-              particular window. The mechanism hasn&apos;t changed: every
+              the one free-pool call still carried a small cost (${FREE_POOL_SPEND.toFixed(6)}), so {FREE_ZERO_COST_COUNT} of {TOTAL_CALLS} settle at exactly $0 in this particular window. The mechanism hasn&apos;t changed: every
               request still records what was requested and what actually
               served it, and the routing policy still tries free/cheap
               backends first — it&apos;s just that there&apos;s more real traffic
@@ -143,7 +142,7 @@ export default function GovernanceLedgerWriteup() {
               sampleSize: "16 logged calls, unsampled (every call in the captured window, not a spot check)",
               metrics: [
                 { label: "Calls logged", value: "16 (unsampled)" },
-                { label: "Free-tier resolution", value: `${FREE_ZERO_COST_COUNT}/${TOTAL_CALLS} calls (${FREE_ZERO_COST_PCT}%) settled at exactly $0 via local/free-tier routing this window` },
+                { label: "Free-tier resolution", value: `${FREE_ZERO_COST_COUNT}/${TOTAL_CALLS} calls settled at exactly $0 via local/free-tier routing this window (the one free-pool call carried $${FREE_POOL_SPEND.toFixed(6)})` },
                 { label: "Ledger window", value: "Sep 8–9, 2026" },
                 { label: "Snapshot captured", value: "Sep 9, 2026" },
               ],
