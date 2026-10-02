@@ -138,9 +138,7 @@ export default function EUAIActPage() {
           <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text)" }}>Where ISO 42001 fits in</h2>
           <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-4">
             ISO 42001 certification isn&apos;t itself an EU AI Act requirement,
-            but it&apos;s emerging as the proof point enterprise buyers use to
-            screen whether a vendor&apos;s governance claims are real rather
-            than self-reported — reason enough to build toward it even before
+            but it&apos;s increasingly used by some enterprise buyers as a proof point to screen whether a vendor&apos;s governance claims are real rather than self-reported — reason enough to build toward it even before
             certification is complete.
           </p>
           <Link href="/trust/framework-mapping" className="text-sm hover:text-[var(--text)] transition-colors" style={{ color: "var(--accent)" }}>

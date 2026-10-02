@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     template: "%s — Tioga AI",
   },
   description:
-    "See how Claude connects to enterprise systems like SAP, Salesforce, and ServiceNow via the Model Context Protocol — live, interactive demo.",
+    "See how Claude connects to enterprise systems like SAP, Workday, and Salesforce via the Model Context Protocol — an interactive demo on mock data.",
   alternates: { canonical: "/mcp" },
   openGraph: {
     images: ["/opengraph-image"],

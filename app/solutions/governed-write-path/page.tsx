@@ -36,7 +36,7 @@ const content: SolutionContent = {
         "The Agent-Ready ERP Diagnostic & Governed Write-Path is scoped specifically around one stalled write path in your environment — chosen because it's the constraint actually blocking you.",
     },
     {
-      label: "Try the actual write-path pattern, live",
+      label: "Try the write-path pattern in your browser",
       detail:
         "The Governed AP Exception Workflow demo runs the full loop — propose, policy decision, approval or block, simulated write, audit, and rollback — the same pattern this engagement builds around your write path.",
     },

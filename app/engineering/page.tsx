@@ -30,7 +30,7 @@ const WRITEUPS = [
     href: "/engineering/governance-ledger",
     title: "Governance Ledger",
     model: "No model call",
-    summary: "Why this is a dated ledger excerpt instead of a live feed, how the NIST AI RMF mapping falls out of the routing gateway's own schema, and the one demo with zero prompt-injection surface.",
+    summary: "Why this is a dated ledger excerpt instead of a live feed, how the NIST AI RMF mapping falls out of the routing gateway's own schema, and why it has zero prompt-injection surface.",
   },
   {
     href: "/engineering/invoice-processing",
@@ -73,8 +73,7 @@ export default function EngineeringIndexPage() {
           No black box.
         </h1>
         <p className="text-lg text-[var(--text-muted)] leading-relaxed max-w-2xl mb-16">
-          Every demo on this site is a real, deployed route — not a mockup. Here&apos;s
-          the actual engineering behind each one: which model it runs on and
+          Every demo on this site is a real, deployed route. Here&apos;s the engineering behind the model-backed ones: which model it runs on and
           why, how untrusted input is constrained before it reaches a prompt,
           and where the defensive code lives.
         </p>

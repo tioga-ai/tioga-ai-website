@@ -27,7 +27,7 @@ const content: ArticleContent = {
   date: "2026-08-03",
   title: "Why \"auto-approve everything under $X\" is an AP governance anti-pattern",
   dek: "A single spend threshold is a policy with exactly one rule. Real accounts-payable exception handling needs independent layers — and the layer everyone skips is what happens after something executes.",
-  evidenceLabel: "Evidence: the actual three-tier policy from my live Governed AP Exception Workflow demo, plus a rollback bug I caught and fixed while building it.",
+  evidenceLabel: "Evidence: the actual three-tier policy from my Governed AP Exception Workflow demo (a browser simulation of the policy engine), plus a rollback bug I caught and fixed while building it.",
   sections: [
     {
       heading: "One threshold isn't a policy",

@@ -54,7 +54,7 @@ export default function FusionAiReadinessAssessmentWriteup() {
         </p>
         <EvidenceTierTag
           tier="model-demonstration"
-          detail="Claude Sonnet 5 reasons live, via the production endpoint, over the allowlisted Fusion Cloud ERP scenario a visitor selects; it does not connect to a live Fusion tenant — that's a planned Phase B follow-up, not yet built."
+          detail="Claude Sonnet 5 reasons live, via the production endpoint, over the allowlisted Fusion Cloud ERP scenario a visitor selects; it does not connect to a live Fusion tenant , and there is no sandbox connection yet."
         />
 
         <div className="space-y-10">

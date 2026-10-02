@@ -149,7 +149,7 @@ export default function FusionAiReadinessAssessmentPage() {
     <DemoShell
       title="Oracle Fusion Cloud AI-Readiness Assessment"
       evidenceTier="model-demonstration"
-      evidenceDetail="Claude Sonnet 5 reasons live, via the production endpoint, over the allowlisted Fusion Cloud ERP scenario you select — it does not connect to a live Fusion tenant. A real Fusion sandbox connection is a planned follow-up (Phase B), not yet built."
+      evidenceDetail="Claude Sonnet 5 reasons live, via the production endpoint, over the allowlisted Fusion Cloud ERP scenario you select — it does not connect to a live Fusion tenant. It does not connect to a Fusion sandbox yet."
       description="Answer a few questions about your Oracle Fusion Cloud ERP environment and get a sample AI-agent-readiness assessment — covering role/security scope, REST API discipline, audit-trail readiness, and human-approval gates — generated in about 60 seconds."
     >
       {/* Form */}

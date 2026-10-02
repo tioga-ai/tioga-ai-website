@@ -43,10 +43,7 @@ const content: ArticleContent = {
       body: (
         <p>
           My live assessment tool scores readiness on a 1–10 scale (higher is
-          more ready) from three concrete inputs: the target agent use case —
-          AP invoice exceptions, procurement requisition triage, GL journal
-          review, or expense auditing carry very different risk profiles —
-          the current integration method (nothing yet, direct REST calls,
+          more ready) from four concrete inputs: the target agent use case — AP invoice exceptions, procurement requisition triage, GL journal review, or expense auditing carry very different risk profiles — the approximate transaction volume, the current integration method (nothing yet, direct REST calls,
           Oracle Integration Cloud, or Oracle&apos;s own AI Agent Studio), and
           which governance controls are already in place: agent-scoped
           security roles, REST API scope discipline, an exported audit trail,

@@ -44,7 +44,7 @@ const content: ArticleContent = {
           </p>
           <p>
             My own live demos tag every policy decision against the NIST
-            function it maps to — GOVERN-1.5 for documented scope
+            function it maps to — GOVERN-1.4 for documented scope
             enforcement, MEASURE-2.4 for system behavior monitored against
             expectations, MANAGE-1.3 for risk escalation, MANAGE-4.1 for
             post-deployment monitoring. That tag is attached once, at the

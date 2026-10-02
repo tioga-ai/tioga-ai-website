@@ -26,8 +26,9 @@ const content: ArticleContent = {
   slug: "ai-cost-governance-ledger",
   query: "AI cost governance model routing enterprise",
   date: "2026-08-03",
+  updated: "September 2026",
   title: "What a real AI cost-governance ledger looks like",
-  dek: "Cost governance for AI usually gets pitched as a future dashboard. Here's a live one, running on my own infrastructure, with the actual numbers.",
+  dek: "Cost governance for AI usually gets pitched as a future dashboard. Here's a real one, running on my own infrastructure, with the actual numbers.",
   evidenceLabel: "Evidence: a real, unsampled excerpt from my own AI routing gateway's ledger — not a projection.",
   sections: [
     {
@@ -76,8 +77,7 @@ const content: ArticleContent = {
           served it, tokens in and out, and cost — every call, not a
           statistical sample. That distinction matters for the same reason
           it matters in the governance frameworks this maps to (NIST AI RMF
-          MANAGE-1.3, MAP, and MEASURE functions, see the framework mapping
-          below): a sampled log can miss the one call that mattered. An
+          MANAGE-1.3, MAP, and MEASURE functions, see the framework mapping linked at the end): a sampled log can miss the one call that mattered. An
           unsampled one can&apos;t.
         </p>
       ),

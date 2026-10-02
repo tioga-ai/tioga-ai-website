@@ -27,7 +27,7 @@ const content: ArticleContent = {
   date: "2026-08-03",
   title: "How a governed AI write-path actually works",
   dek: "Most \"AI for ERP\" pitches stop at read-only. Here's the seven-stage pattern — read, decide, approve, execute, audit, reject, rollback — implemented as actual running code, not a slide.",
-  evidenceLabel: "Evidence: real policy code and a real bug caught during testing, both from my live Governed AP Exception Workflow demo.",
+  evidenceLabel: "Evidence: real policy code and a real bug caught during testing, both from my Governed AP Exception Workflow demo (a browser simulation of the policy engine).",
   sections: [
     {
       heading: "The pattern, concretely",
@@ -92,7 +92,7 @@ const content: ArticleContent = {
       body: (
         <p>
           Each policy check in the demo carries an explicit control tag —
-          scope enforcement maps to GOVERN-1.5, spend-tier escalation to
+          scope enforcement maps to GOVERN-1.4, spend-tier escalation to
           MANAGE-1.3, ERP validation to MEASURE-2.4, and the audit ledger
           itself to MANAGE-4.1. That&apos;s not decoration: it&apos;s what turns
           a ledger row into evidence a control owner can actually cite, not

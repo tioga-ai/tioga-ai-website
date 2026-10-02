@@ -242,8 +242,7 @@ export default function TimecardExceptionShadowModePage() {
       </div>
 
       <p className="text-xs text-slate-500">
-        Shadow mode means exactly this: the agent proposes, it never executes, and every proposal is scored against
-        what a human reviewer actually decided. The FLSA/state wage-and-hour rules cited above are real statutes and
+        Shadow mode means exactly this: the agent proposes, it never executes, and every proposal is scored against a reviewer&apos;s recorded decision (seeded and illustrative here; real reviewer decisions in an engagement). The FLSA/state wage-and-hour rules cited above are real statutes and
         regulations, cited illustratively to show the class of check a timecard-exception agent should run against —
         this is not legal advice and not a substitute for counsel on any real pay decision. Everything on this page
         runs in your browser; nothing is sent to a server. 100% synthetic data — invented for this demo, not sourced

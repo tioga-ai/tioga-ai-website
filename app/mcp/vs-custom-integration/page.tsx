@@ -111,8 +111,7 @@ export default function McpVsCustomIntegrationPage() {
               <Link href="/mcp" style={{ color: "var(--accent)" }} className="underline underline-offset-2 hover:text-[var(--text)] transition-colors">
                 live MCP demo
               </Link>{" "}
-              on this site shows the actual tool-server code for SAP,
-              Workday, and Salesforce connectors written this way.
+              on this site shows the actual tool-server code for SAP, Workday, and Salesforce connectors written this way, running against mock instances.
             </p>
           </div>
 
@@ -155,9 +154,9 @@ export default function McpVsCustomIntegrationPage() {
 
         <div className="mt-16 text-center">
           <p className="text-xs text-[var(--text-muted)] mb-4">
-            See the pattern applied to a real workflow in the{" "}
-            <Link href="/engineering/fusion-ai-readiness-assessment" style={{ color: "var(--accent)" }} className="underline underline-offset-2 hover:text-[var(--text)] transition-colors">
-              Fusion Cloud AI-Readiness Assessment writeup →
+            See the connector pattern running against mock systems in the{" "}
+            <Link href="/mcp" style={{ color: "var(--accent)" }} className="underline underline-offset-2 hover:text-[var(--text)] transition-colors">
+              MCP demo →
             </Link>
           </p>
           <Link

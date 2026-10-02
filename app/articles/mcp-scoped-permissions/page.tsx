@@ -48,7 +48,7 @@ const content: ArticleContent = {
       body: (
         <>
           <p>
-            My own MCP demo enforces a hard per-IP rate limit (20 requests)
+            My own MCP demo enforces a per-IP rate limit (20 requests per 24 hours, held in server memory)
             on the endpoint before a single call reaches the model — a basic
             control an MCP connection doesn&apos;t give you automatically.
             The system prompt also requires the model to return which

@@ -36,7 +36,7 @@ const content: SolutionContent = {
         "Try the exception-workflow demo below — a synthetic invoice moves through approval, spend-change escalation, and rollback, with every step logged. Browser simulation, not a live connected system.",
     },
     {
-      label: "Built by someone who ran AP, not just automated it",
+      label: "Built by someone who managed the systems AP runs on, not just automated them",
       detail:
         "Before founding Tioga AI, the founder managed ERP and business-reporting systems — including AP workflows — across four sister companies.",
     },

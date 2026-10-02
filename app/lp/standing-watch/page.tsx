@@ -82,7 +82,7 @@ export default function StandingWatchLandingPage() {
             SAP, Workday, Databricks, and ServiceNow each anchor their AI agent governance to their own estate.
             Run three or four of these platforms and you own three or four single panes of glass — and still
             have no independent layer that verifies agent behavior and composes one evidence record across them,
-            which is where the EU AI Act&apos;s deployer obligations and NIST/ISO program requirements actually attach.
+            which is the kind of record a deployer of in-scope high-risk systems, or a NIST/ISO program, will be asked to produce.
           </p>
         </ScrollReveal>
 
