@@ -597,7 +597,7 @@ export default function MCPPage() {
  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
  {[
  { stat: "< 2 weeks", label: "to first MCP integration" },
- { stat: "10+", label: "connector tools built against test/demo instances" },
+ { stat: "3", label: "example connector tools in the live demo (SAP, Workday, Salesforce), on mock data" },
  { stat: "Reusable", label: "tools cut duplicate integration work per use case" },
  ].map((s) => (
  <div

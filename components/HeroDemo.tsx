@@ -29,15 +29,14 @@ interface Scenario {
 // /demos?tab=email, just no longer cycled through here.
 const SCENARIOS: Scenario[] = [
   {
-    tag: "AP Automation",
+    tag: "AP Exception",
     icon: "📄",
-    filename: "invoice_meridian_logistics.pdf",
+    filename: "invoice_INV-2214_meridian_steel.pdf",
     fields: [
-      { label: "Vendor", value: "Meridian Logistics" },
-      { label: "Amount", value: "$18,450.00" },
-      { label: "Document type", value: "Invoice — Net 30" },
-      { label: "Confidence", value: "98%" },
-      { label: "Routed to", value: "3-way match exception queue" },
+      { label: "Vendor", value: "Meridian Steel Supply" },
+      { label: "Invoice", value: "INV-2214 against PO-4471" },
+      { label: "Over PO by", value: "$8,000.00" },
+      { label: "Routed to", value: "Human approval (over autonomous ceiling)" },
     ],
     time: "2.1s",
     demoHref: "/demos/ap-exception-workflow",

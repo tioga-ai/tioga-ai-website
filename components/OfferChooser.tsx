@@ -36,7 +36,7 @@ const CHOICES = [
     name: "Standing Watch Assessment",
     price: "$15–35K",
     duration: "3–4 weeks · scoped to your estate",
-    desc: "Reconciles the agent inventory you already have, then adds independent behavioral verification, a spend baseline across platforms, and a findings ledger you keep — with owners and practical remediation priorities.",
+    desc: "Reconciles the agent inventory you already have, then adds vendor-neutral behavioral verification, a spend baseline across platforms, and a findings ledger you keep — with owners and practical remediation priorities.",
     href: "/solutions/standing-watch",
     ctaLabel: "See the Standing Watch ladder",
     event: "cta_standing_watch_assessment",
