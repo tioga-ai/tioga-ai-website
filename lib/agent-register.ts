@@ -509,7 +509,7 @@ export const DISPOSITIONS: DispositionEvent[] = [
   },
   {
     date: "2026-08-30",
-    finding: "The one script in the estate that writes files had no per-run spend cap — every sibling script had one.",
+    finding: "The one script in the estate that edits production files had no per-run spend cap — every sibling script had one.",
     category: "AI OS Hardening",
     disposition: "approved",
   },

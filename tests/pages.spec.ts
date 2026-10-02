@@ -455,4 +455,15 @@ test("decision-batch fixes and source-verified facts stay in place", async ({ re
 
   // Mixed as-of dates are labeled instead of left implicit.
   expect(await bodyText(request, "/demos/automation-oversight")).toMatch(/as of Aug 30, 2026/);
+
+  // The hub's Service card lists every capability its description names (email/document
+  // triage is a live row, so the card and the total move together: 3 live + 1 not built, 13 live).
+  const solutions = await bodyText(request, "/solutions");
+  expect(solutions).toMatch(/Email & document triage/);
+  expect(solutions).toMatch(/13 live workflows/);
+  expect(solutions).toMatch(/3 live · 1 not built/);
+
+  // One script, one description (the Automation Oversight data used two different phrasings).
+  const oversight = await bodyText(request, "/demos/automation-oversight");
+  expect(oversight).not.toMatch(/script in the estate that writes files/);
 });
