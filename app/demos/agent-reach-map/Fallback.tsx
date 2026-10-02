@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import { AGENTS, SYSTEMS, type SystemId, type Tier } from "../../../lib/agent-register";
 
 // Deterministic fallback — no WebGL, prefers-reduced-motion, or a lost
-// WebGL context all land here. Same 29-row register as the 3D scene and
+// WebGL context all land here. Same 27-row register as the 3D scene and
 // /demos/automation-oversight, rendered as a real HTML table (not a blank
 // canvas, not a static image standing in for the data). First-class
 // deliverable per docs/design/3d-design-standard.md §5.3, and honestly the

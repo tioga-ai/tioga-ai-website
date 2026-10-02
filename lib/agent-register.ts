@@ -34,8 +34,9 @@
 //                          happens; a human may review after the fact (or
 //                          never), but nothing stopped it from landing.
 // A single agent can carry more than one tier at once — check-automations
-// is the clearest real example (a narrow, bounded auto-implement path is
-// agent-owned; everything else stays human-supervised) — so tier lives per
+// is a real example (it stages every code change for a person to apply, yet
+// can still add a brand-new note with no review; daily-synthesis likewise
+// carries an agent-owned code-edit edge beside its human-triaged items) — so tier lives per
 // write edge, not per agent.
 
 export type Tier = "human-owned" | "human-supervised" | "agent-owned";
@@ -88,7 +89,7 @@ export const SYSTEMS: SystemRow[] = [
   { id: "GATEWAY_STATE", name: "JARVIS gateway + budget state", description: "The model-routing daemon and its shared budget state, read by every AI-calling pipeline in the estate." },
   { id: "SMTP_EMAIL", name: "Outbound email", description: "Outbound alert and report emails." },
   { id: "SYSTEM_POWER", name: "System power settings", description: "pmset/Power Nap/standby state on the laptop." },
-  { id: "LAUNCHD_QUEUE", name: "launchd / tj dispatch queue", description: "Job scheduling state and the cross-machine tj job-dispatch queue." },
+  { id: "LAUNCHD_QUEUE", name: "launchd job schedule", description: "Job scheduling state (launchd). The older cross-machine dispatch queue was retired 2026-09-28." },
   { id: "MARKET_DATA", name: "Market-data feed (read-only)", description: "Quote and volatility data only — no trade-execution tool is granted to any job in this register." },
   { id: "OWN_OUTPUT", name: "Pipeline-local output dirs", description: "Non-vault-synced out/ directories (e.g. YouTubeAIDigest/out/) — contained by construction." },
   { id: "AUDIT_REPORTS", name: "Audit reports", description: "Weekly/monthly audit report files, written only by the audit jobs that generate them." },
@@ -109,7 +110,7 @@ export const AGENTS: AgentRow[] = [
     id: "automation-wake-guard",
     name: "Automation Wake Guard",
     schedule: "3:17 AM daily",
-    purpose: "Keeps the laptop awake so the 5:45–10:00 AM digest chain can't be interrupted by sleep.",
+    purpose: "Keeps the laptop awake so the early-morning digest chain can't be interrupted by sleep.",
     reads: ["SYSTEM_POWER"],
     writes: [
       { system: "SYSTEM_POWER", tier: "agent-owned", note: "Temporarily disables Power Nap/standby through a narrowly scoped system permission, restored on exit — no human review before applying, self-restoring." },
@@ -131,7 +132,7 @@ export const AGENTS: AgentRow[] = [
     id: "automation-watchdog-late",
     name: "Automation Watchdog (late)",
     schedule: "6:30 AM daily",
-    purpose: "Second watchdog pass, same detection/catch-up logic as the 8:00 AM run.",
+    purpose: "Second watchdog pass, same detection/catch-up logic as the earlier watchdog run.",
     reads: ["LAUNCHD_QUEUE"],
     writes: [
       { system: "LAUNCHD_QUEUE", tier: "agent-owned", note: "Same unsupervised catch-up trigger as automation-watchdog." },
@@ -159,7 +160,7 @@ export const AGENTS: AgentRow[] = [
       { system: "PIPELINE_CODE", tier: "human-supervised", approver: APPROVER, note: "Every code change it drafts is staged, not applied (since 2026-09-16, whatever the file type). Applying one is a separate explicit step that re-checks the staged copy's hash and the reviewed diff, and syntax-checks the result. Anything outside the bounded class is only proposed." },
       { system: "VAULT_RESEARCH", tier: "agent-owned", note: "May create a brand-new note under research/ or sales/ (new files only, never overwriting an existing file; since 2026-10-02 with a write-only tool, no shell, no subagents). No human review before the file appears." },
     ],
-    blastRadius: "Reads the estate's logs and cost data and drafts changes to other pipelines' code, but none of those changes goes live without a person applying it. The only unsupervised write is a new, non-overwriting note.",
+    blastRadius: "Reads the estate's logs and cost data and drafts changes to other pipelines' code, but none of those changes goes live without a person applying it. Its unsupervised writes are limited to new, non-overwriting notes, its own reports and a daily status email.",
   },
   {
     id: "check-launchd-status",
@@ -190,7 +191,7 @@ export const AGENTS: AgentRow[] = [
     purpose: "Reads TiogaIntelDigest + YouTubeAIDigest + MarketBrief + session-digest output and extracts cross-pipeline actionable items.",
     reads: ["VAULT_RESEARCH", "OWN_OUTPUT"],
     writes: [
-      { system: "PIPELINE_CODE", tier: "agent-owned", note: "Its implement.py stage live-edits one automation's script per attempt for AI OS Hardening findings judged bounded and additive: backup first, syntax check, and a deterministic scan of the added lines, with automatic revert on failure. No human review before the edit lands; other categories are proposed only." },
+      { system: "PIPELINE_CODE", tier: "agent-owned", note: "Its implement.py stage live-edits one automation's script per attempt for AI OS Hardening findings classified bounded and additive by a model: backup first, syntax check, and a deterministic scan of the added lines, with automatic revert on failure. No human review before the edit lands; other categories are proposed only." },
       { system: "WORKING_LIST", tier: "agent-owned", note: "Writes new items directly into the founder's own action-item tracker via working_list_update.py — no approval gate before the write lands; a human triages after the fact via triage labels, not before." },
     ],
     blastRadius: "A bad synthesis adds a wrong or fabricated item straight into working-list.md, and its implement stage can edit another automation's code without prior review (reverted if the checks fail). Highest read fan-in of any pipeline in the estate (5 sources in one call).",
@@ -410,7 +411,7 @@ export const AGENTS: AgentRow[] = [
 // Computed from AGENTS/SYSTEMS themselves (not hand-typed), same discipline
 // as governance-ledger.ts's STATS block — see that file's own header.
 
-export const TOTAL_AGENTS = AGENTS.length; // 29
+export const TOTAL_AGENTS = AGENTS.length; // 27 as of 2026-10-02
 
 export const UNSUPERVISED_WRITE_EDGES = AGENTS.flatMap((a) =>
   a.writes.filter((w) => w.tier === "agent-owned").map((w) => ({ agent: a.id, ...w }))
