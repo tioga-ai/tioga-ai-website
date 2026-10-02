@@ -38,6 +38,7 @@ const LINKS: Record<string, string> = {
   "ledger": "/demos/governance-ledger",
   "oversight": "/demos/automation-oversight",
   "autonomy": "/demos/agent-autonomy-mapper",
+  "triage": "/demos?tab=email",
   // Names two systems (Oracle EBS and SAP); a single href can't point to
   // both accurately, so this jumps to the "Browse by system" section
   // below instead of picking one system to misrepresent as "the" answer.

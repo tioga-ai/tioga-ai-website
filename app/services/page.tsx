@@ -222,7 +222,7 @@ export default function ServicesPage() {
                   <div
                     key={offer.name}
                     className="p-7 rounded-2xl"
-                    style={{ background: "var(--bg-card)", border: "1px solid rgba(255,255,255,0.08)" }}
+                    style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}
                   >
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                       <div className="flex-1">
