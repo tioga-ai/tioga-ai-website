@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 // source of truth") — re-verify AGENTS against `launchctl list` at the next
 // real refresh, don't assume either file is still current on its own.
 const SCHEDULED_AUTOMATIONS_COUNT = AGENTS.length;
-const AUTOMATIONS_COUNT_AS_OF = "2026-09-10";
+const AUTOMATIONS_COUNT_AS_OF = "2026-10-02";
 
 const RECENT: DispositionEvent[] = DISPOSITIONS;
 

@@ -13,7 +13,7 @@ import { DISPOSITIONS, TOTAL_AGENTS } from "../../../lib/agent-register";
 export const metadata: Metadata = {
   title: "The Checkpoint Walk — Tioga AI",
   description:
-    "Pick any one of Tioga's own 29 scheduled agents, choose one of its real write edges, and watch what happens at the approval gate — an animation of recorded register data, nothing executes.",
+    "Pick any one of Tioga's own 27 scheduled agents, choose one of its real write edges, and watch what happens at the approval gate — an animation of recorded register data, nothing executes.",
   alternates: { canonical: "/demos/agent-checkpoint-walk" },
   openGraph: {
     images: ["/opengraph-image"],
@@ -76,7 +76,7 @@ export default function AgentCheckpointWalkPage() {
         </h2>
         <EvidenceTierTag
           tier="internal-operational-excerpt"
-          detail="The real 29-job register in lib/agent-register.ts and its 7 real dated dispositions — the same 7 listed on /demos/automation-oversight and used by /demos/agent-reach-map."
+          detail="The real 27-job register in lib/agent-register.ts and its 7 real dated dispositions — the same 7 listed on /demos/automation-oversight and used by /demos/agent-reach-map."
         />
         <div className="space-y-4 text-sm text-[var(--text-muted)] leading-relaxed">
           <p>

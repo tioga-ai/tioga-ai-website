@@ -189,5 +189,5 @@ test("fallback table row count equals the real agent count", async ({ page }) =>
   const fallback = page.getByTestId("agent-reach-map-fallback-table");
   await expect(fallback).toBeVisible();
   await expect(fallback.locator("tbody tr")).toHaveCount(AGENTS.length);
-  expect(AGENTS.length).toBe(29);
+  expect(AGENTS.length).toBe(27);
 });

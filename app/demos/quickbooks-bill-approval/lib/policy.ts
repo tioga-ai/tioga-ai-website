@@ -40,13 +40,13 @@ export const MASTER_DATA_ACTION_TYPES = new Set(["vendor_payment_detail_change"]
 export const AUTHORIZED_CHANGE_RECORDS: Set<string> = new Set();
 
 export const CONTROL_TAGS = {
-  scope: "NIST AI RMF GOVERN-1.4 — documented authorities & scope",
+  scope: "NIST AI RMF GOVERN-1.4 — risk management established through transparent policies, procedures, and other controls",
   spendCap: "NIST AI RMF MANAGE-1.3 — risk response & escalation",
   duplicateCheck: "NIST AI RMF MEASURE-2.4 — system behavior monitored against expectations",
   vendorStatus: "NIST AI RMF MEASURE-2.4 — system behavior monitored against expectations",
   humanApproval: "NIST AI RMF MANAGE-1.3 — risk response & escalation",
   audit: "NIST AI RMF MANAGE-4.1 — post-deployment monitoring & incident response",
-  changeControl: "NIST AI RMF MANAGE-1.3 — segregation of duties & change authorization for agent-effected master-data changes",
+  changeControl: "NIST AI RMF MANAGE-4.1 — post-deployment monitoring plans include change management (master-data changes by the agent)",
   reconciliation: "NIST AI RMF MEASURE-2.4 — claimed-vs-actual reconciliation, run unconditionally on a schedule",
 } as const;
 
