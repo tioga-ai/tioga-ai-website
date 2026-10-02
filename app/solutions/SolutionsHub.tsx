@@ -15,6 +15,7 @@ export const families: Family[] = [
   ] },
   { id: "service", shortName: "Service", name: "Service & Operational Workflows", purpose: "Field service decisions, email/document triage, and HR workforce demos. Procurement workflows are not yet built.", workflows: [
     { id: "field-service", name: "Field service & operations", status: "live" },
+    { id: "triage", name: "Email & document triage", status: "live" },
     { id: "hr-workforce", name: "HR & workforce workflows (timecard exceptions, headcount drafts)", status: "live" },
     { id: "procurement", name: "Procurement workflows", status: "not-built" },
   ] },
