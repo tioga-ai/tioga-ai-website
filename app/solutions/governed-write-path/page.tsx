@@ -110,7 +110,7 @@ const content: SolutionContent = {
       { check: "Optimistic-concurrency write logic across sequential real calls", result: "Worked" },
     ],
     resultsNote:
-      "On the same day, a scripted rerun of the six canned scenarios reproduced five exactly. The sixth (auto-approve) came back blocked because earlier test writes had already pushed that order's committed amount up, so a further $2,000 genuinely exceeded its ceiling. That is expected behavior for stateful test data, not a defect; the setup script includes a reset to restore the seed values.",
+      "On the same day, a scripted rerun of the six canned scenarios the demo had then (it has since gained a seventh and its amounts have changed) reproduced five exactly. The auto-approve scenario came back blocked because earlier test writes had already pushed that order's committed amount up, so a further $2,000 genuinely exceeded its ceiling. That is expected behavior for stateful test data, not a defect; the setup script includes a reset to restore the seed values.",
     reverified: {
       lead: "Re-verified 2026-08-17:",
       text: "the connection and key-pair authentication still worked against the same account.",

@@ -76,7 +76,7 @@ export default function AgentCheckpointWalkPage() {
         </h2>
         <EvidenceTierTag
           tier="internal-operational-excerpt"
-          detail="The real 29-job register in lib/agent-register.ts and its 7 real dated DISPOSITIONS — the same data already live at /demos/agent-reach-map and /demos/automation-oversight."
+          detail="The real 29-job register in lib/agent-register.ts and its 7 real dated dispositions — the same 7 listed on /demos/automation-oversight and used by /demos/agent-reach-map."
         />
         <div className="space-y-4 text-sm text-[var(--text-muted)] leading-relaxed">
           <p>

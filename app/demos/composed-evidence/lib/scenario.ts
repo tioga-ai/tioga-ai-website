@@ -16,8 +16,8 @@
 // neither vendor is building") and
 // ~/SecondBrain/TiogaAI/sales/proposals/11-agent-ready-erp-diagnostic.md's
 // "evidence composition" axis. SAP's own June 2026 reference architecture
-// for third-party MCP access states the enterprise identity/audit
-// requirements are "not yet fully addressed" — a vendor-authored admission
+// for third-party MCP access states the MCP protocol specification is still maturing, with security,
+// identity and governance requirements for enterprise deployments "not yet fully addressed" — a vendor-authored admission
 // of exactly this gap, not a claim Tioga is inventing.
 //
 // Same order (SO-4471) and semiconductor capital-equipment framing as the

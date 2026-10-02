@@ -79,8 +79,9 @@ export const PUNCH_TABLE: PunchDay[] = EMPLOYEES.flatMap((e) =>
     return {
       employeeId: e.id,
       date,
-      clockIn: override?.clockIn ?? "08:00",
-      clockOut: override?.clockOut ?? "16:00",
+      // `in` (not `??`): an override that sets a punch to null means "no punch", not "use the default".
+      clockIn: override && "clockIn" in override ? override.clockIn ?? null : "08:00",
+      clockOut: override && "clockOut" in override ? override.clockOut ?? null : "16:00",
       hoursWorked: override?.hoursWorked ?? 8,
       exceptionId: override?.exceptionId ?? null,
     };

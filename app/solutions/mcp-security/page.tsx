@@ -98,10 +98,10 @@ const content: SolutionContent = {
   ],
   offers: [
     {
-      name: "AI Operations Assessment",
-      price: "$10–15K",
-      duration: "2–3 weeks",
-      desc: "The right starting point to scope an MCP security review or a new integration's permission model — maps what needs access to what, ranked by risk and feasibility.",
+      name: "Agentic AI Governance Framework",
+      price: "$30–75K",
+      duration: "4–8 weeks",
+      desc: "Governance architecture for organizations deploying autonomous AI agents in production — risk registers, oversight controls, and escalation protocols. A fit for scoping an MCP integration's permission model and approval gates.",
     },
     {
       name: "Legacy System AI Augmentation",

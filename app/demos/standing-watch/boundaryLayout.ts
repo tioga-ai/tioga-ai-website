@@ -5,7 +5,7 @@
 // ~/SecondBrain/TiogaAI/research/2026-09-14-standing-watch-3d-scene-fresh-review.md
 // §2/§5. One new idea vs. the showcase/checkpoint-walk precedents: 8 of 9
 // rows land at their own individual terminal (not a shared "pool" — each
-// finding is independently resolved), and the 9th (FileVault, the one
+// finding is independently resolved), and the 9th (the physical-access row, the one
 // status:"human" row) travels dead center through the gate to a physical
 // wall just past it, instead of continuing to a terminal — verified against
 // FLAGGED before writing this, not assumed.
@@ -40,7 +40,7 @@ export interface BoundaryRowGeom {
   endPosition: THREE.Vector3;
   radius: number;
   startOffset: number;
-  /** True for the one row (FileVault) that stops at the wall instead of landing. */
+  /** True for the one row (the physical-access step) that stops at the wall instead of landing. */
   stopsAtWall: boolean;
 }
 

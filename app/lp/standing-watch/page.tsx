@@ -47,7 +47,7 @@ const proof = [
   {
     label: "Built on Tioga's own infrastructure",
     detail:
-      "Generalized from the JARVIS router, router-watch, and security-watch — running across a free local model, multiple OpenRouter-hosted vendors, direct-billed Gemini, and a subscription Claude that's never auto-routed. Single-operator scale, volunteered here, not extracted in a pitch.",
+      "Generalized from the JARVIS router, router-watch, and security-watch — running across a free local model, multiple OpenRouter-hosted vendors, Google-billed Gemini (free tier first, paid past the limit), and a subscription Claude that's never auto-routed. Single-operator scale, volunteered here, not extracted in a pitch.",
   },
   {
     label: "Propose-and-approve by default",

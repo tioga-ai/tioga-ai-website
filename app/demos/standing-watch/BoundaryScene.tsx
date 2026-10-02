@@ -117,7 +117,7 @@ function LandedTerminal({
   );
 }
 
-// --- The wall: the one physical object new to this scene. FileVault's
+// --- The wall: the one physical object new to this scene. The physical-access row's
 // ribbon meets it and stops, permanently — not a failure state (accent, not
 // error, per the research doc's explicit correction) with a bold impact
 // burst (white-hot core -> magenta -> orange edge, the one place this scene
