@@ -17,7 +17,7 @@ import {
 } from "./registerLayout";
 import type { SystemId, Tier } from "../../../lib/agent-register";
 
-// The Reach Map — Tioga's own 29 scheduled agents (left column, one mesh
+// The Reach Map — Tioga's own 27 scheduled agents (left column, one mesh
 // each) authorized against the 12 real systems of record they can read or
 // write (right column), nodes and edges both colored by real authorization
 // tier. Two-column bipartite layout (registerLayout.ts),
@@ -190,7 +190,7 @@ const TIER_STYLE: Record<Tier, { radius: number; restOpacity: number; restIntens
 //
 // 2026-09-26 follow-up to the blind critique ("every agent node is still
 // the same dark red whatever the tier"): this used to be a single
-// instancedMesh with ONE shared material for all 29 nodes, varying only
+// instancedMesh with ONE shared material for all 27 nodes, varying only
 // each instance's `instanceColor` (which three.js only ever applies to a
 // MeshStandardMaterial's diffuse `color` uniform, never its `emissive`).
 // Against this scene's near-black background lit by a strongly

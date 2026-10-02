@@ -13,18 +13,18 @@ import { STATS, TOTAL_AGENTS, SYSTEMS, UNSUPERVISED_WRITE_COUNT } from "../../..
 export const metadata: Metadata = {
   title: "The Reach Map — Tioga AI",
   description:
-    "An interactive 3D scene rendering Tioga's own 29 scheduled automation jobs against the 12 real systems they're authorized to touch, colored by real authorization tier.",
+    "An interactive 3D scene rendering Tioga's own 27 scheduled automation jobs against the 12 real systems they're authorized to touch, colored by real authorization tier.",
   alternates: { canonical: "/demos/agent-reach-map" },
   openGraph: {
     images: ["/opengraph-image"],
     title: "The Reach Map — Tioga AI",
     description:
-      "What is this agent authorized to do? Tioga's own 29-job automation estate, rendered as a pickable estate — not a live feed, a dated, verifiable excerpt.",
+      "What is this agent authorized to do? Tioga's own 27-job automation estate, rendered as a pickable estate — not a live feed, a dated, verifiable excerpt.",
   },
   twitter: {
     card: "summary_large_image",
     title: "The Reach Map — Tioga AI",
-    description: "What is this agent authorized to do? Tioga's own 29-job automation estate, rendered as a pickable estate — not a live feed, a dated, verifiable excerpt.",
+    description: "What is this agent authorized to do? Tioga's own 27-job automation estate, rendered as a pickable estate — not a live feed, a dated, verifiable excerpt.",
     images: ["/opengraph-image"],
   },
 };
@@ -76,7 +76,7 @@ export default function AgentReachMapPage() {
         </h2>
         <EvidenceTierTag
           tier="internal-operational-excerpt"
-          detail="The real 29-job register in lib/agent-register.ts, sourced from Tioga's own home-directory-subsystems.md registry — the same data already live at /demos/automation-oversight."
+          detail="The real 27-job register in lib/agent-register.ts, sourced from Tioga's own home-directory-subsystems.md registry — the same data already live at /demos/automation-oversight."
         />
         <div className="space-y-4 text-sm text-[var(--text-muted)] leading-relaxed">
           <p>

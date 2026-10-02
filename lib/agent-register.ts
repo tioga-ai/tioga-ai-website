@@ -4,13 +4,13 @@
 // docs/design/3d-design-standard.md §6.4: one data source, never a second
 // driftable copy).
 //
-// This is a real excerpt from Tioga's own automation estate: the 29
+// This is a real excerpt from Tioga's own automation estate: the
 // scheduled launchd jobs already
 // listed in app/demos/automation-oversight/page.tsx's SCHEDULED_AUTOMATIONS
 // array, plus each job's real read/write surface, real authorization tier,
 // and real blast radius — sourced from
 // the estate's internal subsystem inventory (its own
-// model/cost/blast-radius registry, last updated 2026-09-13) and cross-
+// model/cost/blast-radius registry; refreshed 2026-10-02 against the live launchd plists, tj-worker and tj-reaper retired) and cross-
 // checked against automation-oversight's own RECENT dispositions array.
 // Not synthetic, not a composite scenario — every field traces to that
 // doc's own wording, cited inline in each row's `note`. This authoring pass
@@ -34,8 +34,9 @@
 //                          happens; a human may review after the fact (or
 //                          never), but nothing stopped it from landing.
 // A single agent can carry more than one tier at once — check-automations
-// is the clearest real example (a narrow, bounded auto-implement path is
-// agent-owned; everything else stays human-supervised) — so tier lives per
+// is a real example (it stages every code change for a person to apply, yet
+// can still add a brand-new note with no review; daily-synthesis likewise
+// carries an agent-owned code-edit edge beside its human-triaged items) — so tier lives per
 // write edge, not per agent.
 
 export type Tier = "human-owned" | "human-supervised" | "agent-owned";
@@ -88,7 +89,7 @@ export const SYSTEMS: SystemRow[] = [
   { id: "GATEWAY_STATE", name: "JARVIS gateway + budget state", description: "The model-routing daemon and its shared budget state, read by every AI-calling pipeline in the estate." },
   { id: "SMTP_EMAIL", name: "Outbound email", description: "Outbound alert and report emails." },
   { id: "SYSTEM_POWER", name: "System power settings", description: "pmset/Power Nap/standby state on the laptop." },
-  { id: "LAUNCHD_QUEUE", name: "launchd / tj dispatch queue", description: "Job scheduling state and the cross-machine tj job-dispatch queue." },
+  { id: "LAUNCHD_QUEUE", name: "launchd job schedule", description: "Job scheduling state (launchd). The older cross-machine dispatch queue was retired 2026-09-28." },
   { id: "MARKET_DATA", name: "Market-data feed (read-only)", description: "Quote and volatility data only — no trade-execution tool is granted to any job in this register." },
   { id: "OWN_OUTPUT", name: "Pipeline-local output dirs", description: "Non-vault-synced out/ directories (e.g. YouTubeAIDigest/out/) — contained by construction." },
   { id: "AUDIT_REPORTS", name: "Audit reports", description: "Weekly/monthly audit report files, written only by the audit jobs that generate them." },
@@ -108,8 +109,8 @@ export const AGENTS: AgentRow[] = [
   {
     id: "automation-wake-guard",
     name: "Automation Wake Guard",
-    schedule: "5:38 AM daily",
-    purpose: "Keeps the laptop awake so the 5:45–10:00 AM digest chain can't be interrupted by sleep.",
+    schedule: "3:17 AM daily",
+    purpose: "Keeps the laptop awake so the early-morning digest chain can't be interrupted by sleep.",
     reads: ["SYSTEM_POWER"],
     writes: [
       { system: "SYSTEM_POWER", tier: "agent-owned", note: "Temporarily disables Power Nap/standby through a narrowly scoped system permission, restored on exit — no human review before applying, self-restoring." },
@@ -119,7 +120,7 @@ export const AGENTS: AgentRow[] = [
   {
     id: "automation-watchdog",
     name: "Automation Watchdog",
-    schedule: "8:00 AM daily",
+    schedule: "4:50 AM daily",
     purpose: "Checks each digest pipeline's completion marker and triggers laptop-side catch-up if the mini's standby run didn't fire.",
     reads: ["LAUNCHD_QUEUE"],
     writes: [
@@ -130,8 +131,8 @@ export const AGENTS: AgentRow[] = [
   {
     id: "automation-watchdog-late",
     name: "Automation Watchdog (late)",
-    schedule: "11:00 AM daily",
-    purpose: "Second watchdog pass, same detection/catch-up logic as the 8:00 AM run.",
+    schedule: "6:30 AM daily",
+    purpose: "Second watchdog pass, same detection/catch-up logic as the earlier watchdog run.",
     reads: ["LAUNCHD_QUEUE"],
     writes: [
       { system: "LAUNCHD_QUEUE", tier: "agent-owned", note: "Same unsupervised catch-up trigger as automation-watchdog." },
@@ -152,19 +153,19 @@ export const AGENTS: AgentRow[] = [
   {
     id: "check-automations",
     name: "Check Automations",
-    schedule: "10:30 AM daily",
-    purpose: "Reviews the estate's own logs and cost data, drafts findings, and may apply a narrow pre-approved class of change automatically.",
+    schedule: "6:00 AM daily",
+    purpose: "Reviews the estate's own logs and cost data, drafts findings, stages proposed code changes for a person to apply, and may add new notes.",
     reads: ["PIPELINE_CODE", "VAULT_RESEARCH", "GATEWAY_STATE"],
     writes: [
-      { system: "PIPELINE_CODE", tier: "agent-owned", note: "Bounded auto-implement allowlist only (pure additions, syntax-checked afterward) — guarded by pre_deploy_gate.py, check_code_parity.py, py_compile+pyflakes revert gates, and verify-artifact-stop.sh, but still lands with no human review before applying." },
-      { system: "PIPELINE_CODE", tier: "human-supervised", approver: APPROVER, note: "Everything outside the bounded allowlist is proposed and sits until reviewed — no path from a finding to a live change skips this." },
+      { system: "PIPELINE_CODE", tier: "human-supervised", approver: APPROVER, note: "Every code change it drafts is staged, not applied (since 2026-09-16, whatever the file type). Applying one is a separate explicit step that re-checks the staged copy's hash and the reviewed diff, and syntax-checks the result. Anything outside the bounded class is only proposed." },
+      { system: "VAULT_RESEARCH", tier: "agent-owned", note: "May create a brand-new note under research/ or sales/ (new files only, never overwriting an existing file; since 2026-10-02 with a write-only tool, no shell, no subagents). No human review before the file appears." },
     ],
-    blastRadius: "Highest blast radius in the estate — the only pipeline with standing write access to other pipelines' own code.",
+    blastRadius: "Reads the estate's logs and cost data and drafts changes to other pipelines' code, but none of those changes goes live without a person applying it. Its unsupervised writes are limited to new, non-overwriting notes, its own reports and a daily status email.",
   },
   {
     id: "check-launchd-status",
     name: "Check launchd Status",
-    schedule: "11:15 AM daily",
+    schedule: "6:45 AM daily",
     purpose: "Watches launchd's own Status column for every scheduled job.",
     reads: ["LAUNCHD_QUEUE"],
     writes: [
@@ -175,7 +176,7 @@ export const AGENTS: AgentRow[] = [
   {
     id: "check-memory-integrity",
     name: "Check Memory Integrity",
-    schedule: "Saturday 9:30 AM",
+    schedule: "Saturday 5:45 AM",
     purpose: "Read-only orphan/dead-link scan of the Claude memory store.",
     reads: ["MEMORY_STORE"],
     writes: [
@@ -186,18 +187,19 @@ export const AGENTS: AgentRow[] = [
   {
     id: "daily-synthesis",
     name: "Daily Synthesis",
-    schedule: "10:00 AM daily",
+    schedule: "5:20 AM daily",
     purpose: "Reads TiogaIntelDigest + YouTubeAIDigest + MarketBrief + session-digest output and extracts cross-pipeline actionable items.",
     reads: ["VAULT_RESEARCH", "OWN_OUTPUT"],
     writes: [
+      { system: "PIPELINE_CODE", tier: "agent-owned", note: "Its implement.py stage live-edits one automation's script per attempt for AI OS Hardening findings classified bounded and additive by a model: backup first, syntax check, and a deterministic scan of the added lines, with automatic revert on failure. No human review before the edit lands; other categories are proposed only." },
       { system: "WORKING_LIST", tier: "agent-owned", note: "Writes new items directly into the founder's own action-item tracker via working_list_update.py — no approval gate before the write lands; a human triages after the fact via triage labels, not before." },
     ],
-    blastRadius: "A bad synthesis adds a wrong or fabricated item straight into working-list.md. Highest read fan-in of any pipeline in the estate (5 sources in one call).",
+    blastRadius: "A bad synthesis adds a wrong or fabricated item straight into working-list.md, and its implement stage can edit another automation's code without prior review (reverted if the checks fail). Highest read fan-in of any pipeline in the estate (5 sources in one call).",
   },
   {
     id: "digest-compound",
     name: "Digest Compound",
-    schedule: "7:35 AM daily",
+    schedule: "4:25 AM daily",
     purpose: "Keeps research/knowledge/ compounded daily from prior digest output via a headless skill invocation.",
     reads: ["VAULT_RESEARCH"],
     writes: [
@@ -208,7 +210,7 @@ export const AGENTS: AgentRow[] = [
   {
     id: "digest-compound-check",
     name: "Digest Compound Check",
-    schedule: "8:00 AM daily",
+    schedule: "5:00 AM daily",
     purpose: "Adversarial check on digest-compound's own output.",
     reads: ["VAULT_RESEARCH"],
     writes: [
@@ -219,7 +221,7 @@ export const AGENTS: AgentRow[] = [
   {
     id: "digest-health-check",
     name: "Digest Health Check",
-    schedule: "Monthly, 1st @ 9 AM",
+    schedule: "Monthly, 1st @ 5:40 AM",
     purpose: "Checks every TiogaIntel/YouTube source feed actually returns entries and resolves correctly.",
     reads: ["OWN_OUTPUT"],
     writes: [
@@ -230,7 +232,7 @@ export const AGENTS: AgentRow[] = [
   {
     id: "digest-qa-check",
     name: "Digest QA Check",
-    schedule: "7:25 AM daily",
+    schedule: "4:15 AM daily",
     purpose: "QA pass on digest output quality.",
     reads: ["OWN_OUTPUT"],
     writes: [
@@ -241,7 +243,7 @@ export const AGENTS: AgentRow[] = [
   {
     id: "market-brief",
     name: "Market Brief",
-    schedule: "5:45 AM daily",
+    schedule: "3:35 AM daily",
     purpose: "Pre-market brief drafted from financial-news RSS and checked against live read-only quotes; no trade-execution tools.",
     reads: ["MARKET_DATA"],
     writes: [
@@ -261,7 +263,7 @@ export const AGENTS: AgentRow[] = [
   {
     id: "os-audit",
     name: "OS Audit",
-    schedule: "Sunday 9:00 AM",
+    schedule: "Sunday 5:40 AM",
     purpose: "Weekly structural audit of routing integrity, automation freshness, bloat, and context clash.",
     reads: ["PIPELINE_CODE", "VAULT_RESEARCH"],
     writes: [
@@ -272,7 +274,7 @@ export const AGENTS: AgentRow[] = [
   {
     id: "pre-deploy-gate",
     name: "Pre-Deploy Gate",
-    schedule: "5:00 AM daily",
+    schedule: "3:20 AM daily",
     purpose: "Mechanizes as much of the pre-deployment checklist as automatable: syntax checks + mini-parity check across watched pipeline dirs.",
     reads: ["PIPELINE_CODE"],
     writes: [
@@ -283,7 +285,7 @@ export const AGENTS: AgentRow[] = [
   {
     id: "router-watch",
     name: "Router Watch",
-    schedule: "Saturday 8:30 AM",
+    schedule: "Saturday 5:40 AM",
     purpose: "Weekly JARVIS model-currency check, propose-only.",
     reads: ["GATEWAY_STATE"],
     writes: [
@@ -294,7 +296,7 @@ export const AGENTS: AgentRow[] = [
   {
     id: "second-brain-audit",
     name: "Second-Brain Audit",
-    schedule: "Sunday 9:30 AM",
+    schedule: "Sunday 5:50 AM",
     purpose: "Weekly reconciliation of working-list.md's Blocked section against current reality.",
     reads: ["WORKING_LIST", "MEMORY_STORE"],
     writes: [
@@ -305,7 +307,7 @@ export const AGENTS: AgentRow[] = [
   {
     id: "security-watch",
     name: "Security Watch",
-    schedule: "Saturday 10:30 AM",
+    schedule: "Saturday 5:50 AM",
     purpose: "Weekly deterministic config/port-style security audit.",
     reads: ["SYSTEM_POWER", "LAUNCHD_QUEUE"],
     writes: [
@@ -316,7 +318,7 @@ export const AGENTS: AgentRow[] = [
   {
     id: "session-digest",
     name: "Session Digest",
-    schedule: "9:50 AM daily",
+    schedule: "4:35 AM daily",
     purpose: "Scans the prior day's Claude Code session transcripts and extracts a per-project summary.",
     reads: ["MEMORY_STORE"],
     writes: [
@@ -327,7 +329,7 @@ export const AGENTS: AgentRow[] = [
   {
     id: "tioga-intel-digest",
     name: "TiogaIntel Digest",
-    schedule: "7:15 AM daily",
+    schedule: "4:05 AM daily",
     purpose: "Daily governance/AI-industry intel brief drafted from RSS sources.",
     reads: [],
     writes: [
@@ -336,31 +338,9 @@ export const AGENTS: AgentRow[] = [
     blastRadius: "A bad extraction can propagate into the working-list backlog and content-angle queue.",
   },
   {
-    id: "tj-reaper",
-    name: "TJ Reaper",
-    schedule: "Every 900s",
-    purpose: "Reaps the cross-machine tj job-dispatch queue.",
-    reads: ["LAUNCHD_QUEUE"],
-    writes: [
-      { system: "LAUNCHD_QUEUE", tier: "agent-owned", note: "A misfire is queue-level (duplicate/lost dispatch), not content — inherits the blast radius of whatever job it dispatches." },
-    ],
-    blastRadius: "Queue-level only.",
-  },
-  {
-    id: "tj-worker",
-    name: "TJ Worker",
-    schedule: "Long-running daemon",
-    purpose: "Executes dispatched cross-machine jobs from the tj queue.",
-    reads: ["LAUNCHD_QUEUE"],
-    writes: [
-      { system: "LAUNCHD_QUEUE", tier: "agent-owned", note: "Same queue-level unsupervised dispatch as tj-reaper." },
-    ],
-    blastRadius: "Queue-level only.",
-  },
-  {
     id: "validator-holdout",
     name: "Validator Holdout",
-    schedule: "Sunday 9:30 AM",
+    schedule: "Sunday 5:50 AM",
     purpose: "LLM-as-judge eval pass against fixed test fixtures, to catch slow validator-prompt drift.",
     reads: ["PIPELINE_CODE"],
     writes: [
@@ -382,7 +362,7 @@ export const AGENTS: AgentRow[] = [
   {
     id: "youtube-ai-digest",
     name: "YouTube AI Digest",
-    schedule: "7:00 AM daily",
+    schedule: "3:50 AM daily",
     purpose: "Daily YouTube AI content digest.",
     reads: [],
     writes: [
@@ -393,7 +373,7 @@ export const AGENTS: AgentRow[] = [
   {
     id: "youtube-lens-review",
     name: "YouTube Lens Review",
-    schedule: "~7:31 AM daily",
+    schedule: "4:20 AM daily",
     purpose: "Second-opinion adversarial re-review across four lenses (business dev, launch, personal expertise, AI OS).",
     reads: ["OWN_OUTPUT"],
     writes: [
@@ -405,7 +385,7 @@ export const AGENTS: AgentRow[] = [
   {
     id: "claude-budget-sync",
     name: "Claude Budget Sync",
-    schedule: "8:00 AM daily",
+    schedule: "4:55 AM daily",
     purpose: "Aggregates cost_log.jsonl entries across pipelines and syncs shared budget state.",
     reads: ["GATEWAY_STATE"],
     writes: [
@@ -431,7 +411,7 @@ export const AGENTS: AgentRow[] = [
 // Computed from AGENTS/SYSTEMS themselves (not hand-typed), same discipline
 // as governance-ledger.ts's STATS block — see that file's own header.
 
-export const TOTAL_AGENTS = AGENTS.length; // 29
+export const TOTAL_AGENTS = AGENTS.length; // 27 as of 2026-10-02
 
 export const UNSUPERVISED_WRITE_EDGES = AGENTS.flatMap((a) =>
   a.writes.filter((w) => w.tier === "agent-owned").map((w) => ({ agent: a.id, ...w }))

@@ -4,7 +4,7 @@
 //
 // Two-column layout (agents left, systems right), NOT the three-column
 // tiles->gate->pools corridor — this is a bipartite authorization graph,
-// asymmetric per docs/design/3d-design-standard.md §2.2: 29 agents (dense)
+// asymmetric per docs/design/3d-design-standard.md §2.2: ~27 agents (dense)
 // on the left, 12 systems (sparse) on the right, reads as designed rather
 // than as a mirrored template.
 import {
@@ -189,7 +189,7 @@ export function computeNodeBoundingSphere(): BoundingSphere {
     ...buildSystemNodes().map((n) => n.position),
   ];
   // Bounding-BOX midpoint, not a point-average centroid -- caught live:
-  // this layout has 29 agent nodes (left column) and only 12 system nodes
+  // this layout has 27 agent nodes (left column) and only 12 system nodes
   // (right column), so averaging every point's position pulls the
   // "center" toward the denser agent column (computed: x=-1.82, when the
   // two columns actually sit at x=-4.4/+4.4, a true midpoint of x=0). The
