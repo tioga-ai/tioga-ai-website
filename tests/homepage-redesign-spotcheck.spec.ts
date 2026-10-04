@@ -65,7 +65,9 @@ test.describe("2026-08-08 homepage design review changes", () => {
     // (OfferChooser, three routes); this section holds the fuller follow-on
     // engagements, so the old banner and "Start here" flag are gone.
     await expect(page.getByText("Not sure where to start?")).toHaveCount(0);
-    await expect(page.getByText("Start here")).toHaveCount(0);
+    // Exact match: the old pricing-section flag read just "Start here". The 2026-10-02 decision D8a added a
+    // separate "Start here for finance leaders" layer (FinanceStartHere), which a substring match would catch.
+    await expect(page.getByText("Start here", { exact: true })).toHaveCount(0);
     await expect(page.getByRole("heading", { name: "Where to start" })).toHaveCount(1);
     await expect(page.getByRole("link", { name: "Scope an assessment" })).toBeVisible();
     await expect(page.getByRole("link", { name: "Check my readiness" })).toBeVisible();
