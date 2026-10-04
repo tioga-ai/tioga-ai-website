@@ -187,6 +187,17 @@ const PRACTICES: Practice[] = [
   },
 ];
 
+// One labeled field of a service card. Each field is its own <dl> with a single dt/dd pair, which keeps the
+// definition-list markup valid wherever it sits in the grid. Label style follows design.md ("Small caps labels").
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <dl>
+      <dt className="text-xs font-mono uppercase tracking-wide" style={{ color: "var(--accent)" }}>{label}</dt>
+      <dd className="mt-1">{children}</dd>
+    </dl>
+  );
+}
+
 export default function ServicesPage() {
   return (
     <main id="main-content" className="min-h-screen" style={{ background: "var(--bg-dark)", color: "var(--text)" }}>
@@ -224,29 +235,43 @@ export default function ServicesPage() {
                     className="p-7 rounded-2xl"
                     style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}
                   >
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                      <div className="flex-1">
-                        <h3 className="text-lg font-semibold mb-2" style={{ color: "var(--text)" }}>{offer.name}</h3>
-                        <p className="text-sm text-[var(--text-muted)] leading-relaxed">{offer.desc}</p>
-                        {offer.buyer && (
-                          <p className="text-xs mt-2" style={{ color: "var(--text-muted)" }}>
-                            <span className="font-semibold">Best for:</span> {offer.buyer}
-                          </p>
-                        )}
+                    <h3 className="text-lg font-semibold mb-4" style={{ color: "var(--text)" }}>{offer.name}</h3>
+                    <div className="space-y-4" data-testid="service-card-fields">
+                      <Field label="What you get">
+                        <span className="text-sm text-[var(--text-muted)] leading-relaxed">{offer.desc}</span>
+                      </Field>
+                      {offer.buyer && (
+                        <Field label="Best for">
+                          <span className="text-sm text-[var(--text-muted)] leading-relaxed">{offer.buyer}</span>
+                        </Field>
+                      )}
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4" style={{ borderTop: "1px solid var(--border)" }}>
+                        <Field label="Price">
+                          <span className="text-sm font-semibold" style={{ color: "var(--text)" }}>{offer.price}</span>
+                        </Field>
+                        <Field label="Timeline">
+                          <span className="text-sm" style={{ color: "var(--text)" }}>{offer.duration}</span>
+                        </Field>
+                        <Field label="Starts with">
+                          <span className="text-sm" style={{ color: "var(--text)" }}>
+                            <Link href="/discovery-sprint" className="underline underline-offset-2 hover:text-[var(--accent)] transition-colors">
+                              5-day Discovery Sprint
+                            </Link>
+                            , $5,000 credited
+                          </span>
+                        </Field>
                       </div>
-                      <div className="shrink-0 text-right md:pl-8">
-                        <p className="text-sm font-semibold" style={{ color: "var(--text)" }}>{offer.price}</p>
-                        <p className="text-xs text-[var(--text-muted)] mt-0.5">{offer.duration}</p>
+                      <div className="pt-4" style={{ borderTop: "1px solid var(--border)" }}>
+                        <Field label="Next step">
+                          <Link
+                            href={offer.href ?? `/contact?offer=${encodeURIComponent(offer.name)}`}
+                            className="text-sm font-medium transition-colors hover:text-[var(--text)]"
+                            style={{ color: "var(--accent)" }}
+                          >
+                            {offer.ctaLabel ?? "Start a conversation about this engagement →"}
+                          </Link>
+                        </Field>
                       </div>
-                    </div>
-                    <div className="mt-5 pt-5" style={{ borderTop: "1px solid var(--border)" }}>
-                      <Link
-                        href={offer.href ?? `/contact?offer=${encodeURIComponent(offer.name)}`}
-                        className="text-sm font-medium transition-colors hover:text-[var(--text)]"
-                        style={{ color: "var(--accent)" }}
-                      >
-                        {offer.ctaLabel ?? "Start a conversation about this engagement →"}
-                      </Link>
                     </div>
                   </div>
                 ))}
