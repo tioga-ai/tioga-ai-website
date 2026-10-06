@@ -11,7 +11,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 export const metadata: Metadata = {
   title: "Standing Watch — Cross-Platform AI Agent Verification",
   description:
-    "SAP, Workday, Databricks, and ServiceNow each ship their own AI agent governance pane, anchored to their own estate. Standing Watch is the vendor-neutral layer that verifies agent behavior and composes one evidence record across them.",
+    "SAP, Workday, Databricks, and ServiceNow each ship their own AI agent governance pane, anchored to their own estate. Standing Watch is a cross-platform layer, not tied to any one platform vendor, that verifies agent behavior and composes one evidence record across them.",
   alternates: { canonical: "/lp/standing-watch" },
   // Share metadata added 2026-09-20: without its own openGraph this page
   // inherited the homepage's og:title and og:url (verified live), so a shared
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     images: ["/opengraph-image"],
     title: "Standing Watch — Cross-Platform AI Agent Verification",
     description:
-      "SAP, Workday, Databricks, and ServiceNow each ship their own AI agent governance pane, anchored to their own estate. Standing Watch is the vendor-neutral layer that verifies agent behavior and composes one evidence record across them.",
+      "SAP, Workday, Databricks, and ServiceNow each ship their own AI agent governance pane, anchored to their own estate. Standing Watch is a cross-platform layer, not tied to any one platform vendor, that verifies agent behavior and composes one evidence record across them.",
     url: "/lp/standing-watch",
     siteName: "Tioga AI",
     type: "website",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Standing Watch — Cross-Platform AI Agent Verification",
-    description: "SAP, Workday, Databricks, and ServiceNow each ship their own AI agent governance pane, anchored to their own estate. Standing Watch is the vendor-neutral layer that verifies agent behavior and composes one evidence record across them.",
+    description: "SAP, Workday, Databricks, and ServiceNow each ship their own AI agent governance pane, anchored to their own estate. Standing Watch is a cross-platform layer, not tied to any one platform vendor, that verifies agent behavior and composes one evidence record across them.",
     images: ["/opengraph-image"],
   },
   robots: { index: false, follow: true },
@@ -81,7 +81,7 @@ export default function StandingWatchLandingPage() {
           <p className="text-lg text-[var(--text-muted)] max-w-2xl leading-relaxed">
             SAP, Workday, Databricks, and ServiceNow each anchor their AI agent governance to their own estate.
             Run three or four of these platforms and you own three or four single panes of glass — and still
-            have no vendor-neutral layer that verifies agent behavior and composes one evidence record across them,
+            have no cross-platform layer, not tied to any one platform vendor, that verifies agent behavior and composes one evidence record across them,
             which is the kind of record a deployer of in-scope high-risk systems, or a NIST/ISO program, will be asked to produce.
           </p>
         </ScrollReveal>

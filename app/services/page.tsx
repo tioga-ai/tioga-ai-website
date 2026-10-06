@@ -163,7 +163,7 @@ const PRACTICES: Practice[] = [
         duration: "3–4 weeks",
         href: "/solutions/standing-watch",
         ctaLabel: "See the full Standing Watch ladder →",
-        buyer: "Organizations running agents across more than one platform that need vendor-neutral verification of what those agents do and one evidence record across them — whether or not they already run an inventory or control-plane product.",
+        buyer: "Organizations running agents across more than one platform that need cross-platform verification of what those agents do and one evidence record across them — whether or not they already run an inventory or control-plane product.",
       },
       {
         name: "Standing Watch Build",
