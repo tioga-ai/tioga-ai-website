@@ -5,7 +5,7 @@ import StandingWatchEstateDiagram from "@/components/StandingWatchEstateDiagram"
 export const metadata: Metadata = {
   title: "Standing Watch — Cross-Platform AI Agent Verification & Evidence",
   description:
-    "SAP, Workday, Databricks, and ServiceNow each ship their own AI agent governance pane, anchored to their own estate. Standing Watch is a cross-platform layer, not tied to any one platform vendor, that verifies agent behavior and composes one evidence record across them, on top of whatever control plane you already run — built and run on Tioga's own multi-vendor infrastructure. Tioga takes no vendor payment today and discloses any vendor relationship it has.",
+    "SAP, Workday, Databricks, and ServiceNow each ship their own AI agent governance pane, anchored to their own estate. Standing Watch is a cross-platform layer that verifies agent behavior and composes one evidence record across them, on top of whatever control plane you already run — built and run on Tioga's own multi-vendor infrastructure. Tioga takes no vendor payment today and discloses any vendor relationship it has.",
   alternates: { canonical: "/solutions/standing-watch" },
   openGraph: {
     images: ["/opengraph-image"],
@@ -23,13 +23,13 @@ export const metadata: Metadata = {
 const content: SolutionContent = {
   slug: "standing-watch",
   eyebrow: "Standing Watch",
-  title: "Every platform ships its own governance pane. Standing Watch is a cross-platform layer, not tied to any one platform vendor, that verifies behavior and composes one evidence record across them.",
+  title: "Every platform ships its own governance pane. Standing Watch is a cross-platform layer that verifies behavior and composes one evidence record across them.",
   buyer:
     "CIOs, CAIOs, and compliance leaders running AI agents across more than one enterprise platform — SAP, Workday, Databricks, ServiceNow, or a custom MCP estate — who need one verifiable, auditor-legible evidence story across them, not four competing single panes of glass.",
   problem:
     "Every major platform vendor now ships its own AI agent governance tool and calls it the layer of record — and each is structurally anchored to its own estate. Only 13% of organizations believe they have the right governance in place to manage AI agents (a Gartner estimate, cited in SAP's August 3, 2026 agent-sprawl article), and 94% of organizations surveyed are concerned about AI sprawl while only 12% have a centralized platform to manage it (OutSystems research, April 2026, nearly 1,900 global IT leaders). Run three or four of these platforms and you own three or four \"single panes of glass\" — and still have no cross-platform layer that verifies agent behavior and composes one evidence record across them, which is the kind of record a deployer of in-scope high-risk systems, or a NIST/ISO program, will be asked to produce.",
   outcome:
-    "A cross-platform verification and evidence layer, not tied to any one platform vendor, that sits on top of your existing platform tools and control plane rather than replacing them: an agent qualification register, a cross-vendor spend arbitration baseline, a tiered autonomy policy with a hard human ceiling, behavioral control verification run identically across every system in scope, and a findings ledger that ages instead of silently disappearing.",
+    "A cross-platform verification and evidence layer (we review across platforms; our own agent-building work is built on Claude) that sits on top of your existing platform tools and control plane rather than replacing them: an agent qualification register, a cross-vendor spend arbitration baseline, a tiered autonomy policy with a hard human ceiling, behavioral control verification run identically across every system in scope, and a findings ledger that ages instead of silently disappearing.",
   proof: [
     {
       label: "Built and run on Tioga's own multi-vendor infrastructure",
@@ -91,7 +91,7 @@ const content: SolutionContent = {
     },
     {
       q: "How is this different from a governance platform we could just buy?",
-      a: "A platform gives you a pane — often a good one, and you may well buy one. It records what its own estate reports about itself. Discovering an agent inside a closed platform doesn't by itself establish that its actions were authorized, valid under that platform's own logic, and consistent with your controls, and a platform vendor has its own interest in spend or workload decisions between itself and its competitors. Standing Watch is a cross-platform, fixed-cadence verification and evidence layer that sits on top of any platform you already own, and Tioga discloses its own vendor relationships; Tioga takes no vendor payment today and discloses any vendor relationship it has.",
+      a: "A platform gives you a pane — often a good one, and you may well buy one. It records what its own estate reports about itself. Discovering an agent inside a closed platform doesn't by itself establish that its actions were authorized, valid under that platform's own logic, and consistent with your controls, and a platform vendor has its own interest in spend or workload decisions between itself and its competitors. Standing Watch is a cross-platform, fixed-cadence verification and evidence layer that sits on top of any platform you already own. We review across platforms, and we disclose that our own agent-building work is built on Claude: client material is processed with Anthropic models by default, and a second provider only with your written approval in the statement of work. Tioga discloses its own vendor relationships; Tioga takes no vendor payment today and discloses any vendor relationship it has.",
     },
     {
       q: "Is a review independent of what Tioga builds?",
