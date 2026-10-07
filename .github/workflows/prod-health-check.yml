@@ -30,8 +30,13 @@ jobs:
       # Playwright's own apt install was slow and flaky on the runner mirror and hung
       # until the job limit (2026-10-05, 2026-10-07). Retry apt fetches cleanly, run the
       # system-deps install as its own capped step, and cache the browser download.
-      - name: Configure apt retries
-        run: echo 'Acquire::Retries "5";' | sudo tee /etc/apt/apt.conf.d/80-retries
+      # azure.archive.ubuntu.com (the runner default) stalled on 2026-10-07: 126 MB did not
+      # finish in 8 minutes. Point apt at the main Ubuntu archive instead.
+      - name: Configure apt (retries, main Ubuntu mirror)
+        run: |
+          echo 'Acquire::Retries "5";' | sudo tee /etc/apt/apt.conf.d/80-retries
+          echo 'http://archive.ubuntu.com/ubuntu/ priority:1' | sudo tee /etc/apt/apt-mirrors.txt
+          sudo apt-get update
       - uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
