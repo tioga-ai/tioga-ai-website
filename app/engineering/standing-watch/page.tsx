@@ -40,7 +40,7 @@ export default function StandingWatchWriteup() {
         <p className="text-lg text-[var(--text-muted)] leading-relaxed mb-12">
           Standing Watch isn&apos;t a new system — it&apos;s a name for six
           governance disciplines I already run in production, on my own
-          multi-vendor AI estate, as router-watch and security-watch. This
+          cross-platform AI estate, as router-watch and security-watch. This
           page is the case study: the incident that made me build the
           cross-machine check in the first place, why nothing here is
           allowed to apply its own fixes, and the two mechanisms

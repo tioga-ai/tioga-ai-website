@@ -26,7 +26,7 @@ const content: ArticleContent = {
   query: "AI agent governance propose and approve automation",
   date: "2026-08-10",
   title: "Why router-watch and security-watch only propose — never apply",
-  dek: "Standing Watch is a name for six governance disciplines I already run in production, on my own multi-vendor AI estate, as router-watch and security-watch. Here's the incident that started it and the rule that hasn't changed since.",
+  dek: "Standing Watch is a name for six governance disciplines I already run in production, on my own cross-platform AI estate, as router-watch and security-watch. Here's the incident that started it and the rule that hasn't changed since.",
   evidenceLabel: "Evidence: real, dated excerpts from my own router-watch and security-watch automations — not a projection or a mockup.",
   sections: [
     {
