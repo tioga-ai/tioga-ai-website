@@ -17,7 +17,7 @@ jobs:
     # Pinned: ubuntu-latest moves to Ubuntu 26 on 2026-10-19 and this job installs
     # Playwright browsers with system deps. Re-test on 26 before unpinning.
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 20
     env:
       BASE_URL: https://tioga.ai
     steps:
@@ -27,7 +27,26 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npx playwright install --with-deps chromium webkit
+      # Playwright's own apt install was slow and flaky on the runner mirror and hung
+      # until the job limit (2026-10-05, 2026-10-07). Retry apt fetches cleanly, run the
+      # system-deps install as its own capped step, and cache the browser download.
+      # azure.archive.ubuntu.com (the runner default) stalled on 2026-10-07: 126 MB did not
+      # finish in 8 minutes. Point apt at the main Ubuntu archive instead.
+      - name: Configure apt (retries, main Ubuntu mirror)
+        run: |
+          echo 'Acquire::Retries "5";' | sudo tee /etc/apt/apt.conf.d/80-retries
+          echo 'http://archive.ubuntu.com/ubuntu/' | sudo tee /etc/apt/apt-mirrors.txt
+          sudo apt-get update
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+      - name: Install Playwright system dependencies
+        timeout-minutes: 8
+        run: npx playwright install-deps chromium webkit
+      - name: Install Playwright browsers
+        timeout-minutes: 5
+        run: npx playwright install chromium webkit
       - name: Run full suite against production (structural + functional)
         run: npx playwright test
       - uses: actions/upload-artifact@v4
