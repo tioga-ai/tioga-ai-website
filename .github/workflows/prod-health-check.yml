@@ -36,3 +36,30 @@ jobs:
           name: playwright-report-prod
           path: playwright-report/
           retention-days: 30
+
+  # Failure alert: opens (or comments on) a GitHub issue so the failure reaches
+  # an inbox. Runs after the test job even when it fails, times out or never
+  # gets a runner (the 2026-10-05 case). Scheduled runs only, so manual runs
+  # don't open issues. One open issue at a time: repeat failures add a comment.
+  alert:
+    needs: test
+    if: always() && github.event_name == 'schedule' && needs.test.result != 'success'
+    runs-on: ubuntu-24.04
+    permissions:
+      issues: write
+    steps:
+      - name: Open or update the failure issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          RESULT: ${{ needs.test.result }}
+        run: |
+          title="Production health check failing"
+          body="Scheduled run ended with result: ${RESULT}. Run: ${RUN_URL}"
+          existing=$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "$body"
+          else
+            gh issue create --title "$title" --label bug --body "$body"
+          fi
