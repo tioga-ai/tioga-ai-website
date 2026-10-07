@@ -14,7 +14,9 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    # Pinned: ubuntu-latest moves to Ubuntu 26 on 2026-10-19 and this job installs
+    # Playwright browsers with system deps. Re-test on 26 before unpinning.
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     env:
       BASE_URL: https://tioga.ai
