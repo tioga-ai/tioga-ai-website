@@ -112,7 +112,7 @@ export default function StandingWatchLandingPage() {
           <h2 className="text-2xl font-bold mb-2" style={{ color: "var(--text)" }}>This isn&apos;t a framework on paper</h2>
           <p className="text-[var(--text-muted)] mb-6 max-w-2xl">
             Six disciplines generalized from automations Tioga actually operates in production — across a
-            genuinely heterogeneous, multi-vendor stack.
+            genuinely heterogeneous, cross-platform stack.
           </p>
         </ScrollReveal>
         <div className="grid md:grid-cols-2 gap-4">

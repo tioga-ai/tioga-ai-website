@@ -5,7 +5,7 @@ import StandingWatchEstateDiagram from "@/components/StandingWatchEstateDiagram"
 export const metadata: Metadata = {
   title: "Standing Watch — Cross-Platform AI Agent Verification & Evidence",
   description:
-    "SAP, Workday, Databricks, and ServiceNow each ship their own AI agent governance pane, anchored to their own estate. Standing Watch is a cross-platform layer that verifies agent behavior and composes one evidence record across them, on top of whatever control plane you already run — built and run on Tioga's own multi-vendor infrastructure. Tioga takes no vendor payment today and discloses any vendor relationship it has.",
+    "SAP, Workday, Databricks, and ServiceNow each ship their own AI agent governance pane, anchored to their own estate. Standing Watch is a cross-platform layer that verifies agent behavior and composes one evidence record across them, on top of whatever control plane you already run — built and run on Tioga's own cross-platform infrastructure. Tioga takes no vendor payment today and discloses any vendor relationship it has.",
   alternates: { canonical: "/solutions/standing-watch" },
   openGraph: {
     images: ["/opengraph-image"],
@@ -32,7 +32,7 @@ const content: SolutionContent = {
     "A cross-platform verification and evidence layer (we review across platforms; our own agent-building work is built on Claude) that sits on top of your existing platform tools and control plane rather than replacing them: an agent qualification register, a cross-vendor spend arbitration baseline, a tiered autonomy policy with a hard human ceiling, behavioral control verification run identically across every system in scope, and a findings ledger that ages instead of silently disappearing.",
   proof: [
     {
-      label: "Built and run on Tioga's own multi-vendor infrastructure",
+      label: "Built and run on Tioga's own cross-platform infrastructure",
       detail:
         "The six disciplines below are generalized from automations Tioga actually operates in production — the JARVIS router, router-watch, and security-watch — across a genuinely heterogeneous stack (a free local model, multiple OpenRouter-hosted vendors, Google-billed Gemini (free tier first, paid past the limit), and a subscription Claude that's never auto-routed). This is a single-operator, personal-infrastructure-scale implementation, not an enterprise deployment — volunteered here, not extracted in a pitch.",
     },

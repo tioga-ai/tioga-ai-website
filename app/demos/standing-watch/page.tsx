@@ -227,7 +227,7 @@ export default function StandingWatchDemoPage() {
         <p className="text-sm text-[var(--text-muted)] leading-relaxed">
           This propose-and-approve discipline — findings that age instead of disappearing, fixes a
           human reviews and applies, and a system that knows the edge of its own authority — is
-          what Standing Watch generalizes to a multi-vendor enterprise estate.
+          what Standing Watch generalizes to a cross-platform enterprise estate.
         </p>
         <p className="text-xs text-slate-500 mt-3">
           This is one incident, in full detail. For the ongoing, aggregate record across the whole
