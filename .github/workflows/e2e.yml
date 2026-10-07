@@ -19,7 +19,15 @@ jobs:
       - run: npm ci
       - name: Lint (zero warnings allowed)
         run: npm run lint
-      - run: npx playwright install --with-deps chromium webkit
+      # Same cap-and-retry as prod-health-check.yml: the install hung until the job limit.
+      - name: Install Playwright browsers (capped, one retry)
+        timeout-minutes: 9
+        run: |
+          for attempt in 1 2; do
+            timeout 4m npx playwright install --with-deps chromium webkit && exit 0
+            echo "Playwright install attempt $attempt failed or timed out"
+          done
+          exit 1
       - name: Run structural + accessibility tests (page loads, links, SEO, axe — no AI calls)
         run: npx playwright test tests/pages.spec.ts tests/a11y.spec.ts
       - uses: actions/upload-artifact@v4
