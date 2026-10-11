@@ -80,7 +80,7 @@ const ENTRIES: Entry[] = [
     date: "2026-09-20",
     kind: "Content",
     title: "Standing Watch re-scoped to verification and evidence composition, alongside runtime control planes",
-    body: "A competitive review found that Standing Watch's original agent-inventory and hand-built gating steps overlap funded runtime control-plane products that do discovery and enforcement faster. Standing Watch now focuses on what those products don't claim: independently verifying that controls actually held, and composing one evidence trail across systems. It is positioned to work alongside a control plane, not to replace one.",
+    body: "A competitive review found that Standing Watch's original agent-inventory and hand-built gating steps overlap funded runtime control-plane products that do discovery and enforcement faster. Standing Watch now focuses on what those products don't claim: checking that controls actually held, and composing one evidence trail across systems. It is positioned to work alongside a control plane, not to replace one.",
   },
   {
     date: "2026-09-20",
