@@ -5,7 +5,7 @@ import StandingWatchEstateDiagram from "@/components/StandingWatchEstateDiagram"
 export const metadata: Metadata = {
   title: "Standing Watch — Cross-Platform AI Agent Verification & Evidence",
   description:
-    "SAP, Workday, Databricks, and ServiceNow each ship their own AI agent governance pane, anchored to their own estate. Standing Watch is a cross-platform layer that verifies agent behavior and composes one evidence record across them, on top of whatever control plane you already run — built and run on Tioga's own cross-platform infrastructure. Tioga takes no vendor payment today and discloses any vendor relationship it has.",
+    "SAP, Workday, Databricks, and ServiceNow each ship their own AI agent governance pane, anchored to their own estate. Standing Watch is a cross-platform layer that verifies agent behavior and composes one evidence record across them, on top of whatever control plane you already run — built and run on Tioga's own cross-platform infrastructure. Tioga may use credits from a vendor's startup program, such as Anthropic's, and discloses any vendor relationship it has.",
   alternates: { canonical: "/solutions/standing-watch" },
   openGraph: {
     images: ["/opengraph-image"],
@@ -91,7 +91,7 @@ const content: SolutionContent = {
     },
     {
       q: "How is this different from a governance platform we could just buy?",
-      a: "A platform gives you a pane — often a good one, and you may well buy one. It records what its own estate reports about itself. Discovering an agent inside a closed platform doesn't by itself establish that its actions were authorized, valid under that platform's own logic, and consistent with your controls, and a platform vendor has its own interest in spend or workload decisions between itself and its competitors. Standing Watch is a cross-platform, fixed-cadence verification and evidence layer that sits on top of any platform you already own. We review across platforms, and we disclose that our own agent-building work is built on Claude: client material is processed with Anthropic models by default, and a second provider only with your written approval in the statement of work. Tioga discloses its own vendor relationships; Tioga takes no vendor payment today and discloses any vendor relationship it has.",
+      a: "A platform gives you a pane — often a good one, and you may well buy one. It records what its own estate reports about itself. Discovering an agent inside a closed platform doesn't by itself establish that its actions were authorized, valid under that platform's own logic, and consistent with your controls, and a platform vendor has its own interest in spend or workload decisions between itself and its competitors. Standing Watch is a cross-platform, fixed-cadence verification and evidence layer that sits on top of any platform you already own. We review across platforms, and we disclose that our own agent-building work is built on Claude: client material is processed with Anthropic models by default, and a second provider only with your written approval in the statement of work. Tioga discloses its own vendor relationships, including that it may use credits from Anthropic's startup program.",
     },
     {
       q: "Is a review independent of what Tioga builds?",
