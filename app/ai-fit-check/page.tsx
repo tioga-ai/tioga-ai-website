@@ -58,7 +58,7 @@ const DELIVERABLES = [
   },
   {
     title: "A readiness read on the three things that actually block a Discovery Sprint from running well",
-    desc: "Is there a real executive sponsor who can approve sandbox access in time for it to be provisioned before the Sprint's day one; does at least one system in scope have a real sandbox/test instance to provision (not just production); and is there a realistic decision-maker available for the daily check-ins the Sprint needs.",
+    desc: "Is there a real executive sponsor who can approve sandbox access in time for it to be provisioned before the Sprint's day one; does at least one system in scope have a real sandbox/test instance to provision (not just production); and is there a realistic decision-maker who can be reached for the short check-ins the Sprint itself requires during its five days. Those check-ins are a Sprint prerequisite, not part of the Fit Check.",
   },
   {
     title: "If the answer is go: a scoped recommendation for what the Discovery Sprint should actually target",
@@ -67,6 +67,33 @@ const DELIVERABLES = [
   {
     title: "If the answer is no-go: an honest, written reason",
     desc: "The same “a Sprint that ends in 'you don't need what you think you need' is a success, not a failed sale” principle the Discovery Sprint itself runs on, just one rung earlier and at less than a third of the cost.",
+  },
+];
+
+const FAQ = [
+  {
+    q: "Does the Fit Check need access to any of our systems?",
+    a: "No. It is interviews and document review only: no system access, no sandbox provisioning and no data export.",
+  },
+  {
+    q: "Who needs to take part?",
+    a: "The executive sponsor and one or two people who do the work in the candidate area, for a single remote session or a few shorter calls across one day.",
+  },
+  {
+    q: "What do we receive, and when?",
+    a: "A written readout of 1 to 2 pages within 2 business days: a go or no-go with the specific reason, and a first-pass candidate use case.",
+  },
+  {
+    q: "What does it cost, and does it count toward the Discovery Sprint?",
+    a: "$1,500 flat. If the finding is go and you proceed, the $1,500 credits in full against the Sprint's $5,000 fee, valid for 60 days from the Fit Check readout.",
+  },
+  {
+    q: "What if the answer is no-go?",
+    a: "You keep the readout and the named use case, with no obligation to proceed.",
+  },
+  {
+    q: "Does Tioga AI have completed engagements we can ask about?",
+    a: "No. Tioga AI is a pre-launch, principal-led practice and has no completed Fit Check to cite. The go or no-go is one practitioner's judgment against the three named criteria.",
   },
 ];
 
@@ -196,6 +223,23 @@ export default function AiFitCheckPage() {
                 outcome.
               </li>
             </ul>
+          </div>
+
+          {/* FAQ */}
+          <div>
+            <h2 className="text-xl font-bold mb-4" style={{ color: "var(--text)" }}>Questions a buyer usually asks</h2>
+            <dl className="space-y-3">
+              {FAQ.map((f) => (
+                <div
+                  key={f.q}
+                  className="p-5 rounded-xl"
+                  style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}
+                >
+                  <dt className="text-sm font-semibold mb-1" style={{ color: "var(--text)" }}>{f.q}</dt>
+                  <dd className="text-sm text-[var(--text-muted)] leading-relaxed">{f.a}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
 
