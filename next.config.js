@@ -51,6 +51,14 @@ const nextConfig = {
       },
     ];
   },
+  // Explainer clips live in a public Vercel Blob store (no binaries in git) and are
+  // served same-origin so the CSP stays `default-src 'self'`. Off until MEDIA_ORIGIN
+  // is set, e.g. https://<store>.public.blob.vercel-storage.com
+  async rewrites() {
+    const origin = (process.env.MEDIA_ORIGIN ?? "").replace(/\/$/, "");
+    if (!/^https:\/\/[a-z0-9-]+\.public\.blob\.vercel-storage\.com$/.test(origin)) return [];
+    return { afterFiles: [{ source: "/media/:path*", destination: `${origin}/:path*` }] };
+  },
   async redirects() {
     return [
       { source: "/pricing", destination: "/services", permanent: false },
