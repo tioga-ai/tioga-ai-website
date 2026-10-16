@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SolutionPage, { SolutionContent } from "@/components/SolutionPage";
+import ExplainerVideo from "@/components/explainer/ExplainerVideo";
 
 export const metadata: Metadata = {
   title: "Governed Write-Path for AI Agents",
@@ -189,5 +190,16 @@ const content: SolutionContent = {
 };
 
 export default function GovernedWritePathSolutionPage() {
-  return <SolutionPage content={content} />;
+  // The clip is served same-origin at /media/* (see next.config.js) once MEDIA_ORIGIN is set;
+  // until then only the text version renders.
+  // Same pattern as next.config.js: an invalid MEDIA_ORIGIN must not render a player with no route.
+  const origin = (process.env.MEDIA_ORIGIN ?? "").replace(/\/$/, "");
+  const clip = /^https:\/\/[a-z0-9-]+\.public\.blob\.vercel-storage\.com$/.test(origin)
+    ? "/media/governed-write-to-the-erp.mp4"
+    : undefined;
+  return (
+    <SolutionPage
+      content={{ ...content, visual: <ExplainerVideo src={clip} poster="/explainers/governed-write-poster.jpg" /> }}
+    />
+  );
 }
