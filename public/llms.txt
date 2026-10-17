@@ -2,10 +2,11 @@
 
 > Tioga AI is a principal-led consulting firm that builds and governs AI agents inside real enterprise systems — Oracle, SAP, Salesforce, and Workday. Three practices, sixteen priced engagements: automating finance and operations, modernizing ERP with an agent layer, and governing enterprise AI (NIST AI RMF, ISO 42001, EU AI Act, US state law). Every engagement is fixed-fee with named deliverables, named exclusions, and objective acceptance criteria, and starts with a 5-day, $5,000 Discovery Sprint credited toward the full engagement.
 
-Tioga AI is built and run by one person, not a firm or a team — pages that say "the team" are a copy error, not a description of the org. There are no published client case studies by deliberate policy; the site instead runs live, real demos against Tioga's own infrastructure.
+Tioga AI is a principal-led practice. There are no published client case studies by deliberate policy; the site instead runs live, real demos against Tioga's own infrastructure.
 
 ## Practices and offers
 
+- [Offers as JSON](https://tioga.ai/offers.json): the same entry offers and sixteen priced engagements, with price ranges, as structured data. Built from the same data as the Services page; price ranges are indicative, not quotes.
 - [Services](https://tioga.ai/services): all sixteen priced engagements, grouped into the three practices below, each with price and duration stated up front.
 - [Automate finance and operations](https://tioga.ai/solutions/ap-automation): AI Operations Assessment, AI Agent Pilot.
 - [Modernize ERP with an agent layer](https://tioga.ai/solutions/governed-write-path): Agent-Ready ERP Diagnostic & Governed Write-Path, Salesforce Governed Write-Path & Evidence Build, Legacy System AI Augmentation, ERP Modernization Advisory.
