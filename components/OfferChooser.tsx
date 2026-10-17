@@ -10,7 +10,7 @@ import TrackedCTA from "@/components/TrackedCTA";
 // found the homepage answered "where do I start?" twice — two routes here,
 // three offers further down. This is now the only "where to start" on the
 // page: one block, three routes (decision recorded 2026-09-19).
-const CHOICES = [
+export const CHOICES = [
   {
     eyebrow: "Is this workflow worth automating?",
     name: "The AI Fit Check",

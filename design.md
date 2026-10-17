@@ -147,6 +147,27 @@ anything brand-specific (accent, backgrounds, borders, semantic
 error/warning/success) and `slate-*` as acceptable for generic body-text
 gray levels, matching what's already there.
 
+## Slop watchlist (policy added 2026-10-17, not reverse-engineered)
+
+Unlike the sections above, this one states what new work should avoid, taken from a design team's published "no" list for AI-generated pages and checked against what this site already ships. It is a review watchlist, not a ban: the site already uses gradients and glows built from its own tokens (a 2026-10-17 grep found `linear-gradient` in 43 files, `glow` in 14 and `halo` in 6), and those stay. What to avoid in new components:
+
+- **Off-palette gradients and glows.** Any gradient or glow must be built from the brand tokens (`var(--accent)` and the tokens in `CLAUDE.md`). No default purple-to-blue gradients, no neon-on-dark glows, no halos used as decoration around icons or avatars.
+- **Sparkle, rocket and robot-head icons**, and literal symbols standing in for an idea (a lightbulb for "ideas"). Prefer a plain label or a diagram of the real mechanism.
+- **Identical card grids** where every card has the same shape, icon and length. Vary the layout to match how important each item is.
+- **Several focal points in one view.** One primary focal point per section; one primary CTA.
+- **Buzzword copy in the interface:** "supercharge", "unlock", "10x", "game-changing", "seamless". The word list is in the `no-ai-slop` and `tioga-brand` skills.
+- **Pill-shaped primary buttons.** Pills stay for small badges only (see the border-radius section); the primary CTA shape is above.
+- **Text over busy imagery** without a solid or scrimmed background.
+
+Quick self-check before opening a PR:
+
+```
+git diff -U0 | grep -n -i -E "sparkle|rocket|🚀|🤖|supercharge|unlock|10x|seamless|game-chang"
+git diff -U0 | grep -n -E "linear-gradient|radial-gradient" | grep -v -E "var\(--"
+```
+
+The second command lists new gradient lines that do not use a brand token. A hit is a prompt to look, not an automatic fail.
+
 ## Verifying this doc hasn't drifted
 
 Same caveat `CLAUDE.md` gives for colors applies structurally here too —
