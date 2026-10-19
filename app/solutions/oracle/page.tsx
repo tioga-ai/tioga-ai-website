@@ -8,7 +8,6 @@ export const metadata: Metadata = {
     "Governed AI agents for Oracle Fusion Cloud ERP and E-Business Suite — real REST/module integration, a governed write-path, and no rip-and-replace.",
   alternates: { canonical: "/solutions/oracle" },
   openGraph: {
-    images: ["/opengraph-image"],
     title: "AI Agents for Oracle Fusion Cloud ERP & EBS — Tioga AI",
     description: "Governed AI agents that work inside your existing Oracle Fusion Cloud ERP or EBS environment.",
   },
@@ -16,7 +15,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI Agents for Oracle Fusion Cloud ERP & EBS — Tioga AI",
     description: "Governed AI agents that work inside your existing Oracle Fusion Cloud ERP or EBS environment.",
-    images: ["/opengraph-image"],
   },
 };
 

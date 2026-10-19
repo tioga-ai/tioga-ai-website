@@ -8,7 +8,6 @@ export const metadata: Metadata = {
     "How to let an AI agent actually write to your ERP — policy enforcement, approval gates, and a rollback path, not a direct database write.",
   alternates: { canonical: "/solutions/governed-write-path" },
   openGraph: {
-    images: ["/opengraph-image"],
     title: "Governed Write-Path for AI Agents — Tioga AI",
     description: "A working, governed write path from your AI agent into your ERP.",
   },
@@ -16,7 +15,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Governed Write-Path for AI Agents — Tioga AI",
     description: "A working, governed write path from your AI agent into your ERP.",
-    images: ["/opengraph-image"],
   },
 };
 
@@ -199,7 +197,7 @@ export default function GovernedWritePathSolutionPage() {
     : undefined;
   return (
     <SolutionPage
-      content={{ ...content, visual: <ExplainerVideo src={clip} poster="/explainers/governed-write-poster.jpg" /> }}
+      content={{ ...content, visualFirst: true, visual: <ExplainerVideo src={clip} poster="/explainers/governed-write-poster.jpg" /> }}
     />
   );
 }

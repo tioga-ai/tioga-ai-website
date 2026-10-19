@@ -1034,7 +1034,17 @@ const EXPLORE_FAMILIES: { name: string; demos: FeaturedDemo[] }[] = [
 // secondary link ("How I built this") lifts that link into the same
 // stacking bucket via `relative`, so it paints after -- on top of -- the
 // stretched overlay and stays independently clickable.
+// Screenshots of the real demo pages (scripts/capture-demo-stills.mjs, 2026-10-19), 800x450 WebP.
+// Width and height are always set so the card cannot shift the page (this route had CLS 0.293 before PR #90).
+const DEMO_STILLS: Record<string, string> = {
+  "/demos/standing-watch": "Standing Watch",
+  "/demos/governance-ledger": "Governance Ledger",
+  "/demos/ap-exception-workflow": "Governed AP Exception Workflow",
+  "/demos/fusion-ai-readiness-assessment": "Fusion Cloud AI-Readiness Assessment",
+};
+
 function FeaturedDemoCard({ demo }: { demo: FeaturedDemo }) {
+  const stillName = DEMO_STILLS[demo.href];
   return (
     <div
       className="relative flex flex-col p-6 rounded-2xl transition-all hover:border-slate-500"
@@ -1045,6 +1055,19 @@ function FeaturedDemoCard({ demo }: { demo: FeaturedDemo }) {
       }}
     >
       <Link href={demo.href} className="absolute inset-0 rounded-2xl" aria-label={demo.title} />
+      {stillName && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={`/demos/stills/${demo.href.split("/").pop()}.webp`}
+          alt={`Screenshot of the ${stillName} demo`}
+          width={800}
+          height={450}
+          loading="lazy"
+          decoding="async"
+          className="w-full h-auto mb-4 rounded-xl"
+          style={{ border: "1px solid var(--border)" }}
+        />
+      )}
       <div className="flex items-start justify-between gap-3 mb-4">
         <span
           className="flex-none w-12 h-12 rounded-xl flex items-center justify-center"
@@ -1144,6 +1167,13 @@ function DemosPageInner() {
           <p className="text-sm text-[var(--text-muted)] mb-4">
             Four demos that show the range in one pass — a live model call, two dated internal-evidence
             excerpts, and a governed write-path decision.
+          </p>
+          <p className="text-sm mb-4" style={{ color: "var(--text)" }}>
+            Finance leaders: start with the{" "}
+            <Link href="/demos/ap-exception-workflow" className="underline underline-offset-2" style={{ color: "var(--accent)" }}>
+              Governed AP Exception Workflow
+            </Link>
+            .
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {START_HERE_DEMOS.map((demo) => (
