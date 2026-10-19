@@ -166,7 +166,7 @@ export default function HomeHeroPinned() {
       {/* Hero */}
       <section className="pt-36 pb-12 px-6 max-w-5xl mx-auto text-center md:text-left relative z-0 overflow-hidden">
         <HeroFieldLoader flowAngleRef={flowAngleRef} />
-        <h1 ref={headlineRef} className="text-5xl lg:text-7xl font-extrabold leading-[1.05] mb-6 tracking-tight text-balance opacity-0" style={{ color: "var(--text)" }}>
+        <h1 ref={headlineRef} className="text-5xl lg:text-7xl font-extrabold leading-[1.05] mb-6 tracking-tight text-balance hero-h1-guard" style={{ color: "var(--text)" }}>
           AI agents, built and governed in your real systems.
         </h1>
         <p className="text-lg text-[var(--text-muted)] max-w-2xl mx-auto md:mx-0 mb-3 leading-relaxed">

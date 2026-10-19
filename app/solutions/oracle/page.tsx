@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SolutionPage, { SolutionContent } from "@/components/SolutionPage";
+import ApWalkthroughVideo, { AP_WALKTHROUGH } from "@/components/explainer/ApWalkthroughVideo";
 
 export const metadata: Metadata = {
   title: "AI Agents for Oracle Fusion Cloud ERP & EBS",
@@ -109,5 +110,15 @@ const content: SolutionContent = {
 };
 
 export default function OracleSolutionPage() {
-  return <SolutionPage content={content} />;
+  // 2026-10-19: first visual on the Oracle page. Renders only once MEDIA_ORIGIN is set (same gate as
+  // /solutions/governed-write-path). The clip is a browser simulation, labelled in-frame and in the caption.
+  const origin = (process.env.MEDIA_ORIGIN ?? "").replace(/\/$/, "");
+  const src = /^https:\/\/[a-z0-9-]+\.public\.blob\.vercel-storage\.com$/.test(origin) ? `/media/${AP_WALKTHROUGH.file}` : undefined;
+  const visual = src ? (
+    <div>
+      <h2 className="text-2xl font-bold mb-4" style={{ color: "var(--text)" }}>Watch an AP exception run through the governed write path</h2>
+      <ApWalkthroughVideo src={src} />
+    </div>
+  ) : undefined;
+  return <SolutionPage content={{ ...content, visual }} />;
 }
