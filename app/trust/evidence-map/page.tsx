@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import EvidenceMapRows, { type EvidenceRow } from "@/components/EvidenceMapRows";
 
 export const metadata: Metadata = {
   title: "Agent Action Evidence Map",
@@ -20,21 +21,13 @@ export const metadata: Metadata = {
   },
 };
 
-interface Row {
-  stage: string;
-  keep: string;
-  nist: { id: string; text: string }[];
-  eu: { id: string; text: string }[];
-  iso: string;
-}
-
 // NIST AI RMF 1.0 subcategory wording and EU AI Act article text below were
 // checked against the primary sources on 2026-09-19 (NIST AIRC core; the
 // EU AI Act text for Articles 12, 14 and 26). ISO/IEC 42001 is deliberately
 // cited by control THEME only: the standard is paywalled and this site's
 // earlier Annex A numbers came from secondary sources, so numbers are left
 // to be confirmed against the licensed text in an engagement.
-const ROWS: Row[] = [
+const ROWS: EvidenceRow[] = [
   {
     stage: "Read",
     keep: "What the agent was allowed to see and what it actually retrieved: sources, the fields included and excluded, the identity used, and the time.",
@@ -202,49 +195,7 @@ export default function EvidenceMapPage() {
           </ul>
         </div>
 
-        <div className="space-y-4 mb-16">
-          {ROWS.map((r) => (
-            <div key={r.stage} className="p-6 rounded-2xl" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
-              <p className="text-xs font-bold tracking-wide uppercase mb-2" style={{ color: "var(--accent)" }}>{r.stage}</p>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--text)" }}>
-                <span className="font-semibold">Evidence to keep: </span>
-                <span className="text-[var(--text-muted)]">{r.keep}</span>
-              </p>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div>
-                  <p className="text-[11px] uppercase tracking-wide text-[var(--text-muted)] mb-1.5">NIST AI RMF</p>
-                  <ul className="space-y-2">
-                    {r.nist.map((n) => (
-                      <li key={n.id} className="text-sm text-[var(--text-muted)] leading-relaxed">
-                        <span className="font-mono text-xs mr-1.5" style={{ color: "var(--accent)" }}>{n.id}</span>
-                        {n.text}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="md:pl-6" style={{ borderLeft: "1px solid var(--border)" }}>
-                  <p className="text-[11px] uppercase tracking-wide text-[var(--text-muted)] mb-1.5">EU AI Act (high-risk scope)</p>
-                  {r.eu.length > 0 ? (
-                    <ul className="space-y-2">
-                      {r.eu.map((e) => (
-                        <li key={e.id} className="text-sm text-[var(--text-muted)] leading-relaxed">
-                          <span className="font-mono text-xs mr-1.5" style={{ color: "var(--accent)" }}>{e.id}</span>
-                          {e.text}
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p className="text-sm text-[var(--text-muted)] leading-relaxed">No single article cited for this stage here.</p>
-                  )}
-                </div>
-                <div className="md:pl-6" style={{ borderLeft: "1px solid var(--border)" }}>
-                  <p className="text-[11px] uppercase tracking-wide text-[var(--text-muted)] mb-1.5">ISO/IEC 42001</p>
-                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">{r.iso}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <EvidenceMapRows rows={ROWS} />
 
         <div className="p-6 rounded-2xl mb-12" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
           <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text)" }}>See a record like this</h2>

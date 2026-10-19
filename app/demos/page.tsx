@@ -21,7 +21,6 @@ export const metadata: Metadata = {
     "Interactive AI workflows — live model calls, browser simulations and dated operational excerpts from Tioga AI's own infrastructure — including invoice processing, email triage, an Oracle Fusion Cloud AI-readiness assessment, and Standing Watch governance findings. No signup; each demo labels whether it runs live or on synthetic data.",
   alternates: { canonical: "/demos" },
   openGraph: {
-    images: ["/opengraph-image"],
     title: "Live AI Demos — Tioga AI",
     description: "Real AI workflows, no signup — a mix of live model calls, browser simulations, and dated operational excerpts, each labeled for what it actually is, built on the same models and evidence as every Tioga AI engagement.",
   },
@@ -29,7 +28,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Live AI Demos — Tioga AI",
     description: "Real AI workflows, no signup — a mix of live model calls, browser simulations, and dated operational excerpts, each labeled for what it actually is, built on the same models and evidence as every Tioga AI engagement.",
-    images: ["/opengraph-image"],
   },
 };
 

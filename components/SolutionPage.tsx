@@ -82,6 +82,8 @@ export interface SolutionContent {
   related: RelatedLink[];
   demoLink?: { href: string; label: string };
   visual?: React.ReactNode;
+  /** Render the visual directly under the hero, above the Who-this-is-for card (default: below it). */
+  visualFirst?: boolean;
   /** Optional "why not just use what you already pay for" section, rendered
       between Proof and Offers. See G-36 in the 2026-09-02 business-readiness
       audit — the site had no direct answer to the platform-native-governance
@@ -151,6 +153,9 @@ export default function SolutionPage({ content }: { content: SolutionContent }) 
       {/* Opaque wrapper -- everything below the transparent hero band gets
           the normal solid page background back. */}
       <div style={{ background: "var(--bg-dark)" }}>
+      {content.visual && content.visualFirst && (
+        <section className="px-6 pb-16 max-w-4xl mx-auto">{content.visual}</section>
+      )}
       {/* Buyer + Outcome */}
       <section className="px-6 pb-16 max-w-4xl mx-auto">
         <div
@@ -169,7 +174,7 @@ export default function SolutionPage({ content }: { content: SolutionContent }) 
       </section>
 
       {/* Optional visual (e.g. an estate diagram) */}
-      {content.visual && (
+      {content.visual && !content.visualFirst && (
         <section className="px-6 pb-16 max-w-4xl mx-auto">{content.visual}</section>
       )}
 
