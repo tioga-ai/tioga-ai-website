@@ -5,6 +5,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import GovernanceLedgerPreview from "@/components/GovernanceLedgerPreview";
 import OfferChooser from "@/components/OfferChooser";
 import FinanceStartHere from "@/components/FinanceStartHere";
+import MechanismStrip from "@/components/MechanismStrip";
 import { EvidenceTierTag } from "@/app/demos/_lib/evidence-tier";
 
 export default function HomePage() {
@@ -17,6 +18,11 @@ export default function HomePage() {
  hardcoded sprint copy — see that component for the honesty-rule
  dated label this requires. */}
  <HomeHeroPinned />
+
+ {/* Mechanism strip (2026-10-19 website motion review): the control point in the first screens. */}
+ <ScrollReveal>
+ <MechanismStrip />
+ </ScrollReveal>
 
  {/* Offer chooser — two entry points, prominently placed right after the
  hero, with a link out to the full sixteen-offer catalog. See

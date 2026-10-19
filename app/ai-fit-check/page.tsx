@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import TrackedCTA from "@/components/TrackedCTA";
 import { CAL_LINK } from "@/lib/site-config";
+import { OFFER_PATH } from "@/lib/offer-path";
+import FitCheckPath from "@/components/FitCheckPath";
 
 export const metadata: Metadata = {
   title: "The AI Fit Check",
@@ -85,7 +87,7 @@ const FAQ = [
   },
   {
     q: "What does it cost, and does it count toward the Discovery Sprint?",
-    a: "$1,500 flat. If the finding is go and you proceed, the $1,500 credits in full against the Sprint's $5,000 fee, valid for 60 days from the Fit Check readout.",
+    a: `${OFFER_PATH.fitCheckPrice} flat. If the finding is go and you proceed, the ${OFFER_PATH.fitCheckPrice} credits in full against the Sprint's ${OFFER_PATH.sprintPrice} fee, valid for ${OFFER_PATH.creditDays} days from the Fit Check readout.`,
   },
   {
     q: "What if the answer is no-go?",
@@ -199,6 +201,9 @@ export default function AiFitCheckPage() {
             </div>
           </div>
 
+          {/* The path as a picture (2026-10-19 website motion review); numbers from lib/offer-path.ts */}
+          <FitCheckPath />
+
           {/* What happens at the end */}
           <div>
             <h2 className="text-xl font-bold mb-3" style={{ color: "var(--text)" }}>What happens at the end</h2>
@@ -209,11 +214,11 @@ export default function AiFitCheckPage() {
             <ul className="list-disc pl-4 space-y-3 text-sm text-[var(--text-muted)] leading-relaxed">
               <li>
                 <strong style={{ color: "var(--text)" }}>Go — proceed to a Discovery Sprint.</strong>{" "}
-                The $1,500 credits in full against the Sprint&apos;s $5,000
+                The {OFFER_PATH.fitCheckPrice} credits in full against the Sprint&apos;s {OFFER_PATH.sprintPrice}{" "}
                 fee, so the full ladder costs exactly what the Sprint alone
                 costs today if you proceed — the Fit Check is a
-                qualification step, not an extra fee. Credit valid for
-                60 days from the Fit Check readout.
+                qualification step, not an extra fee. Credit valid for{" "}
+                {OFFER_PATH.creditDays} days from the Fit Check readout.
               </li>
               <li>
                 <strong style={{ color: "var(--text)" }}>No-go, or not yet.</strong> You

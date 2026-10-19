@@ -212,6 +212,19 @@ table, th, td, input, select, textarea {
   transform: translateY(0);
 }
 
+/* ---- Home H1 failsafe (2026-10-19 website motion review) -------------------
+   The home headline ships hidden so the JS split-text reveal does not flash.
+   If JS is slow or fails it must still appear: this animation reveals it after
+   1.2 s with no JS at all. When JS runs it sets opacity 1 inline first (and the
+   reduced-motion block below zeroes the delay), so this is only a backstop. */
+.hero-h1-guard {
+  opacity: 0;
+  animation: hero-h1-failsafe 0.01s linear 1.2s forwards;
+}
+@keyframes hero-h1-failsafe {
+  to { opacity: 1; }
+}
+
 /* ---- Reduced motion (2026-09-20) ------------------------------------------
    Global backstop for every CSS animation/transition on the site (nav status
    pulse, /mcp flow dots, streaming cursor, typing dots, hover transitions,
