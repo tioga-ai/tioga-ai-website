@@ -17,6 +17,19 @@ const DEMOS = [
   ["governance-ledger", "/demos/governance-ledger"],
   ["ap-exception-workflow", "/demos/ap-exception-workflow"],
   ["fusion-ai-readiness-assessment", "/demos/fusion-ai-readiness-assessment"],
+  ["automation-oversight", "/demos/automation-oversight"],
+  ["quickbooks-bill-approval", "/demos/quickbooks-bill-approval"],
+  ["capital-equipment-order", "/demos/capital-equipment-order"],
+  ["field-service-classification", "/demos/field-service-classification"],
+  ["erp-reporting-copilot", "/demos/erp-reporting-copilot"],
+  ["agent-write-path-exposure-check", "/demos/agent-write-path-exposure-check"],
+  ["agent-autonomy-mapper", "/demos/agent-autonomy-mapper"],
+  ["joule-capability-gate-map", "/demos/joule-capability-gate-map"],
+  ["composed-evidence", "/demos/composed-evidence"],
+  ["marble-world-audit", "/demos/marble-world-audit"],
+  ["context-window-data-minimization", "/demos/context-window-data-minimization"],
+  ["timecard-exception-shadow-mode", "/demos/timecard-exception-shadow-mode"],
+  ["headcount-forecast-draft-provenance", "/demos/headcount-forecast-draft-provenance"],
 ];
 
 const browser = await chromium.launch();
