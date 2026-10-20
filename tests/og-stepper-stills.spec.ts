@@ -76,11 +76,11 @@ test.describe("evidence-map stepper", () => {
   });
 });
 
-test("demos: the four Start Here cards carry loaded stills with reserved size", async ({ page }) => {
+test("demos: every featured demo card carries a loaded still with reserved size", async ({ page }) => {
   await page.goto("/demos");
   const stills = page.locator('img[src^="/demos/stills/"]');
-  await expect(stills).toHaveCount(4);
-  for (let i = 0; i < 4; i++) {
+  await expect(stills).toHaveCount(17);
+  for (let i = 0; i < 17; i++) {
     const img = stills.nth(i);
     await img.scrollIntoViewIfNeeded();
     await expect(img).toHaveAttribute("width", "800");

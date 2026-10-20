@@ -1041,6 +1041,19 @@ const DEMO_STILLS: Record<string, string> = {
   "/demos/governance-ledger": "Governance Ledger",
   "/demos/ap-exception-workflow": "Governed AP Exception Workflow",
   "/demos/fusion-ai-readiness-assessment": "Fusion Cloud AI-Readiness Assessment",
+  "/demos/automation-oversight": "Automation Oversight",
+  "/demos/quickbooks-bill-approval": "QuickBooks Bill Approval",
+  "/demos/capital-equipment-order": "Capital Equipment Order",
+  "/demos/field-service-classification": "Field Service Classification",
+  "/demos/erp-reporting-copilot": "ERP Reporting Copilot",
+  "/demos/agent-write-path-exposure-check": "Agent Write-Path Exposure Check",
+  "/demos/agent-autonomy-mapper": "Agent Autonomy Mapper",
+  "/demos/joule-capability-gate-map": "Joule Capability Gate Map",
+  "/demos/composed-evidence": "Composed Evidence",
+  "/demos/marble-world-audit": "Marble World Audit",
+  "/demos/context-window-data-minimization": "Context Window Data Minimization",
+  "/demos/timecard-exception-shadow-mode": "Timecard Exception Shadow Mode",
+  "/demos/headcount-forecast-draft-provenance": "Headcount Forecast Draft Provenance",
 };
 
 function FeaturedDemoCard({ demo }: { demo: FeaturedDemo }) {
