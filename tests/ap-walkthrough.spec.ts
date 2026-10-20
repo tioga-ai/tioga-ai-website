@@ -14,7 +14,7 @@ test("no video binaries are tracked in git, and the poster is small", () => {
   expect(fs.statSync("public/explainers/ap-walkthrough-poster.jpg").size).toBeLessThanOrEqual(100 * 1024);
 });
 
-for (const path of ["/demos/ap-exception-workflow", "/solutions/oracle"]) {
+for (const path of ["/demos/ap-exception-workflow", "/solutions/oracle", "/solutions/ap-automation"]) {
   test(`walkthrough on ${path} is click-to-play, labelled, and never autoplays`, async ({ page }) => {
     await page.route("**/_vercel/**", (route) => route.fulfill({ status: 200, contentType: "application/javascript", body: "" }));
     await page.goto(path);

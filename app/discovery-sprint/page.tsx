@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import TrackedCTA from "@/components/TrackedCTA";
+import FitCheckPath from "@/components/FitCheckPath";
 import { CAL_LINK } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -160,6 +161,12 @@ export default function DiscoverySprintPage() {
                 end-to-end throughput.
               </p>
             </div>
+          </div>
+
+          {/* How the Fit Check leads to the Sprint (prices from lib/offer-path.ts) */}
+          <div>
+            <h2 className="text-xl font-bold mb-3" style={{ color: "var(--text)" }}>If you start with the Fit Check</h2>
+            <FitCheckPath />
           </div>
 
           {/* What happens at the end */}
