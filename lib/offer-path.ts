@@ -8,4 +8,6 @@ export const OFFER_PATH = {
   sprintBalanceAfterCredit: "$3,500",
   creditDays: 60,
   readoutBusinessDays: 2,
+  // What turns the credit on (decision 2026-10-18, Option A): the signed next-stage SOW inside the window.
+  creditTrigger: "you sign the Sprint SOW within that window",
 } as const;

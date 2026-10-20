@@ -196,7 +196,7 @@ export default function DiscoverySprintPage() {
               </li>
             </ul>
             <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-4">
-              The credit is valid for 60 days from the readout.
+              The credit is valid for 60 days from the readout and applies when you sign the next-stage SOW within that window.
             </p>
             <div className="p-4 rounded-xl" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
               <div className="text-xs font-mono uppercase tracking-wide mb-1.5" style={{ color: "var(--accent)" }}>

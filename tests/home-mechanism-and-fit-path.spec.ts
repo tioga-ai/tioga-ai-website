@@ -78,3 +78,15 @@ test("discovery sprint page carries the same Fit Check path, with no stray dolla
   const body = await page.locator("main").innerText();
   expect(body).not.toMatch(/\$[\d,]+[A-Za-z]/);
 });
+
+test("credit trigger (sign the SOW within the window) is stated on the three offer surfaces; About says principal-led", async ({ page }) => {
+  await page.goto("/ai-fit-check");
+  expect(await page.locator("dl").innerText()).toContain("applies when you sign the Sprint SOW within that window");
+  expect(await page.getByTestId("fit-check-path").innerText()).toContain("applies when you sign the Sprint SOW within that window");
+  await page.goto("/discovery-sprint");
+  expect(await page.locator("main").innerText()).toContain("applies when you sign the next-stage SOW within that window");
+  await page.goto("/about");
+  const about = await page.locator("main").innerText();
+  expect(about).toContain("Principal-led.");
+  expect(about).not.toMatch(/Built by one person|held by one person/);
+});

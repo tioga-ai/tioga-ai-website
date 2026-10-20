@@ -22,7 +22,7 @@ export default function FitCheckPath() {
             <p className="font-mono text-xs uppercase tracking-wide mb-1" style={{ color: "var(--accent)" }}>If the finding is go</p>
             <p className="text-lg font-bold mb-1" style={{ color: "var(--text)" }}>Discovery Sprint · {P.sprintPrice}</p>
             <p className="text-sm" style={{ color: "var(--text-muted)" }}>
-              The {P.fitCheckPrice} credits in full, so you pay {P.sprintBalanceAfterCredit} for the Sprint. Credit valid {P.creditDays} days from the readout.
+              The {P.fitCheckPrice} credits in full, so you pay {P.sprintBalanceAfterCredit} for the Sprint. Credit valid {P.creditDays} days from the readout, and applies when {P.creditTrigger}.
             </p>
           </div>
           <div className="p-5" style={box}>
