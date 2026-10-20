@@ -69,3 +69,12 @@ test("fit check diagram prices equal the FAQ prices", async ({ page }) => {
   expect(body).not.toMatch(/\$[\d,]+[A-Za-z]/);
   expect(body).not.toMatch(/\bfor\d/);
 });
+
+test("discovery sprint page carries the same Fit Check path, with no stray dollar figure", async ({ page }) => {
+  await page.goto("/discovery-sprint");
+  const diagram = await page.getByTestId("fit-check-path").innerText();
+  expect(new Set(diagram.match(/\$[\d,]+/g) ?? [])).toEqual(new Set(["$1,500", "$5,000", "$3,500"]));
+  expect(diagram).toContain("60 days");
+  const body = await page.locator("main").innerText();
+  expect(body).not.toMatch(/\$[\d,]+[A-Za-z]/);
+});
