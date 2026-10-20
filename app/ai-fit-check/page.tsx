@@ -85,7 +85,7 @@ const FAQ = [
   },
   {
     q: "What does it cost, and does it count toward the Discovery Sprint?",
-    a: `${OFFER_PATH.fitCheckPrice} flat. If the finding is go and you proceed, the ${OFFER_PATH.fitCheckPrice} credits in full against the Sprint's ${OFFER_PATH.sprintPrice} fee, valid for ${OFFER_PATH.creditDays} days from the Fit Check readout.`,
+    a: `${OFFER_PATH.fitCheckPrice} flat. If the finding is go and you proceed, the ${OFFER_PATH.fitCheckPrice} credits in full against the Sprint's ${OFFER_PATH.sprintPrice} fee, valid for ${OFFER_PATH.creditDays} days from the Fit Check readout. The credit applies when ${OFFER_PATH.creditTrigger}.`,
   },
   {
     q: "What if the answer is no-go?",

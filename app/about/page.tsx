@@ -48,7 +48,7 @@ export default function AboutPage() {
         </div>
 
         <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight" style={{ color: "var(--text)" }}>
-          Built by one person.<br />
+          Principal-led.<br />
           <span style={{ color: "var(--accent)" }}>Run against real systems.</span>
         </h1>
 
@@ -125,7 +125,7 @@ export default function AboutPage() {
 
         {/* Pillars */}
         <div className="mb-14">
-          <h2 className="text-xl font-bold mb-2" style={{ color: "var(--text)" }}>Three kinds of fluency, held by one person</h2>
+          <h2 className="text-xl font-bold mb-2" style={{ color: "var(--text)" }}>Three kinds of fluency, held by the principal</h2>
           <p className="text-[var(--text-muted)] text-sm mb-6 max-w-2xl">
             Most consultancies bring one of these three. Tioga AI is built on
             the premise that enterprise AI only works in production when all three are held by the same person.
