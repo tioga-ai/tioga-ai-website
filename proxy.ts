@@ -24,7 +24,7 @@ function safeEqual(a: string, b: string): boolean {
   return diff === 0;
 }
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const expected = process.env.PRESENTER_PASSWORD;
   if (!expected) {
     return new NextResponse("Not available.", { status: 503, headers: { "Cache-Control": "no-store" } });
