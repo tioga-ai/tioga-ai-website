@@ -47,3 +47,20 @@ test("agent/approve treats an unknown approval id as invalid/expired, not a cras
   const res = await request.get("/api/agent/approve?id=this-approval-id-does-not-exist&action=approve");
   expect([404, 500]).toContain(res.status());
 });
+
+test("agent/approve GET is read-only: unknown id gives 404/500 and never acts", async ({ request }) => {
+  const res = await request.get("/api/agent/approve?id=this-approval-id-does-not-exist&action=reject");
+  expect([404, 500]).toContain(res.status());
+});
+
+test("agent/approve POST rejects missing or invalid params", async ({ request }) => {
+  const none = await request.post("/api/agent/approve", { form: {} });
+  expect(none.status()).toBe(400);
+  const bad = await request.post("/api/agent/approve", { form: { id: "someid", action: "send-it-now" } });
+  expect(bad.status()).toBe(400);
+});
+
+test("agent/approve POST treats an unknown approval id as invalid/expired, not a crash", async ({ request }) => {
+  const res = await request.post("/api/agent/approve", { form: { id: "this-approval-id-does-not-exist", action: "approve" } });
+  expect([404, 500]).toContain(res.status());
+});

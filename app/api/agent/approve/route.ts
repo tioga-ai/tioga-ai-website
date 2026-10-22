@@ -19,17 +19,29 @@ function autosendEnabled(): boolean {
 function htmlResponse(message: string, status = 200): Response {
   return new Response(
     `<!doctype html><html><body style="font-family: system-ui, sans-serif; max-width: 640px; margin: 60px auto; padding: 0 20px; color: #0f172a;"><p>${message}</p></body></html>`,
-    { status, headers: { "Content-Type": "text/html; charset=utf-8" } }
+    {
+      status,
+      headers: {
+        "Content-Type": "text/html; charset=utf-8",
+        "Cache-Control": "no-store",
+        "X-Robots-Tag": "noindex",
+      },
+    }
   );
 }
 
+function escapeHtml(v: string): string {
+  return v.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
+}
+
 // Founder-facing link handler for the human-approval hold (see
-// lib/agent-approval.ts). GET, not POST, deliberately — this is meant to be
-// clickable straight out of the notification email sent by
-// sendAgentReplyApprovalEmail(), no separate login flow. The approval-id
-// itself is the bearer-capability token (24 random bytes, unguessable),
-// same trust model this codebase already applies to
-// reply+{threadId}@agent.tioga.ai thread recovery.
+// lib/agent-approval.ts). The notification email links here with GET, but GET
+// is read-only: it only renders a confirmation page whose button POSTs the
+// same id/action back. Mail link scanners and preview fetchers issue GETs, so
+// a GET must never approve or reject. The approval-id itself is the
+// bearer-capability token (24 random bytes, unguessable), same trust model
+// this codebase already applies to reply+{threadId}@agent.tioga.ai thread
+// recovery.
 export async function GET(req: NextRequest) {
   const id = req.nextUrl.searchParams.get("id");
   const action = req.nextUrl.searchParams.get("action");
@@ -52,7 +64,53 @@ export async function GET(req: NextRequest) {
 
   if (approval.status !== "pending") {
     return htmlResponse(
-      `This reply was already <strong>${approval.status}</strong>. No action was taken.`
+      `This reply was already <strong>${escapeHtml(approval.status)}</strong>. No action was taken.`
+    );
+  }
+
+  const verb = action === "approve" ? "Approve" : "Reject";
+  return htmlResponse(
+    `<strong>${verb} this reply?</strong><br>To: ${escapeHtml(approval.to)}<br>Subject: ${escapeHtml(approval.subject)}` +
+      `<form method="POST" action="/api/agent/approve" style="margin-top:20px">` +
+      `<input type="hidden" name="id" value="${escapeHtml(id)}">` +
+      `<input type="hidden" name="action" value="${action}">` +
+      `<button type="submit" style="font: inherit; padding: 8px 16px; cursor: pointer;">${verb}</button></form>`
+  );
+}
+
+// Only this handler changes state. Same id lookup and checks as before.
+export async function POST(req: NextRequest) {
+  let id: string | null = null;
+  let action: string | null = null;
+  try {
+    const form = await req.formData();
+    const i = form.get("id");
+    const a = form.get("action");
+    id = typeof i === "string" ? i : null;
+    action = typeof a === "string" ? a : null;
+  } catch {
+    return htmlResponse("Missing or invalid approval parameters.", 400);
+  }
+
+  if (!id || (action !== "approve" && action !== "reject")) {
+    return htmlResponse("Missing or invalid approval parameters.", 400);
+  }
+
+  let approval;
+  try {
+    approval = await getPendingApproval(id);
+  } catch (err) {
+    console.error("[agent/approve] Failed to look up pending approval:", err);
+    return htmlResponse("Could not look up this approval right now. Check server logs.", 500);
+  }
+
+  if (!approval) {
+    return htmlResponse("This approval link is invalid or has expired.", 404);
+  }
+
+  if (approval.status !== "pending") {
+    return htmlResponse(
+      `This reply was already <strong>${escapeHtml(approval.status)}</strong>. No action was taken.`
     );
   }
 
