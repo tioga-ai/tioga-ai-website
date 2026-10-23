@@ -18,16 +18,24 @@ const eslintConfig = [
   ...nextCoreWebVitals,
   ...nextTypescript,
   {
-    // eslint-config-next 16 adds React Compiler rules (react-hooks v7). On the
-    // Next 16 upgrade (2026-10-22) they flagged 55 existing spots in 27 files,
-    // mostly the 3D demo scenes. Off for now so the upgrade stays a dependency
-    // change; burn them down and turn them back on (follow-up).
+    // eslint-config-next 16 adds React Compiler rules (react-hooks v7). They
+    // are on everywhere (burn-down done in the lint-burndown PR). The one
+    // exception is `immutability` in the react-three-fiber scene files below:
+    // useFrame callbacks mutate refs, three.js objects and ref-backed values
+    // every frame by design (that is how r3f animates without re-rendering),
+    // and the rule reads those as "modifying values after render". Scoped to
+    // these files so it stays on for the rest of the app.
+    files: [
+      "app/demos/agent-checkpoint-walk/Scene.tsx",
+      "app/demos/standing-watch/BoundaryScene.tsx",
+      "app/showcase/ShowcaseScene.tsx",
+      "app/showcase/gpgpu/LedgerParticleField.tsx",
+      "components/HeroFieldScene.tsx",
+      "components/SolutionsFieldScene.tsx",
+      "components/three/Pulses.tsx",
+    ],
     rules: {
-      "react-hooks/set-state-in-effect": "off",
-      "react-hooks/purity": "off",
       "react-hooks/immutability": "off",
-      "react-hooks/use-memo": "off",
-      "react-hooks/set-state-in-render": "off",
     },
   },
   {

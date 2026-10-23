@@ -270,14 +270,11 @@ export default function BoundaryScene({
   forceCinematic = false,
 }: BoundarySceneProps) {
   const tokens = useTokens(TOKEN_NAMES);
-  const [isMobile, setIsMobile] = useState(false);
+  // Scene is loaded with next/dynamic ssr:false, so window exists on first render.
+  const [isMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
   const [cinematicDone, setCinematicDone] = useState(!forceCinematic);
   const gateActivity = useRef(0);
   const wallImpact = useRef(0);
-
-  useMemo(() => {
-    if (typeof window !== "undefined") setIsMobile(window.innerWidth < 768);
-  }, []);
 
   const rows = useMemo(() => buildRowGeometry(), []);
 

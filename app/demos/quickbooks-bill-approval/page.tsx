@@ -1,5 +1,6 @@
 "use client";
 
+import { jitterLatency, newActionId } from "../_lib/impure";
 import { Fragment, useState } from "react";
 import DemoShell from "../_lib/demo-shell";
 import {
@@ -145,12 +146,6 @@ export default function QuickbooksBillApprovalPage() {
 
   const pendingApprovals = ledger.filter((e) => e.decision === "pending_approval");
 
-  function newActionId() {
-    return typeof crypto !== "undefined" && "randomUUID" in crypto
-      ? crypto.randomUUID()
-      : `act_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
-  }
-
   function baseEntry(billId: string, actionType: string, amount: number, actor: string, claimedOutcome?: string): LedgerEntry {
     return {
       actionId: newActionId(),
@@ -197,7 +192,7 @@ export default function QuickbooksBillApprovalPage() {
   function finalizePayment(entry: LedgerEntry, billId: string, billsSnapshot: Record<string, Bill>): LedgerEntry {
     const bill = billsSnapshot[billId];
     const result = postPayment(bill);
-    const latency = 180 + Math.round(Math.random() * 220);
+    const latency = jitterLatency(180, 220);
     const check = paymentPostedCheck(result, latency);
     const updated: LedgerEntry = {
       ...entry,
@@ -290,7 +285,7 @@ export default function QuickbooksBillApprovalPage() {
       const bill = bills[entry.billId];
       const vendor = bill ? vendors[bill.vendorId] : undefined;
       const result = validateVendorPaymentChange(vendor);
-      const latency = 160 + Math.round(Math.random() * 200);
+      const latency = jitterLatency(160, 200);
       const check = vendorPaymentCheck(result, latency);
       updated = {
         ...updated,

@@ -110,6 +110,7 @@ export default function FusionAiReadinessAssessmentPage() {
 
   useEffect(() => {
     if (state !== "loading") return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- restart the progress animation each time loading begins
     setStage(0);
     const t = setInterval(
       () => setStage((s) => Math.min(s + 1, PROGRESS_STAGES.length - 1)),

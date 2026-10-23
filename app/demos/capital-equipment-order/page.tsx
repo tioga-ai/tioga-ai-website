@@ -1,5 +1,6 @@
 "use client";
 
+import { jitterLatency, newActionId } from "../_lib/impure";
 import { Fragment, useState } from "react";
 import DemoShell from "../_lib/demo-shell";
 import {
@@ -79,12 +80,6 @@ export default function CapitalEquipmentOrderPage() {
   const [freeformFinalPrice, setFreeformFinalPrice] = useState("");
 
   const pendingApprovals = ledger.filter((e) => e.decision === "pending_approval");
-
-  function newActionId() {
-    return typeof crypto !== "undefined" && "randomUUID" in crypto
-      ? crypto.randomUUID()
-      : `act_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
-  }
 
   function baseEntry(orderId: string, actionType: string, detail: string, actor: string): LedgerEntry {
     return {
@@ -212,7 +207,7 @@ export default function CapitalEquipmentOrderPage() {
     await new Promise((r) => setTimeout(r, 350));
     const finalMaterialId = finalMaterialIdOverride ?? order.tbdMaterialId.replace("TBD", "CFG");
     const result = validateErpFinalize(order, finalMaterialId);
-    const latency = 180 + Math.round(Math.random() * 220);
+    const latency = jitterLatency(180, 220);
     const check = erpCheck(result, latency);
     const updated: LedgerEntry = {
       ...entry,

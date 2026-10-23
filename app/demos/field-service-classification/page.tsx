@@ -1,5 +1,6 @@
 "use client";
 
+import { jitterLatency, newActionId } from "../_lib/impure";
 import { Fragment, useState } from "react";
 import DemoShell from "../_lib/demo-shell";
 import {
@@ -90,12 +91,6 @@ export default function FieldServiceClassificationPage() {
 
   const pendingApprovals = ledger.filter((e) => e.decision === "pending_approval");
 
-  function newActionId() {
-    return typeof crypto !== "undefined" && "randomUUID" in crypto
-      ? crypto.randomUUID()
-      : `act_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
-  }
-
   function baseEntry(callId: string, actionType: string, detail: string, actor: string): LedgerEntry {
     return {
       actionId: newActionId(),
@@ -128,7 +123,7 @@ export default function FieldServiceClassificationPage() {
       actionType === "split_classification"
         ? validateErpSplit()
         : validateErpCoverage(call, actionType === "classify_no_charge" ? "no_charge" : "billable");
-    const latency = 180 + Math.round(Math.random() * 220);
+    const latency = jitterLatency(180, 220);
     const check = erpCheck(result, latency);
     const newStatus: ServiceCall["status"] =
       actionType === "classify_no_charge" ? "classified_no_charge" : actionType === "classify_billable" ? "classified_billable" : "split";

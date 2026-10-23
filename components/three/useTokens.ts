@@ -20,6 +20,7 @@ export function useTokens<T extends Record<string, string>>(
     (Object.keys(names) as (keyof T)[]).forEach((key) => {
       resolved[key] = readCssToken(names[key]);
     });
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- post-hydration, client-only sync (SSR renders the default; no external-store hook needed for a one-time read)
     setTokens(resolved);
     // Intentionally mount-only, matching the pattern being replaced — this
     // site has no runtime theme switching, so re-reading on every prop

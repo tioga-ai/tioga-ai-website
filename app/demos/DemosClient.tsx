@@ -1137,6 +1137,7 @@ function DemosPageInner() {
   useEffect(() => {
     const tabParam = new URLSearchParams(window.location.search).get("tab");
     if (tabParam && DEMOS.some((d) => d.id === tabParam)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- post-hydration, client-only sync (SSR renders the default; no external-store hook needed for a one-time read)
       setActive(tabParam);
       activeDemoRef.current?.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
     }

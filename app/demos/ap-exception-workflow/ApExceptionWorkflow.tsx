@@ -1,5 +1,6 @@
 "use client";
 
+import { jitterLatency, newActionId } from "../_lib/impure";
 import { Fragment, useState } from "react";
 import DemoShell from "../_lib/demo-shell";
 import ValueLedgerPanel from "./ValueLedgerPanel";
@@ -144,12 +145,6 @@ export default function ApExceptionWorkflow({ walkthrough }: { walkthrough?: Rea
   // the same way a compliance ledger wouldn't let you reverse a reversal.
   const rolledBackIds = new Set(ledger.filter((e) => e.relatesTo).map((e) => e.relatesTo));
 
-  function newActionId() {
-    return typeof crypto !== "undefined" && "randomUUID" in crypto
-      ? crypto.randomUUID()
-      : `act_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
-  }
-
   function baseEntry(poId: string, actionType: string, amount: number, actor: string, claimedOutcome?: string): LedgerEntry {
     return {
       actionId: newActionId(),
@@ -169,7 +164,7 @@ export default function ApExceptionWorkflow({ walkthrough }: { walkthrough?: Rea
     const po = posSnapshot[entry.poId];
     const vendor = po ? vendorsSnapshot[po.vendorId] : undefined;
     const result = validateErpChange(po, vendor, entry.amount);
-    const latency = 180 + Math.round(Math.random() * 220);
+    const latency = jitterLatency(180, 220);
     const check = erpCheck(result, latency);
     const updated: LedgerEntry = {
       ...entry,
@@ -256,7 +251,7 @@ export default function ApExceptionWorkflow({ walkthrough }: { walkthrough?: Rea
       const po = pos[entry.poId];
       const vendor = po ? vendors[po.vendorId] : undefined;
       const result = validateVendorMasterChange(vendor);
-      const latency = 160 + Math.round(Math.random() * 200);
+      const latency = jitterLatency(160, 200);
       const check = vendorMasterCheck(result, latency);
       updated = {
         ...updated,
@@ -300,7 +295,7 @@ export default function ApExceptionWorkflow({ walkthrough }: { walkthrough?: Rea
     await new Promise((r) => setTimeout(r, 300));
     const po = pos[entry.poId];
     const result = rollbackChange(po, entry.amount);
-    const latency = 150 + Math.round(Math.random() * 150);
+    const latency = jitterLatency(150, 150);
     const check = rollbackCheck(result, latency);
     if (result.accepted && result.newCommitted !== undefined) {
       setState((prev) => ({

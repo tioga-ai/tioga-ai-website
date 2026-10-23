@@ -33,6 +33,7 @@ export default function PresenterSwitch() {
   }
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- async probe result, not a synchronous derive
     probe().then((up) => {
       if (!touched) setMode(up ? "live" : "recording");
     });
