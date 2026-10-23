@@ -541,6 +541,7 @@ export default function ShowcaseScene({
   const poolHeat = useRef<number[]>([]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- post-hydration, client-only sync (SSR renders the default; no external-store hook needed for a one-time read)
     setTokens({
       bgDarker: readCssToken("--bg-darker"),
       border: readCssToken("--border"),

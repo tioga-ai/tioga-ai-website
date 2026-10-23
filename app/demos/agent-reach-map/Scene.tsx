@@ -490,6 +490,7 @@ export default function AgentReachMapScene({ onContextLost }: { onContextLost: (
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- post-hydration, client-only sync (SSR renders the default; no external-store hook needed for a one-time read)
     setIsMobile(window.innerWidth < 768);
   }, []);
 

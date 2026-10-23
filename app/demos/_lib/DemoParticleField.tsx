@@ -78,34 +78,38 @@ function randomInSphere(radius: number): THREE.Vector3 {
   );
 }
 
+// Random particle layout, generated once per mount. Module scope so the
+// impure Math.random calls stay out of the component body (purity lint).
+function buildParticleBuffers() {
+  const base = new Float32Array(PARTICLE_COUNT * 3);
+  const ring = new Float32Array(PARTICLE_COUNT * 3);
+  const ph = new Float32Array(PARTICLE_COUNT);
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    const p = randomInSphere(RADIUS);
+    base[i * 3] = p.x;
+    base[i * 3 + 1] = p.y;
+    base[i * 3 + 2] = p.z;
+
+    // Rest/resolved formation: a loose ring in the XY plane, radius
+    // jittered per-particle so it reads as a band of light, not a wire.
+    const angle = (i / PARTICLE_COUNT) * Math.PI * 2;
+    const ringR = RADIUS * 0.62 + (Math.random() - 0.5) * 0.35;
+    ring[i * 3] = Math.cos(angle) * ringR;
+    ring[i * 3 + 1] = Math.sin(angle) * ringR;
+    ring[i * 3 + 2] = (Math.random() - 0.5) * 0.3;
+
+    ph[i] = Math.random() * Math.PI * 2;
+  }
+  return { basePositions: base, ringTargets: ring, phases: ph };
+}
+
 function ParticleField() {
   const { status, confidence } = useDemoActivity();
-  const tokens = useMemo(readTokens, []);
+  const tokens = useMemo(() => readTokens(), []);
   const pointsRef = useRef<THREE.Points>(null);
   const groupRef = useRef<THREE.Group>(null);
 
-  const { basePositions, ringTargets, phases } = useMemo(() => {
-    const base = new Float32Array(PARTICLE_COUNT * 3);
-    const ring = new Float32Array(PARTICLE_COUNT * 3);
-    const ph = new Float32Array(PARTICLE_COUNT);
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      const p = randomInSphere(RADIUS);
-      base[i * 3] = p.x;
-      base[i * 3 + 1] = p.y;
-      base[i * 3 + 2] = p.z;
-
-      // Rest/resolved formation: a loose ring in the XY plane, radius
-      // jittered per-particle so it reads as a band of light, not a wire.
-      const angle = (i / PARTICLE_COUNT) * Math.PI * 2;
-      const ringR = RADIUS * 0.62 + (Math.random() - 0.5) * 0.35;
-      ring[i * 3] = Math.cos(angle) * ringR;
-      ring[i * 3 + 1] = Math.sin(angle) * ringR;
-      ring[i * 3 + 2] = (Math.random() - 0.5) * 0.3;
-
-      ph[i] = Math.random() * Math.PI * 2;
-    }
-    return { basePositions: base, ringTargets: ring, phases: ph };
-  }, []);
+  const { basePositions, ringTargets, phases } = useMemo(() => buildParticleBuffers(), []);
 
   const positions = useMemo(() => basePositions.slice(), [basePositions]);
   const colors = useMemo(() => new Float32Array(PARTICLE_COUNT * 3), []);

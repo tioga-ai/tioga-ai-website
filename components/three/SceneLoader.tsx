@@ -54,6 +54,7 @@ export default function SceneLoader({
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const hasWebGL = detectWebGL();
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- post-hydration, client-only sync (SSR renders the default; no external-store hook needed for a one-time read)
     setMode(hasWebGL && !reducedMotion ? "scene" : "fallback");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

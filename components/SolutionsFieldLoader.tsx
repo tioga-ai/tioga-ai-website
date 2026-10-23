@@ -47,6 +47,7 @@ export default function SolutionsFieldLoader() {
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- post-hydration, client-only sync (SSR renders the default; no external-store hook needed for a one-time read)
     setReducedMotion(reduced);
     if (detectWebGL() && !reduced) setShowField(true);
   }, []);
@@ -57,6 +58,7 @@ export default function SolutionsFieldLoader() {
   // from React state" rule.
   useEffect(() => {
     if (reducedMotion) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- instant colour swap for reduced motion, tween path is GSAP
       setStaticColor(mood.color); // instant, no tween, per reduced-motion rule
       return;
     }

@@ -44,6 +44,7 @@ export default function HeroFieldLoader({
 
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- post-hydration, client-only sync (SSR renders the default; no external-store hook needed for a one-time read)
     if (detectWebGL() && !reducedMotion) setShowField(true);
   }, []);
 

@@ -60,6 +60,7 @@ export default function HeroDemo() {
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- post-hydration, client-only sync (SSR renders the default; no external-store hook needed for a one-time read)
     setReducedMotion(mq.matches);
     const handler = () => setReducedMotion(mq.matches);
     mq.addEventListener("change", handler);

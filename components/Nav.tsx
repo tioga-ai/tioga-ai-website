@@ -18,6 +18,7 @@ export default function Nav() {
   }, []);
 
   // Close mobile menu on route change
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- reset the mobile menu when the route changes
   useEffect(() => { setMenuOpen(false); }, [pathname]);
 
   // Escape closes the open mobile menu and returns focus to the toggle
