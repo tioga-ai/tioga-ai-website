@@ -1,54 +1,37 @@
-# Review instructions
+# REVIEW.md: what to check on pull requests to tioga-ai-website
 
-Next.js site for Tioga AI (tioga.ai). This repo is PUBLIC and every review
-comment is public too: never quote secrets, internal notes or client details.
-Read `CLAUDE.md` and `design.md` before judging UI changes.
+This repository is **public**. Review comments are public too. Do not quote, paraphrase or hint at anything private in a comment.
 
-## Prioritise (flag these)
+## Flag as a problem (blocking in spirit; you never block the merge)
 
-1. Secrets and private material. API keys, tokens, `.env` values, passwords,
-   internal URLs, client names or data, and non-public assets (videos,
-   recordings, internal datasets) committed under `public/` or anywhere else.
-   Gated content belongs in private storage behind a route, not in git.
-2. Broken navigation. Links, `href`s, redirects (`vercel.json`,
-   `next.config.js`, `middleware.ts`) and routes that point to a missing page;
-   pages missing from `app/sitemap.ts`; removed pages with no redirect.
-3. Wording rules (public copy, metadata, `llms.txt`, chatbot and email-agent
-   prompts in `lib/`):
-   - Say "principal-led practice". Never "solo practice", "solo-run",
-     "at least for now" or "team to staff up".
-   - Never imply a bench, client roster, case studies, testimonials or logos
-     that do not exist. Demos are described as demos, dated data as dated.
-   - Do not call a control Tioga built "independent" or "independently
-     verified". No "multi-vendor" or vendor-tie claims that are not true today.
-   - No unqualified compliance, certification or "guaranteed" claims.
-4. Offer and pricing consistency. The service catalog (`PRACTICES` in
-   `app/services/page.tsx`) is the source of truth. Any price, scope,
-   deliverable, duration or offer name elsewhere (home, discovery-sprint,
-   contact, lp/*, solutions, changelog, `lib/*prompts*.ts`) must match it.
-   Flag a number that appears in two places with two values.
-5. Design system. No raw hex colours in components; use `var(--token)` from
-   `app/globals.css`. Exceptions: 8-digit hex with alpha, and
-   `app/opengraph-image.tsx`. Do not use `bg-brand-*` Tailwind classes.
-6. Accessibility. Images without `alt`, icon-only buttons or links without an
-   accessible name, heading-level skips, missing form labels, low contrast,
-   focus states removed, motion with no `prefers-reduced-motion` fallback.
-7. Build and types. Anything that would fail `npm run lint` (zero warnings
-   allowed), `next build` or `tsc`; server-only code or env vars leaking into
-   client components; new `NEXT_PUBLIC_*` variables holding sensitive values.
-8. Tests. Copy changes that contradict a guard in `tests/` (those specs encode
-   past wording decisions). A behaviour change with no test update is worth a note.
+1. **Private material committed.** Videos, internal data, client names, account numbers, API keys, `.env` files, or anything under a password-gated page's real source. Private assets belong in private storage (Vercel Blob), never in git. If in doubt, flag it.
+2. **Hard-coded colors.** Every color must use a CSS custom property from `app/globals.css` (`var(--accent)`, `var(--bg-card)`, `var(--error)`). A raw 6-digit hex literal is a violation. Allowed exceptions: 8-digit hex with an alpha suffix for translucent tints, and `app/opengraph-image.tsx` (its renderer cannot use `var()`). A genuinely new color needs a new named token in `:root` first.
+3. **Dead Tailwind brand classes.** `bg-brand-*` and the other `brand.*` colors in `tailwind.config.ts` are unused and stale. New UI must not use them.
+4. **Identity and wording.**
+   - The founder is anonymous by decision: no founder name, photo or personal profile link in page copy, metadata or structured data.
+   - Do not describe the business as a "solo practice" or state a headcount. The approved wording is "principal-led practice".
+   - The legal entity is Tiogasoft, L.L.C.; "Tioga AI" is the trade name. Do not call it a C-corp or Inc.
+5. **Unverified claims in copy.** No client results, statistics, named customers, certifications or "independent" claims that the PR does not source. A claim with no cited source in the PR description or an adjacent comment is a finding.
+6. **Outbound promises.** Copy that implies a delivered engagement, a signed client or a live product that does not exist yet.
 
-## Skip (do not comment)
+## Flag as a suggestion
 
-- Formatting, import order, quote style, naming taste: ESLint and Prettier own these.
-- Generated or lockfile noise (`package-lock.json`, `tsconfig.tsbuildinfo`,
-  `test-results/`) unless a dependency change looks unintended.
-- Tailwind class ordering and pre-existing issues the PR did not touch.
+- New UI that skips the shapes in `design.md` (border radius by role, card and button patterns, slate grays, the typography scale).
+- The slop watchlist in `design.md`: off-palette gradients or glows, sparkle/rocket/robot icons, identical card grids, several focal points in one view, buzzwords such as "supercharge" or "seamless", pill-shaped primary buttons, text over busy imagery.
+- Accessibility regressions: missing alt text, unlabeled controls, focus order, contrast that depends on a non-token color. CI runs the a11y spec.
+- Routes, sitemap, `llms.txt` or `/offers.json` that no longer agree with the page copy they describe.
 
-## Style of review
+## Do not flag
 
-- Keep each comment short: the problem, the file and line, one suggested fix.
-- Group repeated instances of one issue into a single comment.
-- Mark severity (blocker, should fix, nit) and cap nits at three.
-- If nothing in the list above applies, say so in one line.
+- Style nits that `npm run lint` already enforces (`eslint . --max-warnings 0`).
+- The historical, stale parts of `NEXT_STEPS.md` (its dark navy and cyan description predates the 2026-09-01 redesign).
+- Anything outside the diff.
+
+## How to report
+
+- Lead with the highest-severity item. Name the file and line.
+- Say what the rule is and which section above it comes from. One sentence per finding.
+- If a finding depends on something you cannot see in the PR (a source, a decision), say so instead of asserting it.
+- Never approve or block. Never request secrets or private context.
+
+CI for context: `.github/workflows/e2e.yml` runs lint (zero warnings) and the Playwright structural and a11y specs on every push and pull request; `prod-health-check.yml` runs daily against production.
