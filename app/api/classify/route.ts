@@ -1,5 +1,4 @@
 import { anthropic } from "@/lib/anthropic";
-import { FAST_MODEL } from "@/lib/models";
 import { rateLimit, getClientIp } from "@/lib/rate-limit";
 import { sendInquiryEmail, sendAgentReplyApprovalEmail } from "@/lib/email";
 import { appendContactLog } from "@/lib/contact-log";
@@ -59,7 +58,7 @@ Base complexity on: scope, number of systems mentioned, enterprise vs SMB signal
 
  try {
  const response = await anthropic.messages.create({
- model: FAST_MODEL,
+ model: "claude-haiku-4-5-20251001",
  max_tokens: 500,
  messages: [{ role: "user", content: prompt }],
  });

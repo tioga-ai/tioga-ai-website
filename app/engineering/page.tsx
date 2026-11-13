@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FAST_MODEL_NAME, DEMO_MODEL_NAME } from "@/lib/models";
 
 export const metadata: Metadata = {
   title: "How I Built It",
@@ -36,19 +35,19 @@ const WRITEUPS = [
   {
     href: "/engineering/invoice-processing",
     title: "Invoice Processing",
-    model: FAST_MODEL_NAME,
+    model: "Claude Haiku 4.5",
     summary: "A shared PDF/DOCX/text extraction pipeline feeding a structured-JSON extraction prompt — and why this one didn't need a reasoning model.",
   },
   {
     href: "/engineering/email-triage",
     title: "Email Triage",
-    model: FAST_MODEL_NAME,
+    model: "Claude Haiku 4.5",
     summary: "Classification, routing, and reply-drafting in one call — and the enum-constrained prompt design that keeps the output usable without a parser fighting free text.",
   },
   {
     href: "/engineering/fusion-ai-readiness-assessment",
     title: "Fusion Cloud AI-Readiness Assessment",
-    model: DEMO_MODEL_NAME,
+    model: "Claude Sonnet 5",
     summary: "Why this demo runs on a reasoning model behind a strict allowlist, with conditional governance logic and clamped, validated output — the most defensive route on the site.",
   },
   {

@@ -3,7 +3,6 @@
 // runtime-validated before anything downstream (an actual outbound email)
 // is allowed to trust it.
 import { anthropic } from "./anthropic";
-import { FAST_MODEL } from "./models";
 import { EMAIL_AGENT_SYSTEM_PROMPT } from "./agent-prompts";
 import type { AgentMessage, AgentThread } from "./thread-store";
 
@@ -69,7 +68,7 @@ ${formatHistory(thread.messages)}
 Write the next reply, responding to the prospect's most recent message. Output the JSON object described in your instructions and nothing else.`;
 
   const response = await anthropic.messages.create({
-    model: FAST_MODEL,
+    model: "claude-haiku-4-5-20251001",
     max_tokens: 1200,
     system: EMAIL_AGENT_SYSTEM_PROMPT,
     messages: [{ role: "user", content: userPrompt }],
