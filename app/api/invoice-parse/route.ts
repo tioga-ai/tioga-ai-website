@@ -1,4 +1,5 @@
 import { anthropic } from "@/lib/anthropic";
+import { firstText } from "@/lib/anthropic-text";
 import { FAST_MODEL } from "@/lib/models";
 import { rateLimit, getClientIp } from "@/lib/rate-limit";
 import { NextRequest } from "next/server";
@@ -40,11 +41,12 @@ Respond ONLY with a JSON object:
   try {
     const response = await anthropic.messages.create({
       model: FAST_MODEL,
+      thinking: { type: "disabled" },
       max_tokens: 700,
       messages: [{ role: "user", content: prompt }],
     });
 
-    const responseText = response.content[0].type === "text" ? response.content[0].text : "";
+    const responseText = firstText(response);
     const jsonMatch = responseText.match(/\{[\s\S]*\}/);
     if (!jsonMatch) throw new Error("No JSON in response");
     const result = JSON.parse(jsonMatch[0]);

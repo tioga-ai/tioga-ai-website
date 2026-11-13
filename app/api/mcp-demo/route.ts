@@ -1,4 +1,5 @@
 import { anthropic } from "@/lib/anthropic";
+import { firstText } from "@/lib/anthropic-text";
 import { FAST_MODEL } from "@/lib/models";
 import { rateLimit, getClientIp } from "@/lib/rate-limit";
 import { NextRequest } from "next/server";
@@ -66,12 +67,13 @@ Also return a JSON block at the end of your response showing which MCP tool(s) y
  try {
  const response = await anthropic.messages.create({
  model: FAST_MODEL,
+ thinking: { type: "disabled" },
  max_tokens: 400,
  system: systemPrompt,
  messages: [{ role: "user", content: query }],
  });
 
- const fullText = response.content[0].type === "text" ? response.content[0].text : "";
+ const fullText = firstText(response);
 
  // Extract MCP calls metadata
  const mcpMatch = fullText.match(/<mcp_calls>([\s\S]*?)<\/mcp_calls>/);

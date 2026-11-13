@@ -1,4 +1,5 @@
 // Server-only helper for demo API routes. Reuses the shared Anthropic client
+import { firstText } from "@/lib/anthropic-text";
 // (lib/anthropic.ts) — import this ONLY from route handlers, never from client components.
 //
 // Note: a tool-use "structured output" variant was tried here on 2026-08-06
@@ -26,5 +27,5 @@ export async function callClaude(opts: {
     ...(opts.system ? { system: opts.system } : {}),
     messages: [{ role: "user", content: opts.prompt }],
   });
-  return response.content[0]?.type === "text" ? response.content[0].text : "";
+  return firstText(response);
 }
