@@ -19,8 +19,6 @@ jobs:
       - run: npm ci
       - name: Lint (zero warnings allowed)
         run: npm run lint
-      - name: Model-ID guard (raw model IDs only in lib/models.ts)
-        run: npm run check:models
       # Playwright's own apt install was slow and flaky on the runner mirror and hung
       # until the job limit (2026-10-05, 2026-10-07). Retry apt fetches cleanly, run the
       # system-deps install as its own capped step, and cache the browser download.

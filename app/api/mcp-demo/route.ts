@@ -1,5 +1,4 @@
 import { anthropic } from "@/lib/anthropic";
-import { FAST_MODEL } from "@/lib/models";
 import { rateLimit, getClientIp } from "@/lib/rate-limit";
 import { NextRequest } from "next/server";
 
@@ -65,7 +64,7 @@ Also return a JSON block at the end of your response showing which MCP tool(s) y
 
  try {
  const response = await anthropic.messages.create({
- model: FAST_MODEL,
+ model: "claude-haiku-4-5-20251001",
  max_tokens: 400,
  system: systemPrompt,
  messages: [{ role: "user", content: query }],

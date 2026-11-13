@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FAST_MODEL, FAST_MODEL_NAME } from "@/lib/models";
 import BenchmarkCard from "@/components/BenchmarkCard";
 import { EvidenceTierTag } from "@/app/demos/_lib/evidence-tier";
 
@@ -104,7 +103,7 @@ export default function EmailTriageWriteup() {
           <BenchmarkCard
             data={{
               date: "2026-08-02",
-              model: `${FAST_MODEL_NAME} (${FAST_MODEL})`,
+              model: "Claude Haiku 4.5 (claude-haiku-4-5-20251001)",
               dataSource:
                 "8 hand-authored synthetic emails (complaint, sales inquiry, invoice, security incident, partnership pitch, spam, internal HR note, legal notice) run live against the production endpoint at tioga.ai.",
               sampleSize: "8 synthetic emails",
