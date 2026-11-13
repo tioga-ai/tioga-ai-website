@@ -60,7 +60,7 @@ const SUBPROCESSORS = [
 const SECURITY_PRACTICES = [
   "Content-Security-Policy on every response — scripts and connections limited to this site plus Vercel's analytics endpoints, no framing by other sites (frame-ancestors 'none'), no plugin/object embeds, no eval. Inline scripts are currently allowed (needed for Next.js hydration today). A stricter nonce-based policy that removes that allowance is not in place.",
   "X-Frame-Options: DENY, X-Content-Type-Options: nosniff, and a locked-down Permissions-Policy blocking camera/microphone/geolocation access sitewide.",
-  "Per-IP rate limiting on every demo and API endpoint, so no single visitor can exhaust the shared model budget or hammer an endpoint.",
+  "Per-IP rate limiting on every demo and API endpoint, as a speed bump against casual abuse of the shared model budget. The counter is held in server memory, so it resets on a restart and is not shared across servers; it is not a hard enforcement boundary.",
   "No demo or chat submission is retained after the response is generated — see the Privacy Policy for the full breakdown, endpoint by endpoint.",
   "No API keys or secrets ship to the browser — every model call is proxied through a server-side route.",
 ];

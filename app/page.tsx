@@ -380,7 +380,7 @@ export default function HomePage() {
  <div className="rounded-2xl p-8 md:p-10" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
  <div className="text-center mb-10">
  <h2 className="text-3xl font-bold mb-3" style={{ color: "var(--text)" }}>What working with Tioga AI looks like</h2>
- <p className="text-[var(--text-muted)] text-sm max-w-lg mx-auto">Not a generic AI consultancy. One founder who specializes in one thing: getting AI into production inside complex enterprise environments.</p>
+ <p className="text-[var(--text-muted)] text-sm max-w-lg mx-auto">Not a generic AI consultancy. A principal-led practice that specializes in one thing: getting AI into production inside complex enterprise environments.</p>
  </div>
  <div className="mb-10 pb-8 text-center" style={{ borderBottom: "1px solid var(--border)" }}>
  <p className="text-sm max-w-2xl mx-auto leading-relaxed" style={{ color: "var(--text-body)" }}>
