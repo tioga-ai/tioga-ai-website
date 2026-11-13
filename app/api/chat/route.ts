@@ -1,4 +1,5 @@
 import { anthropic } from "@/lib/anthropic";
+import { FAST_MODEL } from "@/lib/models";
 import { CHATBOT_SYSTEM_PROMPT } from "@/lib/prompts";
 import { rateLimit, getClientIp } from "@/lib/rate-limit";
 import { NextRequest } from "next/server";
@@ -57,7 +58,7 @@ export async function POST(req: NextRequest) {
     async start(controller) {
       try {
         const response = await anthropic.messages.create({
-          model: "claude-haiku-4-5-20251001",
+          model: FAST_MODEL,
           max_tokens: 500,
           system: CHATBOT_SYSTEM_PROMPT,
           messages: formattedMessages,

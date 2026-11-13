@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FAST_MODEL, FAST_MODEL_NAME } from "@/lib/models";
 import BenchmarkCard from "@/components/BenchmarkCard";
 import { EvidenceTierTag } from "@/app/demos/_lib/evidence-tier";
 
@@ -120,7 +121,7 @@ export default function InvoiceProcessingWriteup() {
           <BenchmarkCard
             data={{
               date: "2026-08-02",
-              model: "Claude Haiku 4.5 (claude-haiku-4-5-20251001)",
+              model: `${FAST_MODEL_NAME} (${FAST_MODEL})`,
               dataSource:
                 "8 hand-authored synthetic invoices (clean, messy, multilingual, non-invoice, credit-memo formats) run live against the production endpoint at tioga.ai — not a cached or pre-recorded result.",
               sampleSize: "8 synthetic invoices, 21 scored fields",
