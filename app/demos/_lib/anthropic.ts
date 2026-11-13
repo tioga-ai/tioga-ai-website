@@ -12,7 +12,7 @@
 // below rather than assuming forced tool_choice guarantees shape.
 import { anthropic } from "@/lib/anthropic";
 
-const DEMO_MODEL = "claude-sonnet-5";
+import { DEMO_MODEL } from "@/lib/models";
 
 export async function callClaude(opts: {
   prompt: string;
