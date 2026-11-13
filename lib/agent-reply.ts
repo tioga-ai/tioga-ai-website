@@ -1,8 +1,10 @@
 // Generates the email agent's next reply in a thread. Mirrors
+import { firstText } from "./anthropic-text";
 // lib/classification.ts's discipline: the model's output is JSON, and it's
 // runtime-validated before anything downstream (an actual outbound email)
 // is allowed to trust it.
 import { anthropic } from "./anthropic";
+import { FAST_MODEL } from "./models";
 import { EMAIL_AGENT_SYSTEM_PROMPT } from "./agent-prompts";
 import type { AgentMessage, AgentThread } from "./thread-store";
 
@@ -68,13 +70,14 @@ ${formatHistory(thread.messages)}
 Write the next reply, responding to the prospect's most recent message. Output the JSON object described in your instructions and nothing else.`;
 
   const response = await anthropic.messages.create({
-    model: "claude-haiku-4-5-20251001",
+    model: FAST_MODEL,
+    thinking: { type: "disabled" },
     max_tokens: 1200,
     system: EMAIL_AGENT_SYSTEM_PROMPT,
     messages: [{ role: "user", content: userPrompt }],
   });
 
-  const text = response.content[0]?.type === "text" ? response.content[0].text : "";
+  const text = firstText(response);
   const jsonMatch = text.match(/\{[\s\S]*\}/);
   if (!jsonMatch) throw new Error("No JSON in agent reply response.");
   return validateAgentReply(JSON.parse(jsonMatch[0]));

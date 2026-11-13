@@ -1,4 +1,6 @@
 import { anthropic } from "@/lib/anthropic";
+import { firstText } from "@/lib/anthropic-text";
+import { FAST_MODEL } from "@/lib/models";
 import { rateLimit, getClientIp } from "@/lib/rate-limit";
 import { sendInquiryEmail, sendAgentReplyApprovalEmail } from "@/lib/email";
 import { appendContactLog } from "@/lib/contact-log";
@@ -58,12 +60,13 @@ Base complexity on: scope, number of systems mentioned, enterprise vs SMB signal
 
  try {
  const response = await anthropic.messages.create({
- model: "claude-haiku-4-5-20251001",
+ model: FAST_MODEL,
+ thinking: { type: "disabled" },
  max_tokens: 500,
  messages: [{ role: "user", content: prompt }],
  });
 
- const text = response.content[0].type === "text" ? response.content[0].text : "";
+ const text = firstText(response);
 
  // A malformed or off-schema model response (e.g. the model punting on an
  // ambiguous/self-referential description with something like

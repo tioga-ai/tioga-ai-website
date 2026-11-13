@@ -1,4 +1,5 @@
 // Server-only helper for demo API routes. Reuses the shared Anthropic client
+import { firstText } from "@/lib/anthropic-text";
 // (lib/anthropic.ts) — import this ONLY from route handlers, never from client components.
 //
 // Note: a tool-use "structured output" variant was tried here on 2026-08-06
@@ -12,7 +13,7 @@
 // below rather than assuming forced tool_choice guarantees shape.
 import { anthropic } from "@/lib/anthropic";
 
-const DEMO_MODEL = "claude-sonnet-5";
+import { DEMO_MODEL } from "@/lib/models";
 
 export async function callClaude(opts: {
   prompt: string;
@@ -26,5 +27,5 @@ export async function callClaude(opts: {
     ...(opts.system ? { system: opts.system } : {}),
     messages: [{ role: "user", content: opts.prompt }],
   });
-  return response.content[0]?.type === "text" ? response.content[0].text : "";
+  return firstText(response);
 }
