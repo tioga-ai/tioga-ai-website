@@ -26,6 +26,7 @@ const PAGES = [
   { path: "/demos/context-window-data-minimization", title: "Context-Window Data Minimization Demo — Tioga AI" },
   { path: "/demos/timecard-exception-shadow-mode", title: "Timecard Exception Agent, Shadow-Mode Demo — Tioga AI" },
   { path: "/demos/headcount-forecast-draft-provenance", title: "Headcount Forecast Draft, Per-Cell Provenance Demo — Tioga AI" },
+  { path: "/proof", title: "Proof — Tioga AI" },
   { path: "/about", title: "About — Tioga AI" },
   { path: "/contact", title: "Contact — Tioga AI" },
   { path: "/trust", title: "Trust & Governance — Tioga AI" },
