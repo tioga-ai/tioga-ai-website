@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SUBPROCESSORS } from "@/lib/subprocessors";
 
 export const metadata: Metadata = {
   title: "Trust & Governance",
@@ -48,13 +49,6 @@ const FRAMEWORKS = [
     href: "/trust/eu-ai-act",
     linkText: "What non-compliance costs →",
   },
-];
-
-const SUBPROCESSORS = [
-  { name: "Anthropic", purpose: "Processes text submitted to demos, the chat widget, and contact-form classification, per Anthropic's own privacy policy." },
-  { name: "Google (Gmail SMTP)", purpose: "Delivers contact-form notifications, build-log sign-up notifications, and optional demo-result emails — nothing beyond that." },
-  { name: "Vercel", purpose: "Hosts this site and its serverless functions, and provides its web analytics and page-performance measurement (Vercel Web Analytics and Speed Insights)." },
-  { name: "Cal.com", purpose: "Processes the name, email, and scheduling details you provide when you book an intro call, per its own privacy policy." },
 ];
 
 const SECURITY_PRACTICES = [
