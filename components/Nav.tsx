@@ -42,6 +42,7 @@ export default function Nav() {
     { href: "/solutions", label: "Solutions" },
     { href: "/services", label: "Services" },
     { href: "/demos", label: "Live Demos" },
+    { href: "/proof", label: "Proof" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ];
