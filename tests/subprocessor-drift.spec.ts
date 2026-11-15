@@ -36,12 +36,14 @@ test("no new third-party integration appears without a Trust Center update", () 
     }
   }
   const unknown = [...found].filter((v) => !KNOWN_GATED.has(v));
-  expect(unknown, `New third-party env vars ${unknown.join(", ")}: update app/trust/page.tsx SUBPROCESSORS, the "Exactly four" wording and /privacy, then add here.`).toEqual([]);
+  expect(unknown, `New third-party env vars ${unknown.join(", ")}: update lib/subprocessors.ts SUBPROCESSORS, the "Exactly four" wording and /privacy, then add here.`).toEqual([]);
 });
 
 test("trust page still lists exactly four sub-processors and says so", () => {
   const src = fs.readFileSync(path.join(ROOT, "app/trust/page.tsx"), "utf8");
-  const block = src.match(/const SUBPROCESSORS = \[([\s\S]*?)\n\];/);
+  // The list moved to lib/subprocessors.ts in PR 169 so /trust and /working-with-us share one source.
+  const listSrc = fs.readFileSync(path.join(ROOT, "lib/subprocessors.ts"), "utf8");
+  const block = listSrc.match(/export const SUBPROCESSORS = \[([\s\S]*?)\n\];/);
   expect(block).not.toBeNull();
   expect((block![1].match(/name:/g) || []).length).toBe(4);
   expect(src).toContain("Exactly four external parties");
