@@ -68,7 +68,7 @@ const content: SolutionContent = {
   offers: [
     {
       name: "Agent-Ready ERP Diagnostic & Governed Write-Path",
-      price: "$60–120K",
+      price: "Scoped on request",
       duration: "~6 weeks",
       desc: "Assess one stalled agent-to-ERP write path, then build a governed version of it — executing through your application's own logic layer, with policy enforcement and an audit-grade evidence trail your control owners can actually clear.",
     },

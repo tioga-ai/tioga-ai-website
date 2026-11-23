@@ -11,7 +11,7 @@ export function GET() {
   const body = {
     name: "Tioga AI offers",
     description:
-      "Entry offers and priced engagements as published on tioga.ai. Prices are ranges shown on the linked pages, not quotes; the linked page is authoritative.",
+      "Entry offers and priced and scoped engagements as published on tioga.ai. Prices are ranges shown on the linked pages, not quotes; the linked page is authoritative.",
     generated_at: new Date().toISOString().slice(0, 10),
     source_pages: ["https://tioga.ai/services", "https://tioga.ai"],
     entry_offers: CHOICES.map((c) => ({

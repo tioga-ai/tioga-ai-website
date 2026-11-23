@@ -35,7 +35,7 @@ export const PRACTICES: Practice[] = [
       {
         name: "AI Agent Pilot",
         desc: "Production-ready AI agent built against your highest-value workflow, integrated with your real systems, with governance documentation delivered alongside the code.",
-        price: "$25–50K",
+        price: "Scoped on request",
         duration: "4–8 weeks",
         buyer: "Teams with a highest-value workflow already identified who are ready for a production-ready agent, not another pilot deck.",
       },
@@ -50,14 +50,14 @@ export const PRACTICES: Practice[] = [
       {
         name: "Agent-Ready ERP Diagnostic & Governed Write-Path",
         desc: "Assess one stalled agent-to-ERP write path, including what the agent does when the ERP or a dependency it needs is down or degraded (fail closed, queue the action, or fall back to an ungated path), then build a governed version of it — executing through your application's own logic layer, with policy enforcement and an audit-grade evidence trail your control owners can actually clear. Also covers payroll/HRIS and FP&A write paths where those are the boundary system instead — UKG Pro and Workday Adaptive Planning are both in scope. (See About for the founder's hands-on operating history with these systems.)",
-        price: "$60–120K",
+        price: "Scoped on request",
         duration: "~6 weeks",
         buyer: "Oracle Fusion Cloud ERP, Oracle EBS, or SAP teams with one stalled agent-to-ERP write path already identified.",
       },
       {
         name: "Salesforce Governed Write-Path & Evidence Build",
         desc: "Closes the gap Salesforce's own architects admit exists — hosted MCP servers on Salesforce are GA and free on Enterprise Edition+ with full user attribution, but the governance layer above that (a value/velocity policy an agent's permission set can't express, a server-side approval gate independent of which AI client is calling, a decision ledger recording policy version, approver, and reason for every evaluated write) is yours to build. Tioga builds that layer for one high-value Salesforce write path, and the Phase 1 diagnostic records what the agent does when the platform or a dependency is unavailable (fail closed, queue the action, or fall back to an ungated path).",
-        price: "$50–100K",
+        price: "Scoped on request",
         duration: "5–8 weeks",
         buyer: "Salesforce teams who already have hosted MCP servers live and need the governance layer above it for one high-value write path.",
       },
@@ -149,7 +149,7 @@ export const PRACTICES: Practice[] = [
       {
         name: "Standing Watch Build",
         desc: "Implements the behavioral probe harness and the propose-and-approve review workflow in your environment, on your credentials and repositories, on top of whatever control plane or gateway you already own — modeled on router-watch and security-watch. Tioga does not build a gateway, policy engine, or discovery product, and will not be a required runtime dependency. Ownership, operating responsibilities, and any ongoing support scope are defined before the build starts.",
-        price: "$60–150K",
+        price: "Scoped on request",
         duration: "8–16 weeks, scoped to estate breadth",
         href: "/solutions/standing-watch",
         ctaLabel: "See the full Standing Watch ladder →",

@@ -102,7 +102,7 @@ const content: SolutionContent = {
     },
     {
       name: "Standing Watch Build",
-      price: "$60–150K",
+      price: "Scoped on request",
       duration: "8–16 weeks, scoped to estate breadth",
       desc: "Implements the behavioral probe harness and the propose-and-approve review workflow in your environment, on your credentials and repositories — modeled directly on router-watch and security-watch's architecture. Tioga will not be a required runtime dependency.",
     },

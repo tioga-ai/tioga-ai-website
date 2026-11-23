@@ -5,18 +5,18 @@ import { PRACTICES } from "@/lib/practices";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Three practices, sixteen priced engagements — systems-led AI automation, agent layers for your existing systems, and AI governance, for businesses on QuickBooks, NetSuite, Salesforce, Oracle Fusion Cloud ERP, Oracle EBS, SAP, or something else.",
+    "Three practices, sixteen priced and scoped engagements — systems-led AI automation, agent layers for your existing systems, and AI governance, for businesses on QuickBooks, NetSuite, Salesforce, Oracle Fusion Cloud ERP, Oracle EBS, SAP, or something else.",
   alternates: { canonical: "/services" },
   openGraph: {
     images: ["/opengraph-image"],
     title: "Services — Tioga AI",
     description:
-      "Three practices, sixteen priced engagements — systems-led AI automation, agent layers for your existing systems, and AI governance, whatever system of record you run.",
+      "Three practices, sixteen priced and scoped engagements — systems-led AI automation, agent layers for your existing systems, and AI governance, whatever system of record you run.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Services — Tioga AI",
-    description: "Three practices, sixteen priced engagements — systems-led AI automation, agent layers for your existing systems, and AI governance, whatever system of record you run.",
+    description: "Three practices, sixteen priced and scoped engagements — systems-led AI automation, agent layers for your existing systems, and AI governance, whatever system of record you run.",
     images: ["/opengraph-image"],
   },
 };
@@ -39,7 +39,7 @@ export default function ServicesPage() {
       <section className="pt-36 pb-20 px-6 max-w-5xl mx-auto">
         <h1 className="text-4xl font-bold mb-6" style={{ color: "var(--text)" }}>Services</h1>
         <p className="text-[var(--text-muted)] text-lg max-w-2xl leading-relaxed mb-4">
-          Tioga AI runs three practices — automating finance and operations, modernizing ERP with an agent layer, and governing enterprise AI. Sixteen engagements sit underneath them, each scoped to deliver a concrete, reviewable output — not a slide deck — with pricing and timelines defined up front.
+          Tioga AI runs three practices — automating finance and operations, modernizing ERP with an agent layer, and governing enterprise AI. Sixteen engagements sit underneath them, each scoped to deliver a concrete, reviewable output — not a slide deck. Most show a price range and timeline up front; the build engagements are scoped on request.
         </p>
         <p className="text-[var(--text-muted)] text-sm max-w-2xl leading-relaxed mb-16">
           Every engagement below starts with a 5-day{" "}

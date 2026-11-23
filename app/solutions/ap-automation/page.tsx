@@ -55,7 +55,7 @@ const content: SolutionContent = {
   offers: [
     {
       name: "AI Agent Pilot",
-      price: "$25–50K",
+      price: "Scoped on request",
       duration: "4–8 weeks",
       desc: "Production-ready AI agent built against your AP workflow, integrated with your real systems, with governance documentation delivered alongside the code.",
     },

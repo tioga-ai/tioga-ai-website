@@ -1,8 +1,9 @@
 import { test, expect } from "@playwright/test";
 
-// Homepage scroll cinematics (Phase 4 of the boundary-push plan): pinned
-// hero + shader-field rotation, staggered scrub reveals on the sections
-// below, and a character-level headline reveal. Scope: "/" only.
+// Homepage scroll behaviour: staggered scrub reveals on the sections below and
+// a character-level headline reveal. The hero pin, Lenis smooth scrolling and
+// the shader field were removed (review fix 10); the tests below guard that.
+// Scope: "/" only.
 //
 // Note (2026-09-10): the hero used to also carry a governance-ledger stat
 // count-up (four numbers from lib/governance-ledger.ts's STATS, scrubbing
@@ -76,20 +77,20 @@ test("headline text survives the SplitText character reveal", async ({ page }) =
   await expect(h1).toContainText("AI agents, built and governed in your real systems.");
 });
 
-test("Lenis and the ScrollTrigger pin are active under normal motion", async ({ page }) => {
+test("hero no longer pins or uses Lenis smooth scrolling (review fix 10)", async ({ page }) => {
   await page.goto("/");
   await page.waitForTimeout(500);
 
   const hasLenis = await page.evaluate(() => Boolean((window as unknown as { lenis?: unknown }).lenis));
-  expect(hasLenis, "window.lenis should be set once Lenis is instantiated").toBe(true);
-
+  expect(hasLenis, "Lenis must not be instantiated on the homepage").toBe(false);
   const htmlHasLenisClass = await page.evaluate(() => document.documentElement.classList.contains("lenis"));
-  expect(htmlHasLenisClass, "Lenis's own <html class='lenis'> marker").toBe(true);
-
-  await expect(page.locator(".pin-spacer")).toHaveCount(1);
+  expect(htmlHasLenisClass).toBe(false);
+  await expect(page.locator(".pin-spacer")).toHaveCount(0);
+  await expect(page.getByTestId("hero-field-canvas")).toHaveCount(0);
+  await expect(page.locator("canvas")).toHaveCount(0);
 });
 
-test("/#services deep link lands on the actual Services section, not short by one pinned hero", async ({ page }) => {
+test("/#services deep link lands on the actual Services section, with native fragment scrolling", async ({ page }) => {
   // Regression test: the hero's pin-spacer adds ~1 viewport height to the
   // document after the browser's native fragment-scroll-on-load already
   // ran against the pre-pin layout, so the first shipped version of this
@@ -107,10 +108,10 @@ test("/#services deep link lands on the actual Services section, not short by on
   await page.waitForTimeout(1200);
   const rect = await page.evaluate(() => document.getElementById("services")?.getBoundingClientRect().top);
   expect(rect, "distance from viewport top to #services after landing").toBeLessThan(150);
-  await expect(page.locator("#services").getByRole("heading", { name: "Fuller engagements, priced up front" })).toBeVisible();
+  await expect(page.locator("#services").getByRole("heading", { name: "Fuller engagements, scoped up front" })).toBeVisible();
 });
 
-test("prefers-reduced-motion fully bypasses Lenis and the pin — normal scrolling document", async ({ page }) => {
+test("prefers-reduced-motion: normal scrolling document, headline revealed", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   await page.waitForTimeout(500);

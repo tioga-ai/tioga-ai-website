@@ -239,7 +239,7 @@ export default function StandingWatchDemoPage() {
         <div className="flex flex-wrap gap-2 mt-4">
           {[
             "Standing Watch Assessment — $15–35K",
-            "Standing Watch Build — $60–150K",
+            "Standing Watch Build — scoped on request",
             "Standing Watch Retainer — $5–15K/month",
           ].map((o) => (
             <a
