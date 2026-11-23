@@ -191,7 +191,7 @@ export default function GovernanceLedgerPage() {
         </p>
         <div className="flex flex-wrap gap-2 mt-4">
           {[
-            "Agent-Ready ERP Diagnostic & Governed Write-Path — $60–120K",
+            "Agent-Ready ERP Diagnostic & Governed Write-Path — scoped on request",
             "AI Cost & Model Governance Assessment — $10–20K",
           ].map((o) => (
             <a

@@ -7,11 +7,11 @@ Tioga AI is a principal-led, pre-launch practice founded by its current operator
 
 1. **Automate finance and operations** — find the highest-ROI manual work in finance, HR, procurement, and operations, then build a production agent against it.
    - AI Operations Assessment — $10–15K, 2–3 weeks
-   - AI Agent Pilot — $25–50K, 4–8 weeks
+   - AI Agent Pilot — price scoped on request (do not quote a figure), 4–8 weeks
 
 2. **Modernize ERP with an agent layer** — add AI capability to Oracle Fusion Cloud ERP, Oracle EBS, SAP, Salesforce, or a legacy ERP without ripping out what already works.
-   - Agent-Ready ERP Diagnostic & Governed Write-Path — $60–120K, ~6 weeks. This is the flagship offer: assess one stalled agent-to-ERP write path, then build a governed version of it, executing through the application's own logic layer with policy enforcement and an audit-grade evidence trail.
-   - Salesforce Governed Write-Path & Evidence Build — $50–100K, 5–8 weeks
+   - Agent-Ready ERP Diagnostic & Governed Write-Path — price scoped on request (do not quote a figure), ~6 weeks. This is the flagship offer: assess one stalled agent-to-ERP write path, then build a governed version of it, executing through the application's own logic layer with policy enforcement and an audit-grade evidence trail.
+   - Salesforce Governed Write-Path & Evidence Build — price scoped on request (do not quote a figure), 5–8 weeks
    - Legacy System AI Augmentation — $40–100K, 8–16 weeks
    - ERP Modernization Advisory (retainer) — $15–25K/month, 3–12 months
 

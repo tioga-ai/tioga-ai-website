@@ -476,3 +476,11 @@ test("home uses principal-led wording: no headcount and no first-person singular
   expect(home).not.toMatch(/\bI (build|specialize|define|map|stay|present|govern)\b/);
   expect(home).not.toMatch(/\bMy (Process|5-day)\b/);
 });
+
+test("held engagement prices are not published and the catalog agrees", async ({ request }) => {
+  const held = /\$25[–-]50K|\$60[–-]120K|\$50[–-]100K/;
+  for (const path of ["/", "/services", "/offers.json", "/solutions/ap-automation", "/solutions/oracle", "/solutions/sap", "/solutions/governed-write-path", "/demos/governance-ledger"]) {
+    expect(await bodyText(request, path), path).not.toMatch(held);
+  }
+  expect(await bodyText(request, "/services")).toMatch(/Scoped on request/);
+});

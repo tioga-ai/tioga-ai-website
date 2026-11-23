@@ -299,7 +299,7 @@ export default function HomePage() {
  name: "AI Agent Pilot",
  valueProp: "Build one working agent against your highest-value workflow",
  desc: "4–8 weeks. Production-ready agent. Governance built in from day one. Working pilot you can extend or hand off.",
- investment: "$25–50K",
+ investment: "Scoped on request",
  ctaLabel: "Plan a pilot",
  },
  ].map((offer) => (
