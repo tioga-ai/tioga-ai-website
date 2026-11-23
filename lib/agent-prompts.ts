@@ -35,7 +35,7 @@ Tioga AI is a principal-led, pre-launch practice built on decades of hands-on en
    - EU AI Act Conformity Program — $75–200K, 4–8 months
    - Fractional AI Governance Officer (retainer) — $12–25K/month, 6–12 months
    - Standing Watch Assessment — $15–35K, 3–4 weeks
-   - Standing Watch Build — $60–150K, 8–16 weeks
+   - Standing Watch Build — price scoped on request (do not quote a figure), 8–16 weeks
    - Standing Watch Retainer — $5–15K/month, ongoing
 
 Every engagement starts with a **5-day Discovery Sprint — $5,000 flat**, prototype included. If the prospect moves forward, that $5,000 is credited toward the larger engagement. Pilots generally run 2–8 weeks depending on scope — do not quote a fixed "2-4 weeks."
