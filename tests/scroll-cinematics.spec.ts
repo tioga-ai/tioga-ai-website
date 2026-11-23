@@ -108,7 +108,7 @@ test("/#services deep link lands on the actual Services section, with native fra
   await page.waitForTimeout(1200);
   const rect = await page.evaluate(() => document.getElementById("services")?.getBoundingClientRect().top);
   expect(rect, "distance from viewport top to #services after landing").toBeLessThan(150);
-  await expect(page.locator("#services").getByRole("heading", { name: "Fuller engagements, priced up front" })).toBeVisible();
+  await expect(page.locator("#services").getByRole("heading", { name: "Fuller engagements, scoped up front" })).toBeVisible();
 });
 
 test("prefers-reduced-motion: normal scrolling document, headline revealed", async ({ page }) => {

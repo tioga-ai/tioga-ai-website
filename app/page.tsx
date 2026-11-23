@@ -271,12 +271,12 @@ export default function HomePage() {
  <ScrollReveal>
  <section id="services" className="py-20 px-6 max-w-5xl mx-auto scroll-mt-24">
  <div className="text-center mb-12">
- <h2 className="text-3xl font-bold mb-3" style={{ color: "var(--text)" }}>Fuller engagements, priced up front</h2>
+ <h2 className="text-3xl font-bold mb-3" style={{ color: "var(--text)" }}>Fuller engagements, scoped up front</h2>
  <p className="text-[var(--text-muted)] text-sm max-w-lg mx-auto">
  Once the first step is done — or if you already know what you need. Each delivers a concrete, reviewable output in weeks, not quarters.
  </p>
  <p className="text-xs max-w-lg mx-auto mt-2" style={{ color: "var(--text-muted-3)" }}>
- Pricing published up front, not gated behind a sales call. The $5,000 Discovery Sprint is credited toward whichever engagement you move forward with.
+ Published prices are not gated behind a sales call; build engagements are scoped on request. The $5,000 Discovery Sprint is credited toward whichever engagement you move forward with.
  </p>
  </div>
  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
