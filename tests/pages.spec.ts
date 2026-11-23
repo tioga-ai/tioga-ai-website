@@ -468,3 +468,11 @@ test("decision-batch fixes and source-verified facts stay in place", async ({ re
   const oversight = await bodyText(request, "/demos/automation-oversight");
   expect(oversight).not.toMatch(/script in the estate that writes files/);
 });
+
+test("home uses principal-led wording: no headcount and no first-person singular", async ({ request }) => {
+  const home = await bodyText(request, "/");
+  expect(home).not.toMatch(/\bone founder\b|\bsingle founder\b|\bsolo\b/i);
+  // First-person singular as the practice's voice ("I build", "My Process"). Visitor-voice CTAs such as "Check my readiness" are allowed.
+  expect(home).not.toMatch(/\bI (build|specialize|define|map|stay|present|govern)\b/);
+  expect(home).not.toMatch(/\bMy (Process|5-day)\b/);
+});

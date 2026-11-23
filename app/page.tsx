@@ -74,7 +74,7 @@ export default function HomePage() {
  <div className="flex-1">
  <h3 className="text-lg font-semibold mb-2" style={{ color: "var(--text)" }}>The Tioga difference</h3>
  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
- I build MCP-native AI systems that speak your enterprise stack&apos;s language from day one. Your pilot runs on your real data, in your real environment — so the path to production is already built by the time I present results.
+ Tioga AI builds MCP-native AI systems that speak your enterprise stack&apos;s language from day one. Your pilot runs on your real data, in your real environment — so the path to production is already built by the time results are presented.
  </p>
  </div>
  </div>
@@ -150,7 +150,7 @@ export default function HomePage() {
  style={{ background: "#C8340610", border: "1px solid #C8340625", color: "var(--accent-on-tint)" }}
  >
  <span className="w-1.5 h-1.5 bg-current rounded-full animate-pulse" />
- Live in my environment — demo data
+ Live in Tioga AI&apos;s environment — demo data
  </div>
  <h2 className="text-3xl font-bold mb-3" style={{ color: "var(--text)" }}>Try It Right Now</h2>
  <p className="text-[var(--text-muted)] max-w-lg mx-auto text-sm">No signup — try model-powered tools and inspect real operational evidence. Each card below states its own operating mode.</p>
@@ -228,7 +228,7 @@ export default function HomePage() {
  >
  <div className="grid md:grid-cols-2 gap-6 items-center">
  <div>
- <h3 className="text-base font-semibold mb-1" style={{ color: "var(--text)" }}>See how I govern my own AI</h3>
+ <h3 className="text-base font-semibold mb-1" style={{ color: "var(--text)" }}>See how Tioga AI governs its own AI</h3>
  <p className="text-xs leading-relaxed max-w-md mb-4" style={{ color: "var(--text-muted)" }}>
  The Governance Ledger is real operational data from Tioga&apos;s own AI routing gateway, mapped to NIST AI RMF — not a mockup. Every call logged, costed, and attributed as a byproduct of routing, not bolted on.
  </p>
@@ -249,7 +249,7 @@ export default function HomePage() {
  {/* Integrations */}
  <ScrollReveal>
  <section className="py-16 px-6 max-w-5xl mx-auto">
- <p className="text-center text-xs text-[var(--text-muted)] uppercase tracking-widest mb-8">Systems my demos and connector examples are built around</p>
+ <p className="text-center text-xs text-[var(--text-muted)] uppercase tracking-widest mb-8">Systems the demos and connector examples are built around</p>
  <div className="flex flex-wrap justify-center items-center gap-3">
  {["SAP", "Salesforce", "Oracle", "Workday"].map((name) => (
  <div
@@ -389,12 +389,12 @@ export default function HomePage() {
  </div>
  <div className="grid md:grid-cols-3 gap-6">
  {[
- { icon: "⚡", title: "Speed to value", desc: "My 5-day discovery sprint gives you a working prototype and a delivery plan before most firms finish scoping." },
+ { icon: "⚡", title: "Speed to value", desc: "The 5-day discovery sprint gives you a working prototype and a delivery plan before most firms finish scoping." },
  { icon: "🔐", title: "Enterprise-grade security", desc: "Security controls — role-based access, audit logging, and architecture aligned to SOC 2 Trust Services Criteria — so your systems of record stay under your control. No independent SOC 2 report exists yet." },
- { icon: "🎯", title: "Integration-first approach", desc: "I build for your stack from day one. No rip-and-replace. Your existing systems become more powerful." },
+ { icon: "🎯", title: "Integration-first approach", desc: "We build for your stack from day one. No rip-and-replace. Your existing systems become more powerful." },
  { icon: "🧪", title: "No toy demos", desc: "Pilots are built to integrate with your real systems, with access scope and acceptance gates agreed up front — built to carry into production, not thrown away after the demo." },
- { icon: "📐", title: "MCP-native builds", desc: "I specialize in Model Context Protocol — the emerging standard for connecting AI to enterprise systems at scale." },
- { icon: "📈", title: "Measurable ROI", desc: "I define success metrics up front. You see ROI calculations in the pilot, not after a 6-month engagement." },
+ { icon: "📐", title: "MCP-native builds", desc: "Tioga AI specializes in Model Context Protocol — the emerging standard for connecting AI to enterprise systems at scale." },
+ { icon: "📈", title: "Measurable ROI", desc: "Success metrics are defined up front. You see ROI calculations in the pilot, not after a 6-month engagement." },
  ].map((item) => (
  <div key={item.title} className="flex gap-3">
  <span className="text-xl shrink-0 mt-0.5">{item.icon}</span>
@@ -415,24 +415,24 @@ export default function HomePage() {
  <ScrollReveal>
  <section id="process" className="py-20 px-6 max-w-4xl mx-auto scroll-mt-24">
  <div className="text-center mb-12">
- <h2 className="text-3xl font-bold mb-3" style={{ color: "var(--text)" }}>My Process</h2>
+ <h2 className="text-3xl font-bold mb-3" style={{ color: "var(--text)" }}>Our Process</h2>
  <p className="text-[var(--text-muted)] text-sm">From first conversation to production deployment — with no ambiguity about what happens next.</p>
  </div>
  <div className="space-y-4">
  {[
  {
  step: "01", title: "Discovery Sprint", href: "/discovery-sprint", duration: "5 days · $5,000 flat",
- desc: "I map your systems, identify the highest-ROI AI opportunities and define a clear scope with your team. You get a working prototype and a detailed delivery plan — before any large commitment.",
+ desc: "We map your systems, identify the highest-ROI AI opportunities and define a clear scope with your team. You get a working prototype and a detailed delivery plan — before any large commitment.",
  detail: "System audit · Use-case prioritization · Prototype · Delivery plan"
  },
  {
  step: "02", title: "Pilot Build", duration: "4–8 weeks · scope-dependent",
- desc: "I build a working pilot integrated with your real systems, with acceptance gates agreed up front. No toy demos — you see exactly what the full system will do.",
+ desc: "We build a working pilot integrated with your real systems, with acceptance gates agreed up front. No toy demos — you see exactly what the full system will do.",
  detail: "Full integration · Real data · Stakeholder review · Go/no-go decision"
  },
  {
  step: "03", title: "Deploy & Scale", duration: "Ongoing",
- desc: "Full production deployment with monitoring, agreed support terms, ongoing retainers and continuous improvement as your AI needs grow. I stay a partner, not a vendor.",
+ desc: "Full production deployment with monitoring, agreed support terms, ongoing retainers and continuous improvement as your AI needs grow. Tioga AI stays a partner, not a vendor.",
  detail: "Production deploy · Monitoring · Support terms · Continuous improvement"
  },
  ].map((p) => (
@@ -496,7 +496,7 @@ export default function HomePage() {
  <div className="p-7 rounded-2xl" style={{ background: "var(--bg-card)", border: "1px solid var(--border)" }}>
  <h3 className="text-base font-semibold mb-2" style={{ color: "var(--text)" }}>What support do I get?</h3>
  <p className="text-sm text-[var(--text-muted)] leading-relaxed">
- I personally review and respond to everything — no ticket queue. As a pre-launch, principal-led practice there&apos;s no formal uptime SLA published yet; that&apos;s disclosed on the{" "}
+ The principal personally reviews and responds to everything — no ticket queue. As a pre-launch, principal-led practice there&apos;s no formal uptime SLA published yet; that&apos;s disclosed on the{" "}
  <Link href="/trust" className="underline hover:text-[var(--text)] transition-colors" style={{ color: "var(--accent)" }}>Trust page</Link>
  , not hidden.
  </p>
